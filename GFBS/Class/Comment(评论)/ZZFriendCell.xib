@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ID" id="KGk-i7-Jjw" customClass="ZZFriendCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j17-7x-eIk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="1Ba-Fb-iEf">
+                                <rect key="frame" x="8" y="4" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="c2o-hQ-Yfl"/>
+                                    <constraint firstAttribute="width" constant="50" id="tbG-Yg-BjU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steven Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT3-Dk-u9z">
+                                <rect key="frame" x="66" y="19" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Ba-Fb-iEf" firstAttribute="leading" secondItem="j17-7x-eIk" secondAttribute="leading" constant="8" id="35Y-hr-5Ph"/>
+                            <constraint firstAttribute="bottom" secondItem="XT3-Dk-u9z" secondAttribute="bottom" constant="19" id="B7Z-S3-wkx"/>
+                            <constraint firstAttribute="bottom" secondItem="1Ba-Fb-iEf" secondAttribute="bottom" constant="5" id="UfW-9b-Obr"/>
+                            <constraint firstItem="1Ba-Fb-iEf" firstAttribute="top" secondItem="j17-7x-eIk" secondAttribute="top" constant="4" id="fso-dQ-t0J"/>
+                            <constraint firstItem="XT3-Dk-u9z" firstAttribute="leading" secondItem="1Ba-Fb-iEf" secondAttribute="trailing" constant="8" id="heU-HV-ggm"/>
+                            <constraint firstItem="XT3-Dk-u9z" firstAttribute="top" secondItem="j17-7x-eIk" secondAttribute="top" constant="19" id="ueN-QO-TsK"/>
+                            <constraint firstAttribute="trailing" secondItem="XT3-Dk-u9z" secondAttribute="trailing" constant="5" id="y7e-R7-zLh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="j17-7x-eIk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RK9-Ny-lec"/>
+                    <constraint firstAttribute="trailing" secondItem="j17-7x-eIk" secondAttribute="trailing" id="WT8-Ge-NKi"/>
+                    <constraint firstItem="j17-7x-eIk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bXl-eu-E8i"/>
+                    <constraint firstAttribute="bottom" secondItem="j17-7x-eIk" secondAttribute="bottom" constant="1" id="nmr-a7-zQj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="mainImageView" destination="1Ba-Fb-iEf" id="I5q-3y-hOV"/>
+                <outlet property="nameLabel" destination="XT3-Dk-u9z" id="3Vb-4M-Dni"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Icon" width="90" height="90"/>
+    </resources>
+</document>
