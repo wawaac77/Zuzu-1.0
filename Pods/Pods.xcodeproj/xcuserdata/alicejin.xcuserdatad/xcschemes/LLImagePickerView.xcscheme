@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E5053B007B687ED9F9FBC4CD0906C796'
+               BlueprintIdentifier = '4064C06007B28582D9708A17DE94E374'
                BlueprintName = 'LLImagePickerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libLLImagePickerView.a'>
+               BuildableName = 'LLImagePickerView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

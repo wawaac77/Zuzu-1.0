@@ -1,0 +1,6 @@
+framework module LLImagePickerView {
+  umbrella header "LLImagePickerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

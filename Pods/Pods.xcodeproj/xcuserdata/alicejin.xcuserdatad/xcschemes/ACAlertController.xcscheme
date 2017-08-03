@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E5BD2F282DDFD8B252B56B8FD7897693'
+               BlueprintIdentifier = '17D75DECC3DE8C06D486EDEF077B8AF3'
                BlueprintName = 'ACAlertController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libACAlertController.a'>
+               BuildableName = 'ACAlertController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

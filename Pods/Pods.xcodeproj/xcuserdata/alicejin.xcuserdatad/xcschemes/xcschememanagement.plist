@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HCSStarRatingView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LLImagePickerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -111,112 +116,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2170C5E5DAF3D0C754167A83C1810D5E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2D0C5ACBB79D836FB8000BA64498F017</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>33A3D1AC025752525EB824999A9D8893</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4CC50A5F39EB43A05C7B14700B577F75</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>58E7450DB13C5ECCE92D3C0DF7CF0903</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>60A515212596D79E02DF2EE24A63E972</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>637A4670064D475B88F09E999D132CA3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6D0CA19ACCA2436B115AB25FBFF240C8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>78F2E8402C5BDF0F6BA825E424DFDDAB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A316B54C67E947D23CECD230FA5BFAEF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B943E23B88B8A73E6A51791997A6B4A4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C791F0A928C1A8FE97074DFC9ACF4E75</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF4B35B9FC819386EB09219BC91827D7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DABE90E0F0947167ABC83E27C73FF15C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE868725B18AE240E550C5515AE66BC4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E5053B007B687ED9F9FBC4CD0906C796</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E5BD2F282DDFD8B252B56B8FD7897693</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EE062A9865A3D8F6FB495D41DDF3F144</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

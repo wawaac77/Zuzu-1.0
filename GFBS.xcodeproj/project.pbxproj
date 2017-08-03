@@ -504,7 +504,7 @@
 		78FFE5BB1ECDB16400F909A2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE5B91ECDB16400F909A2 /* RestaurantCell.xib */; };
 		78FFE5BF1ECDBC7400F909A2 /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */; };
 		78FFE5C01ECDBC7400F909A2 /* RestaurantDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */; };
-		F0DF6B9C479499B133954DC1 /* libPods-GFBS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F7F4458D42D3C1C1286EDF /* libPods-GFBS.a */; };
+		F4698096F6461AE8B55EAA51 /* Pods_GFBS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -525,7 +525,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16F7F4458D42D3C1C1286EDF /* libPods-GFBS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFBS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1801C3C11DEB1BA90073C6CD /* GFTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFTopicViewController.h; sourceTree = "<group>"; };
 		1801C3C21DEB1BA90073C6CD /* GFTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFTopicViewController.m; sourceTree = "<group>"; };
 		1802923D1DE98E3800743619 /* NSDate+GFExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+GFExtension.h"; sourceTree = "<group>"; };
@@ -681,6 +680,7 @@
 		18E8D37D1DE9EB4100ED4EE1 /* GFTopicVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFTopicVoiceView.h; sourceTree = "<group>"; };
 		18E8D37E1DE9EB4100ED4EE1 /* GFTopicVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFTopicVoiceView.m; sourceTree = "<group>"; };
 		18E8D3801DE9EB4A00ED4EE1 /* GFTopicVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFTopicVoiceView.xib; sourceTree = "<group>"; };
+		4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GFBS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75348F53D54936CCC0AF8297 /* Pods-GFBS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFBS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFBS/Pods-GFBS.debug.xcconfig"; sourceTree = "<group>"; };
 		7800963D1EC9C1F5008F9F99 /* event-banner-1036x328--03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "event-banner-1036x328--03.jpg"; sourceTree = "<group>"; };
 		7800963E1EC9C1F5008F9F99 /* event-banner-1036x328-02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "event-banner-1036x328-02.jpg"; sourceTree = "<group>"; };
@@ -1245,9 +1245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7824E3611EF27D5300F85BFB /* MapKit.framework in Frameworks */,
-				F0DF6B9C479499B133954DC1 /* libPods-GFBS.a in Frameworks */,
 				784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */,
 				784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */,
+				F4698096F6461AE8B55EAA51 /* Pods_GFBS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1849,7 +1849,7 @@
 				784FBB7E1F1F032A00014395 /* Fabric.framework */,
 				784FBB7F1F1F032A00014395 /* Crashlytics.framework */,
 				7824E3601EF27D5300F85BFB /* MapKit.framework */,
-				16F7F4458D42D3C1C1286EDF /* libPods-GFBS.a */,
+				4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
