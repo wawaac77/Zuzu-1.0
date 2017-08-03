@@ -87,51 +87,6 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ACAlertController/ACAlertController.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DACircularProgress/DACircularProgress.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DOPDropDownMenu-Enhanced/DOPDropDownMenu_Enhanced.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HCSStarRatingView/HCSStarRatingView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LLImagePickerView/LLImagePickerView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LTNavigationBar/LTNavigationBar.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MWPhotoBrowser/MWPhotoBrowser.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDCycleScrollView/SDCycleScrollView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TZImagePickerController/TZImagePickerController.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/pop/pop.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/ACAlertController/ACAlertController.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DACircularProgress/DACircularProgress.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DOPDropDownMenu-Enhanced/DOPDropDownMenu_Enhanced.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GTMSessionFetcher/GTMSessionFetcher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HCSStarRatingView/HCSStarRatingView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LLImagePickerView/LLImagePickerView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/LTNavigationBar/LTNavigationBar.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MWPhotoBrowser/MWPhotoBrowser.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Masonry/Masonry.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDCycleScrollView/SDCycleScrollView.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/TZImagePickerController/TZImagePickerController.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/pop/pop.framework"
-fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi

@@ -14,16 +14,21 @@
 //#import "RestaurantReviewViewController.h"
 #import "RestaurantPhotoViewController.h"
 #import "RestaurantMenuViewController.h"
-#import "RestaurantEventViewController.h"
+//#import "RestaurantEventViewController.h"
+#import "EventSearchResultTableViewController.h"
 #import "ZZCheckInViewController.h"
+#import "CreateEventViewController.h"
 
 #import "GFTitleButton.h"
 #import "EventRestaurant.h"
+#import "ZZContentModel.h"
+#import "EventInList.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
+#import <HCSStarRatingView.h>
 
 @interface RestaurantDetailViewController () <UIScrollViewDelegate>
 
@@ -47,6 +52,9 @@
 
 /*所有帖子数据*/
 @property (strong , nonatomic)NSMutableArray<ZZContentModel *> *contents;
+
+
+@property (weak ,nonatomic) UIButton *heartButton;
 
 @end
 
@@ -78,11 +86,25 @@
 
 - (void)setUpAfterLoadData {
     
-    UILabel *numOfCheckinLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, GFScreenWidth - 20, 40)];
+    UILabel *numOfCheckinLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, GFScreenWidth - 20, 40)];
     numOfCheckinLabel.textAlignment = NSTextAlignmentCenter;
-    numOfCheckinLabel.text = [NSString stringWithFormat:@"%ld Check-in", _contents.count];
+    numOfCheckinLabel.text = [NSString stringWithFormat:@"%ld Reviews", _contents.count];
     numOfCheckinLabel.textColor = [UIColor whiteColor]; // pay attention to text color
     [self.view addSubview:numOfCheckinLabel];
+    
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(GFScreenWidth / 2 - 60, numOfCheckinLabel.gf_y + numOfCheckinLabel.gf_height, 120, 15)];
+    starRatingView.maximumValue = 5;
+    starRatingView.minimumValue = 0;
+    starRatingView.value = [thisRestaurant.rating floatValue];
+    starRatingView.tintColor = [UIColor whiteColor];
+    starRatingView.backgroundColor = [UIColor clearColor];
+    starRatingView.allowsHalfStars = YES;
+    //[starRatingView addTarget:self action:@selector(didChangeValue:)  forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:starRatingView];
+    
+    if ([thisRestaurant.isFavourite isEqualToNumber:[NSNumber numberWithBool:true]]) {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-o"] forState:UIControlStateNormal];
+    }
     
     [self setUpChildViewControllers];
     [self setUpScrollView];
@@ -118,21 +140,32 @@
     self.topImageView.clipsToBounds = YES;
     [self.view addSubview:_topImageView];
     
-    //**************** add checkin button *****************//
-    UIButton *checkinButton = [[UIButton alloc] initWithFrame:CGRectMake(self.topImageView.gf_width - 45, self.topImageView.gf_height - 45, 30, 30)];
-    [checkinButton setImage:[UIImage imageNamed:@"ic_checkin-restaurant"] forState:UIControlStateNormal];
-    checkinButton.contentMode = UIViewContentModeScaleAspectFit;
-    [checkinButton addTarget:self action:@selector(checkinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:checkinButton];
+    //**************** add calendar button *****************//
+    UIButton *calenderButton = [[UIButton alloc] initWithFrame:CGRectMake(self.topImageView.gf_width - 45, self.topImageView.gf_height - 45, 25, 25)];
+    [calenderButton setImage:[UIImage imageNamed:@"ic_ fa-calendar-plus-o.png"] forState:UIControlStateNormal];
+    calenderButton.titleLabel.contentMode = UIViewContentModeScaleAspectFit;
+    [calenderButton addTarget:self action:@selector(calendarButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:calenderButton];
     
-    
+    //**************** add heart button *****************//
+    UIButton *heartButton = [[UIButton alloc] initWithFrame:CGRectMake(self.topImageView.gf_width - 25 - 20 - 45, self.topImageView.gf_height - 45, 25, 25)];
+    self.heartButton = heartButton;
+    [heartButton setImage:[UIImage imageNamed:@"ic_heart-white.png"] forState:UIControlStateNormal];
+    heartButton.titleLabel.contentMode = UIViewContentModeScaleAspectFit;
+    [heartButton addTarget:self action:@selector(heartButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:heartButton];
     
     
 }
+//********************** Button clicked **********************//
+- (void)hearButtonClicked {
+    NSLog(@"heart Button clicked");
+}
 
-- (void)checkinButtonClicked {
-    ZZCheckInViewController *checkinVC = [[ZZCheckInViewController alloc] init];
-    [self.navigationController pushViewController:checkinVC animated:YES];
+- (void)calendarButtonClicked {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:NSStringFromClass([CreateEventViewController class]) bundle:nil];
+    CreateEventViewController *createVC = [storyBoard instantiateInitialViewController];
+    [self.navigationController pushViewController:createVC animated:YES];
 }
 
 -(void)setUpChildViewControllers
@@ -165,12 +198,13 @@
     menuVC.menuImages = thisRestaurant.menuImages;
     [self addChildViewController:menuVC];
     
-    /*
+    
     //Event
-    RestaurantEventViewController *eventVC = [[RestaurantEventViewController alloc] init];
-    eventVC.view.backgroundColor = [UIColor blueColor];
+    EventSearchResultTableViewController *eventVC = [[EventSearchResultTableViewController alloc] init];
+    eventVC.thisRestaurant = thisRestaurant;
+    eventVC.view.frame = self.scrollView.frame;
+    //eventVC.view.backgroundColor = [UIColor blueColor];
     [self addChildViewController:eventVC];
-     */
     
 }
 
@@ -189,7 +223,7 @@
     
     scrollView.delegate = self;
     //CGFloat scrollHeight = GFScreenHeight * 0.6;
-    scrollView.frame = CGRectMake(0, 235, GFScreenWidth, GFScreenHeight - 235 - GFTabBarH - GFNavMaxY);
+    scrollView.frame = CGRectMake(0, 240, GFScreenWidth, GFScreenHeight - 240 - GFTabBarH - GFNavMaxY);
     NSLog(@"self.view.gf_width in first claim scrollView is %f", self.view.gf_width);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -231,7 +265,7 @@
     [self.view addSubview:titleView];
      */
     
-    NSArray *titleContens = @[@"Overview",@"Check-in",@"Photo",@"Menu"];
+    NSArray *titleContens = @[@"Overview",@"Review",@"Photo",@"Menu",@"Event"];
     NSInteger count = titleContens.count;
     NSLog(@"titlecontents count is %ld", (long)count);
     
@@ -244,6 +278,7 @@
         GFTitleButton *titleButton = [GFTitleButton buttonWithType:UIButtonTypeCustom];
         
         titleButton.tag = i; //绑定tag
+        titleButton.titleLabel.font = [UIFont boldSystemFontOfSize:14];
         [titleButton addTarget:self action:@selector(titelClick:) forControlEvents:UIControlEventTouchUpInside];
         [titleButton setTitle:titleContens[i] forState:UIControlStateNormal];
         CGFloat titleX = i * titleButtonW;
@@ -379,6 +414,7 @@
 }
 
 
+//********************** load Data **********************//
 - (void)loadNeweData {
     
     //取消请求
@@ -423,18 +459,16 @@
     
     //2.凭借请求参数
     
-    NSString *userToken = [[NSString alloc] init];
-    userToken = [AppDelegate APP].user.userToken;
+    NSString *userToken = [AppDelegate APP].user.userToken;
     
-    NSDictionary *inData = [[NSDictionary alloc] init];
+    NSDictionary *inSubData = @{@"restaurant" : thisRestaurant.restaurantId};
     
-    NSDictionary *inSubData = @{@"restaurantId" : thisRestaurant.restaurantId};
-    inData = @{@"action" : @"getRestaurantCheckinList", @"token" : userToken, @"data":inSubData};
+    NSDictionary *inData = @{@"action" : @"getRestaurantReview", @"token" : userToken, @"data":inSubData};
     
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"publish content parameters %@", parameters);
-    
+    NSLog(@"************ start loading reviews *********");
     
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -445,6 +479,7 @@
         //reviewVC.contents = self.contents;
         NSLog(@"selfContentsinRestaurantDetail %@", self.contents);
         //[self saveUIImages];
+        NSLog(@"************ success loading reviews *********");
         [self setUpAfterLoadData];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

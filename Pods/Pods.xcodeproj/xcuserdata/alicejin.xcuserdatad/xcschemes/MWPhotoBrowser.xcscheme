@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CD1E2508D57F25293C185D210C13988A'
+               BlueprintIdentifier = '60A515212596D79E02DF2EE24A63E972'
                BlueprintName = 'MWPhotoBrowser'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'MWPhotoBrowser.framework'>
+               BuildableName = 'libMWPhotoBrowser.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

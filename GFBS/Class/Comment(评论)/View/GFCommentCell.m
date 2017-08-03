@@ -42,7 +42,7 @@
         self.nameLabel.text = @"Secret user";
     }
     
-    self.text_label.text = comment.listMessage;
+    self.text_label.text = comment.listContent;
     
     //self.likeCountLabel.text = [NSString stringWithFormat:@"%zd",comment.like_count];
     //NSString *sexImageSexName = [comment.user.sex isEqualToString:GFBoy] ? @"Profile_manIcon" : @"Profile_womanIcon";

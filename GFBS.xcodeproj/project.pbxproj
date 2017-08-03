@@ -227,6 +227,9 @@
 		781E56741F31EC53006854BA /* EventDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56731F31EC53006854BA /* EventDiscussionViewController.m */; };
 		781E56781F330BD3006854BA /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56761F330BD3006854BA /* ReviewCell.m */; };
 		781E56791F330BD3006854BA /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E56771F330BD3006854BA /* ReviewCell.xib */; };
+		781E567B1F334106006854BA /* ic_heart-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 781E567A1F334106006854BA /* ic_heart-white.png */; };
+		781E56821F3347D8006854BA /* EventSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */; };
+		781E56861F335380006854BA /* SearchPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56851F335380006854BA /* SearchPageViewController.m */; };
 		7824E30E1EEFE06A00F85BFB /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30D1EEFE06A00F85BFB /* user-icon.png */; };
 		7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */; };
 		7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3111EEFE07800F85BFB /* Ellipse-25%.png */; };
@@ -504,7 +507,7 @@
 		78FFE5BB1ECDB16400F909A2 /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE5B91ECDB16400F909A2 /* RestaurantCell.xib */; };
 		78FFE5BF1ECDBC7400F909A2 /* RestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */; };
 		78FFE5C01ECDBC7400F909A2 /* RestaurantDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */; };
-		F4698096F6461AE8B55EAA51 /* Pods_GFBS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */; };
+		A19A3A426450EB514D1249B0 /* libPods-GFBS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAC5CC1C82E1A845ABCEA79 /* libPods-GFBS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -680,7 +683,7 @@
 		18E8D37D1DE9EB4100ED4EE1 /* GFTopicVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFTopicVoiceView.h; sourceTree = "<group>"; };
 		18E8D37E1DE9EB4100ED4EE1 /* GFTopicVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFTopicVoiceView.m; sourceTree = "<group>"; };
 		18E8D3801DE9EB4A00ED4EE1 /* GFTopicVoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFTopicVoiceView.xib; sourceTree = "<group>"; };
-		4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GFBS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AAC5CC1C82E1A845ABCEA79 /* libPods-GFBS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GFBS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75348F53D54936CCC0AF8297 /* Pods-GFBS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GFBS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GFBS/Pods-GFBS.debug.xcconfig"; sourceTree = "<group>"; };
 		7800963D1EC9C1F5008F9F99 /* event-banner-1036x328--03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "event-banner-1036x328--03.jpg"; sourceTree = "<group>"; };
 		7800963E1EC9C1F5008F9F99 /* event-banner-1036x328-02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "event-banner-1036x328-02.jpg"; sourceTree = "<group>"; };
@@ -827,6 +830,11 @@
 		781E56751F330BD3006854BA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
 		781E56761F330BD3006854BA /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		781E56771F330BD3006854BA /* ReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		781E567A1F334106006854BA /* ic_heart-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_heart-white.png"; sourceTree = "<group>"; };
+		781E56801F3347D8006854BA /* EventSearchResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSearchResultTableViewController.h; sourceTree = "<group>"; };
+		781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSearchResultTableViewController.m; sourceTree = "<group>"; };
+		781E56841F335380006854BA /* SearchPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPageViewController.h; sourceTree = "<group>"; };
+		781E56851F335380006854BA /* SearchPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPageViewController.m; sourceTree = "<group>"; };
 		7824E30D1EEFE06A00F85BFB /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
 		7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-100%.png"; sourceTree = "<group>"; };
 		7824E3111EEFE07800F85BFB /* Ellipse-25%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-25%.png"; sourceTree = "<group>"; };
@@ -1152,11 +1160,11 @@
 		788CC32C1F19EC3900DC4116 /* JSQMessagesTypingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQMessagesTypingView.h; sourceTree = "<group>"; };
 		788CC32D1F19EC3900DC4116 /* JSQMessagesTypingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQMessagesTypingView.m; sourceTree = "<group>"; };
 		788CC35B1F1A169C00DC4116 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7897E1011EF3E6A00046D647 /* EventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListCell.h; sourceTree = "<group>"; };
-		7897E1021EF3E6A00046D647 /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCell.m; sourceTree = "<group>"; };
-		7897E1031EF3E6A00046D647 /* EventListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventListCell.xib; sourceTree = "<group>"; };
-		7897E1061EF7766A0046D647 /* EventInList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInList.h; sourceTree = "<group>"; };
-		7897E1071EF7766A0046D647 /* EventInList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInList.m; sourceTree = "<group>"; };
+		7897E1011EF3E6A00046D647 /* EventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventListCell.h; path = ../EventListCell.h; sourceTree = "<group>"; };
+		7897E1021EF3E6A00046D647 /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventListCell.m; path = ../EventListCell.m; sourceTree = "<group>"; };
+		7897E1031EF3E6A00046D647 /* EventListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventListCell.xib; path = ../EventListCell.xib; sourceTree = "<group>"; };
+		7897E1061EF7766A0046D647 /* EventInList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventInList.h; path = ../EventInList.h; sourceTree = "<group>"; };
+		7897E1071EF7766A0046D647 /* EventInList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventInList.m; path = ../EventInList.m; sourceTree = "<group>"; };
 		789CFF3F1F00E84F00EBA772 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ../FilterTableViewController.h; sourceTree = "<group>"; };
 		789CFF401F00E84F00EBA772 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterTableViewController.m; path = ../FilterTableViewController.m; sourceTree = "<group>"; };
 		789CFF441F00EC3F00EBA772 /* FilterTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FilterTableViewController.storyboard; path = ../FilterTableViewController.storyboard; sourceTree = "<group>"; };
@@ -1247,7 +1255,7 @@
 				7824E3611EF27D5300F85BFB /* MapKit.framework in Frameworks */,
 				784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */,
 				784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */,
-				F4698096F6461AE8B55EAA51 /* Pods_GFBS.framework in Frameworks */,
+				A19A3A426450EB514D1249B0 /* libPods-GFBS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1302,13 +1310,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		184D492A1DED5D5800C7B03F /* Comment(评论) */ = {
+		184D492A1DED5D5800C7B03F /* Comment */ = {
 			isa = PBXGroup;
 			children = (
 				184D492B1DED5D5800C7B03F /* Controller */,
 				184D492C1DED5D5800C7B03F /* Model */,
 				184D492D1DED5D5800C7B03F /* View */,
 			);
+			name = Comment;
 			path = "Comment(评论)";
 			sourceTree = "<group>";
 		};
@@ -1470,20 +1479,21 @@
 		18BE026C1DDB497900D27893 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				18BE026D1DDB497900D27893 /* AD(广告) */,
-				18BE02791DDB497900D27893 /* Main(主要) */,
+				18BE026D1DDB497900D27893 /* AD */,
+				18BE02791DDB497900D27893 /* Main */,
 				7829FF9B1ED803D000C934C2 /* Login */,
-				784D3F5D1ECC67040058C63F /* Home */,
+				784D3F5D1ECC67040058C63F /* Home (TabBar) */,
+				781E567C1F33479A006854BA /* Events */,
 				781E563A1F31AE41006854BA /* Filter */,
 				781E566E1F31D091006854BA /* Leaderboard */,
-				184D492A1DED5D5800C7B03F /* Comment(评论) */,
+				184D492A1DED5D5800C7B03F /* Comment */,
 				783089551F1E1DF100C31BFE /* Friends */,
 				788333151F17779700967337 /* Check-in */,
 				789E0D5C1F17DC0A00CCAAE4 /* Inbox */,
-				18BE02711DDB497900D27893 /* Social Calendar */,
-				78FFE5AD1ECDAD2C00F909A2 /* Restaurant */,
+				18BE02711DDB497900D27893 /* Social Calendar (TabBar) */,
+				78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */,
 				786B38181F2DDC310098A12F /* User Profile */,
-				18BE027D1DDB497900D27893 /* My Zuzu */,
+				18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */,
 				185420811DF064F1004F6378 /* Setting & Notification */,
 				18BE02811DDB497900D27893 /* New(新帖) */,
 				18BE02751DDB497900D27893 /* FriendTrend(关注) */,
@@ -1493,13 +1503,14 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
-		18BE026D1DDB497900D27893 /* AD(广告) */ = {
+		18BE026D1DDB497900D27893 /* AD */ = {
 			isa = PBXGroup;
 			children = (
 				18BE026E1DDB497900D27893 /* Controller */,
 				18BE026F1DDB497900D27893 /* Model */,
 				18BE02701DDB497900D27893 /* View */,
 			);
+			name = AD;
 			path = "AD(广告)";
 			sourceTree = "<group>";
 		};
@@ -1529,14 +1540,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		18BE02711DDB497900D27893 /* Social Calendar */ = {
+		18BE02711DDB497900D27893 /* Social Calendar (TabBar) */ = {
 			isa = PBXGroup;
 			children = (
 				18BE02721DDB497900D27893 /* Controller */,
 				18BE02731DDB497900D27893 /* Model */,
 				18BE02741DDB497900D27893 /* View */,
 			);
-			name = "Social Calendar";
+			name = "Social Calendar (TabBar)";
 			path = "Essence(精华)";
 			sourceTree = "<group>";
 		};
@@ -1636,13 +1647,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		18BE02791DDB497900D27893 /* Main(主要) */ = {
+		18BE02791DDB497900D27893 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				18BE027A1DDB497900D27893 /* Controller */,
 				18BE027B1DDB497900D27893 /* Model */,
 				18BE027C1DDB497900D27893 /* View */,
 			);
+			name = Main;
 			path = "Main(主要)";
 			sourceTree = "<group>";
 		};
@@ -1673,14 +1685,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		18BE027D1DDB497900D27893 /* My Zuzu */ = {
+		18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */ = {
 			isa = PBXGroup;
 			children = (
 				18BE027E1DDB497900D27893 /* Controller */,
 				18BE027F1DDB497900D27893 /* Model */,
 				18BE02801DDB497900D27893 /* View */,
 			);
-			name = "My Zuzu";
+			name = "My Zuzu (TabBar)";
 			path = "Me(我)";
 			sourceTree = "<group>";
 		};
@@ -1849,7 +1861,7 @@
 				784FBB7E1F1F032A00014395 /* Fabric.framework */,
 				784FBB7F1F1F032A00014395 /* Crashlytics.framework */,
 				7824E3601EF27D5300F85BFB /* MapKit.framework */,
-				4AACD193E4A1F1266A51F908 /* Pods_GFBS.framework */,
+				4AAC5CC1C82E1A845ABCEA79 /* libPods-GFBS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2193,6 +2205,47 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		781E567C1F33479A006854BA /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				781E567D1F3347A7006854BA /* Controller */,
+				781E56831F3349BD006854BA /* Model */,
+				781E567F1F3347B5006854BA /* View */,
+			);
+			name = Events;
+			path = "Comment(评论)";
+			sourceTree = "<group>";
+		};
+		781E567D1F3347A7006854BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				781E56841F335380006854BA /* SearchPageViewController.h */,
+				781E56851F335380006854BA /* SearchPageViewController.m */,
+				781E56801F3347D8006854BA /* EventSearchResultTableViewController.h */,
+				781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		781E567F1F3347B5006854BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7897E1011EF3E6A00046D647 /* EventListCell.h */,
+				7897E1021EF3E6A00046D647 /* EventListCell.m */,
+				7897E1031EF3E6A00046D647 /* EventListCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		781E56831F3349BD006854BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7897E1061EF7766A0046D647 /* EventInList.h */,
+				7897E1071EF7766A0046D647 /* EventInList.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7824E3071EEEE18900F85BFB /* Typical */ = {
 			isa = PBXGroup;
 			children = (
@@ -2365,8 +2418,6 @@
 		783089371F1CA1D000C31BFE /* Previous */ = {
 			isa = PBXGroup;
 			children = (
-				7897E1061EF7766A0046D647 /* EventInList.h */,
-				7897E1071EF7766A0046D647 /* EventInList.m */,
 				78FFE5981ECD40F700F909A2 /* GFEvent.h */,
 				78FFE5991ECD40F700F909A2 /* GFEvent.m */,
 				786227501EFBB3DB006F731F /* KCAnnotation.h */,
@@ -2383,9 +2434,6 @@
 		783089381F1CA1FE00C31BFE /* Previous */ = {
 			isa = PBXGroup;
 			children = (
-				7897E1011EF3E6A00046D647 /* EventListCell.h */,
-				7897E1021EF3E6A00046D647 /* EventListCell.m */,
-				7897E1031EF3E6A00046D647 /* EventListCell.xib */,
 				789CFF461F02115800EBA772 /* SliderCell.h */,
 				789CFF471F02115800EBA772 /* SliderCell.m */,
 				789CFF481F02115800EBA772 /* SliderCell.xib */,
@@ -2483,14 +2531,14 @@
 			name = childVCs;
 			sourceTree = "<group>";
 		};
-		784D3F5D1ECC67040058C63F /* Home */ = {
+		784D3F5D1ECC67040058C63F /* Home (TabBar) */ = {
 			isa = PBXGroup;
 			children = (
 				784D3F641ECC797E0058C63F /* Controller */,
 				784D3F631ECC79690058C63F /* Model */,
 				784D3F651ECC79870058C63F /* View */,
 			);
-			name = Home;
+			name = "Home (TabBar)";
 			sourceTree = "<group>";
 		};
 		784D3F631ECC79690058C63F /* Model */ = {
@@ -2581,6 +2629,7 @@
 				786069741F15DB9B00A8AB88 /* ic_google-plus.png */,
 				786069751F15DB9B00A8AB88 /* ic_heart-grey.png */,
 				786069761F15DB9B00A8AB88 /* ic_heart-o.png */,
+				781E567A1F334106006854BA /* ic_heart-white.png */,
 				786069771F15DB9B00A8AB88 /* ic_home-check-in-o.png */,
 				786069781F15DB9B00A8AB88 /* ic_home-check-in.png */,
 				786069791F15DB9B00A8AB88 /* ic_home-my-zuzu-o.png */,
@@ -3000,14 +3049,14 @@
 			path = ../../ZBProgressView;
 			sourceTree = "<group>";
 		};
-		78FFE5AD1ECDAD2C00F909A2 /* Restaurant */ = {
+		78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */ = {
 			isa = PBXGroup;
 			children = (
 				78FFE5AF1ECDAD4900F909A2 /* Controller */,
 				78FFE5B01ECDAD5200F909A2 /* Model */,
 				78FFE5B11ECDAD5900F909A2 /* View */,
 			);
-			name = Restaurant;
+			name = "Restaurant (TabBar)";
 			sourceTree = "<group>";
 		};
 		78FFE5AF1ECDAD4900F909A2 /* Controller */ = {
@@ -3219,6 +3268,7 @@
 				788CC35C1F1A169C00DC4116 /* GoogleService-Info.plist in Resources */,
 				780096ED1EC9C1F5008F9F99 /* zuzu-login-one-image.png in Resources */,
 				780097001EC9C1F5008F9F99 /* ic_location.png in Resources */,
+				781E567B1F334106006854BA /* ic_heart-white.png in Resources */,
 				789CFF981F12399100EBA772 /* ZZImageCollectionCell.xib in Resources */,
 				7813FE991F25F3E90065D527 /* ic_add-friend-black.png in Resources */,
 				780096B41EC9C1F5008F9F99 /* event-banner-1036x328-04.jpg in Resources */,
@@ -3634,6 +3684,7 @@
 				781E56651F31BCA2006854BA /* MyZuzuViewController.m in Sources */,
 				18C826351DE736B3007341E3 /* GFPictureViewController.m in Sources */,
 				1829A6A11DE818F70086AD86 /* GFRefreshHeader.m in Sources */,
+				781E56821F3347D8006854BA /* EventSearchResultTableViewController.m in Sources */,
 				7824E3591EF2201D00F85BFB /* BadgesSquareCell.m in Sources */,
 				18B7C72A1DE07501004BD781 /* GFLoginRegisterView.m in Sources */,
 				783089481F1D039800C31BFE /* CommentHeaderView.m in Sources */,
@@ -3685,6 +3736,7 @@
 				18C8262C1DE7368D007341E3 /* ZZAttendingViewController.m in Sources */,
 				7864EB6F1F2B424400AA572E /* OverviewCell.m in Sources */,
 				18C8263E1DE737C9007341E3 /* GFVoiceViewController.m in Sources */,
+				781E56861F335380006854BA /* SearchPageViewController.m in Sources */,
 				189980491DDBEDA4009071F4 /* UIBarButtonItem+GFItem.m in Sources */,
 				1841A77E1DE17BE400FB54CC /* GFWebViewController.m in Sources */,
 				182391461DEEC70500B88AE0 /* GFCommentHeaderFooterView.m in Sources */,

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZContentModel.h"
 
 @interface ReviewCell : UITableViewCell
+
+@property (strong, nonatomic) ZZContentModel *thisComment;
 
 @end

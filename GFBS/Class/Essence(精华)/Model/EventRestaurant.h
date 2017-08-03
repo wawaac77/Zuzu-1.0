@@ -31,6 +31,8 @@
 
 /****** for restaurant list page *****/
 @property (nonatomic, assign) NSNumber *restaurantDistance;
+@property (nonatomic, strong) NSNumber *rating;
+@property (nonatomic, strong) NSNumber *isFavourite;
 @property (nonatomic, strong) ZZTypicalInformationModel *restaurantDistrict;
 @property (nonatomic, strong) NSMutableArray <ZZTypicalInformationModel *> *restaurantCuisines;
 @property (nonatomic, assign) NSNumber *restaurantMinPrice;

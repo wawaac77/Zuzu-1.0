@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFHomeViewController.m"
-            timestampString = "523357410.691878"
+            timestampString = "523458411.324809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-setUpUpcomingTitleView"
             landmarkType = "7">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFHomeViewController.m"
-            timestampString = "523357410.691878"
+            timestampString = "523458411.324809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-setUpUpcomingTitleView"
             landmarkType = "7">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFHomeViewController.m"
-            timestampString = "521113600.865746"
+            timestampString = "523458411.324809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-setUpScrollView"
             landmarkType = "7">
          </BreakpointContent>
@@ -990,11 +990,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFHomeViewController.m"
-            timestampString = "523357410.691878"
+            timestampString = "523458411.324809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "-setUpNavBar"
             landmarkType = "7">
          </BreakpointContent>
@@ -1716,11 +1716,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/ZZContentModel.m"
-            timestampString = "523367065.032463"
+            timestampString = "523447288.855583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "+initialize"
             landmarkType = "7">
          </BreakpointContent>
@@ -2056,6 +2056,22 @@
             startingLineNumber = "127"
             endingLineNumber = "127"
             landmarkName = "-scrollMenu:itemAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GFBS/Class/ReviewCell.m"
+            timestampString = "523449102.169376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "-setThisComment:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

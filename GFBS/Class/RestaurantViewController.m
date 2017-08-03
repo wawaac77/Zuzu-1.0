@@ -285,6 +285,10 @@ static NSString *const restaurantID = @"restaurant";
     return 110.0f;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.restaurants.count;

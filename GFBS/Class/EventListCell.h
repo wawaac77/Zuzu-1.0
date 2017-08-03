@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class GFEvent;
+@class EventInList;
 
 @interface EventListCell : UITableViewCell
 
 /*数据*/
-@property (strong, nonatomic)GFEvent *event;
+@property (strong, nonatomic)EventInList *event;
 
 @end

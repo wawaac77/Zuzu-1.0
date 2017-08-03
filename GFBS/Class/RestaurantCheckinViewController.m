@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RestaurantCheckinViewController.h"
-#import "GFEventsCell.h"
+#import "ReviewCell.h"
 #import "ZZContentModel.h"
 //#import "ZZCommentsViewController.h"
 #import "GFCommentViewController.h"
@@ -18,7 +18,6 @@
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
-#import <SDImageCache.h>
 
 static NSString *const ID = @"ID";
 
@@ -66,20 +65,21 @@ static NSString *const ID = @"ID";
     //self.tableView.backgroundColor = [UIColor lightGrayColor];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //self.tableView.rowHeight = UITableViewAutomaticDimension;
-    //self.tableView.estimatedRowHeight = 400;
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GFEventsCell class]) bundle:nil] forCellReuseIdentifier:ID];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 400;
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ReviewCell class]) bundle:nil] forCellReuseIdentifier:ID];
     
     //[self.tableView reloadData];
 }
 
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ZZContentModel *content = _contents[indexPath.row];
     NSLog(@"contentCellHeightInPostVC %f", content.cellHeight);
     return content.cellHeight;
 }
+ */
 
 #pragma mark - Table view data source
 
@@ -95,13 +95,15 @@ static NSString *const ID = @"ID";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GFEventsCell *cell = (GFEventsCell *)[tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    ReviewCell *cell = (ReviewCell *)[tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
     //**** set up restaurant button **//
+    /*
     UIButton *restaurantButton = [[UIButton alloc] initWithFrame:CGRectMake(80, 16, 264, 30)];
     restaurantButton.backgroundColor = [UIColor clearColor];
     [restaurantButton addTarget:self action:@selector(restaurantButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     restaurantButton.tag = indexPath.row;
     [cell.contentView addSubview:restaurantButton];
+    */
     
     ZZContentModel *thisContent = self.contents[indexPath.row];
     if (_contents[indexPath.row].listImage_UIImage == nil) {
@@ -110,7 +112,7 @@ static NSString *const ID = @"ID";
         UIImage *image = [[UIImage alloc]initWithData:data];
         _contents[indexPath.row].listImage_UIImage = image;
     }
-    cell.event = thisContent;
+    cell.thisComment = thisContent;
     
     return cell;
 }
@@ -121,14 +123,14 @@ static NSString *const ID = @"ID";
     //NSIndexPath *recordIndexPath = [[NSIndexPath alloc] init];
     //self.recordIndexPath = recordIndexPath;
     //recordIndexPath = indexPath;
-    
+    /*
     GFCommentViewController *commentsVC = [[GFCommentViewController alloc] init];
     commentsVC.topic = [_contents objectAtIndex:indexPath.row];
     commentsVC.view.frame = CGRectMake(0, ZZNewNavH, self.view.gf_width, self.view.gf_height - ZZNewNavH - GFTabBarH);
     commentsVC.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:commentsVC animated:YES];
-    
+    */
 }
 
 // Override to support conditional editing of the table view.
@@ -168,11 +170,13 @@ static NSString *const ID = @"ID";
 
 
 //************************* update cell which is hearted in commentVC ******************************//
+/*
 -(void)viewWillAppear:(BOOL)animated{
     NSLog(@"indexPathForSlectedRow in viewWillAppear %@", [self.tableView indexPathForSelectedRow]);
     NSLog(@"indexPathForSlectedRow in viewWillAppear.row %ld", [self.tableView indexPathForSelectedRow].row);
     
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow],nil] withRowAnimation:UITableViewRowAnimationNone];
 }
+*/
 
 @end

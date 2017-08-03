@@ -15,6 +15,7 @@
 #import "MapNearbyEventsViewController.h"
 #import "CreateEventViewController.h"
 #import "FilterTableViewController.h"
+#import "SearchPageViewController.h"
 
 @interface GFHomeViewController () <UIScrollViewDelegate>
 
@@ -245,14 +246,20 @@
     
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     self.searchBar = searchBar;
+    [self searchBarShouldBeginEditing:searchBar];
     //searchBar.tintColor = [UIColor darkGrayColor];
     //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
     //searchBar1.backgroundColor = [UIColor whiteColor];
+    //self.searchBar.delegate = self;
     searchBar.placeholder = @"Event name, interest, restaurant";
     self.navigationItem.titleView = searchBar;
   
     //[self.navigationController.navigationBar addSubview:searchBar1];
 
+    UIButton *searchBarButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, GFScreenWidth - 50, 30)];
+    [searchBarButton addTarget:self action:@selector(searchBarClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.navigationController.navigationBar addSubview:searchBarButton];
+    
     //左边
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
     
@@ -278,6 +285,17 @@
 
 }
 
+- (void)searBarClicked {
+    SearchPageViewController *searchVC = [[SearchPageViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
+}
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    SearchPageViewController *searchVC = [[SearchPageViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
+    NSLog(@"yes");
+    return YES;
+}
 
 
 - (void)didReceiveMemoryWarning {

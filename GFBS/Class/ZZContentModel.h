@@ -38,14 +38,18 @@ typedef NS_ENUM(NSInteger , MyPublishContentType){
 @property (nonatomic, copy) NSString *listEventUpdatedAt;
 @property (nonatomic, copy) NSString *listEventCreatedBy;
 @property (nonatomic, copy) NSString *listEventCreatedAt;
+
+@property (nonatomic, copy) NSString *listTitle;
 @property (nonatomic, copy) NSString *listMessage;
+@property (nonatomic, copy) NSString *listContent;
 @property (nonatomic, strong) ZZUser *listPublishUser;
 @property (nonatomic, strong) EventRestaurant *listEventRestaurant;
 @property (nonatomic, strong) GFImage *listImage;
 
 @property (nonatomic, copy) NSNumber *listIsLike;
+@property (nonatomic, copy) NSNumber *rating;
 
-/*****额外增加的属性*****/
+/*************额外增加的属性**************/
 @property (nonatomic, strong) UIImage *listImage_UIImage;
 
 /** cell高度 */

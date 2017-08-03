@@ -40,7 +40,7 @@
     EventInList *thisEvent = event;
     [self downloadImageFromURL:thisEvent.listEventBanner.eventBanner.imageUrl];
     self.bigTitleLabel.text = thisEvent.listEventName;
-    self.smallTitleLabel.text = thisEvent.listEventStartDate;
+    self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", thisEvent.listEventStartDate, thisEvent.listEventJoinedCount, thisEvent.listEventQuota];
  
     /*
     self.bigImageView.frame = CGRectMake(5, 0, [UIScreen mainScreen].bounds.size.width - 10, 130);
