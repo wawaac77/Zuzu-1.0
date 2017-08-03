@@ -83,6 +83,9 @@
         _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.clipsToBounds = YES;
+        _imageView.alpha = 1;
+        //_imageView.backgroundColor = [UIColor blackColor];
+        //_contentView.backgroundColor = [UIColor blackColor];
     }
     return _imageView;
 }

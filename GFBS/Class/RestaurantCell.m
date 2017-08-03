@@ -8,6 +8,8 @@
 
 #import "RestaurantCell.h"
 #import "EventRestaurant.h"
+#import "ZZTypicalInformationModel.h"
+#import <UIImageView+WebCache.h>
 
 @interface  RestaurantCell()
 @property (weak, nonatomic) IBOutlet UIImageView *restaurantImageView;
@@ -25,13 +27,21 @@
 -(void)setRestaurant:(EventRestaurant *)restaurant
 {
     EventRestaurant *thisRestaurant = restaurant;
-    [self downloadImageFromURL:thisRestaurant.restaurantIcon.imageUrl];
+    self.restaurantImageView.clipsToBounds = YES;
+    [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:thisRestaurant.restaurantIcon.imageUrl] placeholderImage:nil];
     _bigTitleLabel.text = restaurant.restaurantName.en;
     //restaurant.restaurantDistance
-   
-    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.2fkm",thisRestaurant.restaurantDistrict.informationName.en, thisRestaurant.restaurantDistance];
+    float distance = [thisRestaurant.restaurantDistance floatValue];
+    distance = distance * 1000;
+    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",thisRestaurant.restaurantDistrict.informationName.en, distance];
+    NSString *cuisines = @"";
+    for (int i = 0; i < thisRestaurant.restaurantCuisines.count; i++) {
+        cuisines = [cuisines stringByAppendingString:thisRestaurant.restaurantCuisines[i].informationName.en];
+    }
+    _priceLabel.text = [NSString stringWithFormat:@"$%@-%@ per person | %@", thisRestaurant.restaurantMinPrice, thisRestaurant.restaurantMaxPrice, cuisines];
 }
 
+/*
 -(void) downloadImageFromURL :(NSString *)imageUrl{
     
     NSURL  *url = [NSURL URLWithString:imageUrl];
@@ -50,6 +60,7 @@
     }
     
 }
+ */
 
 - (void)awakeFromNib {
     [super awakeFromNib];

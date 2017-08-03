@@ -24,7 +24,7 @@
 @implementation GFCommentCell
 
 
--(void)setComment:(ZZComment *)comment
+-(void)setComment:(ZZContentModel *)comment
 {
     _comment = comment;
     
@@ -32,17 +32,17 @@
     _iconImageView.clipsToBounds = YES;
     
     UIImage *placeholder = [[UIImage imageNamed:@"defaultUserIcon"]gf_circleImage];
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:comment.member.userProfileImage.imageUrl] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:comment.listPublishUser.userProfileImage.imageUrl] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (!image) return ;
         self.iconImageView.image = [image gf_circleImage];
     }];
     
-    self.nameLabel.text = comment.member.userUserName;
+    self.nameLabel.text = comment.listPublishUser.userUserName;
     if (self.nameLabel.text.length == 0) {
         self.nameLabel.text = @"Secret user";
     }
     
-    self.text_label.text = comment.commentMessage;
+    self.text_label.text = comment.listMessage;
     
     //self.likeCountLabel.text = [NSString stringWithFormat:@"%zd",comment.like_count];
     //NSString *sexImageSexName = [comment.user.sex isEqualToString:GFBoy] ? @"Profile_manIcon" : @"Profile_womanIcon";

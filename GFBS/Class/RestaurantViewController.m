@@ -264,16 +264,16 @@ static NSString *const restaurantID = @"restaurant";
 {
     //[self.view addSubview:_topScrollView];
     //_topScrollView.frame = CGRectMake(0, 0, self.view.gf_width, 35);
-    _topScrollView.backgroundColor = [UIColor blueColor];
+    _topScrollView.backgroundColor = [UIColor whiteColor];
 }
 
 #pragma mark - tableView
 - (void)setUpTable
 {
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, GFTabBarH, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    self.tableView.backgroundColor = [UIColor greenColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, GFTabBarH, 0);
+    //self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RestaurantCell class]) bundle:nil] forCellReuseIdentifier:restaurantID];
 }
 
@@ -301,7 +301,7 @@ static NSString *const restaurantID = @"restaurant";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RestaurantDetailViewController *restaurantDetailVC = [[RestaurantDetailViewController alloc] init];
-    //restaurantDetailVC.topic = self.tableView[indexPath.row];
+    restaurantDetailVC.thisRestaurant = self.restaurants[indexPath.row];
     [self.navigationController pushViewController:restaurantDetailVC animated:YES];
 }
 

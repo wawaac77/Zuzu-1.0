@@ -225,6 +225,8 @@
 		781E56661F31BCA2006854BA /* MyZuzuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E56641F31BCA2006854BA /* MyZuzuViewController.xib */; };
 		781E566D1F31CD8C006854BA /* GFSeeAllEventTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */; };
 		781E56741F31EC53006854BA /* EventDiscussionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56731F31EC53006854BA /* EventDiscussionViewController.m */; };
+		781E56781F330BD3006854BA /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56761F330BD3006854BA /* ReviewCell.m */; };
+		781E56791F330BD3006854BA /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E56771F330BD3006854BA /* ReviewCell.xib */; };
 		7824E30E1EEFE06A00F85BFB /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30D1EEFE06A00F85BFB /* user-icon.png */; };
 		7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */; };
 		7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3111EEFE07800F85BFB /* Ellipse-25%.png */; };
@@ -822,6 +824,9 @@
 		781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFSeeAllEventTableViewController.m; sourceTree = "<group>"; };
 		781E56721F31EC53006854BA /* EventDiscussionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDiscussionViewController.h; sourceTree = "<group>"; };
 		781E56731F31EC53006854BA /* EventDiscussionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDiscussionViewController.m; sourceTree = "<group>"; };
+		781E56751F330BD3006854BA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		781E56761F330BD3006854BA /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
+		781E56771F330BD3006854BA /* ReviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		7824E30D1EEFE06A00F85BFB /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
 		7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-100%.png"; sourceTree = "<group>"; };
 		7824E3111EEFE07800F85BFB /* Ellipse-25%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-25%.png"; sourceTree = "<group>"; };
@@ -1173,8 +1178,8 @@
 		789CFF6B1F0B897100EBA772 /* NotificationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationItem.m; path = "GFBS/Class/Setting(设置)/Controller/NotificationItem.m"; sourceTree = SOURCE_ROOT; };
 		789CFF6D1F0C8DD600EBA772 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		789CFF6E1F0C8DD600EBA772 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
-		789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventRestaurant.h; sourceTree = "<group>"; };
-		789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventRestaurant.m; sourceTree = "<group>"; };
+		789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventRestaurant.h; path = "Essence(精华)/Model/EventRestaurant.h"; sourceTree = "<group>"; };
+		789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventRestaurant.m; path = "Essence(精华)/Model/EventRestaurant.m"; sourceTree = "<group>"; };
 		789CFF791F0CA69A00EBA772 /* TwEn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwEn.h; sourceTree = "<group>"; };
 		789CFF7A1F0CA69A00EBA772 /* TwEn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwEn.m; sourceTree = "<group>"; };
 		789CFF7C1F0CDB7F00EBA772 /* ZZInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZInterest.h; sourceTree = "<group>"; };
@@ -1561,8 +1566,6 @@
 				78F49F831EE6F61100674130 /* MyEvent.m */,
 				78FE02221EE7DB5700ABD5B9 /* MyEventImageModel.h */,
 				78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */,
-				789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */,
-				789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */,
 				789CFF791F0CA69A00EBA772 /* TwEn.h */,
 				789CFF7A1F0CA69A00EBA772 /* TwEn.m */,
 				789CFF8B1F0E65DA00EBA772 /* ZZTypicalInformationModel.h */,
@@ -2051,16 +2054,6 @@
 				7862274E1EF91AF8006F731F /* zuzu-login-1242x2208.png */,
 			);
 			path = "zuzu launch images";
-			sourceTree = "<group>";
-		};
-		7807917F1F249FDF00D24CB6 /* old */ = {
-			isa = PBXGroup;
-			children = (
-				78FFE5B21ECDAD8300F909A2 /* RestaurantViewController.h */,
-				78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */,
-				78FFE5B41ECDAD8300F909A2 /* RestaurantViewController.xib */,
-			);
-			name = old;
 			sourceTree = "<group>";
 		};
 		7817DF7F1F179F5800B4B02A /* DropDownListView */ = {
@@ -3010,7 +3003,6 @@
 		78FFE5AD1ECDAD2C00F909A2 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
-				7807917F1F249FDF00D24CB6 /* old */,
 				78FFE5AF1ECDAD4900F909A2 /* Controller */,
 				78FFE5B01ECDAD5200F909A2 /* Model */,
 				78FFE5B11ECDAD5900F909A2 /* View */,
@@ -3021,6 +3013,9 @@
 		78FFE5AF1ECDAD4900F909A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				78FFE5B21ECDAD8300F909A2 /* RestaurantViewController.h */,
+				78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */,
+				78FFE5B41ECDAD8300F909A2 /* RestaurantViewController.xib */,
 				78FFE5BC1ECDBC7400F909A2 /* RestaurantDetailViewController.h */,
 				78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */,
 				78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */,
@@ -3032,6 +3027,8 @@
 		78FFE5B01ECDAD5200F909A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */,
+				789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3045,6 +3042,9 @@
 				7864EB6C1F2B424400AA572E /* OverviewCell.h */,
 				7864EB6D1F2B424400AA572E /* OverviewCell.m */,
 				7864EB6E1F2B424400AA572E /* OverviewCell.xib */,
+				781E56751F330BD3006854BA /* ReviewCell.h */,
+				781E56761F330BD3006854BA /* ReviewCell.m */,
+				781E56771F330BD3006854BA /* ReviewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -3262,6 +3262,7 @@
 				781E565E1F31B7ED006854BA /* Thumbs.db in Resources */,
 				78FFE5BB1ECDB16400F909A2 /* RestaurantCell.xib in Resources */,
 				786069CC1F15DB9B00A8AB88 /* zuzu-invite-friends.png in Resources */,
+				781E56791F330BD3006854BA /* ReviewCell.xib in Resources */,
 				786069BF1F15DB9B00A8AB88 /* message-box-zoe-90x90.png in Resources */,
 				786069BC1F15DB9B00A8AB88 /* ic_select_m2cafe.png in Resources */,
 				780097121EC9C1F5008F9F99 /* invite-friends.png in Resources */,
@@ -3728,6 +3729,7 @@
 				1899804C1DDBF33D009071F4 /* UIView+GFFrame.m in Sources */,
 				7824E33B1EF13F7600F85BFB /* BadgesCollectionViewController.m in Sources */,
 				18E8D36D1DE9D19800ED4EE1 /* GFUser.m in Sources */,
+				781E56781F330BD3006854BA /* ReviewCell.m in Sources */,
 				18E8D3751DE9EA8400ED4EE1 /* GFTopicVideoView.m in Sources */,
 				788333241F178F3000967337 /* TriangleView.m in Sources */,
 				78FFE59A1ECD40F700F909A2 /* GFEvent.m in Sources */,

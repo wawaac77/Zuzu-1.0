@@ -85,6 +85,7 @@ static NSString *const commentID = @"commnet";
         //weakSelf.latestComments = [GFComment mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         //weakSelf.hotestComments = [GFComment mj_objectArrayWithKeyValuesArray:responseObject[@"hot"]];
         self.comments = [ZZContentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSLog(@"self.comments %@", self.comments);
         // 刷新表格
         [self.tableView reloadData];
         
@@ -134,7 +135,7 @@ static NSString *const commentID = @"commnet";
 {
     GFCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:commentID forIndexPath:indexPath];
     
-    cell.comment.commentCheckInContent = _comments[indexPath.row];
+    cell.comment = _comments[indexPath.row];
     
     return cell;
 }
