@@ -230,6 +230,8 @@
 		781E567B1F334106006854BA /* ic_heart-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 781E567A1F334106006854BA /* ic_heart-white.png */; };
 		781E56821F3347D8006854BA /* EventSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */; };
 		781E56861F335380006854BA /* SearchPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56851F335380006854BA /* SearchPageViewController.m */; };
+		781E568B1F3462FE006854BA /* BannerListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E568A1F3462FE006854BA /* BannerListTableViewController.m */; };
+		781E56901F3466BD006854BA /* ZZBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E568F1F3466BD006854BA /* ZZBannerModel.m */; };
 		7824E30E1EEFE06A00F85BFB /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30D1EEFE06A00F85BFB /* user-icon.png */; };
 		7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */; };
 		7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3111EEFE07800F85BFB /* Ellipse-25%.png */; };
@@ -835,6 +837,10 @@
 		781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSearchResultTableViewController.m; sourceTree = "<group>"; };
 		781E56841F335380006854BA /* SearchPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPageViewController.h; sourceTree = "<group>"; };
 		781E56851F335380006854BA /* SearchPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPageViewController.m; sourceTree = "<group>"; };
+		781E56891F3462FE006854BA /* BannerListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerListTableViewController.h; sourceTree = "<group>"; };
+		781E568A1F3462FE006854BA /* BannerListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerListTableViewController.m; sourceTree = "<group>"; };
+		781E568E1F3466BD006854BA /* ZZBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBannerModel.h; sourceTree = "<group>"; };
+		781E568F1F3466BD006854BA /* ZZBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBannerModel.m; sourceTree = "<group>"; };
 		7824E30D1EEFE06A00F85BFB /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
 		7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-100%.png"; sourceTree = "<group>"; };
 		7824E3111EEFE07800F85BFB /* Ellipse-25%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-25%.png"; sourceTree = "<group>"; };
@@ -1483,6 +1489,7 @@
 				18BE02791DDB497900D27893 /* Main */,
 				7829FF9B1ED803D000C934C2 /* Login */,
 				784D3F5D1ECC67040058C63F /* Home (TabBar) */,
+				781E56871F3462C1006854BA /* Create Event */,
 				781E567C1F33479A006854BA /* Events */,
 				781E563A1F31AE41006854BA /* Filter */,
 				781E566E1F31D091006854BA /* Leaderboard */,
@@ -2242,6 +2249,33 @@
 			children = (
 				7897E1061EF7766A0046D647 /* EventInList.h */,
 				7897E1071EF7766A0046D647 /* EventInList.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		781E56871F3462C1006854BA /* Create Event */ = {
+			isa = PBXGroup;
+			children = (
+				781E56881F3462E5006854BA /* Controller */,
+				781E568D1F3466AA006854BA /* Model */,
+			);
+			name = "Create Event";
+			sourceTree = "<group>";
+		};
+		781E56881F3462E5006854BA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				781E56891F3462FE006854BA /* BannerListTableViewController.h */,
+				781E568A1F3462FE006854BA /* BannerListTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		781E568D1F3466AA006854BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				781E568E1F3466BD006854BA /* ZZBannerModel.h */,
+				781E568F1F3466BD006854BA /* ZZBannerModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -3173,7 +3207,7 @@
 				TargetAttributes = {
 					189CA31F1DDADBF6004D07EA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 36DSW7DB5F;
+						DevelopmentTeam = 2FG6Y9F8J5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -3715,6 +3749,7 @@
 				18BE02911DDB497A00D27893 /* AppDelegate.m in Sources */,
 				18B7C72F1DE07C5A004BD781 /* GFFastLoginView.m in Sources */,
 				18388AD01DFAAB1D004E1DF9 /* GFSubTagViewCell.m in Sources */,
+				781E56901F3466BD006854BA /* ZZBannerModel.m in Sources */,
 				78F49F801EE6F5A900674130 /* MyEventCell.m in Sources */,
 				789CFF421F00E84F00EBA772 /* FilterTableViewController.m in Sources */,
 				788CC2911F18801600DC4116 /* ZZChatViewController.m in Sources */,
@@ -3796,6 +3831,7 @@
 				18B7C73D1DE08620004BD781 /* GFSubTagViewController.m in Sources */,
 				181EF7421E0B5DA000C91928 /* GFPostWordViewController.m in Sources */,
 				788CC33A1F19EC3900DC4116 /* JSQMessagesToolbarButtonFactory.m in Sources */,
+				781E568B1F3462FE006854BA /* BannerListTableViewController.m in Sources */,
 				788CC3361F19EC3900DC4116 /* JSQMessagesAvatarImageFactory.m in Sources */,
 				786B38211F2ECFEB0098A12F /* RestaurantCheckinViewController.m in Sources */,
 				788CC3421F19EC3900DC4116 /* JSQLocationMediaItem.m in Sources */,
@@ -3943,7 +3979,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 36DSW7DB5F;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
@@ -3953,8 +3989,9 @@
 				INFOPLIST_FILE = GFBS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Alice-JIN.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zuzu-app.ios-beta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -3965,7 +4002,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 36DSW7DB5F;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
@@ -3975,8 +4012,9 @@
 				INFOPLIST_FILE = GFBS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Alice-JIN.ios";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zuzu-app.ios-beta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

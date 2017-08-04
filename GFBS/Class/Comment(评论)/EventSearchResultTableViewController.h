@@ -13,7 +13,8 @@
 
 @interface EventSearchResultTableViewController : UITableViewController
 
-@property (strong , strong)NSMutableArray<EventInList *> *events;
+@property (strong , strong) NSMutableArray<EventInList *> *events;
 @property (strong , strong) EventRestaurant *thisRestaurant;
+@property (strong , strong) NSString *keywords;
 
 @end

@@ -41,6 +41,7 @@ static NSString *const listEventID = @"event";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Events";
     [self setupRefresh];
     [self setUpTable];
     
@@ -137,7 +138,7 @@ static NSString *const listEventID = @"event";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GFEventDetailViewController *eventDetailVC = [[GFEventDetailViewController alloc] init];
-    //restaurantDetailVC.topic = self.tableView[indexPath.row];
+    eventDetailVC.eventHere = self.events[indexPath.row];
     [self.navigationController pushViewController:eventDetailVC animated:YES];
 }
 @end

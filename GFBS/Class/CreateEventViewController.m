@@ -7,13 +7,17 @@
 //
 
 #import "CreateEventViewController.h"
+#import "BannerListTableViewController.h"
 #import <SDImageCache.h>
 #import <SVProgressHUD.h>
 static NSString*const ID = @"ID";
 
-@interface CreateEventViewController ()
+@interface CreateEventViewController () <ChildViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *cleanCell;
+
+@property (strong, nonatomic) UIImage *bannerImage;
+@property (strong, nonatomic) UIButton *button;
 
 @end
 
@@ -57,8 +61,15 @@ static NSString*const ID = @"ID";
             textField.placeholder = @"Event Name";
             //UIButton *button = [[UIButton alloc] init];
             //[button setImage:[UIImage imageNamed:@"ic_fa-image"] forState:UIControlStateNormal];
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+            //******** banner preview imageView ******//
+            UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(GFScreenWidth - 100, 5, 50, 30)];
+            bannerImageView.image = _bannerImage;
+            bannerImageView.contentMode = UIViewContentModeScaleAspectFit;
+            [cell.contentView addSubview:bannerImageView];
             
+            //*********** add image button *******//
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+            self.button = button;
             [button addTarget:self action:@selector(imageButtomClicked) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = button;
             
@@ -120,6 +131,20 @@ static NSString*const ID = @"ID";
 
 - (void)saveButtonClicked {
     NSLog(@"Save button clicked");
+}
+
+- (void)imageButtonClicked {
+    BannerListTableViewController *bannerVC = [[BannerListTableViewController alloc] init];
+    bannerVC.delegate = self;
+    [self.navigationController pushViewController:bannerVC animated:YES];
+}
+
+- (void) passValue:(UIImage *)theValue {
+    self.bannerImage = theValue;
+    //UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    
+    [self.tableView reloadRowsAtIndexPaths: [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 

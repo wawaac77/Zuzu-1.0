@@ -10,4 +10,6 @@
 
 @interface RestaurantViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (strong, nonatomic) NSString *keywords;
+
 @end

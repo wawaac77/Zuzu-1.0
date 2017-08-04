@@ -17,7 +17,7 @@
 #import "FilterTableViewController.h"
 #import "SearchPageViewController.h"
 
-@interface GFHomeViewController () <UIScrollViewDelegate>
+@interface GFHomeViewController () <UIScrollViewDelegate, UISearchBarDelegate>
 
 /*UIScrollView*/
 @property (weak ,nonatomic) UIScrollView *scrollView;
@@ -250,7 +250,7 @@
     //searchBar.tintColor = [UIColor darkGrayColor];
     //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
     //searchBar1.backgroundColor = [UIColor whiteColor];
-    //self.searchBar.delegate = self;
+    self.searchBar.delegate = self;
     searchBar.placeholder = @"Event name, interest, restaurant";
     self.navigationItem.titleView = searchBar;
   
@@ -291,18 +291,27 @@
 
 }
 
+/*
 - (void)searBarClicked {
     SearchPageViewController *searchVC = [[SearchPageViewController alloc] init];
     [self.navigationController pushViewController:searchVC animated:YES];
 }
+ */
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
     SearchPageViewController *searchVC = [[SearchPageViewController alloc] init];
     [self.navigationController pushViewController:searchVC animated:YES];
     NSLog(@"yes");
     return YES;
 }
 
+/*
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    return YES;
+}
+*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

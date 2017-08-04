@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GFHomeViewController : UIViewController
+@interface GFHomeViewController : UIViewController <UISearchBarDelegate>
 
 @end

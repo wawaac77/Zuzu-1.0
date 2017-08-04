@@ -7,8 +7,11 @@
 //
 
 #import "SearchPageViewController.h"
+#import "FilterTableViewController.h"
+#import "EventSearchResultTableViewController.h"
+#import "RestaurantViewController.h"
 
-@interface SearchPageViewController () {
+@interface SearchPageViewController () <UISearchBarDelegate>{
     BOOL selected[2];
 }
 
@@ -38,34 +41,27 @@
 
 -(void)setUpNavBar
 {
-    //add search bar
-    //self.navigationController.navigationBar.barStyle =
-    
     UISearchBar *searchBar = [[UISearchBar alloc] init];
     self.searchBar = searchBar;
-    //searchBar.tintColor = [UIColor darkGrayColor];
-    //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
-    //searchBar1.backgroundColor = [UIColor whiteColor];
+    self.searchBar.delegate = self;
     [_searchBar setImage:[UIImage imageNamed:@"ic_fa-search"] forSearchBarIcon:UISearchBarStyleDefault state:UIControlStateNormal];
 
     searchBar.placeholder = @"Event name, interest, restaurant";
     self.navigationItem.titleView = searchBar;
     
     
-    //左边
-    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
+    //**** 右边
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButtonClicked)];
     
-    //右边
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButton)];
-    
-   //table header
+   //**** table header
     self.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 40)];
     _header.backgroundColor = [UIColor blackColor];
+    
     self.searchBar1 = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 25)];
     [_searchBar1 setImage:[UIImage imageNamed:@"ic_fa-map-marker"] forSearchBarIcon:nil state:UIControlStateNormal];
     _searchBar1.placeholder = @"Location, Landmark, Street";
-   
     self.searchBar1.barTintColor = [UIColor blackColor];
+    self.searchBar1.delegate = self;
     
     [_header addSubview:_searchBar1];
     
@@ -167,6 +163,31 @@
         }
     }
     [self.tableView reloadData];
+}
+
+- (void)filterButtonClicked {
+    NSLog(@"filter button clicked");
+    FilterTableViewController *filterVC = [[FilterTableViewController alloc] init];
+    [self.navigationController pushViewController:filterVC animated:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"searchbar search %@", searchBar.text);
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"searchbar searchbutton %@", searchBar.text);
+    
+    if (selected[0] == true) {
+        EventSearchResultTableViewController *searchResultVC = [[EventSearchResultTableViewController alloc] init];
+        searchResultVC.keywords = searchBar.text;
+        [self.navigationController pushViewController:searchResultVC animated:YES];
+    } else {
+        RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] init];
+        restaurantVC.keywords = searchBar.text;
+        [self.navigationController pushViewController:restaurantVC animated:YES];
+    }
+    
 }
 
 /*
