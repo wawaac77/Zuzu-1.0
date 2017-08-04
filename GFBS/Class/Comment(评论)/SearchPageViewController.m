@@ -8,9 +8,14 @@
 
 #import "SearchPageViewController.h"
 
-@interface SearchPageViewController ()
+@interface SearchPageViewController () {
+    BOOL selected[2];
+}
 
-@property (weak ,nonatomic) UISearchBar *searchBar;
+@property (strong ,nonatomic) UISearchBar *searchBar;
+@property (strong ,nonatomic) UISearchBar *searchBar1;
+@property (strong ,nonatomic) UIView *header;
+@property (strong ,nonatomic) NSMutableArray <NSString *> *recentSearches;
 
 @end
 
@@ -18,10 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setUpNavBar];
+    [self setUpTable];
+    [self setUpFooter];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController.navigationBar setFrame:CGRectMake(0, 0, GFScreenWidth, 90)];
+    //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, GFScreenWidth, 90)];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -38,20 +46,75 @@
     //searchBar.tintColor = [UIColor darkGrayColor];
     //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
     //searchBar1.backgroundColor = [UIColor whiteColor];
+    [_searchBar setImage:[UIImage imageNamed:@"ic_fa-search"] forSearchBarIcon:UISearchBarStyleDefault state:UIControlStateNormal];
+
     searchBar.placeholder = @"Event name, interest, restaurant";
     self.navigationItem.titleView = searchBar;
     
-    //[self.navigationController.navigationBar addSubview:searchBar1];
     
     //左边
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
+    //self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
     
     //右边
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButton)];
     
-    //TitieView
-    //self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
-    //self.navigationItem.title = @"Search Bar should be here!";
+   //table header
+    self.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 40)];
+    _header.backgroundColor = [UIColor blackColor];
+    self.searchBar1 = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 25)];
+    [_searchBar1 setImage:[UIImage imageNamed:@"ic_fa-map-marker"] forSearchBarIcon:nil state:UIControlStateNormal];
+    _searchBar1.placeholder = @"Location, Landmark, Street";
+   
+    self.searchBar1.barTintColor = [UIColor blackColor];
+    
+    [_header addSubview:_searchBar1];
+    
+    self.tableView.tableHeaderView = _header;
+}
+
+- (void)setUpFooter {
+    self.recentSearches = [[NSMutableArray alloc] initWithObjects:@"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", @"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", nil];
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, GFScreenHeight - GFNavMaxY - GFTabBarH - 88 - 50)];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 200, 44)];
+    title.text = @"Recent Searches";
+    title.font = [UIFont boldSystemFontOfSize:16];
+    [footer addSubview:title];
+    CGFloat label_x = 10.0f;
+    CGFloat label_y = 50.0f;
+    CGFloat label_height = 30.0f;
+    CGFloat margin = 10.0f;
+    for (int i = 0; i < _recentSearches.count; i ++) {
+        UILabel *itemLabel = [[UILabel alloc] init];
+        itemLabel.numberOfLines = 1;
+        itemLabel.font = [UIFont systemFontOfSize:16];
+        itemLabel.textColor = [UIColor darkGrayColor];
+        itemLabel.text = _recentSearches[i];
+        itemLabel.textAlignment = NSTextAlignmentCenter;
+        itemLabel.layer.borderWidth = 1.0f;
+        itemLabel.layer.borderColor = [UIColor grayColor].CGColor;
+        itemLabel.clipsToBounds = YES;
+        itemLabel.layer.cornerRadius = 5.0f;
+        CGFloat label_width = itemLabel.intrinsicContentSize.width + 10.0f;
+        if ((label_x + label_width) <= (GFScreenWidth - 10.0f * 2)) {
+            itemLabel.frame = CGRectMake(label_x, label_y, label_width, label_height);
+            label_x = label_x + label_width + margin;
+        } else {
+            label_x = 10.0f;
+            label_y = label_y + label_height + margin;
+            itemLabel.frame = CGRectMake(label_x, label_y, label_width, label_height);
+            label_x = label_x + label_width + margin;
+
+        }
+        [footer addSubview:itemLabel];
+    }
+    
+    self.tableView.tableFooterView = footer;
+}
+
+- (void)setUpTable {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.scrollEnabled = NO;
+    selected[0] = YES;
 }
 
 
@@ -65,15 +128,46 @@
     return 2;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ID"];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"ID"];
+        UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(0, 43, GFScreenWidth, 1)];
+        separator.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        [cell.contentView addSubview:separator];
+    }
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Search Events";
+    } else {
+        cell.textLabel.text = @"Search Restaurants";
+    }
+    
+    if (selected[indexPath.row]) {
+        cell.textLabel.textColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
+        cell.tintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:16];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.textLabel.textColor = [UIColor darkGrayColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    for (int i = 0; i < 2; i++) {
+        if (i == indexPath.row) {
+            selected[i] = true;
+        } else {
+            selected[i] = false;
+        }
+    }
+    [self.tableView reloadData];
+}
 
 /*
 // Override to support conditional editing of the table view.
