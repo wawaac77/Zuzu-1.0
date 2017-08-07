@@ -116,27 +116,36 @@ static NSString *const ID = @"ID";
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     }
     
-    UIImageView *bigImageView = [[UIImageView alloc] initWithFrame:cell.frame];
+    UIImageView *bigImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 145)];
+    bigImageView.clipsToBounds = YES;
     [cell.contentView addSubview:bigImageView];
-    bigImageView.contentMode = UIViewContentModeScaleAspectFit;
+    bigImageView.contentMode = UIViewContentModeScaleAspectFill;
     NSURL *URL = [NSURL URLWithString:_bannerArray[indexPath.row].image.imageUrl];
     NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
     UIImage *image = [[UIImage alloc]initWithData:data];
     _bannerArray[indexPath.row].image.image_UIImage= image;
+    bigImageView.image = image;
     
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
 - (void)saveButtonClicked {
-    NSLog(@"Save button clicked");
+    [self passSelectedBannerBack];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)passSelectedBannerBack {
     
     ZZBannerModel *banner = _bannerArray[[self.tableView indexPathForSelectedRow].row];
-                                         
+    NSLog(@"selectedRow %ld", [self.tableView indexPathForSelectedRow].row );
+    NSLog(@"banner %@", banner);
     [_delegate passValue:banner.image.image_UIImage];
 }
 

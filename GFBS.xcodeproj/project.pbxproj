@@ -496,6 +496,8 @@
 		78F49F801EE6F5A900674130 /* MyEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F7E1EE6F5A900674130 /* MyEventCell.m */; };
 		78F49F811EE6F5A900674130 /* MyEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F49F7F1EE6F5A900674130 /* MyEventCell.xib */; };
 		78F49F841EE6F61100674130 /* MyEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F831EE6F61100674130 /* MyEvent.m */; };
+		78FBECC51F381CFE003CABFF /* DateAndTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FBECC31F381CFE003CABFF /* DateAndTimeViewController.m */; };
+		78FBECC61F381CFE003CABFF /* DateAndTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FBECC41F381CFE003CABFF /* DateAndTimeViewController.xib */; };
 		78FE02241EE7DB5700ABD5B9 /* MyEventImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */; };
 		78FE022C1EE930D200ABD5B9 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FE022B1EE930D200ABD5B9 /* ProgressView.m */; };
 		78FFE59A1ECD40F700F909A2 /* GFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5991ECD40F700F909A2 /* GFEvent.m */; };
@@ -1229,6 +1231,9 @@
 		78F49F7F1EE6F5A900674130 /* MyEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyEventCell.xib; sourceTree = "<group>"; };
 		78F49F821EE6F61100674130 /* MyEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEvent.h; sourceTree = "<group>"; };
 		78F49F831EE6F61100674130 /* MyEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEvent.m; sourceTree = "<group>"; };
+		78FBECC21F381CFE003CABFF /* DateAndTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAndTimeViewController.h; sourceTree = "<group>"; };
+		78FBECC31F381CFE003CABFF /* DateAndTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAndTimeViewController.m; sourceTree = "<group>"; };
+		78FBECC41F381CFE003CABFF /* DateAndTimeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateAndTimeViewController.xib; sourceTree = "<group>"; };
 		78FE02221EE7DB5700ABD5B9 /* MyEventImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventImageModel.h; sourceTree = "<group>"; };
 		78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyEventImageModel.m; sourceTree = "<group>"; };
 		78FE022A1EE930D200ABD5B9 /* ProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
@@ -2267,6 +2272,9 @@
 			children = (
 				781E56891F3462FE006854BA /* BannerListTableViewController.h */,
 				781E568A1F3462FE006854BA /* BannerListTableViewController.m */,
+				78FBECC21F381CFE003CABFF /* DateAndTimeViewController.h */,
+				78FBECC31F381CFE003CABFF /* DateAndTimeViewController.m */,
+				78FBECC41F381CFE003CABFF /* DateAndTimeViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -3515,6 +3523,7 @@
 				7800971D1EC9C3A9008F9F99 /* launch_image_zuzu.png in Resources */,
 				786069D31F15DB9B00A8AB88 /* zuzu05-bg-640x960.jpg in Resources */,
 				780096B91EC9C1F5008F9F99 /* ic_ fa-calendar-plus-o.png in Resources */,
+				78FBECC61F381CFE003CABFF /* DateAndTimeViewController.xib in Resources */,
 				780096B81EC9C1F5008F9F99 /* Thumbs.db in Resources */,
 				7864EB681F28ED6600AA572E /* NotificationButtonsCell.xib in Resources */,
 				18B7C7221DE06F67004BD781 /* GFFriendTrendViewController.xib in Resources */,
@@ -3792,6 +3801,7 @@
 				789CFF711F0C8DD600EBA772 /* UIBarButtonItem+Badge.m in Sources */,
 				7829FFBB1EE50DEB00C934C2 /* GFImage.m in Sources */,
 				789CFF601F0B868200EBA772 /* NotificationViewController.m in Sources */,
+				78FBECC51F381CFE003CABFF /* DateAndTimeViewController.m in Sources */,
 				789CFF7E1F0CDB7F00EBA772 /* ZZInterest.m in Sources */,
 				7824E35E1EF23D1600F85BFB /* MapNearbyEventsViewController.m in Sources */,
 				788CC3511F19EC3900DC4116 /* JSQMessagesInputToolbar.m in Sources */,

@@ -618,7 +618,7 @@
     return 1;
 }
 
--(NSInteger)pickerView:(UIPickerView*)pivkerView numberOfRowsInComponent:(NSInteger)component{
+-(NSInteger)pickerView:(UIPickerView*)pickerView numberOfRowsInComponent:(NSInteger)component{
    
     return [_selectedPickerArray count];
 }
