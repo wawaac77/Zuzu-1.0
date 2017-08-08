@@ -2270,6 +2270,9 @@
 		781E56881F3462E5006854BA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7824E3131EF0D96700F85BFB /* CreateEventViewController.h */,
+				7824E3141EF0D96700F85BFB /* CreateEventViewController.m */,
+				7824E31A1EF0E11900F85BFB /* CreateEventViewController.storyboard */,
 				781E56891F3462FE006854BA /* BannerListTableViewController.h */,
 				781E568A1F3462FE006854BA /* BannerListTableViewController.m */,
 				78FBECC21F381CFE003CABFF /* DateAndTimeViewController.h */,
@@ -2546,9 +2549,6 @@
 				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
 				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
 				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
-				7824E3131EF0D96700F85BFB /* CreateEventViewController.h */,
-				7824E3141EF0D96700F85BFB /* CreateEventViewController.m */,
-				7824E31A1EF0E11900F85BFB /* CreateEventViewController.storyboard */,
 				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
 				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
 				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,

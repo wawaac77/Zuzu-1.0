@@ -6,35 +6,44 @@
 //  Copyright © 2017 apple. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "DateAndTimeViewController.h"
 #import "BannerListTableViewController.h"
 #import "CreateEventViewController.h"
 #import "ZZTypicalInformationModel.h"
 
+#import "EventInList.h"
+#import "ZZBannerModel.h"
+
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <SDImageCache.h>
 #import <SVProgressHUD.h>
-static NSString*const ID = @"ID";
+//static NSString*const ID = @"ID";
 
 @interface CreateEventViewController () <ChildViewControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *cleanCell;
 @property (strong, nonatomic) IBOutlet UIPickerView *pickerView;
 
-@property (strong, nonatomic) UIImage *bannerImage;
+@property (strong, nonatomic) ZZBannerModel *bannerImage;
 @property (strong, nonatomic) UIButton *button;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 
 @property (strong, nonatomic) UILabel *budgetLabel;
+@property (strong, nonatomic) UITextField *eventNameField;
+@property (strong, nonatomic) UITextField *guestNumField;
 @property (strong, nonatomic) UITextField *dateField;
 @property (strong, nonatomic) UITextField *endDateField;
 @property (strong, nonatomic) UITextField *interestField;
+@property (strong, nonatomic) UITextView *descripField;
 
 @property (strong, nonatomic) NSMutableArray<ZZTypicalInformationModel *> *interestsArray;
-
 @property (strong, nonatomic) NSMutableArray<NSString *> *interests;
+
 @property (strong , nonatomic)GFHTTPSessionManager *manager;
+
+@property (strong, nonatomic) EventInList *eventCreated;
 
 @end
 
@@ -54,8 +63,12 @@ static NSString*const ID = @"ID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
+    self.interests = [[NSMutableArray alloc] init];
+    self.interestsArray = [[NSMutableArray alloc] init];
+    [self loadInterestsData];
     self.tableView.scrollEnabled = YES;
     self.view.frame = [UIScreen mainScreen].bounds;
+    self.eventCreated = [[EventInList alloc] init];
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
 }
 
@@ -73,11 +86,11 @@ static NSString*const ID = @"ID";
         }
 
     } else if ((indexPath.section == 1) && (indexPath.row == 1)) {
-        return 90;
+        return 120;
     } else if ((indexPath.section == 1) && (indexPath.row == 2)) {
-        return 70;
+        return 60;
     } else {
-        return 70;
+        return 60;
     }
 }
 
@@ -101,150 +114,155 @@ static NSString*const ID = @"ID";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *ID = [NSString stringWithFormat:@"section%ldrow%ld", indexPath.section, indexPath.row];
+    
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:ID];
+    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.gf_width - 15, 50)];
-    textField.textColor = [UIColor blackColor];
-    
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            //******** banner preview imageView ******//
-            if (_bannerImage != nil) {
-                UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, GFScreenWidth - 20, 115)];
-                bannerImageView.image = _bannerImage;
-                bannerImageView.clipsToBounds = YES;
-                bannerImageView.contentMode = UIViewContentModeScaleAspectFill;
-                [cell.contentView addSubview:bannerImageView];
-            }
-            
-
-        } else if (indexPath.row == 1) {
-            textField.placeholder = @"Event Name";
-            [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-            [cell.contentView addSubview:textField];
-            
-            //*********** add image button *******//
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-            //UIButton *button = [[UIButton alloc] init];
-            //[button setImage:<#(nullable UIImage *)#> forState:UIControlStateNormal];
-            self.button = button;
-            [button addTarget:self action:@selector(imageButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-            cell.accessoryView = button;
-
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.gf_width - 15, 40)];
+        //textField.textColor = [UIColor blackColor];
         
-        } else if (indexPath.row == 2) {
-            textField.placeholder = @"Number of guests";
-            [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-            //[textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-            [cell.contentView addSubview:textField];
-
-        } else {
-            if (indexPath.row == 3) {
-                self.dateField = textField;
-                textField.placeholder = @"Start date and time";
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                //******** banner preview imageView ******//
+                if (_bannerImage != nil) {
+                    UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, GFScreenWidth - 20, 115)];
+                    bannerImageView.image = _bannerImage.image.image_UIImage;
+                    bannerImageView.clipsToBounds = YES;
+                    bannerImageView.contentMode = UIViewContentModeScaleAspectFill;
+                    [cell.contentView addSubview:bannerImageView];
+                }
+                
+                
+            } else if (indexPath.row == 1) {
+                self.eventNameField = textField;
+                textField.placeholder = @"Event Name";
+                [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+                [cell.contentView addSubview:textField];
+                
+                //*********** add image button *******//
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
+                self.button = button;
+                [button addTarget:self action:@selector(imageButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+                cell.accessoryView = button;
+                
+                
+            } else if (indexPath.row == 2) {
+                self.guestNumField = textField;
+                textField.placeholder = @"Number of guests";
+                textField.keyboardType = UIKeyboardTypeNumberPad;
+                [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+                [cell.contentView addSubview:textField];
+                
             } else {
-                self.endDateField = textField;
-                textField.placeholder = @"End date and time";
+                if (indexPath.row == 3) {
+                    self.dateField = textField;
+                    textField.placeholder = @"Start date and time";
+                } else {
+                    self.endDateField = textField;
+                    textField.placeholder = @"End date and time";
+                }
+                //self.dateField = textField;
+                
+                textField.delegate = self;
+                textField.tag = indexPath.row;
+                [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+                [cell.contentView addSubview:textField];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                
+                UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+                self.datePicker = datePicker;
+                datePicker.backgroundColor = [UIColor whiteColor];
+                datePicker.frame = CGRectMake(5, 0, GFScreenWidth, 300);
+                //datePicker.date = [NSData date];
+                datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GTM+8"];
+                datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+                NSLog(@"datepicker date %@", datePicker.date);
+                //datePicker.minimumDate = [NSData date]
+                textField.inputView = datePicker;
+                
+                UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 44)];
+                //toolBar.barStyle = UIBarStyleDefault;
+                toolBar.barTintColor = [UIColor blackColor];
+                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(pickerDoneButtonClicked:)];
+                //[[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
+                [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
+                
+                [textField setInputAccessoryView: toolBar];
+                //[self.view addSubview:datePicker];
+                
             }
-            //self.dateField = textField;
-           
-            textField.delegate = self;
-            textField.tag = indexPath.row;
-            [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-            [cell.contentView addSubview:textField];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
-            UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-            self.datePicker = datePicker;
-            datePicker.backgroundColor = [UIColor whiteColor];
-            datePicker.frame = CGRectMake(5, 0, GFScreenWidth, 300);
-            //datePicker.date = [NSData date];
-            datePicker.timeZone = [NSTimeZone timeZoneWithName:@"GTM+8"];
-            datePicker.datePickerMode = UIDatePickerModeDateAndTime;
-            NSLog(@"datepicker date %@", datePicker.date);
-            //datePicker.minimumDate = [NSData date]
-            textField.inputView = datePicker;
-            
-            UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 44)];
-            //toolBar.barStyle = UIBarStyleDefault;
-            toolBar.barTintColor = [UIColor blackColor];
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(pickerDoneButtonClicked:)];
-            //[[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
-            [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
-            
-            [textField setInputAccessoryView: toolBar];
-            //[self.view addSubview:datePicker];
-
         }
-    }
-
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            self.interestField = textField;
-            textField.placeholder = @"Select Interest";
-            textField.tag = 5 + indexPath.row;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-            [cell.contentView addSubview:textField];
-            
-            UIPickerView *picker = [[UIPickerView alloc] init];
-            self.pickerView = picker;
-            picker.dataSource = self;
-            picker.delegate = self;
-            textField.inputView = picker;
-            picker.backgroundColor = [UIColor whiteColor];
-            
-            UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 44)];
-            //toolBar.barStyle = UIBarStyleDefault;
-            toolBar.barTintColor = [UIColor blackColor];
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(pickerDoneButtonClicked:)];
-            //[[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
-            [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
-            
-            [textField setInputAccessoryView: toolBar];
-
-
-        } else if (indexPath.row == 1) {
-            UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 300, 30)];
-            descriptionLabel.text = @"Event Description";
-            descriptionLabel.textColor = [UIColor grayColor];
-            [cell.contentView addSubview:descriptionLabel];
-            
-            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(15, 40, GFScreenWidth - 10, cell.gf_height - 20)];
-            [cell.contentView addSubview:textView];
-            
-        } else if (indexPath.row == 2) {
-            UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
-            title1.font = [UIFont systemFontOfSize:16];
-            title1.textColor = [UIColor grayColor];
-            title1.text = @"Budget";
-            [cell.contentView addSubview:title1];
-            
-            UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 35, 120, 25)];
-            title2.font = [UIFont systemFontOfSize:14];
-            title2.textColor = [UIColor grayColor];
-            title2.text = @"(HK$ per person)";
-            [cell.contentView addSubview:title2];
-            
-            //************** add slider
-            UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(135, 0, self.view.gf_width - 200, 70)];
-            sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
-            sliderView.continuous = YES;
-            sliderView.value = 200; // initialize
-            sliderView.maximumValue = 2000;
-            [sliderView addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-            [cell addSubview:sliderView];
-            
-            UILabel *budgetLabel = [[UILabel alloc] initWithFrame:CGRectMake(GFScreenWidth - 60, 20, 45, 30)];
-            self.budgetLabel = budgetLabel;
-            budgetLabel.textAlignment = NSTextAlignmentRight;
-            budgetLabel.font = [UIFont systemFontOfSize:15];
-            budgetLabel.textColor = [UIColor grayColor];
-            budgetLabel.text = @"100";
-            [cell.contentView addSubview:budgetLabel];
-
+        
+        if (indexPath.section == 1) {
+            if (indexPath.row == 0) {
+                self.interestField = textField;
+                textField.placeholder = @"Select Interest";
+                textField.tag = 5 + indexPath.row;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                [textField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+                [cell.contentView addSubview:textField];
+                
+                UIPickerView *picker = [[UIPickerView alloc] init];
+                self.pickerView = picker;
+                picker.dataSource = self;
+                picker.delegate = self;
+                textField.inputView = picker;
+                picker.backgroundColor = [UIColor whiteColor];
+                
+                UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 44)];
+                //toolBar.barStyle = UIBarStyleDefault;
+                toolBar.barTintColor = [UIColor blackColor];
+                UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(pickerDoneButtonClicked:)];
+                //[[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
+                [toolBar setItems:[NSArray arrayWithObjects:doneButton, nil]];
+                
+                [textField setInputAccessoryView: toolBar];
+                
+                
+            } else if (indexPath.row == 1) {
+                UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 300, 30)];
+                descriptionLabel.text = @"Event Description";
+                descriptionLabel.textColor = [UIColor grayColor];
+                [cell.contentView addSubview:descriptionLabel];
+                
+                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(15, 40, GFScreenWidth - 10, 120 - 30)];
+                self.descripField = textView;
+                [cell.contentView addSubview:textView];
+                
+            } else if (indexPath.row == 2) {
+                UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
+                title1.font = [UIFont systemFontOfSize:16];
+                title1.textColor = [UIColor grayColor];
+                title1.text = @"Budget";
+                [cell.contentView addSubview:title1];
+                
+                UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 35, 120, 25)];
+                title2.font = [UIFont systemFontOfSize:14];
+                title2.textColor = [UIColor grayColor];
+                title2.text = @"(HK$ per person)";
+                [cell.contentView addSubview:title2];
+                
+                //************** add slider
+                UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(135, 0, self.view.gf_width - 200, 70)];
+                sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
+                sliderView.continuous = YES;
+                sliderView.value = 100; // initialize
+                sliderView.maximumValue = 2000;
+                [sliderView addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+                [cell addSubview:sliderView];
+                
+                UILabel *budgetLabel = [[UILabel alloc] initWithFrame:CGRectMake(GFScreenWidth - 60, 20, 45, 30)];
+                self.budgetLabel = budgetLabel;
+                budgetLabel.textAlignment = NSTextAlignmentRight;
+                budgetLabel.font = [UIFont systemFontOfSize:15];
+                budgetLabel.textColor = [UIColor grayColor];
+                budgetLabel.text = @"100";
+                [cell.contentView addSubview:budgetLabel];
+                
+            }
         }
     }
    
@@ -281,6 +299,50 @@ static NSString*const ID = @"ID";
 
 - (void)saveButtonClicked {
     NSLog(@"Save button clicked");
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    NSLog(@"_eventNameField.text %@", _eventNameField.text);
+    NSLog(@"_bannerImage._id %@", _bannerImage._id);
+    NSLog(@"_budgetLabel.text %@",  _budgetLabel.text);
+    
+    //2.凭借请求参数
+    
+    NSString *userToken = [AppDelegate APP].user.userToken;
+    
+    //----------------get profession array-----------------//
+    
+    
+    NSDictionary *inSubData2 = @{
+                                 @"name" : _eventNameField.text,
+                                 //@"banner" : _bannerImage._id,
+                                 //@"guestNumber" : _guestNumField.text,
+                                 //@"startDate" : _dateField.text,
+                                 //@"endDate" : _endDateField.text,
+                                 //@"interests" : @"",
+                                 //@"isPrivate" : @true,
+                                 //@"descriotion" : _descripField.text,
+                                 //@"budget" : _budgetLabel.text,
+                                 //@"restaurant" : _thisUser.userIndustry.informationID,
+                                 //@"status" : @"incomplete",
+                                
+                                 };
+    NSDictionary *inData2 = @{@"action" : @"createEvent", @"token" : userToken, @"data" : inSubData2};
+    NSDictionary *parameters2 = @{@"data" : inData2};
+    
+    [_manager POST:GetURL parameters:parameters2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        
+        NSLog(@"responseObjectCreateEvent %@", responseObject);
+        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
+    
 }
 
 - (void)imageButtonClicked {
@@ -289,7 +351,7 @@ static NSString*const ID = @"ID";
     [self.navigationController pushViewController:bannerVC animated:YES];
 }
 
-- (void) passValue:(UIImage *)theValue {
+- (void) passValue:(ZZBannerModel *)theValue {
     self.bannerImage = theValue;
     //UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
@@ -344,6 +406,7 @@ static NSString*const ID = @"ID";
         //self.interests = [[NSMutableArray alloc] init];
         for (int i = 0; i < _interestsArray.count; i++) {
             [self.interests addObject:_interestsArray[i].informationName.en];
+            NSLog(@"_interestsArray[i].informationName.en %@", _interestsArray[i].informationName.en);
         }
         
         

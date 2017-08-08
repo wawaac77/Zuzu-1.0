@@ -146,7 +146,7 @@ static NSString *const ID = @"ID";
     ZZBannerModel *banner = _bannerArray[[self.tableView indexPathForSelectedRow].row];
     NSLog(@"selectedRow %ld", [self.tableView indexPathForSelectedRow].row );
     NSLog(@"banner %@", banner);
-    [_delegate passValue:banner.image.image_UIImage];
+    [_delegate passValue:banner];
 }
 
 

@@ -42,7 +42,7 @@
 #pragma mark - 初始化
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     //设置导航条
     [self setUpNavBar];
     
@@ -99,6 +99,7 @@
     
     scrollView.delegate = self;
     scrollView.frame = self.view.bounds;
+    //scrollView.frame = CGRectMake(0, 40, GFScreenWidth, GFScreenHeight - GFNavMaxY - GFTabBarH - 40);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;

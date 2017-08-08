@@ -87,7 +87,7 @@
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //2.凭借请求参数
-    NSString *eventID = _eventHere.listEventID;
+    NSString *eventID = self.eventHere.listEventID;
     NSLog(@"eventHere.eventID %@", eventID);
     
     NSDictionary *forEventID = @ {@"eventId" : eventID};

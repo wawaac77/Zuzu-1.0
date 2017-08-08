@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZBannerModel.h"
 
 @protocol ChildViewControllerDelegate;
 
@@ -18,6 +19,6 @@
 
 @protocol ChildViewControllerDelegate <NSObject >
 
-- (void) passValue:(UIImage *) theValue;
+- (void) passValue:(ZZBannerModel *) theValue;
 
 @end

@@ -41,6 +41,8 @@
     [self.expLabel setTextColor:[UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
     self.expLabel.text = thisEvent.exp;
     self.expLabel.text = @"+10 XP";
+    
+   // [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     //self.attendeeNumLabel.text = [NSString stringWithFormat:@" / %@", thisEvent.eventQuota];
     // self.placeLabel.text = thisEvent.;
 
@@ -49,27 +51,6 @@
     
     
 }
-
-/*
--(void) downloadImageFromURL :(NSString *)imageUrl{
-    
-    NSURL  *url = [NSURL URLWithString:imageUrl];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    if ( urlData )
-    {
-        NSLog(@"Downloading started...");
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"dwnld_image.png"];
-        NSLog(@"FILE : %@",filePath);
-        [urlData writeToFile:filePath atomically:YES];
-        UIImage *image1=[UIImage imageWithContentsOfFile:filePath];
-        self.bigImageView.image=image1;
-        NSLog(@"Completed...");
-    }
-}
-*/
-
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "EventListTableViewController.h"
 #import "GFEventDetailViewController.h"
+#import "CreateEventViewController.h"
 
 #import "MyEvent.h"
 #import "MyEventCell.h"
@@ -34,6 +35,7 @@ static NSString *const eventID = @"myEvent";
 /*请求管理者*/
 @property (strong , nonatomic)GFHTTPSessionManager *manager;
 
+@property (strong , nonatomic)UIAlertView *alertView;
 
 @end
 
@@ -242,7 +244,13 @@ static NSString *const eventID = @"myEvent";
     NSLog(@"event start date are %@", thisEvent.eventStartDate);
         
     cell.event = thisEvent; //这个是将vc中刚刚从url拿到的信息，传给view文件夹中cell.topic数据类型，这样在cell view的地方可以给cell里面要展示的东西赋值
-
+    
+    UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(GFScreenWidth - 40, 8, 15, 15)];
+    cancelButton.tag = indexPath.row;
+    [cancelButton setImage:[UIImage imageNamed:@"ic_cross"] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(deleteButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:cancelButton];
+    
     return cell;
     
 }
@@ -264,11 +272,24 @@ static NSString *const eventID = @"myEvent";
     joinButton.layer.cornerRadius = 5.0f;
     joinButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     [joinButton setClipsToBounds:YES];
-    [joinButton setTitle:@"Join More Events" forState:UIControlStateNormal];
+    
     [joinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [joinButton setBackgroundColor:[UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
-    [joinButton addTarget:self action:@selector(joinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [footerView addSubview:joinButton];
+    
+    
+    if (self.type == MyEventTypeDraft) {
+        [joinButton setTitle:@"Organise an Event" forState:UIControlStateNormal];
+        [joinButton addTarget:self action:@selector(organizeClicked) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:joinButton];
+    } else if (self.type == MyEventTypeHistory) {
+        
+    } else {
+        [joinButton setTitle:@"Join More Events" forState:UIControlStateNormal];
+        [joinButton addTarget:self action:@selector(joinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:joinButton];
+    }
+
+    
     return footerView;
 }
 
@@ -281,10 +302,53 @@ static NSString *const eventID = @"myEvent";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
+
+
 -(void)joinButtonClicked {
     NSLog(@"Join more events button clicked");
 }
 
+- (void)organizeClicked {
+    CreateEventViewController *createVC = [[CreateEventViewController alloc] init];
+    [self.navigationController pushViewController:createVC animated:YES];
+}
+
+- (void)deleteButtonClicked :(id)sender {
+    
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"Do you want to decline this event?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    self.alertView = alertView;
+    [alertView show];
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow],nil] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView beginUpdates];
+        NSArray *array = [[NSArray alloc] initWithObjects:[self.tableView indexPathForSelectedRow], nil];
+        [self.tableView deleteRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationNone];
+        
+        [self.tableView endUpdates];
+        //UITableViewCell *cell = [self.tableView cellForRowAtIndexPath: [self.tableView indexPathForSelectedRow]];
+        
+        /*
+        NSArray *visiblecells = [self.tableView visibleCells];
+        for(UITableViewCell *cell in visiblecells)
+        {
+            if(cell.tag == button.tag)
+            {
+                [array removeObjectAtIndex:[cell tag]];
+                [self.tableView reloadData];
+                break;
+            }    
+        }
+         */
+        NSLog(@"Launching the store");
+        //replace appname with any specific name you want
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.com/apps/appname"]];
+    }
+}
 
 -(void)willMoveToParentViewController:(UIViewController *)parent {
     NSLog(@"UpcomingEventsVC moving to or from parent view controller");
