@@ -31,7 +31,7 @@
                     </connections>
                 </scrollView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLz-MX-2HN">
-                    <rect key="frame" x="0.0" y="35" width="375" height="499"/>
+                    <rect key="frame" x="0.0" y="35" width="375" height="483"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Pu9-xN-O0s"/>
@@ -45,7 +45,7 @@
                 <constraint firstItem="wLz-MX-2HN" firstAttribute="trailing" secondItem="jqV-18-FQB" secondAttribute="trailing" id="JOU-Mq-NI4"/>
                 <constraint firstAttribute="trailing" secondItem="jqV-18-FQB" secondAttribute="trailing" id="SKD-uy-TKJ"/>
                 <constraint firstItem="jqV-18-FQB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U2p-6e-gZe"/>
-                <constraint firstAttribute="bottom" secondItem="wLz-MX-2HN" secondAttribute="bottom" constant="20" id="aB6-ka-F5z"/>
+                <constraint firstAttribute="bottom" secondItem="wLz-MX-2HN" secondAttribute="bottom" constant="36" id="aB6-ka-F5z"/>
                 <constraint firstItem="wLz-MX-2HN" firstAttribute="leading" secondItem="jqV-18-FQB" secondAttribute="leading" id="har-YB-DHo"/>
                 <constraint firstItem="jqV-18-FQB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mcE-Nk-abl"/>
             </constraints>

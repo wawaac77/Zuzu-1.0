@@ -51,7 +51,7 @@ static CGFloat  const margin = 1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.frame = [UIScreen mainScreen].bounds;
+    //self.view.frame = [UIScreen mainScreen].bounds;
     self.imagesArray = [[NSArray <MyEventImageModel *> alloc] init];
     [self loadNeweData];
 
@@ -113,7 +113,7 @@ static CGFloat  const margin = 1;
     layout.minimumLineSpacing = margin;
     layout.minimumInteritemSpacing = margin;
     
-    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, GFScreenWidth, GFScreenHeight - 200) collectionViewLayout:layout];
+    UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, GFScreenWidth, GFScreenHeight - 235 - GFNavMaxY - GFTabBarH) collectionViewLayout:layout];
     self.collectionView = collectionView;
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor yellowColor];

@@ -14,6 +14,7 @@
 #import "EventInList.h"
 //#import "GFTopic.h"
 #import "GFEventDetailViewController.h"
+#import "UIBarButtonItem+Badge.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -54,6 +55,7 @@ static NSString *const eventID = @"event";
     //self.view.frame = [UIScreen mainScreen].bounds;
     self.view.frame = CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - GFTabBarH - 200);
     NSLog(@"main screen width %f",[UIScreen mainScreen].bounds.size.width);
+    [self setUpNavBar];
     [self setUpTable];
     [self setupRefresh];
     //[self setUpNote];
@@ -72,6 +74,31 @@ static NSString *const eventID = @"event";
 
 }
 
+#pragma mark - 设置导航条
+
+-(void)setUpNavBar
+{
+    
+    UIBarButtonItem *settingBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_settings"] WithHighlighted:[UIImage imageNamed:@"ic_settings"] Target:self action:@selector(settingClicked)];
+    
+    UIBarButtonItem *fixedButton  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target: nil action: nil];
+    
+    fixedButton.width = 20;
+    
+    UIBarButtonItem *notificationBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-bell-o"] WithHighlighted:[UIImage imageNamed:@"ic_fa-bell-o"] Target:self action:@selector(notificationClicked)];
+    
+    notificationBtn.badgeValue = @"2"; // I need the number of not checked through API
+    
+    //notificationBtn.badgePadding = 0;
+    
+    //notificationBtn.badgeMinSize = 0; //I changed their default value in category
+    
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
+    
+    //Title
+    self.navigationItem.title = @"Upcoming Events";
+    
+}
 
 -(void)setUpTable
 {

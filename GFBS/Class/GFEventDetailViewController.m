@@ -81,12 +81,46 @@
     [self addChildViewController];
 }
 
+/*
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    [self setUpNavBar1];
+    
+}
+*/
+
+
+- (void)setUpNavBar1 {
+    
+    //[self preferredStatusBarStyle];
+    /*
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    [[UINavigationBar appearance] setTranslucent:YES];
+     */
+    //self.navigationController.navigationBar.translucent = YES;
+    //[self.navigationController setNavigationBarHidden:NO animated:NO];
+  
+}
+
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
+
+
+
 - (void)loadNeweData {
     
     //取消请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     //2.凭借请求参数
+    //NSLog(@"self.eventHere.listEventID", self.eventHere.listEventID);
     NSString *eventID = self.eventHere.listEventID;
     NSLog(@"eventHere.eventID %@", eventID);
     

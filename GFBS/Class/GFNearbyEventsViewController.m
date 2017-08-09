@@ -7,6 +7,7 @@
 //
 
 #import "GFNearbyEventsViewController.h"
+#import "GFEventDetailViewController.h"
 #import "EventInList.h"
 #import "GFEventsCell.h"
 
@@ -137,6 +138,9 @@
 
 - (void)scrollMenu:(MinScrollMenu *)menu didSelectedItem:(MinScrollMenuItem *)item atIndex:(NSInteger)index {
     NSLog(@"tap index: %ld", index);
+    GFEventDetailViewController *detailVC = [[GFEventDetailViewController alloc] init];
+    detailVC.eventHere = _nearbyEvents[index];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 -(void)willMoveToParentViewController:(UIViewController *)parent {

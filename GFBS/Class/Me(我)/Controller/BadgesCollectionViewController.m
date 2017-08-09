@@ -36,7 +36,7 @@ static CGFloat  const margin = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setUpFunctionsCollectionView];
     [self setUpNavBar];
     //self.view.frame = [UIScreen mainScreen].bounds;
@@ -60,7 +60,7 @@ static CGFloat  const margin = 0;
     UICollectionView *badgesCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.view.gf_width, self.view.gf_height) collectionViewLayout:layout];
     self.view.backgroundColor = [UIColor whiteColor];
     self.badgesCollectionView = badgesCollectionView;
-    
+    badgesCollectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:badgesCollectionView];
     //关闭滚动
     badgesCollectionView.scrollEnabled = NO;

@@ -195,6 +195,8 @@
 		7800973D1ECAD9D6008F9F99 /* zuzu_App_Icon_1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 7800973B1ECAD9D6008F9F99 /* zuzu_App_Icon_1024x1024.png */; };
 		7800973F1ECADC7B008F9F99 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7800973E1ECADC7B008F9F99 /* icon.png */; };
 		7807917E1F1F542C00D24CB6 /* AddLLImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7807917D1F1F542C00D24CB6 /* AddLLImagePickerVC.m */; };
+		7812102C1F3AD3D600C08BD6 /* ZZBadgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */; };
+		7812102F1F3B33A600C08BD6 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */; };
 		7813FE911F25EE820065D527 /* ZZAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7813FE8F1F25EE820065D527 /* ZZAddFriendsViewController.m */; };
 		7813FE921F25EE820065D527 /* ZZAddFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7813FE901F25EE820065D527 /* ZZAddFriendsViewController.xib */; };
 		7813FE961F25F18B0065D527 /* ZZAddFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7813FE941F25F18B0065D527 /* ZZAddFriendsCell.m */; };
@@ -243,12 +245,12 @@
 		7824E32E1EF13BF700F85BFB /* profile-bg-blue_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3201EF13BF700F85BFB /* profile-bg-blue_02.jpg */; };
 		7824E32F1EF13BF700F85BFB /* profile-bg-brown_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3211EF13BF700F85BFB /* profile-bg-brown_01.jpg */; };
 		7824E3301EF13BF700F85BFB /* profile-bg-brown_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3221EF13BF700F85BFB /* profile-bg-brown_02.jpg */; };
-		7824E3311EF13BF700F85BFB /* profile-bg-gold1_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3231EF13BF700F85BFB /* profile-bg-gold1_01.jpg */; };
-		7824E3321EF13BF700F85BFB /* profile-bg-gold1_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3241EF13BF700F85BFB /* profile-bg-gold1_02.jpg */; };
-		7824E3331EF13BF700F85BFB /* profile-bg-green1_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3251EF13BF700F85BFB /* profile-bg-green1_01.jpg */; };
-		7824E3341EF13BF700F85BFB /* profile-bg-green1_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3261EF13BF700F85BFB /* profile-bg-green1_02.jpg */; };
-		7824E3351EF13BF700F85BFB /* profile-bg-white1_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3271EF13BF700F85BFB /* profile-bg-white1_01.jpg */; };
-		7824E3361EF13BF700F85BFB /* profile-bg-white1_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3281EF13BF700F85BFB /* profile-bg-white1_02.jpg */; };
+		7824E3311EF13BF700F85BFB /* profile-bg-gold_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3231EF13BF700F85BFB /* profile-bg-gold_01.jpg */; };
+		7824E3321EF13BF700F85BFB /* profile-bg-gold_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3241EF13BF700F85BFB /* profile-bg-gold_02.jpg */; };
+		7824E3331EF13BF700F85BFB /* profile-bg-green_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3251EF13BF700F85BFB /* profile-bg-green_01.jpg */; };
+		7824E3341EF13BF700F85BFB /* profile-bg-green_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3261EF13BF700F85BFB /* profile-bg-green_02.jpg */; };
+		7824E3351EF13BF700F85BFB /* profile-bg-white_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3271EF13BF700F85BFB /* profile-bg-white_01.jpg */; };
+		7824E3361EF13BF700F85BFB /* profile-bg-white_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3281EF13BF700F85BFB /* profile-bg-white_02.jpg */; };
 		7824E3371EF13BF700F85BFB /* profile-bg-yellow_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3291EF13BF700F85BFB /* profile-bg-yellow_01.jpg */; };
 		7824E3381EF13BF700F85BFB /* profile-bg-yellow_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7824E32A1EF13BF700F85BFB /* profile-bg-yellow_02.jpg */; };
 		7824E33B1EF13F7600F85BFB /* BadgesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7824E33A1EF13F7600F85BFB /* BadgesCollectionViewController.m */; };
@@ -791,6 +793,10 @@
 		7800973E1ECADC7B008F9F99 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7807917C1F1F542C00D24CB6 /* AddLLImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLLImagePickerVC.h; sourceTree = "<group>"; };
 		7807917D1F1F542C00D24CB6 /* AddLLImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLLImagePickerVC.m; sourceTree = "<group>"; };
+		7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBadgeModel.h; sourceTree = "<group>"; };
+		7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBadgeModel.m; sourceTree = "<group>"; };
+		7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		7813FE8E1F25EE810065D527 /* ZZAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAddFriendsViewController.h; sourceTree = "<group>"; };
 		7813FE8F1F25EE820065D527 /* ZZAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAddFriendsViewController.m; sourceTree = "<group>"; };
 		7813FE901F25EE820065D527 /* ZZAddFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZAddFriendsViewController.xib; sourceTree = "<group>"; };
@@ -855,12 +861,12 @@
 		7824E3201EF13BF700F85BFB /* profile-bg-blue_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-blue_02.jpg"; sourceTree = "<group>"; };
 		7824E3211EF13BF700F85BFB /* profile-bg-brown_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-brown_01.jpg"; sourceTree = "<group>"; };
 		7824E3221EF13BF700F85BFB /* profile-bg-brown_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-brown_02.jpg"; sourceTree = "<group>"; };
-		7824E3231EF13BF700F85BFB /* profile-bg-gold1_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-gold1_01.jpg"; sourceTree = "<group>"; };
-		7824E3241EF13BF700F85BFB /* profile-bg-gold1_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-gold1_02.jpg"; sourceTree = "<group>"; };
-		7824E3251EF13BF700F85BFB /* profile-bg-green1_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-green1_01.jpg"; sourceTree = "<group>"; };
-		7824E3261EF13BF700F85BFB /* profile-bg-green1_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-green1_02.jpg"; sourceTree = "<group>"; };
-		7824E3271EF13BF700F85BFB /* profile-bg-white1_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-white1_01.jpg"; sourceTree = "<group>"; };
-		7824E3281EF13BF700F85BFB /* profile-bg-white1_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-white1_02.jpg"; sourceTree = "<group>"; };
+		7824E3231EF13BF700F85BFB /* profile-bg-gold_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-gold_01.jpg"; sourceTree = "<group>"; };
+		7824E3241EF13BF700F85BFB /* profile-bg-gold_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-gold_02.jpg"; sourceTree = "<group>"; };
+		7824E3251EF13BF700F85BFB /* profile-bg-green_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-green_01.jpg"; sourceTree = "<group>"; };
+		7824E3261EF13BF700F85BFB /* profile-bg-green_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-green_02.jpg"; sourceTree = "<group>"; };
+		7824E3271EF13BF700F85BFB /* profile-bg-white_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-white_01.jpg"; sourceTree = "<group>"; };
+		7824E3281EF13BF700F85BFB /* profile-bg-white_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-white_02.jpg"; sourceTree = "<group>"; };
 		7824E3291EF13BF700F85BFB /* profile-bg-yellow_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-yellow_01.jpg"; sourceTree = "<group>"; };
 		7824E32A1EF13BF700F85BFB /* profile-bg-yellow_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-yellow_02.jpg"; sourceTree = "<group>"; };
 		7824E3391EF13F7600F85BFB /* BadgesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesCollectionViewController.h; sourceTree = "<group>"; };
@@ -1726,6 +1732,8 @@
 			children = (
 				1841A7731DE1750600FB54CC /* GFSquareItem.h */,
 				1841A7741DE1750600FB54CC /* GFSquareItem.m */,
+				7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */,
+				7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2319,12 +2327,12 @@
 				7824E3201EF13BF700F85BFB /* profile-bg-blue_02.jpg */,
 				7824E3211EF13BF700F85BFB /* profile-bg-brown_01.jpg */,
 				7824E3221EF13BF700F85BFB /* profile-bg-brown_02.jpg */,
-				7824E3231EF13BF700F85BFB /* profile-bg-gold1_01.jpg */,
-				7824E3241EF13BF700F85BFB /* profile-bg-gold1_02.jpg */,
-				7824E3251EF13BF700F85BFB /* profile-bg-green1_01.jpg */,
-				7824E3261EF13BF700F85BFB /* profile-bg-green1_02.jpg */,
-				7824E3271EF13BF700F85BFB /* profile-bg-white1_01.jpg */,
-				7824E3281EF13BF700F85BFB /* profile-bg-white1_02.jpg */,
+				7824E3231EF13BF700F85BFB /* profile-bg-gold_01.jpg */,
+				7824E3241EF13BF700F85BFB /* profile-bg-gold_02.jpg */,
+				7824E3251EF13BF700F85BFB /* profile-bg-green_01.jpg */,
+				7824E3261EF13BF700F85BFB /* profile-bg-green_02.jpg */,
+				7824E3271EF13BF700F85BFB /* profile-bg-white_01.jpg */,
+				7824E3281EF13BF700F85BFB /* profile-bg-white_02.jpg */,
 				7824E3291EF13BF700F85BFB /* profile-bg-yellow_01.jpg */,
 				7824E32A1EF13BF700F85BFB /* profile-bg-yellow_02.jpg */,
 			);
@@ -3104,6 +3112,8 @@
 		78FFE5AF1ECDAD4900F909A2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */,
+				7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */,
 				78FFE5B21ECDAD8300F909A2 /* RestaurantViewController.h */,
 				78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */,
 				78FFE5B41ECDAD8300F909A2 /* RestaurantViewController.xib */,
@@ -3265,7 +3275,7 @@
 				781E56531F31B7ED006854BA /* ic_create_event_plus_o.png in Resources */,
 				7824E35F1EF23D1600F85BFB /* MapNearbyEventsViewController.xib in Resources */,
 				7829FF7D1ED55C9B00C934C2 /* pexels-photo.png in Resources */,
-				7824E3351EF13BF700F85BFB /* profile-bg-white1_01.jpg in Resources */,
+				7824E3351EF13BF700F85BFB /* profile-bg-white_01.jpg in Resources */,
 				780097331ECAD4FD008F9F99 /* zuzu-login-1080x1920-text.png in Resources */,
 				786069A91F15DB9B00A8AB88 /* ic_checkin.png in Resources */,
 				780096D81EC9C1F5008F9F99 /* ic_plus_roboto_regular.png in Resources */,
@@ -3336,7 +3346,7 @@
 				780097321ECAD4FD008F9F99 /* zuzu-login-1080x1920-plain.png in Resources */,
 				780097091EC9C1F5008F9F99 /* Thumbs.db in Resources */,
 				189CA3331DDADBF6004D07EA /* LaunchScreen.storyboard in Resources */,
-				7824E3361EF13BF700F85BFB /* profile-bg-white1_02.jpg in Resources */,
+				7824E3361EF13BF700F85BFB /* profile-bg-white_02.jpg in Resources */,
 				781E565F1F31B7ED006854BA /* ic_nearby_events.png in Resources */,
 				7800973F1ECADC7B008F9F99 /* icon.png in Resources */,
 				7824E3301EF13BF700F85BFB /* profile-bg-brown_02.jpg in Resources */,
@@ -3417,7 +3427,7 @@
 				7800970A1EC9C1F5008F9F99 /* coming soon.png in Resources */,
 				7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */,
 				780097011EC9C1F5008F9F99 /* ic_phone_call.png in Resources */,
-				7824E3341EF13BF700F85BFB /* profile-bg-green1_02.jpg in Resources */,
+				7824E3341EF13BF700F85BFB /* profile-bg-green_02.jpg in Resources */,
 				780096B61EC9C1F5008F9F99 /* event-banner-1080-06.jpg in Resources */,
 				786B381D1F2DDC780098A12F /* UserProfileCheckinViewController.xib in Resources */,
 				786069A21F15DB9B00A8AB88 /* arrow-back.png in Resources */,
@@ -3467,7 +3477,7 @@
 				18E8D3721DE9EA5700ED4EE1 /* GFTopicPictureView.xib in Resources */,
 				780096EC1EC9C1F5008F9F99 /* Thumbs.db in Resources */,
 				7864EB701F2B424400AA572E /* OverviewCell.xib in Resources */,
-				7824E3331EF13BF700F85BFB /* profile-bg-green1_01.jpg in Resources */,
+				7824E3331EF13BF700F85BFB /* profile-bg-green_01.jpg in Resources */,
 				780097111EC9C1F5008F9F99 /* ic_user_profile.png in Resources */,
 				780096EE1EC9C1F5008F9F99 /* ic+facebk_messenger.png in Resources */,
 				7824E32B1EF13BF700F85BFB /* profile-bg-black_01.jpg in Resources */,
@@ -3500,11 +3510,11 @@
 				786069651F15D98100A8AB88 /* GuideImage.bundle in Resources */,
 				780096F91EC9C1F5008F9F99 /* ic_dishes.png in Resources */,
 				786069D21F15DB9B00A8AB88 /* zuzu05-bg-640x1136.jpg in Resources */,
-				7824E3311EF13BF700F85BFB /* profile-bg-gold1_01.jpg in Resources */,
+				7824E3311EF13BF700F85BFB /* profile-bg-gold_01.jpg in Resources */,
 				780096C11EC9C1F5008F9F99 /* ic_ fa-star-half-o.png in Resources */,
 				18E8D3771DE9EA8E00ED4EE1 /* GFTopicVideoView.xib in Resources */,
 				18388AD91DFAAF21004E1DF9 /* GFRecommendViewController.xib in Resources */,
-				7824E3321EF13BF700F85BFB /* profile-bg-gold1_02.jpg in Resources */,
+				7824E3321EF13BF700F85BFB /* profile-bg-gold_02.jpg in Resources */,
 				780096CA1EC9C1F5008F9F99 /* ic_fa-filter.png in Resources */,
 				780096D41EC9C1F5008F9F99 /* ic_fa-users-on.png in Resources */,
 				780096FE1EC9C1F5008F9F99 /* Ic_fa-star.png in Resources */,
@@ -3682,6 +3692,7 @@
 				788CC3491F19EC3900DC4116 /* JSQMessagesCellTextView.m in Sources */,
 				7813FEC91F28C14B0065D527 /* AboutZZViewController.m in Sources */,
 				18B3D6BF1DEC517F00474981 /* GFSeeBigImageViewController.m in Sources */,
+				7812102C1F3AD3D600C08BD6 /* ZZBadgeModel.m in Sources */,
 				18C8262F1DE7369C007341E3 /* ZZHostingViewController.m in Sources */,
 				181EF7481E0B661200C91928 /* GFPlaceholderTextView.m in Sources */,
 				1823914D1DEECDEB00B88AE0 /* GFCommentCell.m in Sources */,
@@ -3817,6 +3828,7 @@
 				788CC3531F19EC3900DC4116 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */,
 				789CFFA71F13C30300EBA772 /* LeaderboardHostTableViewController.m in Sources */,
+				7812102F1F3B33A600C08BD6 /* RestaurantTableViewController.m in Sources */,
 				788CC3561F19EC3900DC4116 /* JSQMessagesToolbarContentView.m in Sources */,
 				784D3F691ECC79EE0058C63F /* ZZGFEventsCell.m in Sources */,
 				183E9CED1E8E585000B13C75 /* GFTopWindow.m in Sources */,

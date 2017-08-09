@@ -49,6 +49,28 @@ static NSString *const eventID = @"event";
     [self setupRefresh];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self setUpNavBar];
+}
+
+
+
+- (void)setUpNavBar {
+    
+    [self preferredStatusBarStyle];
+    self.navigationItem.title = @"Upcoming Events";
+    //[self.navigationController setNavigationBarHidden:NO animated:NO];
+  
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

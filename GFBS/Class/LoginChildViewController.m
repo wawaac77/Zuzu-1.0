@@ -181,6 +181,8 @@
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             [userDefaults setObject:thisUser.userUserName forKey:@"KEY_USER_NAME"];
             [userDefaults setObject:thisUser.userToken forKey:@"KEY_USER_TOKEN"];
+            [userDefaults setObject:thisUser.socialLevel forKey:@"KEY_USER_SOCIAL_LEVEL"];
+            [userDefaults setObject:thisUser.userOrganizingLevel forKey:@"KEY_USER_ORGANIZE_LEVEL"];
             [userDefaults synchronize];
             
             NSLog(@"this user %@", thisUser);

@@ -34,10 +34,10 @@
 @property (nonatomic, copy) NSString *userForgetPasswordKey;
 @property (nonatomic, copy) NSString *userGoogleID;
 
-@property (nonatomic, copy) NSString *userOrganizingLevel;
-@property (nonatomic, copy) NSString *userOrganizingExp;
-@property (nonatomic, copy) NSString *socialLevel;
-@property (nonatomic, copy) NSString *socialExp;
+@property (nonatomic, assign) NSNumber *userOrganizingLevel;
+@property (nonatomic, assign) NSNumber *userOrganizingExp;
+@property (nonatomic, assign) NSNumber *socialLevel;
+@property (nonatomic, assign) NSNumber *socialExp;
 @property (nonatomic, assign) NSNumber *checkinPoint;
 
 @property (nonatomic, strong) NSMutableArray<ZZTypicalInformationModel *> *userInterests;

@@ -94,12 +94,12 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.backgroundColor = [UIColor whiteColor];
+    scrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.scrollView = scrollView;
     
     scrollView.delegate = self;
-    scrollView.frame = self.view.bounds;
-    //scrollView.frame = CGRectMake(0, 40, GFScreenWidth, GFScreenHeight - GFNavMaxY - GFTabBarH - 40);
+    //scrollView.frame = self.view.bounds;
+    scrollView.frame = CGRectMake(0,  40, GFScreenWidth, GFScreenHeight - GFTabBarH - 40);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;

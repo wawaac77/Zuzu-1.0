@@ -26,19 +26,30 @@
 
 -(void)setRestaurant:(EventRestaurant *)restaurant
 {
-    EventRestaurant *thisRestaurant = restaurant;
+    //EventRestaurant *thisRestaurant = restaurant;
+    NSLog(@"restaurant.id %@, %@", restaurant.restaurantId,restaurant.restaurantName.en);
     self.restaurantImageView.clipsToBounds = YES;
-    [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:thisRestaurant.restaurantIcon.imageUrl] placeholderImage:nil];
+    [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:restaurant.restaurantIcon.imageUrl] placeholderImage:nil];
     _bigTitleLabel.text = restaurant.restaurantName.en;
     //restaurant.restaurantDistance
-    float distance = [thisRestaurant.restaurantDistance floatValue];
+    float distance = [restaurant.restaurantDistance floatValue];
     distance = distance * 1000;
-    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",thisRestaurant.restaurantDistrict.informationName.en, distance];
+    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, distance];
     NSString *cuisines = @"";
-    for (int i = 0; i < thisRestaurant.restaurantCuisines.count; i++) {
-        cuisines = [cuisines stringByAppendingString:thisRestaurant.restaurantCuisines[i].informationName.en];
+    for (int i = 0; i < restaurant.restaurantCuisines.count; i++) {
+        cuisines = [cuisines stringByAppendingString:restaurant.restaurantCuisines[i].informationName.en];
     }
-    _priceLabel.text = [NSString stringWithFormat:@"$%@-%@ per person | %@", thisRestaurant.restaurantMinPrice, thisRestaurant.restaurantMaxPrice, cuisines];
+    _priceLabel.text = [NSString stringWithFormat:@"$%@-%@ per person | %@", restaurant.restaurantMinPrice, restaurant.restaurantMaxPrice, cuisines];
+    
+    
+    
+    if ([restaurant.isFavourite isEqual:@true]) {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-o"] forState:UIControlStateNormal];
+    } else {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-grey"] forState:UIControlStateNormal];
+    }
+    
+    
 }
 
 /*

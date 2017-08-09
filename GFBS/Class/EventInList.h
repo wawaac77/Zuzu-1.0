@@ -26,7 +26,7 @@
 
 @interface EventInList : NSObject
 
-@property (nonatomic, strong) NSString *listEventID;
+@property (nonatomic, copy) NSString *listEventID;
 @property (nonatomic, copy) NSString *listEventUpdatedBy;
 @property (nonatomic, copy) NSString *listEventUpdatedAt;
 @property (nonatomic, copy) NSString *listEventCreatedBy;

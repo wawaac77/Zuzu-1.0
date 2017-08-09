@@ -8,7 +8,8 @@
 
 #import "MyEventCell.h"
 
-#import "MyEvent.h"
+//#import "MyEvent.h"
+#import "EventInList.h"
 #import "MyEventImageModel.h"
 
 #import <SVProgressHUD.h>
@@ -29,18 +30,22 @@
 
 @implementation MyEventCell
 
--(void)setEvent:(MyEvent *)event
+-(void)setEvent:(EventInList *)event
 {
-    MyEvent *thisEvent = event;
+    EventInList *thisEvent = event;
     //[self downloadImageFromURL:thisEvent.eventImage.imageUrl];
     self.peopleIcon.image = [UIImage imageNamed:@"ic_fa-users"];
-    self.bigTitleLabel.text = thisEvent.eventName;
-    self.timeLabel.text = thisEvent.eventStartDate;
-    self.attendeeNumLabel.text = [NSString stringWithFormat:@"%@%@%@", thisEvent.joinedCount, @"/", thisEvent.eventQuota];
-    self.placeLabel.text = thisEvent.restaurant.restaurantName.en;
+    self.bigTitleLabel.text = thisEvent.listEventName;
+    self.timeLabel.text = thisEvent.listEventStartDate;
+    self.attendeeNumLabel.text = [NSString stringWithFormat:@"%@%@%@", thisEvent.listEventJoinedCount, @"/", thisEvent.listEventQuota];
+    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantName.en;
     [self.expLabel setTextColor:[UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
-    self.expLabel.text = thisEvent.exp;
-    self.expLabel.text = @"+10 XP";
+    if (thisEvent.listEventExp == NULL) {
+        self.expLabel.text = [NSString stringWithFormat:@"+0 XP"];
+    } else {
+        self.expLabel.text = [NSString stringWithFormat:@"+%@ XP", thisEvent.listEventExp];
+    }
+    
     
    // [_cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     //self.attendeeNumLabel.text = [NSString stringWithFormat:@" / %@", thisEvent.eventQuota];

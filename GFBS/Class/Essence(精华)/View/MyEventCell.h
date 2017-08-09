@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class MyEvent;
+@class EventInList;
 @interface MyEventCell : UITableViewCell
 
 /*数据*/
-@property (strong , nonatomic)MyEvent *event ;
+@property (strong , nonatomic)EventInList *event ;
 
 @end

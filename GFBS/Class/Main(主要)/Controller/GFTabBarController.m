@@ -18,7 +18,7 @@
 #import "GFEssenceViewController.h"
 #import "GFPublishView.h"
 #import "GFFriendTrendViewController.h"
-#import "RestaurantViewController.h"
+#import "RestaurantTableViewController.h"
 
 #import "GFTabBar.h"
 
@@ -115,7 +115,7 @@
     [self addChildViewController:nav1];
     
     /** Restaurants */
-    RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] init];
+    RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
     GFNavigationController *nav2 = [[GFNavigationController alloc]initWithRootViewController:restaurantVC];
     [self addChildViewController:nav2];
     

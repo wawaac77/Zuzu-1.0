@@ -71,7 +71,7 @@
     self.scrollView = scrollView;
     
     scrollView.delegate = self;
-    scrollView.frame = CGRectMake(0, 35, self.view.gf_width, 1000);
+    scrollView.frame = CGRectMake(0, 35, self.view.gf_width, GFScreenHeight - GFNavMaxY - GFTabBarH - 35);
     NSLog(@"self.view.gf_width in first claim scrollView is %f", self.view.gf_width);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;

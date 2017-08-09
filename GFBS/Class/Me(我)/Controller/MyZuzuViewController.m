@@ -6,6 +6,7 @@
 //  Copyright © 2017 apple. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "MyZuzuViewController.h"
 #import "ProgressView.h"
 
@@ -15,8 +16,10 @@
 #import "NotificationViewController.h"
 #import "LeaderboardViewController.h"
 
-#import "EventListTableViewController.h"
+//#import "EventListTableViewController.h"
+#import "ZZAttendingViewController.h"
 #import "RestaurantViewController.h" //should be favourite restaurant
+#import "ZZBadgeModel.h"
 
 #import "GFSquareItem.h"
 #import "GFSquareCell.h"
@@ -39,9 +42,17 @@ static CGFloat  const margin = 0;
 @property (weak, nonatomic) IBOutlet UIView *functionsView;
 @property (weak, nonatomic) IBOutlet UIButton *leaderboardButton;
 - (IBAction)leaderboardButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *socialExpLabel;
+@property (weak, nonatomic) IBOutlet UILabel *organizeExpLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *socialImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *organizeImageView;
+
+@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 /*所有button内容*/
 @property (strong , nonatomic)NSMutableArray<GFSquareItem *> *buttonItems;
+@property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *badgesArray;
 
 
 /**
@@ -54,24 +65,85 @@ static CGFloat  const margin = 0;
 
 @implementation MyZuzuViewController
 
+#pragma mark - 懒加载
+-(GFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [GFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = [UIScreen mainScreen].bounds;
+    NSString *userName = [AppDelegate APP].user.userUserName;
+    self.userNameLabel.text = userName;
     [self setUpNavBar];
     [self setUpExp];
     [self setUpCollectionItemsData];
     [self setUpFunctionsCollectionView];
     
-    [self setUpBadgesView];
+    self.badgesArray = [[NSMutableArray alloc] init];
+    [self loadBadgesData];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void) setUpExp {
+    NSNumber *social = [AppDelegate APP].user.socialLevel;
+    NSLog(@"[AppDelegate APP].user.socialExp %@", [AppDelegate APP].user.socialExp);
+    self.socialExpLabel.text = [NSString stringWithFormat:@"Lv. %@", social];
+    float socialFloat = [social floatValue] / 15.0f;
     [self.SocialExpView setGradual:YES];
-    _SocialExpView.progress = 0.20;
+    _SocialExpView.progress = socialFloat;
     
+    _socialImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _socialImageView.clipsToBounds = YES;
+    int socialInt = [social intValue];
+    if (socialInt <= 15 && socialInt >= 1) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-white_01.jpg"];
+    } else if (socialInt > 15 && socialInt <= 30) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-yellow_01.jpg"];
+    } else if (socialInt > 30 && socialInt <= 45) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-green_01.jpg"];
+    } else if (socialInt > 45 && socialInt <= 60) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-blue_01.jpg"];
+    } else if (socialInt > 60 && socialInt <= 75) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-brown_01.jpg"];
+    } else if (socialInt > 75 && socialInt <= 90) {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-black_01.jpg"];
+    } else {
+        _socialImageView.image = [UIImage imageNamed:@"profile-bg-gold_01.jpg"];
+    }
+    
+    
+    NSNumber *organize = [AppDelegate APP].user.userOrganizingLevel;
+    NSLog(@"[AppDelegate APP].user.organize %@", [AppDelegate APP].user.userOrganizingExp);
+    self.organizeExpLabel.text = [NSString stringWithFormat:@"Lv. %@", organize];
+    float organizeFloat = [organize floatValue] / 15.0f;
     [self.OrganizingExpView setGradual:YES];
-    _OrganizingExpView.progress = 0.70;
+    _OrganizingExpView.progress = organizeFloat;
+    
+    _organizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _organizeImageView.clipsToBounds = YES;
+    int organizeInt = [organize intValue];
+    if (organizeInt <= 15 && organizeInt >= 1) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-white_02.jpg"];
+    } else if (organizeInt > 15 && organizeInt <= 30) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-yellow_02.jpg"];
+    } else if (organizeInt > 30 && organizeInt <= 45) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-green_02.jpg"];
+    } else if (organizeInt > 45 && organizeInt <= 60) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-blue_02.jpg"];
+    } else if (organizeInt > 60 && organizeInt <= 75) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-brown_02.jpg"];
+    } else if (organizeInt > 75 && organizeInt <= 90) {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-black_02.jpg"];
+    } else {
+        _organizeImageView.image = [UIImage imageNamed:@"profile-bg-gold_02.jpg"];
+    }
 }
 
 #pragma mark - 设置底部视图
@@ -159,13 +231,16 @@ static CGFloat  const margin = 0;
     GFSquareItem *item = _buttonItems[indexPath.item];
     
     if ([item.name isEqualToString: @"My Events"]) {
-        EventListTableViewController *eventVC = [[EventListTableViewController alloc] init];
+        ZZAttendingViewController *eventVC = [[ZZAttendingViewController alloc] init];
+        eventVC.view.frame = [UIScreen mainScreen].bounds;
         [self.navigationController pushViewController:eventVC animated:YES];
     } else if ([item.name isEqualToString: @"Favourite Restaurants"]) {
         RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] init];
         [self.navigationController pushViewController:restaurantVC animated:YES];
     }
+    
     //判断
+    /*
     if (![item.url containsString:@"http"]) return;
     
     NSURL *url = [NSURL URLWithString:item.url];
@@ -174,22 +249,82 @@ static CGFloat  const margin = 0;
     
     //给Url赋值
     webVc.url = url;
-    
+    */
 }
 
 #pragma mark - BadgesView
+- (void)loadBadgesData {
+
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    
+    NSString *userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inData = @{@"action" : @"getBadgeList", @"token" : userToken};
+        
+    NSDictionary *parameters = @{@"data" : inData};
+
+    NSLog(@"publish content parameters %@", parameters);
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        
+        
+        
+        NSLog(@"responseObject is %@", responseObject);
+        
+        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
+        
+        
+        
+        self.badgesArray = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        [self setUpBadgesView];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [SVProgressHUD dismiss];
+            
+        });
+        
+    }];
+}
+
 -(void)setUpBadgesView {
-    NSMutableArray *badges = [[NSMutableArray alloc]initWithObjects:@"ic_pen",@"ic_trophy", nil];
-    [badges addObject:@"plus_badges.png"];
-    for (int i = 0; i < badges.count; i++) {
+    //NSMutableArray *badges = [[NSMutableArray alloc]initWithObjects:@"ic_pen",@"ic_trophy", nil];
+    //[_badgesArray addObject:@"plus_badges.png"];
+    for (int i = 0; i < _badgesArray.count; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + i * 50, 5, 45, 45)];
-        [button setImage:[UIImage imageNamed:badges[i]] forState:UIControlStateNormal];
-        if (i == badges.count - 1) {
+        button.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        //[button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+        //[button setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+       
+        NSURL *URL = [NSURL URLWithString:_badgesArray[i].icon.imageUrl];
+        NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
+        UIImage *image = [[UIImage alloc]initWithData:data];
+        _badgesArray[i].icon.image_UIImage = image;
+        [button setImage:image forState:UIControlStateNormal];
+        /*
+        if (i == _badgesArray.count - 1) {
             [button addTarget:self action:@selector(addBadgesButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         }
+         */
         [self.badgesView addSubview:button];
     }
     
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + _badgesArray.count * 50, 5, 45, 45)];
+    //button.contentMode = UIViewContentModeScaleAspectFill;
+    [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+    [button setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+    [button setImage:[UIImage imageNamed:@"plus_badges.png"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(addBadgesButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.badgesView addSubview:button];
 }
 
 - (void)addBadgesButtonClicked {

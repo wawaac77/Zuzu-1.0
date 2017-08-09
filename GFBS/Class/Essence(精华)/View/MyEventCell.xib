@@ -121,7 +121,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="kt5-al-fNL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="1UT-Z2-mpo"/>
                     <constraint firstItem="kt5-al-fNL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CnN-6y-FTX"/>
@@ -139,7 +139,7 @@
                 <outlet property="placeLabel" destination="I2v-We-9Gv" id="okA-29-wVb"/>
                 <outlet property="timeLabel" destination="6Y9-7Q-GTW" id="SEM-E8-mMP"/>
             </connections>
-            <point key="canvasLocation" x="213" y="17"/>
+            <point key="canvasLocation" x="55" y="25"/>
         </tableViewCell>
     </objects>
     <resources>

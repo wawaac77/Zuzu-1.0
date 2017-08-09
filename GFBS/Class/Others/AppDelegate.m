@@ -39,6 +39,9 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *username = [userDefault objectForKey:@"KEY_USER_NAME"];
     NSString *userToken = [userDefault objectForKey:@"KEY_USER_TOKEN"];
+    NSNumber *socialLevel = [userDefault objectForKey:@"KEY_USER_SOCIAL_LEVEL"];
+    NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
+
     
     if (userToken != nil) {
         
@@ -48,6 +51,9 @@
         user = [[ZZUser alloc] init];
         user.userToken = userToken;
         user.userUserName = username;
+        user.socialLevel = socialLevel;
+        user.userOrganizingLevel = organizeLevel;
+        
         GFTabBarController *tabVC = [[GFTabBarController alloc] init];
         self.window.rootViewController = tabVC;
         

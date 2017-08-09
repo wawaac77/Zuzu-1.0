@@ -7,25 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GFImage.h"
+#import "TwEn.h"
 
 @interface GFSquareItem : NSObject
 
-/**
- SquareImage
- */
-@property (strong , nonatomic)NSString *icon;
-/**
- SquareName
- */
-@property (strong , nonatomic)NSString *name;
-/**
- SquareUrl
- */
-@property (strong , nonatomic)NSString *url;
 
-/**
- BadgesPrice
- */
+//@property (strong , nonatomic)NSString *_id;
+@property (strong , nonatomic)NSString *icon;
+
+@property (strong , nonatomic)NSString *name;
+
 @property (strong, nonatomic)NSString *price;
+
+@property (strong, nonatomic)NSString *url;
 
 @end

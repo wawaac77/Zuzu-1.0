@@ -37,10 +37,11 @@
 
 -(void)setEvent:(EventInList *)event
 {
-    EventInList *thisEvent = event;
-    [self downloadImageFromURL:thisEvent.listEventBanner.eventBanner.imageUrl];
-    self.bigTitleLabel.text = thisEvent.listEventName;
-    self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", thisEvent.listEventStartDate, thisEvent.listEventJoinedCount, thisEvent.listEventQuota];
+    //EventInList *thisEvent = event;
+    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:event.listEventBanner.eventBanner.imageUrl] placeholderImage:nil completed:nil];
+    //[self downloadImageFromURL:thisEvent.listEventBanner.eventBanner.imageUrl];
+    self.bigTitleLabel.text = event.listEventName;
+    self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", event.listEventStartDate, event.listEventJoinedCount, event.listEventQuota];
  
     /*
     self.bigImageView.frame = CGRectMake(5, 0, [UIScreen mainScreen].bounds.size.width - 10, 130);
@@ -66,6 +67,7 @@
         
 }
 
+/*
 -(void) downloadImageFromURL :(NSString *)imageUrl{
     
     NSURL  *url = [NSURL URLWithString:imageUrl];
@@ -84,6 +86,7 @@
     }
     
 }
+*/
 
 
 - (void)awakeFromNib {
