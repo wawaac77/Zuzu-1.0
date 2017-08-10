@@ -9,21 +9,15 @@
 
 
 #import <UIKit/UIKit.h>
-#import "PassValueDelegate.h"
-//#import "SearchEventDetail.h"
+#import "LocationTableViewController.h"
+#import "InterestsTableViewController.h"
+#import "CuisineTableViewController.h"
+#import "NumOfGuestsTableViewController.h"
 
-@class SearchEventDetail;
+#import <CoreLocation/CoreLocation.h>
 
-@protocol PassValueDelegate <NSObject>
+@interface FilterTableViewController : UITableViewController<ChildViewControllerDelegate, InterestsChildViewControllerDelegate,CuisineChildViewControllerDelegate, NumOfGuestsChildViewControllerDelegate, CLLocationManagerDelegate>
 
-//-(void)passValue:(SearchEventDetail *)value;
--(SearchEventDetail *) passValue;
-
-@end
-
-
-@interface FilterTableViewController : UITableViewController<PassValueDelegate>
-
-@property(nonatomic,assign) NSObject<PassValueDelegate> *delegate;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end

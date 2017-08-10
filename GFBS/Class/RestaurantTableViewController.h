@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventRestaurant.h"
 
 @interface RestaurantTableViewController : UITableViewController
 
 @property (strong, nonatomic) NSString *keywords;
+
+@property (strong , nonatomic)NSMutableArray<EventRestaurant *> *receivedData;
 
 @end

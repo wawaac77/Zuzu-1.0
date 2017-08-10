@@ -45,8 +45,12 @@ static NSString *const eventID = @"event";
     [super viewDidLoad];
     self.view.frame = [UIScreen mainScreen].bounds;
     NSLog(@"seeAllVC height %f",[UIScreen mainScreen].bounds.size.height);
+    if (self.receivedData == nil) {
+        [self setupRefresh];
+    } else {
+        self.upcomingEvents = self.receivedData;
+    }
     [self setUpTable];
-    [self setupRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

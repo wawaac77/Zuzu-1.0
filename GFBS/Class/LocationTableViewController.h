@@ -7,14 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FilterTableViewController.h"
-//#import "PassValueDelegate.h"
+#import "SearchEventDetail.h"
 
-@interface LocationTableViewController : UITableViewController <PassValueDelegate>
+@protocol ChildViewControllerDelegate;
+
+@interface LocationTableViewController : UITableViewController
+
+@property (weak)id <ChildViewControllerDelegate> delegate;
 
 @property (nonatomic, retain) SearchEventDetail *eventDetail;
-@property (strong, nonatomic) FilterTableViewController *filterVC;
 
-//@property(nonatomic,assign) NSObject<PassValueDelegate> *delegate;
+@end
+
+@protocol ChildViewControllerDelegate <NSObject >
+
+- (void) passValue:(SearchEventDetail *) theValue;
 
 @end

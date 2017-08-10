@@ -29,6 +29,7 @@
 @property (strong, nonatomic) ZZBannerModel *bannerImage;
 @property (strong, nonatomic) UIButton *button;
 @property (strong, nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) UIImageView *bannerImageView;
 
 @property (strong, nonatomic) UILabel *budgetLabel;
 @property (strong, nonatomic) UITextField *eventNameField;
@@ -129,6 +130,12 @@
                 //******** banner preview imageView ******//
                 if (_bannerImage != nil) {
                     UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, GFScreenWidth - 20, 115)];
+                    //NSURL *URL = [NSURL URLWithString:_bannerImage.image.imageUrl];
+                    //NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
+                    //UIImage *image = [[UIImage alloc]initWithData:data];
+                    //bannerImageView.image = image;
+                    //NSLog(@"hihi~~~~~~~~~");
+                    self.bannerImageView = bannerImageView;
                     bannerImageView.image = _bannerImage.image.image_UIImage;
                     bannerImageView.clipsToBounds = YES;
                     bannerImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -264,6 +271,22 @@
                 
             }
         }
+    } else {
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            if (_bannerImage != nil) {
+                UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, GFScreenWidth - 20, 115)];
+                //NSURL *URL = [NSURL URLWithString:_bannerImage.image.imageUrl];
+                //NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
+                //UIImage *image = [[UIImage alloc]initWithData:data];
+                //bannerImageView.image = image;
+                //NSLog(@"hihi~~~~~~~~~");
+                self.bannerImageView = bannerImageView;
+                bannerImageView.image = _bannerImage.image.image_UIImage;
+                bannerImageView.clipsToBounds = YES;
+                bannerImageView.contentMode = UIViewContentModeScaleAspectFill;
+                [cell.contentView addSubview:bannerImageView];
+            }
+        }
     }
    
     return cell;
@@ -355,7 +378,8 @@
     self.bannerImage = theValue;
     //UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
-    
+    NSLog(@"self.bannerImage theValue %@", theValue.image.imageUrl);
+    self.bannerImageView.image = theValue.image.image_UIImage;
     [self.tableView reloadRowsAtIndexPaths: [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:0 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
@@ -448,64 +472,6 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

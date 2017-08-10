@@ -197,6 +197,12 @@
 		7807917E1F1F542C00D24CB6 /* AddLLImagePickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7807917D1F1F542C00D24CB6 /* AddLLImagePickerVC.m */; };
 		7812102C1F3AD3D600C08BD6 /* ZZBadgeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */; };
 		7812102F1F3B33A600C08BD6 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */; };
+		781210331F3C33EB00C08BD6 /* InterestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781210311F3C33EB00C08BD6 /* InterestsTableViewController.m */; };
+		781210341F3C33EB00C08BD6 /* InterestsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781210321F3C33EB00C08BD6 /* InterestsTableViewController.xib */; };
+		781210381F3C340100C08BD6 /* CuisineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781210361F3C340100C08BD6 /* CuisineTableViewController.m */; };
+		781210391F3C340100C08BD6 /* CuisineTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781210371F3C340100C08BD6 /* CuisineTableViewController.xib */; };
+		7812103D1F3C341600C08BD6 /* NumOfGuestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7812103B1F3C341600C08BD6 /* NumOfGuestsTableViewController.m */; };
+		7812103E1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7812103C1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib */; };
 		7813FE911F25EE820065D527 /* ZZAddFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7813FE8F1F25EE820065D527 /* ZZAddFriendsViewController.m */; };
 		7813FE921F25EE820065D527 /* ZZAddFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7813FE901F25EE820065D527 /* ZZAddFriendsViewController.xib */; };
 		7813FE961F25F18B0065D527 /* ZZAddFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7813FE941F25F18B0065D527 /* ZZAddFriendsCell.m */; };
@@ -797,6 +803,15 @@
 		7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBadgeModel.m; sourceTree = "<group>"; };
 		7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
 		7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
+		781210301F3C33EB00C08BD6 /* InterestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestsTableViewController.h; sourceTree = "<group>"; };
+		781210311F3C33EB00C08BD6 /* InterestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestsTableViewController.m; sourceTree = "<group>"; };
+		781210321F3C33EB00C08BD6 /* InterestsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterestsTableViewController.xib; sourceTree = "<group>"; };
+		781210351F3C340100C08BD6 /* CuisineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisineTableViewController.h; sourceTree = "<group>"; };
+		781210361F3C340100C08BD6 /* CuisineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisineTableViewController.m; sourceTree = "<group>"; };
+		781210371F3C340100C08BD6 /* CuisineTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CuisineTableViewController.xib; sourceTree = "<group>"; };
+		7812103A1F3C341600C08BD6 /* NumOfGuestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumOfGuestsTableViewController.h; sourceTree = "<group>"; };
+		7812103B1F3C341600C08BD6 /* NumOfGuestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumOfGuestsTableViewController.m; sourceTree = "<group>"; };
+		7812103C1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumOfGuestsTableViewController.xib; sourceTree = "<group>"; };
 		7813FE8E1F25EE810065D527 /* ZZAddFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAddFriendsViewController.h; sourceTree = "<group>"; };
 		7813FE8F1F25EE820065D527 /* ZZAddFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZAddFriendsViewController.m; sourceTree = "<group>"; };
 		7813FE901F25EE820065D527 /* ZZAddFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZAddFriendsViewController.xib; sourceTree = "<group>"; };
@@ -3013,6 +3028,15 @@
 				789CFF4C1F02149900EBA772 /* LocationTableViewController.h */,
 				789CFF4D1F02149900EBA772 /* LocationTableViewController.m */,
 				789CFF511F0214B400EBA772 /* LocationTableViewController.storyboard */,
+				781210301F3C33EB00C08BD6 /* InterestsTableViewController.h */,
+				781210311F3C33EB00C08BD6 /* InterestsTableViewController.m */,
+				781210321F3C33EB00C08BD6 /* InterestsTableViewController.xib */,
+				781210351F3C340100C08BD6 /* CuisineTableViewController.h */,
+				781210361F3C340100C08BD6 /* CuisineTableViewController.m */,
+				781210371F3C340100C08BD6 /* CuisineTableViewController.xib */,
+				7812103A1F3C341600C08BD6 /* NumOfGuestsTableViewController.h */,
+				7812103B1F3C341600C08BD6 /* NumOfGuestsTableViewController.m */,
+				7812103C1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib */,
 			);
 			name = FilterSubVCs;
 			path = ..;
@@ -3325,6 +3349,7 @@
 				7813FE991F25F3E90065D527 /* ic_add-friend-black.png in Resources */,
 				780096B41EC9C1F5008F9F99 /* event-banner-1036x328-04.jpg in Resources */,
 				789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */,
+				781210391F3C340100C08BD6 /* CuisineTableViewController.xib in Resources */,
 				786069C51F15DB9B00A8AB88 /* ic_fa-credit-card.png in Resources */,
 				7824E34C1EF1408E00F85BFB /* ic_badges_338x338-06.png in Resources */,
 				783F82341F176E7300491529 /* profile_image_animals.jpeg in Resources */,
@@ -3394,6 +3419,7 @@
 				781E56571F31B7ED006854BA /* ic_my_zuzu.png in Resources */,
 				1823914E1DEECDEB00B88AE0 /* GFCommentCell.xib in Resources */,
 				781E56561F31B7ED006854BA /* ic_home_on.png in Resources */,
+				781210341F3C33EB00C08BD6 /* InterestsTableViewController.xib in Resources */,
 				780096C91EC9C1F5008F9F99 /* ic_fa-ellipsis-h.png in Resources */,
 				7829FFA01ED8040100C934C2 /* LoginViewController.xib in Resources */,
 				7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */,
@@ -3408,6 +3434,7 @@
 				7813FE921F25EE820065D527 /* ZZAddFriendsViewController.xib in Resources */,
 				786069AD1F15DB9B00A8AB88 /* ic_facebook.png in Resources */,
 				18B7C7271DE0717A004BD781 /* GFMemberViewController.xib in Resources */,
+				7812103E1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib in Resources */,
 				7829FF7B1ED55C9B00C934C2 /* pexels-photo-38106.png in Resources */,
 				780096CF1EC9C1F5008F9F99 /* ic_fa-star-o.png in Resources */,
 				781E565C1F31B7ED006854BA /* ic_social_on.png in Resources */,
@@ -3654,6 +3681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				781210381F3C340100C08BD6 /* CuisineTableViewController.m in Sources */,
 				789CFF781F0CA5FB00EBA772 /* EventRestaurant.m in Sources */,
 				7897E1041EF3E6A00046D647 /* EventListCell.m in Sources */,
 				789CFFAA1F13CE2F00EBA772 /* ZZLeaderboardModel.m in Sources */,
@@ -3780,6 +3808,7 @@
 				7807917E1F1F542C00D24CB6 /* AddLLImagePickerVC.m in Sources */,
 				783089311F1C85A700C31BFE /* HomePostTableViewController.m in Sources */,
 				7829FF961ED576F800C934C2 /* RestaurantEventViewController.m in Sources */,
+				7812103D1F3C341600C08BD6 /* NumOfGuestsTableViewController.m in Sources */,
 				786069EE1F160A8900A8AB88 /* MeHomeTableViewController.m in Sources */,
 				78FFE5A31ECD88F100F909A2 /* GFEventDetailViewController.m in Sources */,
 				788CC35A1F19EC3900DC4116 /* JSQMessagesTypingView.m in Sources */,
@@ -3791,6 +3820,7 @@
 				18C8262C1DE7368D007341E3 /* ZZAttendingViewController.m in Sources */,
 				7864EB6F1F2B424400AA572E /* OverviewCell.m in Sources */,
 				18C8263E1DE737C9007341E3 /* GFVoiceViewController.m in Sources */,
+				781210331F3C33EB00C08BD6 /* InterestsTableViewController.m in Sources */,
 				781E56861F335380006854BA /* SearchPageViewController.m in Sources */,
 				189980491DDBEDA4009071F4 /* UIBarButtonItem+GFItem.m in Sources */,
 				1841A77E1DE17BE400FB54CC /* GFWebViewController.m in Sources */,

@@ -8,44 +8,54 @@
 
 #import "FilterTableViewController.h"
 #import "LocationTableViewController.h"
+#import "InterestsTableViewController.h"
+#import "CuisineTableViewController.h"
+#import "NumOfGuestsTableViewController.h"
+
+//#import "GFSeeAllEventTableViewController.h"
+#import "EventSearchResultTableViewController.h"
+#import "RestaurantTableViewController.h"
+
 #import "SearchEventDetail.h"
+#import "EventRestaurant.h"
+#import "EventInList.h"
+
+#import <AFNetworking.h>
+#import <MJExtension.h>
 #import <SDImageCache.h>
 #import <SVProgressHUD.h>
 
 #define DEFAULT_COLOR_GOLD [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
 static NSString*const ID = @"ID";
+static NSString*const sliderID = @"sliderID";
 
-@interface FilterTableViewController ()
+@interface FilterTableViewController () {
+    float longitude;
+    float latitude;
+}
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *cleanCell;
-@property (weak, nonatomic) SearchEventDetail *eventDetail;
+@property (strong, nonatomic) SearchEventDetail *eventDetail;
 @property (strong , nonatomic)GFHTTPSessionManager *manager;
+@property (strong , nonatomic)UILabel *priceLabel;
+
+@property (strong , nonatomic)NSMutableArray<EventRestaurant *> *restaurants;
+@property (strong , nonatomic)NSMutableArray<EventInList *> *events;
 //@property (assign , nonatomic) BOOL *searchRestaurant;
-
-
 
 @end
 
 @implementation FilterTableViewController {
     BOOL searchRestaurant;
 }
-//@synthesize searchRestaurant = _searchRestaurant;
-
-@synthesize delegate;
-/*
-- (void)passValue:(SearchEventDetail *)value {
-    self.eventDetail = value;
-    NSLog(@"_eventDetail.district in passValue %@", _eventDetail.district);
-}
- */
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _eventDetail = [delegate passValue];
-    NSLog(@"[delegate passValue] %@", [delegate passValue]);
     [self setUpParameters];
+    self.eventDetail = [[SearchEventDetail alloc] init];
     self.navigationItem.title = @"Advanced Search";
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:sliderID];
     [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
 }
 
@@ -54,9 +64,25 @@ static NSString*const ID = @"ID";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *newLocation = [locations lastObject];
+    NSLog(@"开始定位:%@",newLocation);
+    [manager stopUpdatingHeading];
+    //if (self.data == nil) {
+    longitude = newLocation.coordinate.longitude;
+    latitude =  newLocation.coordinate.latitude;
+    NSLog(@"longtitude %f", longitude);
+    NSLog(@"latitude %f", latitude);
+    //}
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"定位错误");
+}
+
+
 - (void)setUpParameters {
-    SearchEventDetail *eventDetail = [[SearchEventDetail alloc] init];
-    self.eventDetail = eventDetail;
+    self.eventDetail = [[SearchEventDetail alloc] init];
     
 }
 
@@ -76,7 +102,7 @@ static NSString*const ID = @"ID";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 5) {
-        return 80.0f;
+        return 90.0f;
     } else {
         return 44.0f;
     }
@@ -98,91 +124,116 @@ static NSString*const ID = @"ID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    NSString *cellID;
+    UITableViewCell *cell; //消除error
+    
     if (indexPath.row == 5) {
-        UITableViewCell *cell5 = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-        cell = cell5;
-        
-        CGRect textLabelFrame = cell.textLabel.frame;
-        textLabelFrame.origin.y -= 20;
-        cell.textLabel.frame = textLabelFrame;
-        cell.textLabel.text = @"Price Range";
-        cell.accessoryType = NO;
-        
-        CGRect detailTextLabelFrame = cell.detailTextLabel.frame;
-        detailTextLabelFrame.origin.y -= 20;
-        cell.textLabel.frame = textLabelFrame;
-        cell.detailTextLabel.text = @"0 - 200"; //initialize
-        
-        //add slider
-        UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(10, 35, self.view.gf_width - 40, 40)];
-        sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
-        sliderView.value = 200; // initialize
-        sliderView.maximumValue = 2000;
-        [sliderView addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-        [cell addSubview:sliderView];
-    
-    }
-    
-    else if (!searchRestaurant) {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Search Events";
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.tintColor = DEFAULT_COLOR_GOLD;
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Search Restaurant";
-            cell.accessoryType = NO;
-            cell.textLabel.textColor = [UIColor darkGrayColor];
-            cell.textLabel.font = [UIFont systemFontOfSize:17];
-        } else if (indexPath.row == 2) {
-            cell.textLabel.text = @"Location";
-            cell.detailTextLabel.text = _eventDetail.district;
-            NSLog(@"_eventDetail.district %@", _eventDetail.district);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 3) {
-            cell.textLabel.text = @"Interests";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 4) {
-            cell.textLabel.text = @"Cuisine";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 6) {
-            cell.textLabel.text = @"Number of Guests";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        
-    }
-    
-    else if (searchRestaurant) {
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Search Events";
-            cell.accessoryType = NO;
-            cell.textLabel.textColor = [UIColor darkGrayColor];
-            cell.textLabel.font = [UIFont systemFontOfSize:17];
+        cellID = @"sliderID";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 100, 30)];
+            leftLabel.text = @"Price Range";
+            leftLabel.font = [UIFont systemFontOfSize:16];
+            [cell.contentView addSubview:leftLabel];
             
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Search Restaurant";
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-            cell.tintColor = DEFAULT_COLOR_GOLD;
-        } else if (indexPath.row == 2) {
-            cell.textLabel.text = @"District";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 3) {
-            cell.textLabel.text = @"Landmark";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 4) {
-            //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-            cell.textLabel.text = @"Cuisine";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(GFScreenWidth - 80, 40, 65, 30)];
+            self.priceLabel = rightLabel;
+            rightLabel.textAlignment = NSTextAlignmentRight;
+            rightLabel.text = @"0 - 200";
+            rightLabel.font = [UIFont systemFontOfSize:15];
+            [cell.contentView addSubview:rightLabel];
+           
+           UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(15, 35, self.view.gf_width - 90, 40)];
+            sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
+            
+            sliderView.maximumValue = 2000;
+            sliderView.minimumValue = 0;
+            sliderView.value = 200; // initialize
+            [sliderView addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
+            [cell.contentView addSubview:sliderView];
+        }
+        return cell;
+        
+    } else {
+        
+        if (!searchRestaurant) {
+            cellID = @"eventID";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+            }
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"Search Events";
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+                cell.tintColor = DEFAULT_COLOR_GOLD;
+            } else if (indexPath.row == 1) {
+                cell.textLabel.text = @"Search Restaurant";
+                cell.accessoryType = NO;
+                cell.textLabel.textColor = [UIColor darkGrayColor];
+                cell.textLabel.font = [UIFont systemFontOfSize:17];
+            } else if (indexPath.row == 2) {
+                cell.textLabel.text = @"Location";
+                cell.detailTextLabel.text = _eventDetail.location;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 3) {
+                cell.textLabel.text = @"Interests";
+                cell.detailTextLabel.text = _eventDetail.interests;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 4) {
+                cell.textLabel.text = @"Cuisine";
+                cell.detailTextLabel.text = _eventDetail.cuisine.informationName.en;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 6) {
+                cell.textLabel.text = @"Number of Guests";
+                cell.detailTextLabel.text = _eventDetail.guestNumber;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+            return cell;
+        }
+        
+        else if (searchRestaurant) {
+            cellID = @"restaurantID";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+            }
+            
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"Search Events";
+                cell.accessoryType = NO;
+                cell.textLabel.textColor = [UIColor darkGrayColor];
+                cell.textLabel.font = [UIFont systemFontOfSize:17];
+                
+            } else if (indexPath.row == 1) {
+                cell.textLabel.text = @"Search Restaurant";
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
+                cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+                cell.tintColor = DEFAULT_COLOR_GOLD;
+            } else if (indexPath.row == 2) {
+                cell.textLabel.text = @"District";
+                cell.detailTextLabel.text = _eventDetail.district.informationName.en;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 3) {
+                cell.textLabel.text = @"Landmark";
+                cell.detailTextLabel.text = _eventDetail.landmark.informationName.en;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            } else if (indexPath.row == 4) {
+                //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+                cell.textLabel.text = @"Cuisine";
+                cell.detailTextLabel.text = _eventDetail.cuisine.informationName.en;
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+             return cell;
         }
     }
-      return cell;
+    return cell;
 }
 
+/*
 - (IBAction)sliderValueChanged:(id)sender {
     UISlider *sliderControl = sender;
     //Default range should be get from backend
@@ -191,42 +242,7 @@ static NSString*const ID = @"ID";
     UITableViewCell *parentCell = (UITableViewCell *) sliderControl.superview;
     parentCell.detailTextLabel.text = [NSString stringWithFormat:@"0 - %@", priceRange];
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
+ */
 
 #pragma mark - Table view delegate
 
@@ -240,13 +256,36 @@ static NSString*const ID = @"ID";
     } else if (indexPath.row == 1 && searchRestaurant == NO) {
         searchRestaurant = YES;
         [tableView reloadData];
+        
     } else {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         if ([cell.textLabel.text isEqualToString:@"Location"]) {
             LocationTableViewController *locationVC = [[LocationTableViewController alloc] init];
-            //restaurantDetailVC.topic = self.tableView[indexPath.row];
+            locationVC.delegate = self;
             [self.navigationController pushViewController:locationVC animated:YES];
-
+        } else if ([cell.textLabel.text isEqualToString:@"Interests"]) {
+            InterestsTableViewController *interestsVC = [[InterestsTableViewController alloc] init];
+            interestsVC.delegate = self;
+            [self.navigationController pushViewController:interestsVC animated:YES];
+        } else if ([cell.textLabel.text isEqualToString:@"Cuisine"]) {
+            CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
+            cuisineVC.tableType = @"Cuisine";
+            cuisineVC.delegate = self;
+            [self.navigationController pushViewController:cuisineVC animated:YES];
+        } else if ([cell.textLabel.text isEqualToString:@"Number of Guests"]) {
+            NumOfGuestsTableViewController *numOfGuestsVC = [[NumOfGuestsTableViewController alloc] init];
+            numOfGuestsVC.delegate = self;
+            [self.navigationController pushViewController:numOfGuestsVC animated:YES];
+        } else if ([cell.textLabel.text isEqualToString:@"District"]) {
+            CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
+            cuisineVC.tableType = @"District";
+            cuisineVC.delegate = self;
+            [self.navigationController pushViewController:cuisineVC animated:YES];
+        } else if ([cell.textLabel.text isEqualToString:@"Landmark"]) {
+            CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
+            cuisineVC.tableType = @"Landmark";
+            cuisineVC.delegate = self;
+            [self.navigationController pushViewController:cuisineVC animated:YES];
         }
     }
         /*
@@ -277,64 +316,160 @@ static NSString*const ID = @"ID";
     return footerView;
 }
 
+
+#pragma -search Button Clicked ----------------------
 -(void)searchButtonClicked {
-    NSLog(@"Search button clicked");
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    NSArray *geoPoint = [[NSArray alloc] init];
+    //if (longitude) {
+    NSNumber *longtitudeNS = [NSNumber numberWithFloat:longitude];
+    NSNumber *latitudeNS = [NSNumber numberWithFloat:latitude];
+    geoPoint = [[NSArray alloc] initWithObjects:longtitudeNS, latitudeNS, nil];
+    NSLog(@"longtitudeNS & latitudeNS %@,  %@", longtitudeNS, latitudeNS);
+    geoPoint = @[@114, @22];
     
-    //2.凭借请求参数
-    NSArray *geoPoint = @[@114, @22];
-    NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
-    NSDictionary *inData = @{
-                             @"action" : @"getNearbyEventList",
-                             @"data" : geoPointDic};
+    if (!searchRestaurant) {
+        EventSearchResultTableViewController *searchResultVC = [[EventSearchResultTableViewController alloc] init];
+        //searchResultVC.keywords = searchBar.text;
+        [self.navigationController pushViewController:searchResultVC animated:YES];
+    } else {
+        RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
+        //restaurantVC.keywords = searchBar.text;
+        [self.navigationController pushViewController:restaurantVC animated:YES];
+    }
+
+    
+    NSDictionary *keyFactors = [[NSDictionary alloc] init];
+    NSDictionary *inData = [[NSDictionary alloc] init];
+    
+    /*
+    if (searchRestaurant) {
+        keyFactors = @{
+            @"keyword" : @"",
+            //@"maxPrice" : _eventDetail.maxPrice,
+            //@"minPrice" : @0,
+            //@"landmark" : _eventDetail.landmark.informationID,
+            //@"district" : _eventDetail.district.informationID,
+            //@"cuisine" : _eventDetail.cuisine.informationID,
+            //@"page" : @1,
+            @"geoPoint" : geoPoint
+        };
+        
+        inData = @{
+                   @"action" : @"searchRestaurant",
+                   @"data" : keyFactors
+                   };
+
+    } else {
+        keyFactors = @{
+            @"keyword" : @"",
+            //@"maxPrice" : _eventDetail.maxPrice,
+            //@"minPrice" : @0,
+            //@"landmark" : _eventDetail.landmark.informationID,
+            //@"district" : _eventDetail.district.informationID,
+            //@"cuisine" : _eventDetail.cuisine.informationID,
+            //@"interests" : _eventDetail.interests,
+            //@"page" : @1,
+            @"geoPoint" : geoPoint
+            //@"distance" : _eventDetail.distance;
+        };
+        
+        inData = @{
+                   @"action" : @"searchEvent",
+                   @"data" : keyFactors
+                   };
+        
+    }
+    
     NSDictionary *parameters = @{@"data" : inData};
     
-    NSLog(@"Nearby events parameters %@", parameters);
+    NSLog(@"search Restaurant %@", parameters);
     
-    //发送请求
-   //[_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
-        //字典转模型//这是给topics数组赋值的地方
-        //NSLog(@"responseObject是接下来的%@", responseObject);
-        //NSLog(@"responseObject - data 是接下来的%@", responseObject[@"data"]);
-        
-        
-        //NSArray *eventsArray = responseObject[@"data"];
-        /*
-        
-        self.nearbyEvents = [EventInList mj_objectArrayWithKeyValuesArray:eventsArray];
-        NSLog(@"neaarbyEvents count in loadNewEvents%ld", _nearbyEvents.count);
-        NSLog(@"nearbyEvents %@", self.nearbyEvents);
-        [tableView reloadData];
-        
-        [tableView.mj_header endRefreshing];
-        [self initGUI];
+        NSLog(@"responseObject是接下来的%@", responseObject);
+        NSLog(@"responseObject - data 是接下来的%@", responseObject[@"data"]);
+        if (searchRestaurant) {
+            self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
+            restaurantVC.receivedData = self.restaurants;
+            [self.navigationController pushViewController:restaurantVC animated:YES];
+
+        } else {
+            self.events = [EventInList mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            GFSeeAllEventTableViewController *eventsVC = [[GFSeeAllEventTableViewController alloc] init];
+            eventsVC.receivedData = self.events;
+            [self.navigationController pushViewController:eventsVC animated:YES];
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", [error localizedDescription]);
-        NSLog(@"call api failed");
-        
+        NSLog(@"not successful");
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [tableView.mj_header endRefreshing];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SVProgressHUD dismiss];
         });
-         */
-   // }];
-    
-
+    }];
+     */
 }
 
+- (IBAction)sliderChanged:(id)sender {
+    UISlider *sliderControl = sender;
+    //Default range should be get from backend
+    NSString *priceRange = [NSString stringWithFormat:@"%d",(int)sliderControl.value];
+    NSLog(@"The slider value is %@", priceRange);
+    self.priceLabel.text = [NSString stringWithFormat:@"0 - %@", priceRange];
+    _eventDetail.maxPrice = [NSNumber numberWithInt:sliderControl.value];
+    /*UITableViewCell *parentCell = (UITableViewCell *) sliderControl.superview;
+    parentCell.detailTextLabel.text = [NSString stringWithFormat:@"0 - %@", priceRange];
+     */
+    
+}
 
+- (void)passValue:(SearchEventDetail *)theValue {
+    
+    _eventDetail.location = theValue.location;
+   
+    _eventDetail.distance = theValue.distance;
+    
+    [self.tableView reloadData];
+}
+
+- (void)passValueInterests:(SearchEventDetail *)theValue {
+    _eventDetail.interests = theValue.interests;
+    [self.tableView reloadData];
+}
+
+- (void)passValueCuisine:(SearchEventDetail *)theValue {
+    if (theValue.cuisine != NULL) {
+        _eventDetail.cuisine = theValue.cuisine;
+    }
+    
+    if (theValue.district != NULL) {
+        _eventDetail.district = theValue.district;
+    }
+    
+    if (theValue.landmark != NULL) {
+        _eventDetail.landmark = theValue.landmark;
+    }
+    
+    [self.tableView reloadData];
+}
+
+- (void)passValueNumOfGuests:(SearchEventDetail *)theValue {
+    _eventDetail.guestNumber = theValue.guestNumber;
+    [self.tableView reloadData];
+}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)passValueDistrict:(SearchEventDetail *)theValue {
+    _eventDetail.district = theValue.district;
+    [self.tableView reloadData];
 }
-*/
-    
+
+- (void)passValueLandmark:(SearchEventDetail *)theValue {
+    _eventDetail.landmark = theValue.landmark;
+    [self.tableView reloadData];
+}
+ */
+
 @end

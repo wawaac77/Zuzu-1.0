@@ -7,7 +7,7 @@
 //
 
 #import "LocationTableViewController.h"
-#import "FilterTableViewController.h"
+//#import "FilterTableViewController.h"
 #import "SearchEventDetail.h"
 #import <SDImageCache.h>
 #import <SVProgressHUD.h>
@@ -22,7 +22,8 @@ static NSString*const ID = @"ID";
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *cleanCell;
 @property(nonatomic ,strong) NSMutableArray *markArray;//要显示mark的数组
-@property(nonatomic ,strong) NSMutableArray *cities;//要显示mark的数组
+@property(nonatomic ,strong) NSMutableArray<NSString *> *cities;//要显示mark的数组
+@property (strong , nonatomic)UILabel *distanceLabel;
 //@property(nonatomic ,strong) SearchEventDetail *eventDetail;
 
 @end
@@ -30,7 +31,7 @@ static NSString*const ID = @"ID";
 @implementation LocationTableViewController
 
 @synthesize eventDetail;
-@synthesize filterVC;
+//@synthesize filterVC;
 //@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,10 +46,13 @@ static NSString*const ID = @"ID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Location";
+    eventDetail = [[SearchEventDetail alloc] init];
     [self setUpNavBar];
     [self setUpArray];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
-    [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
+    [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    //UILabel *blankLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 1)];
+    //[self.tableView.tableFooterView addSubview:blankLabel];
     
 }
 
@@ -72,6 +76,14 @@ static NSString*const ID = @"ID";
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 90;
+    } else {
+        return 44;
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -85,40 +97,65 @@ static NSString*const ID = @"ID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    
     
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Distance";
-        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        //cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
-        //cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
-        cell.tintColor = DEFAULT_COLOR_GOLD;
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"Change Country";
-        //cell.accessoryType = NO;
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sliderID"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sliderID"];
+            UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 100, 30)];
+            leftLabel.text = @"Distance";
+            leftLabel.font = [UIFont systemFontOfSize:16];
+            [cell.contentView addSubview:leftLabel];
+            
+            UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(GFScreenWidth - 80, 40, 65, 30)];
+            self.distanceLabel = rightLabel;
+            rightLabel.textAlignment = NSTextAlignmentRight;
+            rightLabel.text = @"2 km";
+            rightLabel.font = [UIFont systemFontOfSize:15];
+            [cell.contentView addSubview:rightLabel];
+            
+            UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(15, 35, self.view.gf_width - 90, 40)];
+            sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
+            sliderView.maximumValue = 10;
+            sliderView.minimumValue = 0;
+            sliderView.value = 2; // initialize
+            [sliderView addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
+            [cell.contentView addSubview:sliderView];
+        }
+        return cell;
+        
     } else {
-        for (int i = 2; i < _cities.count + 2; i++) {
-            NSLog(@"start for loop");
-            if (indexPath.row == i) {
-                cell.textLabel.text = [NSString stringWithFormat:@"  %@", [_cities objectAtIndex:i - 2]];
-                //NSLog(@"cell text %@", cell.textLabel.text);
-                if ([[_markArray objectAtIndex:i - 2] isEqual: @1]) {
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                    cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
-                    cell.tintColor = DEFAULT_COLOR_GOLD;
-                    NSLog(@"_markArray i-2 %@" , [_markArray objectAtIndex:i - 2]);
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ID"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ID"];
+        }
+        
+        if (indexPath.row == 1) {
+            cell.textLabel.text = @"Change Country";
+            //cell.accessoryType = NO;
+        } else {
+            for (int i = 2; i < _cities.count + 2; i++) {
+                NSLog(@"start for loop");
+                if (indexPath.row == i) {
+                    cell.textLabel.text = [NSString stringWithFormat:@"  %@", [_cities objectAtIndex:i - 2]];
+                    //NSLog(@"cell text %@", cell.textLabel.text);
+                    if ([[_markArray objectAtIndex:i - 2] isEqual: @1]) {
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                        cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
+                        cell.tintColor = DEFAULT_COLOR_GOLD;
+                        NSLog(@"_markArray i-2 %@" , [_markArray objectAtIndex:i - 2]);
+                        
+                    } else {
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                        cell.textLabel.textColor = [UIColor darkGrayColor];
+                    }
                     
-                } else {
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    cell.textLabel.textColor = [UIColor darkGrayColor];
                 }
-
-                
             }
         }
+        return cell;
     }
-
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -126,7 +163,7 @@ static NSString*const ID = @"ID";
     for (int i = 2; i < _cities.count + 2; i++) {
         if (indexPath.row == i) {
             [_markArray replaceObjectAtIndex:i - 2 withObject:@1];
-            NSString *city = [_cities objectAtIndex:i - 2];
+            NSString *city = [NSString stringWithFormat:@"%@", [_cities objectAtIndex:i - 2]];
             //SearchEventDetail *detail = [[SearchEventDetail alloc] init];
             eventDetail.district = city;
             //[self.delegate passValue:detail];
@@ -137,22 +174,12 @@ static NSString*const ID = @"ID";
         }
     }
 }
-/*
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.gf_width, 50)];
-    UIButton *joinButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    joinButton.frame = CGRectMake(5, 10, self.view.gf_width - 10, 35);
-    joinButton.layer.cornerRadius = 5.0f;
-    joinButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    [joinButton setClipsToBounds:YES];
-    [joinButton setTitle:@"Ok" forState:UIControlStateNormal];
-    [joinButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [joinButton setBackgroundColor:[UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
-    [joinButton addTarget:self action:@selector(okButtonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [footerView addSubview:joinButton];
-    return footerView;
+
+- (IBAction)sliderChanged:(id)sender {
+    UISlider *sliderControl = sender;
+    NSString *distanceRange = [NSString stringWithFormat:@"%d",(int)sliderControl.value];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ km", distanceRange];
 }
-*/
 
 - (void)setUpNavBar {
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(okButtonClicked)];
@@ -160,107 +187,27 @@ static NSString*const ID = @"ID";
 }
 
 - (void)okButtonClicked {
-    //FilterTableViewController *filterVC = [[UIStoryboard storyboardWithName:@"LocationTableViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"FilterTableViewController"];
-    //SearchEventDetail *eventDetail = [[SearchEventDetail alloc] init];
-    
     for (int i = 0; i < _markArray.count; i++) {
         if ([[_markArray objectAtIndex:i] isEqual:@1]) {
-            eventDetail.district = [_cities objectAtIndex:i];
+            eventDetail.location = [_cities objectAtIndex:i];
             break;
         }
     }
-    NSLog(@"eventDetail in okButtonClicked %@", eventDetail.district);
-    //[self.delegate passValue:eventDetail];
+    eventDetail.distance = _distanceLabel.text;
+    NSLog(@"eventDetail in okButtonClicked %@", eventDetail.location);
+    NSLog(@"eventDetail in okButtonClicked %@", eventDetail.distance);
+    [self passValueMethod];
     
-    FilterTableViewController *filterVC = [[FilterTableViewController alloc] init];
-    //self.filterVC = filterVC;
-    filterVC.delegate = self;
-    [self.navigationController pushViewController:filterVC animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (SearchEventDetail *)passValue {
-    return eventDetail;
+- (void)passValueMethod
+{
+    [_delegate passValue:eventDetail];
 }
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    
-    SearchEventDetail *eventDetail = [[SearchEventDetail alloc] init];
-    
-    for (int i = 0; i < _markArray.count; i++) {
-        if ([[_markArray objectAtIndex:i] isEqual:@1]) {
-            eventDetail.district = [_cities objectAtIndex:i];
-            break;
-        }
-    }
-    [self.delegate passValue:eventDetail];
-    
-    [super viewWillDisappear:animated];
-        
-    NSLog(@"%s", __func__);
-}
- */
 
 - (IBAction)rowSelected:(id)sender {
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

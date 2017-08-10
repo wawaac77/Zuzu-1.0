@@ -7,17 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZZTypicalInformationModel.h"
 
 @interface SearchEventDetail : NSObject
 
 //@property (nonatomic, strong) NSArray<NSString *> *keyword;
 @property (nonatomic, copy) NSString *keyword;
-@property (nonatomic, assign) NSInteger *maxPrice;
-@property (nonatomic, assign) NSInteger *minPrice;
-@property (nonatomic, copy) NSString *district;
-@property (nonatomic, strong) NSString *cuisine;
-@property (nonatomic, assign) NSInteger *guestNumber;
-@property (nonatomic, assign) NSInteger *page;
+@property (nonatomic, strong) NSNumber *maxPrice;
+@property (nonatomic, strong) NSNumber *minPrice;
+@property (nonatomic, strong) ZZTypicalInformationModel *district;
+@property (nonatomic, strong) NSNumber *distance;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) ZZTypicalInformationModel *cuisine;
+@property (nonatomic, strong) ZZTypicalInformationModel *landmark;
+@property (nonatomic, assign) NSString *guestNumber;
+@property (nonatomic, assign) NSNumber *page;
 @property (nonatomic, strong) NSString *interests;
 @property (nonatomic, copy) NSArray *geoPoint;
 

@@ -364,6 +364,7 @@
     NSLog(@"The slider value is %@", priceRange);
     UITableViewCell *parentCell = (UITableViewCell *) sliderControl.superview;
     parentCell.detailTextLabel.text = [NSString stringWithFormat:@"0 - %@", priceRange];
+     
 }
 
 - (void)enButtonClicked {

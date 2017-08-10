@@ -22,7 +22,7 @@
 #import <SDImageCache.h>
 
 
-static NSString *const restaurantID = @"restaurant";
+static NSString *const restaurantID = @"restaurantID";
 
 @interface RestaurantTableViewController ()
 
@@ -49,9 +49,16 @@ static NSString *const restaurantID = @"restaurant";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpNavBar];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self setUpTable];
-    [self setupRefresh];
-    
+    if (self.receivedData == nil) {
+        [self setupRefresh];
+    } else {
+        self.restaurants = self.receivedData;
+        [self.tableView reloadData];
+    }
+    [self setUpNote];
     //[self setUpScrollView];
 }
 
@@ -72,7 +79,7 @@ static NSString *const restaurantID = @"restaurant";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
+    NSLog(@"loadNewEvents ALicelllllllll");
     //取消请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
@@ -158,10 +165,10 @@ static NSString *const restaurantID = @"restaurant";
 #pragma mark - tableView
 - (void)setUpTable
 {
+    NSLog(@"setUpTable Alllllllllllllllllll");
     //self.tableView.contentInset = UIEdgeInsetsMake(0, 35, 0, 0);
     //self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
+    self.tableView.frame = self.view.bounds;
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([RestaurantCell class]) bundle:nil] forCellReuseIdentifier:restaurantID];
@@ -170,8 +177,6 @@ static NSString *const restaurantID = @"restaurant";
 #pragma mark - 代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //GFTopic *topic = _topics[indexPath.row];
-    
     return 110.0f;
 }
 
@@ -182,12 +187,14 @@ static NSString *const restaurantID = @"restaurant";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSLog(@"self.restaurants.count %zd", self.restaurants.count);
+    
     return self.restaurants.count;
 }
 
 - (RestaurantCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:restaurantID forIndexPath:indexPath];
+    NSLog(@"cellIndexPath %zd", indexPath.row);
+    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:restaurantID forIndexPath: indexPath];
     EventRestaurant *thisRestaurant = self.restaurants[indexPath.row];
     cell.restaurant = thisRestaurant;
     return cell;
@@ -200,6 +207,45 @@ static NSString *const restaurantID = @"restaurant";
     [self.navigationController pushViewController:restaurantDetailVC animated:YES];
 }
 
+-(void)setUpNote
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonRepeatClick) name:GFTabBarButtonDidRepeatShowClickNotificationCenter object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonRepeatClick) name:GFTitleButtonDidRepeatShowClickNotificationCenter object:nil];
+}
 
+#pragma mark - 监听
+/**
+ *  监听TabBar按钮的重复点击
+ */
+- (void)tabBarButtonRepeatClick
+{
+    // 如果当前控制器的view不在window上，就直接返回,否则这个方法调用五次
+    if (self.view.window == nil) return;
+    
+    // 如果当前控制器的view跟window没有重叠，就直接返回
+    if (![self.view isShowingOnKeyWindow]) return;
+    
+    // 进行下拉刷新
+    [self.tableView.mj_header beginRefreshing];
+}
+
+/**
+ *  监听标题按钮的重复点击
+ */
+- (void)titleButtonRepeatClick
+{
+    [self tabBarButtonRepeatClick];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //清理缓存 放在这个个方法中调用频率过快
+    [[SDImageCache sharedImageCache] clearMemory];
+}
 
 @end

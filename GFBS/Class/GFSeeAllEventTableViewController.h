@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventInList.h"
 
 @interface GFSeeAllEventTableViewController : UITableViewController
+
+@property (strong , nonatomic)NSMutableArray<EventInList *> *receivedData;
 
 @end

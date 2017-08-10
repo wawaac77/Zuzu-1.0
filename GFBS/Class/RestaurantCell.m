@@ -32,9 +32,15 @@
     [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:restaurant.restaurantIcon.imageUrl] placeholderImage:nil];
     _bigTitleLabel.text = restaurant.restaurantName.en;
     //restaurant.restaurantDistance
-    float distance = [restaurant.restaurantDistance floatValue];
-    distance = distance * 1000;
-    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, distance];
+    //NSLog(@"restaurantDistance %@", restaurant.restaurantDistance);
+    //NSNumber *restaurantDistance = restaurant.restaurantDistance;
+    //float distance = [restaurantDistance floatValue];
+    //NSLog(@"distance %f", distance);
+    //distance = distance * 1000;
+    //_locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, distance];
+    //NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, [restaurant.restaurantDistance floatValue] * 1000];
     NSString *cuisines = @"";
     for (int i = 0; i < restaurant.restaurantCuisines.count; i++) {
         cuisines = [cuisines stringByAppendingString:restaurant.restaurantCuisines[i].informationName.en];
