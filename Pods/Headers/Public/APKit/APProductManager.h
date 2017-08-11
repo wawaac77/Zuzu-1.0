@@ -1,0 +1,1 @@
+../../../APKit/APKit/Classes/APProductManager.h

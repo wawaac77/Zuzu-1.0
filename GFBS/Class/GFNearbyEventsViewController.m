@@ -128,6 +128,7 @@
     self.nearbyEvents[index].listEventBanner.eventBanner.image_UIImage = image;
     
     item.imageView.image = image;
+    item.imageView.clipsToBounds = YES;
     item.textLabel.text = self.nearbyEvents[index].listEventName;
     NSLog(@"self.nearbyEvents[index].listEventName %@", self.nearbyEvents[index].listEventName);
     item.timeLabel.text = [NSString stringWithFormat:@"  %@", self.nearbyEvents[index].listEventStartDate];

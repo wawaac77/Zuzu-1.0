@@ -6,9 +6,14 @@
 //  Copyright © 2017 apple. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "RestaurantCell.h"
 #import "EventRestaurant.h"
 #import "ZZTypicalInformationModel.h"
+
+#import <AFNetworking.h>
+#import "UILabel+LabelHeightAndWidth.h"
+#import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 
 @interface  RestaurantCell()
@@ -19,26 +24,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventNoticeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *heartButton;
 
+@property (strong , nonatomic) GFHTTPSessionManager *manager;
+@property (strong , nonatomic) EventRestaurant *thisRestaurant;
+
 @end
 
 @implementation RestaurantCell
 
+-(GFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [GFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return _manager;
+}
 
 -(void)setRestaurant:(EventRestaurant *)restaurant
 {
-    //EventRestaurant *thisRestaurant = restaurant;
+    self.thisRestaurant = restaurant;
     NSLog(@"restaurant.id %@, %@", restaurant.restaurantId,restaurant.restaurantName.en);
     self.restaurantImageView.clipsToBounds = YES;
     [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:restaurant.restaurantIcon.imageUrl] placeholderImage:nil];
     _bigTitleLabel.text = restaurant.restaurantName.en;
-    //restaurant.restaurantDistance
-    //NSLog(@"restaurantDistance %@", restaurant.restaurantDistance);
-    //NSNumber *restaurantDistance = restaurant.restaurantDistance;
-    //float distance = [restaurantDistance floatValue];
-    //NSLog(@"distance %f", distance);
-    //distance = distance * 1000;
-    //_locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, distance];
-    //NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
     _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, [restaurant.restaurantDistance floatValue] * 1000];
     NSString *cuisines = @"";
@@ -54,30 +63,63 @@
     } else {
         [_heartButton setImage:[UIImage imageNamed:@"ic_heart-grey"] forState:UIControlStateNormal];
     }
+    [_heartButton addTarget:self action:@selector(likedButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)likedButtonClicked: (UIButton *) sender {
+    NSLog(@"self.thisEvent.listIsLike %@", self.thisRestaurant.isFavourite);
+    
+    if ([self.thisRestaurant.isFavourite isEqualToNumber:@1]) {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-grey"] forState:UIControlStateNormal];
+        self.thisRestaurant.isFavourite = [NSNumber numberWithBool:false];
+        [self likeRestaurant:false];
+        
+    } else {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-o"] forState:UIControlStateNormal];
+        self.thisRestaurant.isFavourite = [NSNumber numberWithBool:true];
+        [self likeRestaurant:true];
+    }
+}
+
+
+- (void)likeRestaurant: (BOOL) like {
+    NSLog(@"_event %@", self.thisRestaurant);
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSNumber *likeNum = [[NSNumber alloc] initWithBool:like];
+    NSLog(@"likeNum %@", likeNum);
+    
+    NSString *userToken = [[NSString alloc] init];
+    userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inData = [[NSDictionary alloc] init];
+  
+    NSDictionary *inSubData = @{@"restaurant" : self.thisRestaurant.restaurantId, @"isFavourite" : likeNum};
+    inData = @{@"action" : @"favouriteRestaurant", @"token" : userToken, @"data" : inSubData};
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    NSLog(@"publish content parameters %@", parameters);
+    
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        NSLog(@"responseObject is %@", responseObject);
+        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
     
     
 }
 
-/*
--(void) downloadImageFromURL :(NSString *)imageUrl{
-    
-    NSURL  *url = [NSURL URLWithString:imageUrl];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
-    if ( urlData )
-    {
-        NSLog(@"Downloading started...");
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"dwnld_image.png"];
-        NSLog(@"FILE : %@",filePath);
-        [urlData writeToFile:filePath atomically:YES];
-        UIImage *image1=[UIImage imageWithContentsOfFile:filePath];
-        self.restaurantImageView.image=image1;
-        NSLog(@"Completed...");
-    }
-    
-}
- */
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -52,6 +52,7 @@
 
 /*所有帖子数据*/
 @property (strong , nonatomic)NSMutableArray<ZZContentModel *> *contents;
+@property (strong , nonatomic)UIAlertView *alertView;
 
 
 @property (weak ,nonatomic) UIButton *heartButton;
@@ -150,22 +151,84 @@
     //**************** add heart button *****************//
     UIButton *heartButton = [[UIButton alloc] initWithFrame:CGRectMake(self.topImageView.gf_width - 25 - 20 - 45, self.topImageView.gf_height - 45, 25, 25)];
     self.heartButton = heartButton;
-    [heartButton setImage:[UIImage imageNamed:@"ic_heart-white.png"] forState:UIControlStateNormal];
+    if ([self.thisRestaurant.isFavourite isEqual:@true]) {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-o"] forState:UIControlStateNormal];
+    } else {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-grey"] forState:UIControlStateNormal];
+    }
     heartButton.titleLabel.contentMode = UIViewContentModeScaleAspectFit;
-    [heartButton addTarget:self action:@selector(heartButton) forControlEvents:UIControlEventTouchUpInside];
+    [heartButton addTarget:self action:@selector(hearButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:heartButton];
     
-    
 }
+
 //********************** Button clicked **********************//
 - (void)hearButtonClicked {
     NSLog(@"heart Button clicked");
+    NSLog(@"self.thisEvent.listIsLike %@", self.thisRestaurant.isFavourite);
+    
+    if ([self.thisRestaurant.isFavourite isEqualToNumber:@1]) {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-grey"] forState:UIControlStateNormal];
+        self.thisRestaurant.isFavourite = [NSNumber numberWithBool:false];
+        [self likeRestaurant:false];
+        
+    } else {
+        [_heartButton setImage:[UIImage imageNamed:@"ic_heart-o"] forState:UIControlStateNormal];
+        self.thisRestaurant.isFavourite = [NSNumber numberWithBool:true];
+        [self likeRestaurant:true];
+    }
+}
+
+- (void)likeRestaurant: (BOOL) like {
+    NSLog(@"_event %@", self.thisRestaurant);
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSNumber *likeNum = [[NSNumber alloc] initWithBool:like];
+    NSLog(@"likeNum %@", likeNum);
+    
+    NSString *userToken = [[NSString alloc] init];
+    userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inData = [[NSDictionary alloc] init];
+    
+    NSDictionary *inSubData = @{@"restaurant" : self.thisRestaurant.restaurantId, @"isFavourite" : likeNum};
+    inData = @{@"action" : @"favouriteRestaurant", @"token" : userToken, @"data" : inSubData};
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    NSLog(@"publish content parameters %@", parameters);
+    
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        NSLog(@"responseObject is %@", responseObject);
+        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
+    
+    
 }
 
 - (void)calendarButtonClicked {
+    
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"Confirm restaurant reservation?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    self.alertView = alertView;
+    [alertView show];
+    
+    
+    /*
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:NSStringFromClass([CreateEventViewController class]) bundle:nil];
     CreateEventViewController *createVC = [storyBoard instantiateInitialViewController];
     [self.navigationController pushViewController:createVC animated:YES];
+     */
 }
 
 -(void)setUpChildViewControllers

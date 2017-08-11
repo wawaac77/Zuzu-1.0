@@ -191,14 +191,24 @@ static NSString *const restaurantID = @"restaurantID";
     return self.restaurants.count;
 }
 
-- (RestaurantCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellIndexPath %zd", indexPath.row);
-    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:restaurantID forIndexPath: indexPath];
+    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:restaurantID];
     EventRestaurant *thisRestaurant = self.restaurants[indexPath.row];
     cell.restaurant = thisRestaurant;
     return cell;
 }
+
+/*
+- (RestaurantCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    NSLog(@"cellIndexPath %zd", indexPath.row);
+    RestaurantCell *cell = [tableView dequeueReusableCellWithIdentifier:restaurantID];
+    EventRestaurant *thisRestaurant = self.restaurants[indexPath.row];
+    cell.restaurant = thisRestaurant;
+    return cell;
+}
+ */
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -246,6 +256,14 @@ static NSString *const restaurantID = @"restaurantID";
 {
     //清理缓存 放在这个个方法中调用频率过快
     [[SDImageCache sharedImageCache] clearMemory];
+}
+
+//************************* update cell which is hearted in commentVC ******************************//
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"indexPathForSlectedRow in viewWillAppear %@", [self.tableView indexPathForSelectedRow]);
+    NSLog(@"indexPathForSlectedRow in viewWillAppear.row %ld", [self.tableView indexPathForSelectedRow].row);
+    
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow],nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

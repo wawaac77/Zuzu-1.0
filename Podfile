@@ -14,6 +14,7 @@ pod "SDCycleScrollView"
 pod "LTNavigationBar"
 pod 'LLImagePickerView'
 pod "DACircularProgress"
+pod 'APKit', '~> 0.3.1'
 pod "pop"
 pod 'Google/SignIn'
 pod 'Firebase/Storage'

@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - APKit (0.3.1)
   - DACircularProgress (2.3.1)
   - DOPDropDownMenu-Enhanced (1.0.0)
   - Firebase/Auth (4.0.4):
@@ -115,6 +116,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - APKit (~> 0.3.1)
   - DACircularProgress
   - DOPDropDownMenu-Enhanced
   - Firebase/Auth
@@ -135,6 +137,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   ACAlertController: 10f0455c3e1691a6197b5cd0d96d6f9a03c82763
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  APKit: 1e01f12d7a560f817c4d5b9260ecd6ef80d2287b
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
@@ -169,6 +172,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   TZImagePickerController: 086034156913375cb19c8e4103562f15322c3b36
 
-PODFILE CHECKSUM: 882e342d064b2533d4803d1e3e25096436532411
+PODFILE CHECKSUM: 6a954091348c8bda38dd53abc4601c5033367b03
 
 COCOAPODS: 1.2.0
