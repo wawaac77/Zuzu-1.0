@@ -18,6 +18,8 @@
 #import <UIImageView+WebCache.h>
 #import <SDImageCache.h>
 #import <FirebaseAuth/FirebaseAuth.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface LoginChildViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginWithFacebookButton;
@@ -58,6 +60,10 @@
                                                                           action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"[FBSDKAccessToken currentAccessToken] %@", [FBSDKAccessToken currentAccessToken]);
+    }
 }
 
 -(void)dismissKeyboard {
@@ -66,6 +72,11 @@
 }
 
 - (void)setupLayout {
+    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.center = self.view.center;
+    [self.view addSubview:loginButton];
+    
     _loginWithFacebookButton.layer.cornerRadius = 5.0f;
     _loginWithGoogleButton.layer.masksToBounds = YES;
     

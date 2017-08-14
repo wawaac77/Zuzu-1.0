@@ -18,6 +18,8 @@
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 #import <SDImageCache.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
 @interface GFEventDetailViewController () <UIScrollViewDelegate>
@@ -41,6 +43,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *bigTitleView;
 @property (weak, nonatomic) IBOutlet UILabel *smallTitleView;
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *calendarButton;
+- (IBAction)shareButtonClicked:(id)sender;
+
+
 
 @end
 
@@ -369,15 +376,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)shareButtonClicked:(id)sender {
+    //NSURL *contentURL = _eventHere.listEventBanner.eventBanner.imageUrl;
+    
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL =[NSURL URLWithString:@"http://developers.facebook.com"];
+    
+    //FBSDKShareButton *button = [[FBSDKShareButton alloc] init];
+    FBSDKSendButton *button = [[FBSDKSendButton alloc] init];
+    button.frame = CGRectMake(GFScreenWidth - 65, 170, 20, 20);
+    button.shareContent = content;
+    
+    [self.view addSubview: button];
+    
 }
-*/
-
 @end

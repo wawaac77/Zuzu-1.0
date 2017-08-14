@@ -15,7 +15,7 @@
 @import Firebase;
 #import <Fabric/Fabric.h>
 #import "Crashlytics/Crashlytics.h"
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 
 @interface AppDelegate ()
@@ -94,18 +94,40 @@
     [GIDSignIn sharedInstance].clientID = @"YOUR_CLIENT_ID";
     [GIDSignIn sharedInstance].delegate = self;
     
+    /******** Facebook signin *********/
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
 }
 
-// [START openurl]
+/************************* Facebook ************************/
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"applicationDidBecomeActive");
+    [FBSDKAppEvents activateApp];
+}
+
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
+    /************************* Facebook ************************/
+    NSLog(@"application openURL");
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+    
+    /************************* Google+ ************************/
     return [[GIDSignIn sharedInstance] handleURL:url
                                sourceApplication:sourceApplication
                                       annotation:annotation];
 }
+
+/************************* Google+ ************************/
+// [START openurl]
 // [END openurl]
 
 // [START signin_handler]
@@ -164,12 +186,6 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

@@ -21,27 +21,9 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLIconFile</key>
-			<string>weibo</string>
-			<key>CFBundleURLName</key>
-			<string>weibo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>sinaweibo</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLIconFile</key>
-			<string>google-plus-login</string>
-			<key>CFBundleURLName</key>
-			<string>Google</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.840409372969-fqsoutdk07phmjic2dje94jmh32vobbt</string>
+				<string>fb253099938532562</string>
 			</array>
 		</dict>
 	</array>
@@ -85,6 +67,22 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>FacebookAppID</key>
+	<string>253099938532562</string>
+	<key>FacebookDisplayName</key>
+	<string>Zuzu</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>com.paypal.ppclient.touch.v2</string>
+		<string>com.paypal.ppclient.touch.v1</string>
+		<string>org-appextension-feature-password-management
+org-appextension-feature-password-management
+</string>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
 	</array>
 </dict>
 </plist>

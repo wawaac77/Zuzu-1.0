@@ -21,6 +21,7 @@
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 #import <SDImageCache.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 static NSString *const eventID = @"event";
 
@@ -58,6 +59,10 @@ static NSString *const eventID = @"event";
     [self setUpNavBar];
     [self setUpTable];
     [self setupRefresh];
+    
+    if ([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"[FBSDKAccessToken currentAccessToken] %@", [FBSDKAccessToken currentAccessToken]);
+    }
     //[self setUpNote];
     
 }

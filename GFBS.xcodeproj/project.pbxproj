@@ -500,6 +500,22 @@
 		789E0D621F17DC7E00CCAAE4 /* ZZInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789E0D611F17DC7E00CCAAE4 /* ZZInboxTableViewController.m */; };
 		789E0D661F17DCAE00CCAAE4 /* ZZInboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789E0D641F17DCAE00CCAAE4 /* ZZInboxCell.m */; };
 		789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789E0D651F17DCAE00CCAAE4 /* ZZInboxCell.xib */; };
+		78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA31F4145CB007E8112 /* Bolts.framework */; };
+		78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */; };
+		78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */; };
+		78D85BAA1F4145FB007E8112 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA91F4145FB007E8112 /* FBSDKShareKit.framework */; };
+		78D85BB81F41B08C007E8112 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D85BAD1F41B08C007E8112 /* CardIO.m */; };
+		78D85BB91F41B08C007E8112 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB51F41B08C007E8112 /* libCardIO.a */; };
+		78D85BBA1F41B08C007E8112 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB61F41B08C007E8112 /* libopencv_core.a */; };
+		78D85BBB1F41B08C007E8112 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */; };
+		78D85BC51F41B08F007E8112 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */; };
+		78D85BC71F41B105007E8112 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BC61F41B105007E8112 /* AudioToolbox.framework */; };
+		78D85BC91F41B113007E8112 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BC81F41B113007E8112 /* AVFoundation.framework */; };
+		78D85BCB1F41B130007E8112 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BCA1F41B130007E8112 /* CoreLocation.framework */; };
+		78D85BCD1F41B153007E8112 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BCC1F41B153007E8112 /* CoreMedia.framework */; };
+		78D85BCF1F41B16C007E8112 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BCE1F41B16B007E8112 /* MessageUI.framework */; };
+		78D85BD11F41B17D007E8112 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BD01F41B17D007E8112 /* MobileCoreServices.framework */; };
+		78D85BD31F41B18F007E8112 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BD21F41B18F007E8112 /* SafariServices.framework */; };
 		78F49F721EE6F37B00674130 /* EventListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F711EE6F37B00674130 /* EventListTableViewController.m */; };
 		78F49F801EE6F5A900674130 /* MyEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F7E1EE6F5A900674130 /* MyEventCell.m */; };
 		78F49F811EE6F5A900674130 /* MyEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F49F7F1EE6F5A900674130 /* MyEventCell.xib */; };
@@ -1245,6 +1261,37 @@
 		789E0D631F17DCAE00CCAAE4 /* ZZInboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZInboxCell.h; sourceTree = "<group>"; };
 		789E0D641F17DCAE00CCAAE4 /* ZZInboxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZInboxCell.m; sourceTree = "<group>"; };
 		789E0D651F17DCAE00CCAAE4 /* ZZInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZInboxCell.xib; sourceTree = "<group>"; };
+		78D85BA31F4145CB007E8112 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		78D85BA91F4145FB007E8112 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		78D85BAC1F41B08C007E8112 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		78D85BAD1F41B08C007E8112 /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
+		78D85BAE1F41B08C007E8112 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		78D85BAF1F41B08C007E8112 /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		78D85BB01F41B08C007E8112 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		78D85BB11F41B08C007E8112 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		78D85BB21F41B08C007E8112 /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		78D85BB31F41B08C007E8112 /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		78D85BB41F41B08C007E8112 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		78D85BB51F41B08C007E8112 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		78D85BB61F41B08C007E8112 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
+		78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
+		78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
+		78D85BBE1F41B08F007E8112 /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
+		78D85BBF1F41B08F007E8112 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
+		78D85BC01F41B08F007E8112 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
+		78D85BC11F41B08F007E8112 /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalOAuthScopes.h; sourceTree = "<group>"; };
+		78D85BC21F41B08F007E8112 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
+		78D85BC31F41B08F007E8112 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
+		78D85BC41F41B08F007E8112 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
+		78D85BC61F41B105007E8112 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		78D85BC81F41B113007E8112 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		78D85BCA1F41B130007E8112 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		78D85BCC1F41B153007E8112 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		78D85BCE1F41B16B007E8112 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		78D85BD01F41B17D007E8112 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		78D85BD21F41B18F007E8112 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		78F49F701EE6F37B00674130 /* EventListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewController.h; sourceTree = "<group>"; };
 		78F49F711EE6F37B00674130 /* EventListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewController.m; sourceTree = "<group>"; };
 		78F49F7D1EE6F5A900674130 /* MyEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventCell.h; sourceTree = "<group>"; };
@@ -1284,8 +1331,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78D85BD31F41B18F007E8112 /* SafariServices.framework in Frameworks */,
+				78D85BD11F41B17D007E8112 /* MobileCoreServices.framework in Frameworks */,
+				78D85BCF1F41B16C007E8112 /* MessageUI.framework in Frameworks */,
+				78D85BCD1F41B153007E8112 /* CoreMedia.framework in Frameworks */,
+				78D85BCB1F41B130007E8112 /* CoreLocation.framework in Frameworks */,
+				78D85BC91F41B113007E8112 /* AVFoundation.framework in Frameworks */,
+				78D85BC71F41B105007E8112 /* AudioToolbox.framework in Frameworks */,
+				78D85BAA1F4145FB007E8112 /* FBSDKShareKit.framework in Frameworks */,
+				78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */,
+				78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */,
+				78D85BBB1F41B08C007E8112 /* libopencv_imgproc.a in Frameworks */,
+				78D85BBA1F41B08C007E8112 /* libopencv_core.a in Frameworks */,
 				7824E3611EF27D5300F85BFB /* MapKit.framework in Frameworks */,
+				78D85BC51F41B08F007E8112 /* libPayPalMobile.a in Frameworks */,
+				78D85BB91F41B08C007E8112 /* libCardIO.a in Frameworks */,
 				784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */,
+				78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */,
 				784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */,
 				A19A3A426450EB514D1249B0 /* libPods-GFBS.a in Frameworks */,
 			);
@@ -1808,6 +1870,8 @@
 		18BE02851DDB497A00D27893 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				78D85BBC1F41B08F007E8112 /* PayPalMobile */,
+				78D85BAB1F41B08C007E8112 /* CardIO */,
 				7860695D1F15D98100A8AB88 /* DHGuidePageHUD */,
 				183E9CE41E8E585000B13C75 /* GFBS.pch */,
 				183E9CE51E8E585000B13C75 /* GFConst.h */,
@@ -1893,6 +1957,17 @@
 		6F4DA860D03CDB4F1CA64D50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78D85BD21F41B18F007E8112 /* SafariServices.framework */,
+				78D85BD01F41B17D007E8112 /* MobileCoreServices.framework */,
+				78D85BCE1F41B16B007E8112 /* MessageUI.framework */,
+				78D85BCC1F41B153007E8112 /* CoreMedia.framework */,
+				78D85BCA1F41B130007E8112 /* CoreLocation.framework */,
+				78D85BC81F41B113007E8112 /* AVFoundation.framework */,
+				78D85BC61F41B105007E8112 /* AudioToolbox.framework */,
+				78D85BA91F4145FB007E8112 /* FBSDKShareKit.framework */,
+				78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */,
+				78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */,
+				78D85BA31F4145CB007E8112 /* Bolts.framework */,
 				784FBB7E1F1F032A00014395 /* Fabric.framework */,
 				784FBB7F1F1F032A00014395 /* Crashlytics.framework */,
 				7824E3601EF27D5300F85BFB /* MapKit.framework */,
@@ -3113,6 +3188,40 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		78D85BAB1F41B08C007E8112 /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				78D85BAC1F41B08C007E8112 /* CardIO.h */,
+				78D85BAD1F41B08C007E8112 /* CardIO.m */,
+				78D85BAE1F41B08C007E8112 /* CardIOCreditCardInfo.h */,
+				78D85BAF1F41B08C007E8112 /* CardIODetectionMode.h */,
+				78D85BB01F41B08C007E8112 /* CardIOPaymentViewController.h */,
+				78D85BB11F41B08C007E8112 /* CardIOPaymentViewControllerDelegate.h */,
+				78D85BB21F41B08C007E8112 /* CardIOUtilities.h */,
+				78D85BB31F41B08C007E8112 /* CardIOView.h */,
+				78D85BB41F41B08C007E8112 /* CardIOViewDelegate.h */,
+				78D85BB51F41B08C007E8112 /* libCardIO.a */,
+				78D85BB61F41B08C007E8112 /* libopencv_core.a */,
+				78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */,
+			);
+			path = CardIO;
+			sourceTree = "<group>";
+		};
+		78D85BBC1F41B08F007E8112 /* PayPalMobile */ = {
+			isa = PBXGroup;
+			children = (
+				78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */,
+				78D85BBE1F41B08F007E8112 /* PayPalConfiguration.h */,
+				78D85BBF1F41B08F007E8112 /* PayPalFuturePaymentViewController.h */,
+				78D85BC01F41B08F007E8112 /* PayPalMobile.h */,
+				78D85BC11F41B08F007E8112 /* PayPalOAuthScopes.h */,
+				78D85BC21F41B08F007E8112 /* PayPalPayment.h */,
+				78D85BC31F41B08F007E8112 /* PayPalPaymentViewController.h */,
+				78D85BC41F41B08F007E8112 /* PayPalProfileSharingViewController.h */,
+			);
+			path = PayPalMobile;
+			sourceTree = "<group>";
+		};
 		78FE02291EE930D200ABD5B9 /* ZBProgressView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3259,13 +3368,12 @@
 					};
 					189CA3381DDADBF6004D07EA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2BU7DGY6CY;
+						DevelopmentTeam = 2FG6Y9F8J5;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 189CA31F1DDADBF6004D07EA;
 					};
 					189CA3431DDADBF6004D07EA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2BU7DGY6CY;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 189CA31F1DDADBF6004D07EA;
 					};
@@ -3846,6 +3954,7 @@
 				789CFF7E1F0CDB7F00EBA772 /* ZZInterest.m in Sources */,
 				7824E35E1EF23D1600F85BFB /* MapNearbyEventsViewController.m in Sources */,
 				788CC3511F19EC3900DC4116 /* JSQMessagesInputToolbar.m in Sources */,
+				78D85BB81F41B08C007E8112 /* CardIO.m in Sources */,
 				18C826381DE736C1007341E3 /* GFWordViewController.m in Sources */,
 				7817DF7E1F179EFF00B4B02A /* DropDownListView.m in Sources */,
 				786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */,
@@ -4032,15 +4141,23 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					/Users/alicejin/Desktop/zuzu_one,
 					"$(inherited)",
-					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
-					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFBS/Class/Others/CardIO",
+					"$(PROJECT_DIR)/GFBS/Class/Others/PayPalMobile",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zuzu-app.ios-beta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4055,15 +4172,23 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
+					"<Multiple",
+					"values>",
+					/Users/alicejin/Desktop/zuzu_one,
 					"$(inherited)",
-					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
-					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GFBS/Class/Others/CardIO",
+					"$(PROJECT_DIR)/GFBS/Class/Others/PayPalMobile",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zuzu-app.ios-beta";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4074,7 +4199,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2BU7DGY6CY;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				INFOPLIST_FILE = GFBSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CDD.GFBSTests;
@@ -4087,7 +4212,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 2BU7DGY6CY;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				INFOPLIST_FILE = GFBSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CDD.GFBSTests;
@@ -4099,7 +4224,7 @@
 		189CA3541DDADBF6004D07EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 2BU7DGY6CY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GFBSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CDD.GFBSUITests;
@@ -4111,7 +4236,7 @@
 		189CA3551DDADBF6004D07EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 2BU7DGY6CY;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GFBSUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CDD.GFBSUITests;

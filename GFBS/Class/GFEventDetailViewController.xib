@@ -12,7 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GFEventDetailViewController">
             <connections>
                 <outlet property="bigTitleView" destination="RLa-4s-RK4" id="UCP-2U-2ZQ"/>
+                <outlet property="calendarButton" destination="9Xo-yt-0Ks" id="E1h-Mi-hhj"/>
                 <outlet property="headerImageView" destination="eeW-Xf-cUG" id="ZCl-MB-acz"/>
+                <outlet property="shareButton" destination="K9d-MB-vqi" id="gXT-Mb-Oxg"/>
                 <outlet property="smallTitleView" destination="6t4-X1-tsl" id="P4K-mF-jL0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,6 +47,9 @@
                     <rect key="frame" x="310" y="170" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="ic_forward"/>
+                    <connections>
+                        <action selector="shareButtonClicked:" destination="-1" eventType="touchUpInside" id="RjQ-gN-DXj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xo-yt-0Ks">
                     <rect key="frame" x="340" y="170" width="20" height="20"/>
