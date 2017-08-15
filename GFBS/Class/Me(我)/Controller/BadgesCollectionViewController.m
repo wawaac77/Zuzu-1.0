@@ -8,6 +8,7 @@
 
 #import "BadgesCollectionViewController.h"
 #import "GFWebViewController.h"
+#import "BadgesDetailViewController.h"
 
 #import "GFSquareItem.h"
 #import "BadgesSquareCell.h"
@@ -128,6 +129,13 @@ static CGFloat  const margin = 0;
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     GFSquareItem *item = _buttonItems[indexPath.item];
+    
+    BadgesDetailViewController *detailVC = [[BadgesDetailViewController alloc] init];
+    detailVC.item = item;
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    /*
     //判断
     if (![item.url containsString:@"http"]) return;
     
@@ -137,18 +145,7 @@ static CGFloat  const margin = 0;
     
     //给Url赋值
     webVc.url = url;
-    
+     */
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

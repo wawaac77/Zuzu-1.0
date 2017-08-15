@@ -1,16 +1,8 @@
 wsource 'https://github.com/CocoaPods/Specs.git'
-platform :ios, "7.0"
-pod 'PayPal-iOS-SDK'
 
 
 platform :ios, "8.0"
 # use_frameworks!
-# Includes Cards and PayPal
-pod 'Braintree'
-
-# Optionally include additional Pods
-pod 'Braintree/DataCollector'
-pod 'Braintree/Venmo'
 
 pod "AFNetworking"
 pod "SDWebImage"

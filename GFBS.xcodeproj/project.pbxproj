@@ -504,11 +504,6 @@
 		78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */; };
 		78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */; };
 		78D85BAA1F4145FB007E8112 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA91F4145FB007E8112 /* FBSDKShareKit.framework */; };
-		78D85BB81F41B08C007E8112 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D85BAD1F41B08C007E8112 /* CardIO.m */; };
-		78D85BB91F41B08C007E8112 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB51F41B08C007E8112 /* libCardIO.a */; };
-		78D85BBA1F41B08C007E8112 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB61F41B08C007E8112 /* libopencv_core.a */; };
-		78D85BBB1F41B08C007E8112 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */; };
-		78D85BC51F41B08F007E8112 /* libPayPalMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */; };
 		78D85BC71F41B105007E8112 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BC61F41B105007E8112 /* AudioToolbox.framework */; };
 		78D85BC91F41B113007E8112 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BC81F41B113007E8112 /* AVFoundation.framework */; };
 		78D85BCB1F41B130007E8112 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BCA1F41B130007E8112 /* CoreLocation.framework */; };
@@ -516,6 +511,8 @@
 		78D85BCF1F41B16C007E8112 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BCE1F41B16B007E8112 /* MessageUI.framework */; };
 		78D85BD11F41B17D007E8112 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BD01F41B17D007E8112 /* MobileCoreServices.framework */; };
 		78D85BD31F41B18F007E8112 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BD21F41B18F007E8112 /* SafariServices.framework */; };
+		78D85BDB1F42A9CE007E8112 /* BadgesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D85BD91F42A9CE007E8112 /* BadgesDetailViewController.m */; };
+		78D85BDC1F42A9CE007E8112 /* BadgesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78D85BDA1F42A9CE007E8112 /* BadgesDetailViewController.xib */; };
 		78F49F721EE6F37B00674130 /* EventListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F711EE6F37B00674130 /* EventListTableViewController.m */; };
 		78F49F801EE6F5A900674130 /* MyEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F49F7E1EE6F5A900674130 /* MyEventCell.m */; };
 		78F49F811EE6F5A900674130 /* MyEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F49F7F1EE6F5A900674130 /* MyEventCell.xib */; };
@@ -815,8 +812,8 @@
 		7800973E1ECADC7B008F9F99 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7807917C1F1F542C00D24CB6 /* AddLLImagePickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLLImagePickerVC.h; sourceTree = "<group>"; };
 		7807917D1F1F542C00D24CB6 /* AddLLImagePickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLLImagePickerVC.m; sourceTree = "<group>"; };
-		7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBadgeModel.h; sourceTree = "<group>"; };
-		7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBadgeModel.m; sourceTree = "<group>"; };
+		7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZBadgeModel.h; path = "../Me(我)/Model/ZZBadgeModel.h"; sourceTree = "<group>"; };
+		7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZBadgeModel.m; path = "../Me(我)/Model/ZZBadgeModel.m"; sourceTree = "<group>"; };
 		7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
 		7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		781210301F3C33EB00C08BD6 /* InterestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestsTableViewController.h; sourceTree = "<group>"; };
@@ -900,8 +897,8 @@
 		7824E3281EF13BF700F85BFB /* profile-bg-white_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-white_02.jpg"; sourceTree = "<group>"; };
 		7824E3291EF13BF700F85BFB /* profile-bg-yellow_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-yellow_01.jpg"; sourceTree = "<group>"; };
 		7824E32A1EF13BF700F85BFB /* profile-bg-yellow_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "profile-bg-yellow_02.jpg"; sourceTree = "<group>"; };
-		7824E3391EF13F7600F85BFB /* BadgesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesCollectionViewController.h; sourceTree = "<group>"; };
-		7824E33A1EF13F7600F85BFB /* BadgesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesCollectionViewController.m; sourceTree = "<group>"; };
+		7824E3391EF13F7600F85BFB /* BadgesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgesCollectionViewController.h; path = "../Me(我)/Controller/BadgesCollectionViewController.h"; sourceTree = "<group>"; };
+		7824E33A1EF13F7600F85BFB /* BadgesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgesCollectionViewController.m; path = "../Me(我)/Controller/BadgesCollectionViewController.m"; sourceTree = "<group>"; };
 		7824E33E1EF1408E00F85BFB /* ic_badges_338x338-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_badges_338x338-01.png"; sourceTree = "<group>"; };
 		7824E33F1EF1408E00F85BFB /* ic_badges_338x338-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_badges_338x338-02.png"; sourceTree = "<group>"; };
 		7824E3401EF1408E00F85BFB /* ic_badges_338x338-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_badges_338x338-03.png"; sourceTree = "<group>"; };
@@ -911,9 +908,9 @@
 		7824E3441EF1408E00F85BFB /* ic_badges_338x338-07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_badges_338x338-07.png"; sourceTree = "<group>"; };
 		7824E3451EF1408E00F85BFB /* ic_badges_338x338-08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_badges_338x338-08.png"; sourceTree = "<group>"; };
 		7824E3461EF1408E00F85BFB /* zuzu-frame-user-profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "zuzu-frame-user-profile.jpg"; sourceTree = "<group>"; };
-		7824E3561EF2201D00F85BFB /* BadgesSquareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesSquareCell.h; sourceTree = "<group>"; };
-		7824E3571EF2201D00F85BFB /* BadgesSquareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesSquareCell.m; sourceTree = "<group>"; };
-		7824E3581EF2201D00F85BFB /* BadgesSquareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesSquareCell.xib; sourceTree = "<group>"; };
+		7824E3561EF2201D00F85BFB /* BadgesSquareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BadgesSquareCell.h; path = "../Me(我)/View/BadgesSquareCell.h"; sourceTree = "<group>"; };
+		7824E3571EF2201D00F85BFB /* BadgesSquareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BadgesSquareCell.m; path = "../Me(我)/View/BadgesSquareCell.m"; sourceTree = "<group>"; };
+		7824E3581EF2201D00F85BFB /* BadgesSquareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BadgesSquareCell.xib; path = "../Me(我)/View/BadgesSquareCell.xib"; sourceTree = "<group>"; };
 		7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapNearbyEventsViewController.h; sourceTree = "<group>"; };
 		7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapNearbyEventsViewController.m; sourceTree = "<group>"; };
 		7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapNearbyEventsViewController.xib; sourceTree = "<group>"; };
@@ -1265,26 +1262,6 @@
 		78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		78D85BA91F4145FB007E8112 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
-		78D85BAC1F41B08C007E8112 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
-		78D85BAD1F41B08C007E8112 /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
-		78D85BAE1F41B08C007E8112 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
-		78D85BAF1F41B08C007E8112 /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
-		78D85BB01F41B08C007E8112 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
-		78D85BB11F41B08C007E8112 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
-		78D85BB21F41B08C007E8112 /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
-		78D85BB31F41B08C007E8112 /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
-		78D85BB41F41B08C007E8112 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
-		78D85BB51F41B08C007E8112 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
-		78D85BB61F41B08C007E8112 /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
-		78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
-		78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPayPalMobile.a; sourceTree = "<group>"; };
-		78D85BBE1F41B08F007E8112 /* PayPalConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalConfiguration.h; sourceTree = "<group>"; };
-		78D85BBF1F41B08F007E8112 /* PayPalFuturePaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalFuturePaymentViewController.h; sourceTree = "<group>"; };
-		78D85BC01F41B08F007E8112 /* PayPalMobile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalMobile.h; sourceTree = "<group>"; };
-		78D85BC11F41B08F007E8112 /* PayPalOAuthScopes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalOAuthScopes.h; sourceTree = "<group>"; };
-		78D85BC21F41B08F007E8112 /* PayPalPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPayment.h; sourceTree = "<group>"; };
-		78D85BC31F41B08F007E8112 /* PayPalPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalPaymentViewController.h; sourceTree = "<group>"; };
-		78D85BC41F41B08F007E8112 /* PayPalProfileSharingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayPalProfileSharingViewController.h; sourceTree = "<group>"; };
 		78D85BC61F41B105007E8112 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		78D85BC81F41B113007E8112 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		78D85BCA1F41B130007E8112 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1292,6 +1269,9 @@
 		78D85BCE1F41B16B007E8112 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		78D85BD01F41B17D007E8112 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		78D85BD21F41B18F007E8112 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		78D85BD81F42A9CE007E8112 /* BadgesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgesDetailViewController.h; sourceTree = "<group>"; };
+		78D85BD91F42A9CE007E8112 /* BadgesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgesDetailViewController.m; sourceTree = "<group>"; };
+		78D85BDA1F42A9CE007E8112 /* BadgesDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BadgesDetailViewController.xib; sourceTree = "<group>"; };
 		78F49F701EE6F37B00674130 /* EventListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListTableViewController.h; sourceTree = "<group>"; };
 		78F49F711EE6F37B00674130 /* EventListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListTableViewController.m; sourceTree = "<group>"; };
 		78F49F7D1EE6F5A900674130 /* MyEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyEventCell.h; sourceTree = "<group>"; };
@@ -1341,11 +1321,7 @@
 				78D85BAA1F4145FB007E8112 /* FBSDKShareKit.framework in Frameworks */,
 				78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */,
 				78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */,
-				78D85BBB1F41B08C007E8112 /* libopencv_imgproc.a in Frameworks */,
-				78D85BBA1F41B08C007E8112 /* libopencv_core.a in Frameworks */,
 				7824E3611EF27D5300F85BFB /* MapKit.framework in Frameworks */,
-				78D85BC51F41B08F007E8112 /* libPayPalMobile.a in Frameworks */,
-				78D85BB91F41B08C007E8112 /* libCardIO.a in Frameworks */,
 				784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */,
 				78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */,
 				784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */,
@@ -1589,6 +1565,7 @@
 				78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */,
 				786B38181F2DDC310098A12F /* User Profile */,
 				18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */,
+				78D85BD41F42A93D007E8112 /* Badges */,
 				185420811DF064F1004F6378 /* Setting & Notification */,
 				18BE02811DDB497900D27893 /* New(新帖) */,
 				18BE02751DDB497900D27893 /* FriendTrend(关注) */,
@@ -1798,8 +1775,6 @@
 				781E56621F31BCA2006854BA /* MyZuzuViewController.h */,
 				781E56631F31BCA2006854BA /* MyZuzuViewController.m */,
 				781E56641F31BCA2006854BA /* MyZuzuViewController.xib */,
-				7824E3391EF13F7600F85BFB /* BadgesCollectionViewController.h */,
-				7824E33A1EF13F7600F85BFB /* BadgesCollectionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1809,8 +1784,6 @@
 			children = (
 				1841A7731DE1750600FB54CC /* GFSquareItem.h */,
 				1841A7741DE1750600FB54CC /* GFSquareItem.m */,
-				7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */,
-				7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1821,9 +1794,6 @@
 				1841A7761DE1752E00FB54CC /* GFSquareCell.h */,
 				1841A7771DE1752E00FB54CC /* GFSquareCell.m */,
 				1841A7781DE1752E00FB54CC /* GFSquareCell.xib */,
-				7824E3561EF2201D00F85BFB /* BadgesSquareCell.h */,
-				7824E3571EF2201D00F85BFB /* BadgesSquareCell.m */,
-				7824E3581EF2201D00F85BFB /* BadgesSquareCell.xib */,
 				78FE02291EE930D200ABD5B9 /* ZBProgressView */,
 			);
 			path = View;
@@ -1870,8 +1840,6 @@
 		18BE02851DDB497A00D27893 /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				78D85BBC1F41B08F007E8112 /* PayPalMobile */,
-				78D85BAB1F41B08C007E8112 /* CardIO */,
 				7860695D1F15D98100A8AB88 /* DHGuidePageHUD */,
 				183E9CE41E8E585000B13C75 /* GFBS.pch */,
 				183E9CE51E8E585000B13C75 /* GFConst.h */,
@@ -3188,38 +3156,46 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		78D85BAB1F41B08C007E8112 /* CardIO */ = {
+		78D85BD41F42A93D007E8112 /* Badges */ = {
 			isa = PBXGroup;
 			children = (
-				78D85BAC1F41B08C007E8112 /* CardIO.h */,
-				78D85BAD1F41B08C007E8112 /* CardIO.m */,
-				78D85BAE1F41B08C007E8112 /* CardIOCreditCardInfo.h */,
-				78D85BAF1F41B08C007E8112 /* CardIODetectionMode.h */,
-				78D85BB01F41B08C007E8112 /* CardIOPaymentViewController.h */,
-				78D85BB11F41B08C007E8112 /* CardIOPaymentViewControllerDelegate.h */,
-				78D85BB21F41B08C007E8112 /* CardIOUtilities.h */,
-				78D85BB31F41B08C007E8112 /* CardIOView.h */,
-				78D85BB41F41B08C007E8112 /* CardIOViewDelegate.h */,
-				78D85BB51F41B08C007E8112 /* libCardIO.a */,
-				78D85BB61F41B08C007E8112 /* libopencv_core.a */,
-				78D85BB71F41B08C007E8112 /* libopencv_imgproc.a */,
+				78D85BD51F42A953007E8112 /* Controller */,
+				78D85BD61F42A981007E8112 /* Model */,
+				78D85BD71F42A99A007E8112 /* View */,
 			);
-			path = CardIO;
+			name = Badges;
+			path = "Setting(设置)";
 			sourceTree = "<group>";
 		};
-		78D85BBC1F41B08F007E8112 /* PayPalMobile */ = {
+		78D85BD51F42A953007E8112 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				78D85BBD1F41B08F007E8112 /* libPayPalMobile.a */,
-				78D85BBE1F41B08F007E8112 /* PayPalConfiguration.h */,
-				78D85BBF1F41B08F007E8112 /* PayPalFuturePaymentViewController.h */,
-				78D85BC01F41B08F007E8112 /* PayPalMobile.h */,
-				78D85BC11F41B08F007E8112 /* PayPalOAuthScopes.h */,
-				78D85BC21F41B08F007E8112 /* PayPalPayment.h */,
-				78D85BC31F41B08F007E8112 /* PayPalPaymentViewController.h */,
-				78D85BC41F41B08F007E8112 /* PayPalProfileSharingViewController.h */,
+				7824E3391EF13F7600F85BFB /* BadgesCollectionViewController.h */,
+				7824E33A1EF13F7600F85BFB /* BadgesCollectionViewController.m */,
+				78D85BD81F42A9CE007E8112 /* BadgesDetailViewController.h */,
+				78D85BD91F42A9CE007E8112 /* BadgesDetailViewController.m */,
+				78D85BDA1F42A9CE007E8112 /* BadgesDetailViewController.xib */,
 			);
-			path = PayPalMobile;
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		78D85BD61F42A981007E8112 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7812102A1F3AD3D600C08BD6 /* ZZBadgeModel.h */,
+				7812102B1F3AD3D600C08BD6 /* ZZBadgeModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		78D85BD71F42A99A007E8112 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7824E3561EF2201D00F85BFB /* BadgesSquareCell.h */,
+				7824E3571EF2201D00F85BFB /* BadgesSquareCell.m */,
+				7824E3581EF2201D00F85BFB /* BadgesSquareCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		78FE02291EE930D200ABD5B9 /* ZBProgressView */ = {
@@ -3416,6 +3392,7 @@
 				786069A81F15DB9B00A8AB88 /* ic_checkin-camera.png in Resources */,
 				786069B21F15DB9B00A8AB88 /* ic_home-check-in.png in Resources */,
 				780096FB1EC9C1F5008F9F99 /* ic_fa-calendar-check-o.png in Resources */,
+				78D85BDC1F42A9CE007E8112 /* BadgesDetailViewController.xib in Resources */,
 				7829FF791ED55C9B00C934C2 /* pexels-photo-29346.png in Resources */,
 				780096C01EC9C1F5008F9F99 /* ic_ fa-navicon.png in Resources */,
 				786069B81F15DB9B00A8AB88 /* ic_inbox.png in Resources */,
@@ -3954,7 +3931,6 @@
 				789CFF7E1F0CDB7F00EBA772 /* ZZInterest.m in Sources */,
 				7824E35E1EF23D1600F85BFB /* MapNearbyEventsViewController.m in Sources */,
 				788CC3511F19EC3900DC4116 /* JSQMessagesInputToolbar.m in Sources */,
-				78D85BB81F41B08C007E8112 /* CardIO.m in Sources */,
 				18C826381DE736C1007341E3 /* GFWordViewController.m in Sources */,
 				7817DF7E1F179EFF00B4B02A /* DropDownListView.m in Sources */,
 				786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */,
@@ -3976,6 +3952,7 @@
 				784D3F731ECC85CD0058C63F /* GFNearbyEventsViewController.m in Sources */,
 				1899804C1DDBF33D009071F4 /* UIView+GFFrame.m in Sources */,
 				7824E33B1EF13F7600F85BFB /* BadgesCollectionViewController.m in Sources */,
+				78D85BDB1F42A9CE007E8112 /* BadgesDetailViewController.m in Sources */,
 				18E8D36D1DE9D19800ED4EE1 /* GFUser.m in Sources */,
 				781E56781F330BD3006854BA /* ReviewCell.m in Sources */,
 				18E8D3751DE9EA8400ED4EE1 /* GFTopicVideoView.m in Sources */,
@@ -4150,7 +4127,7 @@
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4181,7 +4158,7 @@
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
