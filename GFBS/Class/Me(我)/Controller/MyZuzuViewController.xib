@@ -15,10 +15,12 @@
                 <outlet property="OrganizingExpView" destination="Ppl-6N-DiK" id="urX-iS-dbM"/>
                 <outlet property="SocialExpView" destination="Gw3-JL-P6D" id="sL3-vM-vr6"/>
                 <outlet property="badgesView" destination="ZCJ-cp-3Ko" id="gRU-0B-5My"/>
+                <outlet property="changeProfilePicButton" destination="GNI-gc-CUA" id="76d-88-fgq"/>
                 <outlet property="functionsView" destination="y15-Dg-Sst" id="Dky-Vl-aye"/>
                 <outlet property="leaderboardButton" destination="nlb-9w-YWl" id="kiY-j3-4QV"/>
                 <outlet property="organizeExpLabel" destination="T4T-l9-xbs" id="fOH-S9-ARe"/>
                 <outlet property="organizeImageView" destination="IoQ-d8-Txa" id="H8a-15-09p"/>
+                <outlet property="profileImageView" destination="guQ-Ix-nmc" id="ynw-qT-nve"/>
                 <outlet property="socialExpLabel" destination="edm-C5-f9a" id="Upv-1V-S6i"/>
                 <outlet property="socialImageView" destination="Hbg-aQ-byO" id="7U7-jx-4T4"/>
                 <outlet property="userNameLabel" destination="ySm-Ss-yOa" id="aJc-UO-WyZ"/>
@@ -111,6 +113,13 @@
                             <rect key="frame" x="165" y="124" width="44" height="45"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNI-gc-CUA">
+                            <rect key="frame" x="152" y="17" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="changeProfilePicClicked:" destination="-1" eventType="touchUpInside" id="uV6-by-kYA"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

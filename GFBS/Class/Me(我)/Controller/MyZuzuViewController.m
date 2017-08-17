@@ -27,6 +27,7 @@
 #import <SVProgressHUD.h>
 #import <MJExtension.h>
 #import <AFNetworking.h>
+#import <UIImageView+WebCache.h>
 #import "UIBarButtonItem+Badge.h"
 
 static NSString *const ID = @"ID";
@@ -35,7 +36,10 @@ static CGFloat  const margin = 0;
 
 #define itemHW  (GFScreenWidth - (cols - 1) * margin ) / cols
 
-@interface MyZuzuViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MyZuzuViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *changeProfilePicButton;
+- (IBAction)changeProfilePicClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet ProgressView *SocialExpView;
 @property (weak, nonatomic) IBOutlet ProgressView *OrganizingExpView;
 @property (weak, nonatomic) IBOutlet UIView *badgesView;
@@ -53,7 +57,7 @@ static CGFloat  const margin = 0;
 /*所有button内容*/
 @property (strong , nonatomic)NSMutableArray<GFSquareItem *> *buttonItems;
 @property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *badgesArray;
-
+@property (weak, nonatomic) UIImage *pickedImage;
 
 /**
  collectionView
@@ -366,4 +370,104 @@ static CGFloat  const margin = 0;
     LeaderboardViewController *leaderboardVC = [[LeaderboardViewController alloc] init];
     [self.navigationController pushViewController:leaderboardVC animated:YES];
 }
+- (IBAction)changeProfilePicClicked:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.profileImageView.image = chosenImage;
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.gf_width / 2;
+    self.pickedImage = chosenImage;
+    NSLog(@"chosenImage %@", chosenImage);
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [self uploadProfilePic];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (NSString *)encodeToBase64String:(UIImage *)image {
+    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
+- (NSString *)contentTypeForImageData:(NSData *)data {
+    uint8_t c;
+    [data getBytes:&c length:1];
+    
+    switch (c) {
+        case 0xFF:
+            return @"image/jpeg";
+        case 0x89:
+            return @"image/png";
+        case 0x47:
+            return @"image/gif";
+        case 0x49:
+            break;
+        case 0x42:
+            return @"image/bmp";
+        case 0x4D:
+            return @"image/tiff";
+    }
+    return nil;
+}
+
+
+- (void)uploadProfilePic {
+    
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSString *userToken = [[NSString alloc] init];
+    userToken = [AppDelegate APP].user.userToken;
+    NSLog(@"userToken in checkinVC %@", userToken);
+    
+    NSString *imageBase64 = [UIImagePNGRepresentation(_pickedImage)
+                             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSData *imageData = UIImagePNGRepresentation(_pickedImage);
+    NSString *imageType = [self contentTypeForImageData:imageData];
+    NSString *imageInfo = [NSString stringWithFormat:@"data:%@;base64,%@",imageType, imageBase64];
+    
+    NSDictionary *inSubData = @{@"profilePic": imageInfo};
+    
+    NSDictionary *inData = @{@"action" : @"uploadProfilePic",
+                             @"token" : userToken,
+                             @"data" : inSubData};
+    
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    //发送请求
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        //self.profileImageView.image = nil;
+        
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"Profile image uploaded!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+        //[self textView];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        //[self.tableView.mj_footer endRefreshing];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+        
+    }];
+}
+
+
 @end
