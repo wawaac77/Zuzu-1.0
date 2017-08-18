@@ -41,7 +41,7 @@
     NSString *userToken = [userDefault objectForKey:@"KEY_USER_TOKEN"];
     NSNumber *socialLevel = [userDefault objectForKey:@"KEY_USER_SOCIAL_LEVEL"];
     NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
-
+    NSString *profilePicUrl = [userDefault objectForKey:@"KEY_USER_PROFILE_PICURL"];
     
     if (userToken != nil) {
         
@@ -53,6 +53,9 @@
         user.userUserName = username;
         user.socialLevel = socialLevel;
         user.userOrganizingLevel = organizeLevel;
+        user.userProfileImage.imageUrl = profilePicUrl;
+        
+        NSLog(@"user default profile imageUrl at appDelegate %@", user.userProfileImage.imageUrl);
         
         GFTabBarController *tabVC = [[GFTabBarController alloc] init];
         self.window.rootViewController = tabVC;

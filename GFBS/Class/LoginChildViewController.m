@@ -155,38 +155,10 @@
             [AppDelegate APP].user = [[ZZUser alloc] init];
             [AppDelegate APP].user = thisUser;
             
-            NSLog(@"user token = %@", thisUser.userToken);
-            
-            /*
-             
-            NSString *imageURL = thisUser.userProfileImage.imageUrl;
-            NSURL  *url = [NSURL URLWithString:imageURL];
-            NSData *urlData = [NSData dataWithContentsOfURL:url];
-             
-            if ( urlData )
-             
-            {
-             
-            NSLog(@"Downloading started...");
-             
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-             
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-             
-            NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory,@"dwnld_image.png"];
-             
-            NSLog(@"FILE : %@",filePath);
-             
-            [urlData writeToFile:filePath atomically:YES];
-             
-            UIImage *image1=[UIImage imageWithContentsOfFile:filePath];
-             
-            thisUser.userProfileImage_UIImage = image1;
-             
-            NSLog(@"Completed...");
-             
-            }
-             */
+            NSURL *URL = [NSURL URLWithString:thisUser.userProfileImage.imageUrl];
+            NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
+            UIImage *image = [[UIImage alloc]initWithData:data];
+            [AppDelegate APP].user.userProfileImage_UIImage = image;
             
             //*************** defualt user set even app is turned off *********//
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -194,8 +166,9 @@
             [userDefaults setObject:thisUser.userToken forKey:@"KEY_USER_TOKEN"];
             [userDefaults setObject:thisUser.socialLevel forKey:@"KEY_USER_SOCIAL_LEVEL"];
             [userDefaults setObject:thisUser.userOrganizingLevel forKey:@"KEY_USER_ORGANIZE_LEVEL"];
+            [userDefaults setObject:thisUser.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
             [userDefaults synchronize];
-            
+
             NSLog(@"this user %@", thisUser);
             NSLog(@"this user. userName %@", thisUser.usertName);
             NSLog(@"this user. memberId %@", thisUser.userID);

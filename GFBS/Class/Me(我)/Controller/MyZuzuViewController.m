@@ -96,8 +96,19 @@ static CGFloat  const margin = 0;
 }
 
 -(void) setUpExp {
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.profileImageView.clipsToBounds = YES;
+    self.profileImageView.layer.cornerRadius = self.profileImageView.gf_width / 2;
+    //user.userProfileImage.imageUrl
+    NSLog(@"[AppDelegate APP].user.userProfileImage.imageUrl %@", [AppDelegate APP].user.userProfileImage.imageUrl);
+    NSURL *URL = [NSURL URLWithString:[AppDelegate APP].user.userProfileImage.imageUrl];
+    NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
+    UIImage *image = [[UIImage alloc]initWithData:data];
+    self.profileImageView.image = image;
+    
+    
     NSNumber *social = [AppDelegate APP].user.socialLevel;
-    NSLog(@"[AppDelegate APP].user.socialExp %@", [AppDelegate APP].user.socialExp);
+    NSLog(@"[AppDelegate APP].user.socialExp %@", [AppDelegate APP].user.socialLevel);
     self.socialExpLabel.text = [NSString stringWithFormat:@"Lv. %@", social];
     float socialFloat = [social floatValue] / 15.0f;
     [self.SocialExpView setGradual:YES];
@@ -384,9 +395,6 @@ static CGFloat  const margin = 0;
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.profileImageView.image = chosenImage;
-    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.profileImageView.clipsToBounds = YES;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.gf_width / 2;
     self.pickedImage = chosenImage;
     NSLog(@"chosenImage %@", chosenImage);
     
@@ -454,8 +462,19 @@ static CGFloat  const margin = 0;
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         //self.profileImageView.image = nil;
         
+        [AppDelegate APP].user.userProfileImage_UIImage = _pickedImage;
+        
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"Profile image uploaded!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alertView show];
+        
+        ZZUser *sucessBack = [[ZZUser alloc] init];
+        sucessBack = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
+        [AppDelegate APP].user.userProfileImage.imageUrl = sucessBack.userProfileImage.imageUrl;
+        NSLog(@"[appDelegate]sucessBack.userProfileImage.imageUrl %@", sucessBack.userProfileImage.imageUrl);
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:sucessBack.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
+        [userDefaults synchronize];
+
         
         //[self textView];
         

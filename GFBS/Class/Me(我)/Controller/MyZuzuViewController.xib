@@ -175,8 +175,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Badges" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0J-oB-565">
-                    <rect key="frame" x="16" y="221" width="77" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <rect key="frame" x="16" y="224" width="72" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -187,7 +187,7 @@
                 <constraint firstAttribute="bottom" secondItem="y15-Dg-Sst" secondAttribute="bottom" id="7os-Ar-gBa"/>
                 <constraint firstItem="eKg-uL-YL4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="9yH-9P-OIf"/>
                 <constraint firstItem="y15-Dg-Sst" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="296" id="EDd-yd-ig3"/>
-                <constraint firstItem="ZCJ-cp-3Ko" firstAttribute="top" secondItem="A0J-oB-565" secondAttribute="bottom" constant="2" id="J6q-1J-HVI"/>
+                <constraint firstItem="ZCJ-cp-3Ko" firstAttribute="top" secondItem="A0J-oB-565" secondAttribute="bottom" id="J6q-1J-HVI"/>
                 <constraint firstItem="ySm-Ss-yOa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="196" id="O5g-lx-D0C"/>
                 <constraint firstItem="ZCJ-cp-3Ko" firstAttribute="leading" secondItem="y15-Dg-Sst" secondAttribute="leading" id="OB8-KD-PDt"/>
                 <constraint firstItem="ZCJ-cp-3Ko" firstAttribute="top" secondItem="ySm-Ss-yOa" secondAttribute="bottom" constant="24" id="TTu-63-Zw6"/>
