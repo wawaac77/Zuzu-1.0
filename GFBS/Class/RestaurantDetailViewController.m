@@ -100,6 +100,7 @@
     starRatingView.tintColor = [UIColor whiteColor];
     starRatingView.backgroundColor = [UIColor clearColor];
     starRatingView.allowsHalfStars = YES;
+    [starRatingView resignFirstResponder];
     //[starRatingView addTarget:self action:@selector(didChangeValue:)  forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:starRatingView];
     
@@ -488,6 +489,8 @@
     
     NSString *userToken = [AppDelegate APP].user.userToken;
     NSDictionary *inSubData = @{@"restaurantId" : restaurantID};
+    NSLog(@"userToken in restaurantDetailVC %@", userToken);
+    NSLog(@"restaurant id %@", restaurantID);
     NSDictionary *inData = @{
                              @"action" : @"getRestaurantDetail",
                              @"token" : userToken,
@@ -499,6 +502,9 @@
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         
         EventRestaurant *response = responseObject[@"data"];
+        if (response == nil) {
+            return;
+        }
         NSLog(@"response in restaurant %@", response);
         thisRestaurant = [EventRestaurant mj_objectWithKeyValues:response];
         
@@ -523,6 +529,7 @@
     //2.凭借请求参数
     
     NSString *userToken = [AppDelegate APP].user.userToken;
+    NSLog(@"restaurant id in loadCheckins %@", thisRestaurant.restaurantId);
     
     NSDictionary *inSubData = @{@"restaurant" : thisRestaurant.restaurantId};
     
@@ -534,7 +541,7 @@
     NSLog(@"************ start loading reviews *********");
     
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
+      
         NSLog(@"responseObject is %@", responseObject);
         NSLog(@"responseObject - data is %@", responseObject[@"data"]);
         

@@ -11,6 +11,7 @@
 #import "BannerListTableViewController.h"
 #import "CreateEventViewController.h"
 #import "ZZTypicalInformationModel.h"
+#import "RestaurantMultiSearchViewController.h"
 
 #import "EventInList.h"
 #import "ZZBannerModel.h"
@@ -89,9 +90,9 @@
     } else if ((indexPath.section == 1) && (indexPath.row == 1)) {
         return 120;
     } else if ((indexPath.section == 1) && (indexPath.row == 2)) {
-        return 60;
+        return 70;
     } else {
-        return 60;
+        return 44;
     }
 }
 
@@ -109,7 +110,7 @@
         return 5;
     } else {
         NSLog(@"section2");
-        return 3;
+        return 4;
     }
 }
 
@@ -122,7 +123,8 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, self.view.gf_width - 15, 40)];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 7, self.view.gf_width - 15 - 30, 30)];
+        [textField setFont:[UIFont systemFontOfSize:15]];
         //textField.textColor = [UIColor blackColor];
         
         if (indexPath.section == 0) {
@@ -232,6 +234,7 @@
             } else if (indexPath.row == 1) {
                 UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 300, 30)];
                 descriptionLabel.text = @"Event Description";
+                descriptionLabel.font = [UIFont systemFontOfSize:15];
                 descriptionLabel.textColor = [UIColor grayColor];
                 [cell.contentView addSubview:descriptionLabel];
                 
@@ -241,7 +244,7 @@
                 
             } else if (indexPath.row == 2) {
                 UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
-                title1.font = [UIFont systemFontOfSize:16];
+                title1.font = [UIFont systemFontOfSize:15];
                 title1.textColor = [UIColor grayColor];
                 title1.text = @"Budget";
                 [cell.contentView addSubview:title1];
@@ -256,8 +259,9 @@
                 UISlider *sliderView = [[UISlider alloc] initWithFrame:CGRectMake(135, 0, self.view.gf_width - 200, 70)];
                 sliderView.minimumTrackTintColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
                 sliderView.continuous = YES;
-                sliderView.value = 100; // initialize
                 sliderView.maximumValue = 2000;
+                sliderView.minimumValue = 0;
+                sliderView.value = 100; // initialize
                 [sliderView addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
                 [cell addSubview:sliderView];
                 
@@ -268,7 +272,14 @@
                 budgetLabel.textColor = [UIColor grayColor];
                 budgetLabel.text = @"100";
                 [cell.contentView addSubview:budgetLabel];
-                
+            }
+            
+            else if (indexPath.row == 3) {
+                cell.textLabel.text = @"Select restaurant";
+                cell.textLabel.font = [UIFont systemFontOfSize:15];
+                cell.textLabel.textColor = [UIColor grayColor];
+                [cell setTintColor:[UIColor grayColor]];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }
     } else {
@@ -293,10 +304,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    /*
     if ((indexPath.section == 0) && (indexPath.row == 3)) {
         DateAndTimeViewController *dateVC = [[DateAndTimeViewController alloc] init];
         [self.navigationController pushViewController:dateVC animated:YES];
     }
+     */
+    if ((indexPath.section == 1) && (indexPath.row == 3)) {
+        RestaurantMultiSearchViewController *restaurantSearchVC = [[RestaurantMultiSearchViewController alloc] init];
+        restaurantSearchVC.title = @"Search Restaurant";
+        [self.navigationController pushViewController:restaurantSearchVC animated:YES];
+        
+    }
+    
 }
 
 - (IBAction)sliderValueChanged:(id)sender {

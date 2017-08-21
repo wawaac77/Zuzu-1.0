@@ -500,6 +500,8 @@
 		789E0D621F17DC7E00CCAAE4 /* ZZInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789E0D611F17DC7E00CCAAE4 /* ZZInboxTableViewController.m */; };
 		789E0D661F17DCAE00CCAAE4 /* ZZInboxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789E0D641F17DCAE00CCAAE4 /* ZZInboxCell.m */; };
 		789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789E0D651F17DCAE00CCAAE4 /* ZZInboxCell.xib */; };
+		78C126A51F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */; };
+		78C126A81F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */; };
 		78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA31F4145CB007E8112 /* Bolts.framework */; };
 		78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */; };
 		78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */; };
@@ -1258,6 +1260,9 @@
 		789E0D631F17DCAE00CCAAE4 /* ZZInboxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZInboxCell.h; sourceTree = "<group>"; };
 		789E0D641F17DCAE00CCAAE4 /* ZZInboxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZInboxCell.m; sourceTree = "<group>"; };
 		789E0D651F17DCAE00CCAAE4 /* ZZInboxCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZInboxCell.xib; sourceTree = "<group>"; };
+		78C126A21F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantMultiSearchViewController.h; sourceTree = "<group>"; };
+		78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantMultiSearchViewController.m; sourceTree = "<group>"; };
+		78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantMultiSearchViewController.storyboard; sourceTree = "<group>"; };
 		78D85BA31F4145CB007E8112 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -3230,6 +3235,9 @@
 				78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */,
 				78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */,
 				7829FF7E1ED5761400C934C2 /* RestaurantDetailChildVCs */,
+				78C126A21F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.h */,
+				78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */,
+				78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -3490,6 +3498,7 @@
 				786069D61F15DB9B00A8AB88 /* zuzu05-login-320x480.jpg in Resources */,
 				788CC3571F19EC3900DC4116 /* JSQMessagesToolbarContentView.xib in Resources */,
 				780097051EC9C1F5008F9F99 /* ic_user_profile.png in Resources */,
+				78C126A81F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard in Resources */,
 				788CC34D1F19EC3900DC4116 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				781E56591F31B7ED006854BA /* ic_restaurant.png in Resources */,
 				7800970B1EC9C1F5008F9F99 /* f-restaurant-icon.png in Resources */,
@@ -3808,6 +3817,7 @@
 				7812102C1F3AD3D600C08BD6 /* ZZBadgeModel.m in Sources */,
 				18C8262F1DE7369C007341E3 /* ZZHostingViewController.m in Sources */,
 				181EF7481E0B661200C91928 /* GFPlaceholderTextView.m in Sources */,
+				78C126A51F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m in Sources */,
 				1823914D1DEECDEB00B88AE0 /* GFCommentCell.m in Sources */,
 				7830895C1F1E1E4100C31BFE /* ZZFriendsTableViewController.m in Sources */,
 				786227521EFBB3DB006F731F /* KCAnnotation.m in Sources */,
