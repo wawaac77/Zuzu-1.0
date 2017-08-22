@@ -80,7 +80,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:BOOLFORKEY];
     }
     
-    NSArray *imageNameArray = @[@"guide-1.jpg",@"guide-2.jpg",@"guide-3"];
+    NSArray *imageNameArray = @[@"tutorial-1242x2208-1.jpg",@"tutorial-1242x2208-2.jpg",@"tutorial-1242x2208-3.jpg"];
     DHGuidePageHUD *guidePage = [[DHGuidePageHUD alloc] dh_initWithFrame:self.window.frame imageNameArray:imageNameArray buttonIsHidden:YES];
     [self.window addSubview:guidePage];
     

@@ -502,6 +502,9 @@
 		789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789E0D651F17DCAE00CCAAE4 /* ZZInboxCell.xib */; };
 		78C126A51F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */; };
 		78C126A81F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */; };
+		78C126AD1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AA1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg */; };
+		78C126AE1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AB1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg */; };
+		78C126AF1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AC1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg */; };
 		78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA31F4145CB007E8112 /* Bolts.framework */; };
 		78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */; };
 		78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */; };
@@ -1263,6 +1266,9 @@
 		78C126A21F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantMultiSearchViewController.h; sourceTree = "<group>"; };
 		78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantMultiSearchViewController.m; sourceTree = "<group>"; };
 		78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RestaurantMultiSearchViewController.storyboard; sourceTree = "<group>"; };
+		78C126AA1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-1.jpg"; sourceTree = "<group>"; };
+		78C126AB1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-2.jpg"; sourceTree = "<group>"; };
+		78C126AC1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-3.jpg"; sourceTree = "<group>"; };
 		78D85BA31F4145CB007E8112 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -2788,6 +2794,7 @@
 		786069961F15DB9B00A8AB88 /* jpg */ = {
 			isa = PBXGroup;
 			children = (
+				78C126A91F4BDFE60087CCF6 /* 1242x2208 */,
 				786069971F15DB9B00A8AB88 /* check-in-image-2-713x288.jpg */,
 				786069981F15DB9B00A8AB88 /* check-in-image-713x288.jpg */,
 				786069991F15DB9B00A8AB88 /* zuzu05-bg-1242x2208.jpg */,
@@ -3161,6 +3168,16 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		78C126A91F4BDFE60087CCF6 /* 1242x2208 */ = {
+			isa = PBXGroup;
+			children = (
+				78C126AA1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg */,
+				78C126AB1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg */,
+				78C126AC1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg */,
+			);
+			path = 1242x2208;
+			sourceTree = "<group>";
+		};
 		78D85BD41F42A93D007E8112 /* Badges */ = {
 			isa = PBXGroup;
 			children = (
@@ -3433,6 +3450,7 @@
 				786069DD1F15FA3200A8AB88 /* guide-2.jpg in Resources */,
 				781E565D1F31B7ED006854BA /* plus_badges.png in Resources */,
 				780096D21EC9C1F5008F9F99 /* ic_fa-star_gold_345_rating.png in Resources */,
+				78C126AD1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg in Resources */,
 				786069B71F15DB9B00A8AB88 /* ic_inbox-o.png in Resources */,
 				788CC35C1F1A169C00DC4116 /* GoogleService-Info.plist in Resources */,
 				780096ED1EC9C1F5008F9F99 /* zuzu-login-one-image.png in Resources */,
@@ -3443,6 +3461,7 @@
 				780096B41EC9C1F5008F9F99 /* event-banner-1036x328-04.jpg in Resources */,
 				789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */,
 				781210391F3C340100C08BD6 /* CuisineTableViewController.xib in Resources */,
+				78C126AE1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg in Resources */,
 				786069C51F15DB9B00A8AB88 /* ic_fa-credit-card.png in Resources */,
 				7824E34C1EF1408E00F85BFB /* ic_badges_338x338-06.png in Resources */,
 				783F82341F176E7300491529 /* profile_image_animals.jpeg in Resources */,
@@ -3576,6 +3595,7 @@
 				7829FF921ED576D700C934C2 /* RestaurantMenuViewController.xib in Resources */,
 				781E56551F31B7ED006854BA /* ic_home.png in Resources */,
 				7829FFA61ED807D900C934C2 /* LoginChildViewController.xib in Resources */,
+				78C126AF1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg in Resources */,
 				786069B41F15DB9B00A8AB88 /* ic_home-my-zuzu.png in Resources */,
 				780096BC1EC9C1F5008F9F99 /* ic_ fa-exclamation-triangle.png in Resources */,
 				780096FD1EC9C1F5008F9F99 /* ic_fa-heart-o.png in Resources */,
