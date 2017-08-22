@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CuisineTableViewController.h"
 
-@interface RestaurantMultiSearchViewController : UITableViewController
+@interface RestaurantMultiSearchViewController : UITableViewController <CuisineChildViewControllerDelegate>
 
 @end
