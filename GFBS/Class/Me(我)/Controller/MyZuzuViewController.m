@@ -215,7 +215,7 @@ static CGFloat  const margin = 0;
 {
     GFSquareCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     cell.layer.borderWidth = 0.5f;
-    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     NSLog(@"indexPath.item%ld", indexPath.item);
     NSLog(@"buttonItems indexPath.item%@", self.buttonItems[indexPath.item].name);
     
@@ -293,6 +293,7 @@ static CGFloat  const margin = 0;
         
         
         self.badgesArray = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSLog(@"self.badgesArray.count %zd", self.badgesArray.count);
         
         [self setUpBadgesView];
         
@@ -311,8 +312,26 @@ static CGFloat  const margin = 0;
 }
 
 -(void)setUpBadgesView {
-    //NSMutableArray *badges = [[NSMutableArray alloc]initWithObjects:@"ic_pen",@"ic_trophy", nil];
-    //[_badgesArray addObject:@"plus_badges.png"];
+    int i = 0;
+    int x = 10;
+    int y = 5;
+    while (i < _badgesArray.count) {
+        if (x >= GFScreenWidth - 45 - 10) {
+            x = 10;
+            y = y + 50;
+        }
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, y, 45, 45)];
+        //button.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
+        [button setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];
+        [button.imageView sd_setImageWithURL:[NSURL URLWithString:self.badgesArray[i].icon.imageUrl] placeholderImage:nil];
+        [self.badgesView addSubview:button];
+        i++;
+        x = x + 50;
+    }
+    
+    /*
     for (int i = 0; i < _badgesArray.count; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + i * 50, 5, 45, 45)];
         button.imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -330,10 +349,15 @@ static CGFloat  const margin = 0;
             [button addTarget:self action:@selector(addBadgesButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         }
          */
+    /*
         [self.badgesView addSubview:button];
     }
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(10 + _badgesArray.count * 50, 5, 45, 45)];
+    */
+    if (x >= GFScreenWidth - 45 - 10) {
+        x = 10;
+    }
+
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, 5, 45, 45)];
     //button.contentMode = UIViewContentModeScaleAspectFill;
     [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentFill];
     [button setContentVerticalAlignment:UIControlContentVerticalAlignmentFill];

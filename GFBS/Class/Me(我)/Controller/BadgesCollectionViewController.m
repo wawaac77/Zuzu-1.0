@@ -9,8 +9,10 @@
 #import "BadgesCollectionViewController.h"
 #import "GFWebViewController.h"
 #import "BadgesDetailViewController.h"
+#import "AppDelegate.h"
 
-#import "GFSquareItem.h"
+//#import "GFSquareItem.h"
+#import "ZZBadgeModel.h"
 #import "BadgesSquareCell.h"
 
 #import <SVProgressHUD.h>
@@ -22,26 +24,37 @@ static NSInteger const cols = 3;
 static CGFloat  const margin = 0;
 
 #define itemHW  (GFScreenWidth - (cols - 1) * margin ) / cols
-#define itemHH  itemHW + 50
+#define itemHH  itemHW + 25
 
 @interface BadgesCollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *badgesCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *badgesCollectionView;
 
 /*所有button内容*/
-@property (strong , nonatomic)NSMutableArray<GFSquareItem *> *buttonItems;
+@property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *buttonItems;
+@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
 @implementation BadgesCollectionViewController
 
+#pragma mark - 懒加载
+-(GFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [GFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self setUpFunctionsCollectionView];
+    [self loadNewData];
+    //[self setUpFunctionsCollectionView];
     [self setUpNavBar];
-    //self.view.frame = [UIScreen mainScreen].bounds;
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +64,7 @@ static CGFloat  const margin = 0;
 
 -(void)setUpFunctionsCollectionView
 {
-    [self setUpCollectionItemsData];
+    //[self setUpCollectionItemsData];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
     //设置尺寸
     layout.itemSize = CGSizeMake(itemHW, itemHH);
@@ -75,6 +88,8 @@ static CGFloat  const margin = 0;
 }
 
 #pragma mark - Setup UICollectionView Data
+
+/*
 -(void)setUpCollectionItemsData {
     NSArray *buttonIcons = [NSArray arrayWithObjects:@"ic_badges_338x338-01.png", @"ic_badges_338x338-02.png", @"ic_badges_338x338-03.png", @"ic_badges_338x338-04.png", @"ic_badges_338x338-05.png", @"ic_badges_338x338-06.png",@"ic_badges_338x338-07.png", @"ic_badges_338x338-08.png",  nil];
     NSArray *buttonTitles = [NSArray arrayWithObjects:@"Early Bird", @"Lounge Cat", @"Heavyweight", @"Wallflower", @"Eclectic", @"Socialite",@"Researcher", @"Insomniac",  nil];
@@ -82,7 +97,7 @@ static CGFloat  const margin = 0;
 
     //NSMutableArray<GFSquareItem *> *buttonItems =[[NSMutableArray<GFSquareItem *> alloc]init];
     //self.buttonItems = buttonItems;
-    self.buttonItems = [[NSMutableArray<GFSquareItem *> alloc]init];
+    self.buttonItems = [[NSMutableArray<ZZBadgeModel *> alloc]init];
     for (int i = 0; i < buttonIcons.count; i++) {
         GFSquareItem *squareItem = [[GFSquareItem alloc]init];
         squareItem.icon = buttonIcons[i];
@@ -92,6 +107,7 @@ static CGFloat  const margin = 0;
     }
     NSLog(@"buttonItems:%@", _buttonItems);
 }
+*/
 
 #pragma mark - UICollectionViewDataSource
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -103,8 +119,8 @@ static CGFloat  const margin = 0;
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BadgesSquareCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
-    cell.layer.borderWidth = 1.0f;
-    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.borderWidth = 0.5f;
+    cell.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
     NSLog(@"indexPath.item%ld", indexPath.item);
     NSLog(@"buttonItems indexPath.item%@", self.buttonItems[indexPath.item].name);
     
@@ -115,10 +131,9 @@ static CGFloat  const margin = 0;
 
 - (void)setUpNavBar
 {
-    UIBarButtonItem *settingBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_settings"] WithHighlighted:[UIImage imageNamed:@"ic_settings"] Target:self action:@selector(settingClicked)];
-    UIBarButtonItem *notificationBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-bell-o"] WithHighlighted:[UIImage imageNamed:@"ic_fa-bell-o"] Target:self action:@selector(notificationClicked)];
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, notificationBtn, nil]];
-    
+    //UIBarButtonItem *settingBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_settings"] WithHighlighted:[UIImage imageNamed:@"ic_settings"] Target:self action:@selector(settingClicked)];
+    //UIBarButtonItem *notificationBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-bell-o"] WithHighlighted:[UIImage imageNamed:@"ic_fa-bell-o"] Target:self action:@selector(notificationClicked)];
+    //[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, notificationBtn, nil]];
     
     //Title
     self.navigationItem.title = @"Badges Collection";
@@ -128,7 +143,7 @@ static CGFloat  const margin = 0;
 #pragma mark - UICollectionViewDelegate
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    GFSquareItem *item = _buttonItems[indexPath.item];
+    ZZBadgeModel *item = _buttonItems[indexPath.item];
     
     BadgesDetailViewController *detailVC = [[BadgesDetailViewController alloc] init];
     detailVC.item = item;
@@ -147,5 +162,40 @@ static CGFloat  const margin = 0;
     webVc.url = url;
      */
 }
+
+#pragma mark - 加载更多数据
+-(void)loadNewData
+{
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSString *userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inData = @{
+                             @"action" : @"getBadgeList",
+                             @"token" : userToken};
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    //发送请求
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+        
+        //字典转模型
+        NSLog(@"Request is successful成功了");
+        NSMutableArray<ZZBadgeModel *> *buttonItems = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.buttonItems = buttonItems;
+        [self setUpFunctionsCollectionView];
+        //[self.badgesCollectionView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Request 失败");
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
+}
+
+
 
 @end

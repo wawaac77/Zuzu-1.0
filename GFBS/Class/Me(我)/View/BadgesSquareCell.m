@@ -7,7 +7,8 @@
 //
 
 #import "BadgesSquareCell.h"
-#import "GFSquareItem.h"
+//#import "GFSquareItem.h"
+#import "ZZBadgeModel.h"
 #import <UIImageView+WebCache.h>
 
 @interface BadgesSquareCell()
@@ -25,16 +26,15 @@
     // Initialization code
 }
 
--(void)setItem:(GFSquareItem *)item
+-(void)setItem:(ZZBadgeModel *)item
 {
     _item = item;
     
-    
-    self.titleLabel.text = item.name;
-    self.priceLabel.text = item.price;
-    self.imageView.image = [UIImage imageNamed:item.icon];
+    self.titleLabel.text = item.name.en;
+    self.priceLabel.text = [NSString stringWithFormat:@"HK$ %@", item.price];
+    //self.imageView.image = [UIImage imageNamed:item.icon];
     //设置图片
-    //[self.imageView sd_setImageWithURL:[NSURL URLWithString:item.icon] placeholderImage:nil];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:item.icon.imageUrl] placeholderImage:nil];
     
 }
 

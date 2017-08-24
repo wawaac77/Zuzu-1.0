@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GFSquareItem.h"
+#import "ZZBadgeModel.h"
 
 @interface BadgesDetailViewController : UIViewController
-@property (strong, nonatomic) GFSquareItem *item;
+
+@property (strong, nonatomic) ZZBadgeModel *item;
+
 @end

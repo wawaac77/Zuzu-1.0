@@ -19,6 +19,7 @@
 #import <SVProgressHUD.h>
 #import <Social/Social.h>
 #import <UIImageView+WebCache.h>
+#import <SDImageCache.h>
 
 @interface GFEventsCell()
 
@@ -97,18 +98,29 @@
     
     //[self downloadImageFromURL:thisEvent.listEventBanner.eventBanner.imageUrl];
     
+    UIImage *placeholder = [[UIImage alloc] init];
+    self.bigImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.bigImageView.clipsToBounds = YES;
+    placeholder = [UIImage imageNamed:@"imageplaceholder.png"];
+    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:thisEvent.listEventBanner.eventBanner.imageUrl] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) {
+            self.bigImageView.image = placeholder;
+            return ;
+        }
+    }];
+    
+    
     //UIImage *image = [[UIImage alloc] init];
     //if (_event.listEventBanner.eventBanner.image_UIImage == nil) {
+    /*
         NSURL *URL = [NSURL URLWithString:thisEvent.listEventBanner.eventBanner.imageUrl];
         NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
         UIImage *image = [[UIImage alloc]initWithData:data];
         _event.listEventBanner.eventBanner.image_UIImage = image;
+     */
     //}
     //self.bigImageView.image = _event.listEventBanner.eventBanner.image_UIImage;
-    self.bigImageView.image = image;
-    self.bigImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.bigImageView.clipsToBounds = YES;
-    //self.peopleIcon.image = [UIImage imageNamed:@"ic_fa-user-on"];
+  
     self.bigTitleLabel.text = thisEvent.listEventName;
     ZZInterest *interest = [thisEvent.listEventInterests objectAtIndex:0];
     self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", interest.interestName.en, thisEvent.listEventJoinedCount,thisEvent.listEventQuota ];
@@ -120,10 +132,9 @@
     [_placeLabel setFont:[UIFont boldSystemFontOfSize:15]];
     [_placeLabel setTextColor:[UIColor darkGrayColor]];
     
-
-
 }
 
+/*
 -(void) downloadImageFromURL :(NSString *)imageUrl{
     
     NSURL  *url = [NSURL URLWithString:imageUrl];
@@ -142,6 +153,7 @@
     }
     
 }
+ */
 
 /*
 -(void)setTopic:(GFTopic *)topic

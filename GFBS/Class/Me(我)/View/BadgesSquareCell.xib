@@ -24,17 +24,17 @@
                             <constraint firstAttribute="height" constant="60" id="FW6-dS-yxd"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Events Planning Experts" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-53-XSe">
-                        <rect key="frame" x="5" y="81" width="114" height="44"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Events Planning " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-53-XSe">
+                        <rect key="frame" x="5" y="81" width="114" height="30"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="XIc-K5-jWo"/>
+                            <constraint firstAttribute="height" constant="30" id="XIc-K5-jWo"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HK$ 5.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YOO-Un-qOt">
-                        <rect key="frame" x="5" y="131" width="114" height="14"/>
+                        <rect key="frame" x="5" y="120" width="114" height="14"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                 <constraint firstItem="9sc-53-XSe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="LvF-5Q-Aws"/>
                 <constraint firstItem="uYP-Ur-Ntv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="Xp2-MZ-IfA"/>
                 <constraint firstItem="YOO-Un-qOt" firstAttribute="trailing" secondItem="9sc-53-XSe" secondAttribute="trailing" id="mIU-sQ-lkK"/>
-                <constraint firstItem="YOO-Un-qOt" firstAttribute="top" secondItem="9sc-53-XSe" secondAttribute="bottom" constant="6" id="nhA-fp-aSZ"/>
+                <constraint firstItem="YOO-Un-qOt" firstAttribute="top" secondItem="9sc-53-XSe" secondAttribute="bottom" constant="9" id="nhA-fp-aSZ"/>
                 <constraint firstItem="uYP-Ur-Ntv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="32" id="oYA-eV-fZJ"/>
                 <constraint firstItem="YOO-Un-qOt" firstAttribute="centerX" secondItem="uYP-Ur-Ntv" secondAttribute="centerX" id="wIx-UW-rdK"/>
             </constraints>

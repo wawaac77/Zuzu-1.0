@@ -6,6 +6,7 @@
 //  Copyright © 2017 apple. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "RestaurantMultiSearchViewController.h"
 #import "CuisineTableViewController.h"
 #import "RestaurantTableViewController.h"
@@ -255,8 +256,16 @@
     self.cuisineLabel.text = [NSString stringWithFormat:@"%@", theValue.cuisine.informationName.en];
 }
 
-- (void)buttonClicked {
+-(void)buttonClicked {
+    RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
+    //restaurantVC.keywords = searchBar.text;
+    [self.navigationController pushViewController:restaurantVC animated:YES];
+}
+
+- (void)buttonClicked1 {
+    NSLog(@"next button clicked");
     
+    NSString *userToken =  [AppDelegate APP].user.userToken;
     NSArray *geoPoint = [[NSArray alloc] init];
     //NSNumber *longtitudeNS = [NSNumber numberWithFloat:longitude];
     //NSNumber *latitudeNS = [NSNumber numberWithFloat:latitude];
@@ -280,32 +289,31 @@
      
      inData = @{
      @"action" : @"searchRestaurant",
+     @"token" : userToken,
      @"data" : keyFactors
      };
      
      NSDictionary *parameters = @{@"data" : inData};
      
      NSLog(@"search Restaurant %@", parameters);
-     
-     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-     
-     NSLog(@"responseObject是接下来的%@", responseObject);
-     NSLog(@"responseObject - data 是接下来的%@", responseObject[@"data"]);
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        
+        NSLog(@"successLoadData");
+        self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
+        restaurantVC.receivedData = self.restaurants;
+        [self.navigationController pushViewController:restaurantVC animated:YES];
 
-     self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-     RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
-     restaurantVC.receivedData = self.restaurants;
-     [self.navigationController pushViewController:restaurantVC animated:YES];
-     
-     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-     NSLog(@"%@", [error localizedDescription]);
-     NSLog(@"not successful");
-     [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-     [SVProgressHUD dismiss];
-     });
-     }];
-    
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        //[self.tableView.mj_footer endRefreshing];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+        
+    }];
+
 }
 
 

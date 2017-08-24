@@ -7,6 +7,7 @@
 //
 
 #import "BadgesDetailViewController.h"
+#import <UIImageView+WebCache.h>
 
 @interface BadgesDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *badgeImageView;
@@ -21,12 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     NSLog(@"self.item in detail %@", self.item.name);
-    _badgeImageView.image = [UIImage imageNamed:self.item.icon];
-    _nameLabel.text = self.item.name;
-    _descriptionTextView.text = self.item.description;
-    _priceLabel.titleLabel.text = [NSString stringWithFormat:@"%@", self.item.price];
+    
+    [self.badgeImageView sd_setImageWithURL:[NSURL URLWithString:self.item.icon.imageUrl] placeholderImage:nil];
+    _nameLabel.text = self.item.name.en;
+    _descriptionTextView.text = self.item.badgeDescription.en;
+    _priceLabel.titleLabel.text = [NSString stringWithFormat:@"HK$ %@", self.item.price];
 }
 
 - (void)didReceiveMemoryWarning {

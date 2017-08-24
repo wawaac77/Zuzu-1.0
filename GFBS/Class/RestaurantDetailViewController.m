@@ -494,6 +494,7 @@
     NSDictionary *inData = @{
                              @"action" : @"getRestaurantDetail",
                              @"token" : userToken,
+                             @"lang" : @"en",
                              @"data" : inSubData
                              };
     NSDictionary *parameters = @{@"data" : inData};

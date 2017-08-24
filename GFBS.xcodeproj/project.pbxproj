@@ -505,6 +505,7 @@
 		78C126AD1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AA1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg */; };
 		78C126AE1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AB1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg */; };
 		78C126AF1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78C126AC1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg */; };
+		78C126B31F4F1D4B0087CCF6 /* imageplaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 78C126B21F4F1D4B0087CCF6 /* imageplaceholder.png */; };
 		78D85BA41F4145CB007E8112 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA31F4145CB007E8112 /* Bolts.framework */; };
 		78D85BA61F4145DE007E8112 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */; };
 		78D85BA81F4145EA007E8112 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */; };
@@ -1269,6 +1270,7 @@
 		78C126AA1F4BDFE60087CCF6 /* tutorial-1242x2208-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-1.jpg"; sourceTree = "<group>"; };
 		78C126AB1F4BDFE60087CCF6 /* tutorial-1242x2208-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-2.jpg"; sourceTree = "<group>"; };
 		78C126AC1F4BDFE60087CCF6 /* tutorial-1242x2208-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "tutorial-1242x2208-3.jpg"; sourceTree = "<group>"; };
+		78C126B21F4F1D4B0087CCF6 /* imageplaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageplaceholder.png; sourceTree = "<group>"; };
 		78D85BA31F4145CB007E8112 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		78D85BA51F4145DE007E8112 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		78D85BA71F4145EA007E8112 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -2014,6 +2016,7 @@
 		780096461EC9C1F5008F9F99 /* font awesome */ = {
 			isa = PBXGroup;
 			children = (
+				78C126B21F4F1D4B0087CCF6 /* imageplaceholder.png */,
 				7824E30D1EEFE06A00F85BFB /* user-icon.png */,
 				7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */,
 				7824E3111EEFE07800F85BFB /* Ellipse-25%.png */,
@@ -3530,6 +3533,7 @@
 				786069CF1F15DB9B00A8AB88 /* check-in-image-2-713x288.jpg in Resources */,
 				780096FA1EC9C1F5008F9F99 /* ic_fa-calendar-check-o-on.png in Resources */,
 				781E56571F31B7ED006854BA /* ic_my_zuzu.png in Resources */,
+				78C126B31F4F1D4B0087CCF6 /* imageplaceholder.png in Resources */,
 				1823914E1DEECDEB00B88AE0 /* GFCommentCell.xib in Resources */,
 				781E56561F31B7ED006854BA /* ic_home_on.png in Resources */,
 				781210341F3C33EB00C08BD6 /* InterestsTableViewController.xib in Resources */,

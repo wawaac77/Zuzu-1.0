@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZZBadgeModel.h"
 
-@class GFSquareItem;
+//@class GFSquareItem;
 @interface BadgesSquareCell : UICollectionViewCell
 
-@property (nonatomic ,strong)GFSquareItem *item;
+@property (nonatomic ,strong)ZZBadgeModel *item;
 
 @end
