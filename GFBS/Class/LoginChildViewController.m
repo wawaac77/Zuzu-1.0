@@ -72,13 +72,22 @@
 }
 
 - (void)setupLayout {
-    
+    /*
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    [loginButton setTitle: @"Login with Facebook" forState:UIControlStateNormal];
+    
+    loginButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
+    loginButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
+    loginButton.tintColor = [UIColor whiteColor];
+
     loginButton.center = self.view.center;
     [self.view addSubview:loginButton];
+     */
+    
     
     _loginWithFacebookButton.layer.cornerRadius = 5.0f;
-    _loginWithGoogleButton.layer.masksToBounds = YES;
+    _loginWithFacebookButton.layer.masksToBounds = YES;
+    [_loginWithFacebookButton addTarget:self action:@selector(loginFBButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     _loginWithGoogleButton.layer.cornerRadius = 5.0f;
     [_loginWithGoogleButton setClipsToBounds:YES];
@@ -268,6 +277,22 @@
 }
 - (IBAction)loginUsingFirebaseClicked:(id)sender {
     
+}
+
+- (void)loginFBButtonClicked {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+         }
+     }];
 }
 
 #pragma mark - 监听键盘的弹出和隐藏

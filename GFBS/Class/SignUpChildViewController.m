@@ -90,14 +90,18 @@
 
 - (void)setupLayout {
     
+    /*
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    [loginButton setTitle:@"Sign up with Facebook" forState:UIControlStateNormal];
     loginButton.frame = CGRectMake(35, 60, GFScreenWidth - 70, 40);
+    loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
     loginButton.titleLabel.text = @"Sign up with Facebook";
     loginButton.layer.cornerRadius = 5.0f;
     loginButton.clipsToBounds = YES;
     [self.view addSubview:loginButton];
     
     loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
+     */
     
     _signupWithFacebookButton.layer.cornerRadius = 5.0f;
     _signupWithGoogleButton.layer.cornerRadius = 5.0f;
