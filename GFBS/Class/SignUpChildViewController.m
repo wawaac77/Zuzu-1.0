@@ -7,6 +7,7 @@
 //
 #import "AppDelegate.h"
 #import "SignUpChildViewController.h"
+#import "GFTabBarController.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -16,8 +17,11 @@
 #import <FirebaseAuth/FirebaseAuth.h>
 #import <GoogleSignIn.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface SignUpChildViewController () <GIDSignInUIDelegate>
+
+@property (strong, nonatomic) ZZUser *myProfile;
 
 @property (weak, nonatomic) IBOutlet UIButton *signupWithFacebookButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupWithGoogleButton;
@@ -104,6 +108,10 @@
      */
     
     _signupWithFacebookButton.layer.cornerRadius = 5.0f;
+    _signupWithFacebookButton.clipsToBounds = YES;
+    _signupWithFacebookButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
+    [_signupWithFacebookButton addTarget:self action:@selector(loginFBButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    
     _signupWithGoogleButton.layer.cornerRadius = 5.0f;
     _signupButton.layer.cornerRadius = 5.0f;
     _signupButton.backgroundColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
@@ -346,4 +354,111 @@
 - (IBAction)googleSignupButtonClicked:(id)sender {
     //[self signIn:<#(GIDSignIn *)#> didSignInForUser:<#(GIDGoogleUser *)#> withError:nil];
 }
+
+//************************login with Facebook *******************************//
+- (void)loginFBButtonClicked {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+             NSLog(@"facebookToken %@", result.token);
+             
+             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                 if (!error) {
+                     [AppDelegate APP].user = [[ZZUser alloc] init];
+                     
+                     NSString *nameOfLoginUser = [result valueForKey:@"name"];
+                     NSString *idOfLoginUser = [result valueForKey:@"id"];
+                     [self fbAccountWithZuzuAccount:idOfLoginUser];
+                     
+                     NSString *imageStringOfLoginUser = [[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
+                     
+                     [AppDelegate APP].user.userUserName = nameOfLoginUser;
+                     [AppDelegate APP].user.userProfileImage.imageUrl = imageStringOfLoginUser;
+                     NSLog(@"facebook in sign up nameOfLoginUser %@", nameOfLoginUser);
+                     NSLog(@"facebook id in sign up nameOfLoginUser %@", idOfLoginUser);
+                     
+                
+                     
+                     //*************** defualt user set even app is turned off *********//
+                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                     [userDefaults setObject:nameOfLoginUser forKey:@"KEY_USER_NAME"];
+                     [userDefaults setObject:_myProfile.userToken forKey:@"KEY_USER_TOKEN"];
+                     [userDefaults setObject:_myProfile.socialLevel forKey:@"KEY_USER_SOCIAL_LEVEL"];
+                     [userDefaults setObject:_myProfile.userOrganizingLevel forKey:@"KEY_USER_ORGANIZE_LEVEL"];
+                     [userDefaults setObject:imageStringOfLoginUser forKey:@"KEY_USER_PROFILE_PICURL"];
+                     [userDefaults synchronize];
+                     
+                     NSLog(@"this user %@", _myProfile);
+                     NSLog(@"this user.useruser %@", _myProfile.userUserName);
+                     NSLog(@"this user. memberId %@", _myProfile.userID);
+                     
+                     
+                     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+                     window.rootViewController = [[GFTabBarController alloc]init];
+                     [window makeKeyWindow];
+
+                     
+                     //NSURL *url = [[NSURL alloc] initWithURL: imageStringOfLoginUser];
+                     //[self.imageView setImageWithURL:url placeholderImage: nil];
+                 }
+             }];
+
+             /*
+              NSString *nameOfLoginUser = [result valueForKey:@"name"];
+              NSLog(@"facebook public_profile nameOfLoginUser %@", nameOfLoginUser);
+              
+              NSString *imageStringOfLoginUser = [[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
+              //NSURL *url = [[NSURL alloc] initWithURL: imageStringOfLoginUser];
+              //[self.imageView setImageWithURL:url placeholderImage: nil];
+              
+              //NSLog(@"facebookId %@", result.);
+              */
+         }
+     }];
+}
+
+- (void)fbAccountWithZuzuAccount: (NSString*)fbID {
+    
+    NSLog(@"this user fbID %@", fbID);
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSString *userToken = [[NSString alloc] init];
+    userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inSubData = @{@"facebookId" : fbID};
+    NSDictionary *inData = @{@"action" : @"fbLogin", @"data" : inSubData};
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    //发送请求
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+        
+        ZZUser *thisUser = [[ZZUser alloc] init];
+        
+        thisUser = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
+        NSLog(@"this user in fbAccount API %@", thisUser);
+        self.myProfile = thisUser;
+        [AppDelegate APP].user = thisUser;
+
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        //[self.tableView.mj_footer endRefreshing];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+        
+    }];
+    
+}
+
 @end

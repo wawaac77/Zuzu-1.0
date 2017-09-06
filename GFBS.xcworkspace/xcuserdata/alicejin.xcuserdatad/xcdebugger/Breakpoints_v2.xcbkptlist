@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "524723893.710563"
+            timestampString = "526379000.236172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-setUpFunctionsCollectionView"
             landmarkType = "7">
          </BreakpointContent>
@@ -624,11 +624,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "525276936.022554"
+            timestampString = "526379000.236172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-addBadgesButtonClicked"
             landmarkType = "7">
          </BreakpointContent>
@@ -720,11 +720,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526358695.966636"
+            timestampString = "526376222.974603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "-nextButtonClicked:"
             landmarkType = "7">
             <Locations>
@@ -768,11 +768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526358695.966636"
+            timestampString = "526376222.974603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-nextButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
@@ -784,11 +784,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526358695.966636"
+            timestampString = "526376222.974603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-nextButtonClicked:"
             landmarkType = "7">
          </BreakpointContent>
@@ -816,11 +816,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526358695.966636"
+            timestampString = "526376222.974603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "-forgetPasswordClicked:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1278,11 +1278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "524673995.372819"
+            timestampString = "526379000.236172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -1294,11 +1294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "524673995.372819"
+            timestampString = "526379000.236172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-setUpExp"
             landmarkType = "7">
          </BreakpointContent>

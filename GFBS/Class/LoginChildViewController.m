@@ -62,7 +62,21 @@
     [self.view addGestureRecognizer:tap];
     
     if ([FBSDKAccessToken currentAccessToken]) {
-        NSLog(@"[FBSDKAccessToken currentAccessToken] %@", [FBSDKAccessToken currentAccessToken]);
+        
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{ @"fields" : @"id,name,picture.width(100).height(100)"}]startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            if (!error) {
+                NSString *nameOfLoginUser = [result valueForKey:@"name"];
+                NSString *idOfLoginUser = [result valueForKey:@"id"];
+                
+                 NSLog(@"facebook public_profile nameOfLoginUser %@", nameOfLoginUser);
+                NSLog(@"facebook id nameOfLoginUser %@", idOfLoginUser);
+                
+                NSString *imageStringOfLoginUser = [[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
+                //NSURL *url = [[NSURL alloc] initWithURL: imageStringOfLoginUser];
+                //[self.imageView setImageWithURL:url placeholderImage: nil];
+            }
+        }];
+        
     }
 }
 
@@ -87,10 +101,12 @@
     
     _loginWithFacebookButton.layer.cornerRadius = 5.0f;
     _loginWithFacebookButton.layer.masksToBounds = YES;
+    _loginWithFacebookButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
     [_loginWithFacebookButton addTarget:self action:@selector(loginFBButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     
     _loginWithGoogleButton.layer.cornerRadius = 5.0f;
     [_loginWithGoogleButton setClipsToBounds:YES];
+    _loginWithGoogleButton.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:72.0/255.0 blue:54.0/255.0 alpha:1];
     
     _passwordTextField.secureTextEntry = YES;
     /*
@@ -279,6 +295,7 @@
     
 }
 
+//************************login with Facebook *******************************//
 - (void)loginFBButtonClicked {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
@@ -291,6 +308,18 @@
              NSLog(@"Cancelled");
          } else {
              NSLog(@"Logged in");
+             NSLog(@"facebookToken %@", result.token);
+             
+             /*
+             NSString *nameOfLoginUser = [result valueForKey:@"name"];
+             NSLog(@"facebook public_profile nameOfLoginUser %@", nameOfLoginUser);
+             
+             NSString *imageStringOfLoginUser = [[[result valueForKey:@"picture"] valueForKey:@"data"] valueForKey:@"url"];
+             //NSURL *url = [[NSURL alloc] initWithURL: imageStringOfLoginUser];
+             //[self.imageView setImageWithURL:url placeholderImage: nil];
+             
+             //NSLog(@"facebookId %@", result.);
+             */
          }
      }];
 }

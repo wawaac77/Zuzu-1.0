@@ -64,6 +64,7 @@ static CGFloat  const margin = 0;
  */
 @property (weak ,nonatomic) UICollectionView *functionsCollectionView;
 
+@property (strong, nonatomic) NSURL *url;
 
 @end
 
@@ -83,8 +84,11 @@ static CGFloat  const margin = 0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = [UIScreen mainScreen].bounds;
-    NSString *userName = [AppDelegate APP].user.userUserName;
-    self.userNameLabel.text = userName;
+    
+    NSString *userUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_NAME"];
+    NSString *userURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_PROFILE_PICURL"];
+    //NSString *userName = [AppDelegate APP].user.userUserName;
+    self.userNameLabel.text = userUserName;
     [self setUpNavBar];
     [self setUpExp];
     [self setUpCollectionItemsData];
@@ -96,15 +100,17 @@ static CGFloat  const margin = 0;
 }
 
 -(void) setUpExp {
+    
     self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.profileImageView.clipsToBounds = YES;
     self.profileImageView.layer.cornerRadius = self.profileImageView.gf_width / 2;
     //user.userProfileImage.imageUrl
     NSLog(@"[AppDelegate APP].user.userProfileImage.imageUrl %@", [AppDelegate APP].user.userProfileImage.imageUrl);
-    NSURL *URL = [NSURL URLWithString:[AppDelegate APP].user.userProfileImage.imageUrl];
-    NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
-    UIImage *image = [[UIImage alloc]initWithData:data];
-    self.profileImageView.image = image;
+    //NSURL *URL = [NSURL URLWithString:[AppDelegate APP].user.userProfileImage.imageUrl];
+    
+    NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_PROFILE_PICURL"];
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
+    [self.profileImageView setImageWithURL:url placeholderImage: nil];
     
     
     NSNumber *social = [AppDelegate APP].user.socialLevel;
