@@ -42,6 +42,7 @@
     NSNumber *socialLevel = [userDefault objectForKey:@"KEY_USER_SOCIAL_LEVEL"];
     NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
     NSString *profilePicUrl = [userDefault objectForKey:@"KEY_USER_PROFILE_PICURL"];
+    NSString *lang = [userDefault objectForKey:@"KEY_USER_PROFILE_LANG"];
     
     if (userToken != nil) {
         
@@ -54,6 +55,7 @@
         user.socialLevel = socialLevel;
         user.userOrganizingLevel = organizeLevel;
         user.userProfileImage.imageUrl = profilePicUrl;
+        user.preferredLanguage = lang;
         
         NSLog(@"user default profile imageUrl at appDelegate %@", user.userProfileImage.imageUrl);
         

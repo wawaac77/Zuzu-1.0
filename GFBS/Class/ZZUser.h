@@ -62,7 +62,7 @@
 @property (nonatomic, assign) NSNumber *canMessageMe;
 @property (nonatomic, assign) NSNumber *canMyFriendSeeMyEmail;
 
-
+@property (nonatomic, copy) NSString *preferredLanguage;
 @property (nonatomic, copy) UIImage *userProfileImage_UIImage;
 
 + (NSURLSessionDataTask *)login:(NSDictionary *)paramDic
