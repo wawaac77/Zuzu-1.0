@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/MinScrollMenu/MinScrollMenuItem.m"
-            timestampString = "523435066.79307"
+            timestampString = "526985644.34374"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-setFrame:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1546,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFEventsCell.m"
-            timestampString = "525278490.323461"
+            timestampString = "526985491.839814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219">
+            startingLineNumber = "221"
+            endingLineNumber = "221">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1560,11 +1560,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/GFEventsCell.m"
-            timestampString = "525278490.323461"
+            timestampString = "526985491.839814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254">
+            startingLineNumber = "256"
+            endingLineNumber = "256">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
