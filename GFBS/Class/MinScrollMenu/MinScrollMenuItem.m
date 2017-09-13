@@ -105,6 +105,7 @@
             /**set textLabel*/
             self.textLabel.frame = CGRectMake(10.0, frame.size.height - 100.0, frame.size.width - 10, 60);
             self.textLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+            self.textLabel.shadowOffset = CGSizeMake(1.0, 1.0);
             self.textLabel.numberOfLines = 0;
             self.textLabel.textColor = [UIColor whiteColor];
             [self.textLabel setFont:[UIFont boldSystemFontOfSize:15]];
@@ -115,8 +116,8 @@
             self.timeLabel.layer.masksToBounds = YES;
             self.timeLabel.backgroundColor = [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
             self.timeLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
-            self.timeLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-            self.timeLabel.layer.shadowRadius = 3.0;
+            self.timeLabel.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+            
             self.timeLabel.textColor = [UIColor whiteColor];
             [self.timeLabel setFont:[UIFont boldSystemFontOfSize:13]];
             break;

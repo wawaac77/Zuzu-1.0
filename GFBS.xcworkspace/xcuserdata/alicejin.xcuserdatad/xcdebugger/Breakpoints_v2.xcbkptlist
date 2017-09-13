@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/MinScrollMenu/MinScrollMenuItem.m"
-            timestampString = "526985644.34374"
+            timestampString = "526987743.534446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-setFrame:"
             landmarkType = "7">
          </BreakpointContent>
