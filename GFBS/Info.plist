@@ -68,6 +68,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+    
 	<key>FacebookAppID</key>
 	<string>253099938532562</string>
 	<key>FacebookDisplayName</key>

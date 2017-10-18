@@ -65,6 +65,9 @@
 /*****************  tag景色  ******************/
 #define GFTagBgColor  [UIColor colorWithRed:74 / 255.0 green:139 / 255.0 blue:209 / 255.0 alpha:1.0]
 
+/*****************  Zuzu颜色  ******************/
+#define ZZGoldColor  [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1.0]
+
 /*****************  tag字体尺寸  ******************/
 #define GFTagFont [UIFont systemFontOfSize:14]
 

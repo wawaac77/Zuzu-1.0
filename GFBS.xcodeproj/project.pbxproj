@@ -325,6 +325,7 @@
 		784D3F741ECC85CD0058C63F /* GFNearbyEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */; };
 		784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7E1F1F032A00014395 /* Fabric.framework */; };
 		784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7F1F1F032A00014395 /* Crashlytics.framework */; };
+		785FF23C1F7B91D5002A42E9 /* ZBLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */; };
 		786069631F15D98100A8AB88 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860695F1F15D98100A8AB88 /* DHGifImageOperation.m */; };
 		786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069611F15D98100A8AB88 /* DHGuidePageHUD.m */; };
 		786069651F15D98100A8AB88 /* GuideImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 786069621F15D98100A8AB88 /* GuideImage.bundle */; };
@@ -997,6 +998,8 @@
 		784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFNearbyEventsViewController.xib; sourceTree = "<group>"; };
 		784FBB7E1F1F032A00014395 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		784FBB7F1F1F032A00014395 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		785FF23A1F7B91D5002A42E9 /* ZBLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBLocalized.h; sourceTree = "<group>"; };
+		785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBLocalized.m; sourceTree = "<group>"; };
 		7860695E1F15D98100A8AB88 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
 		7860695F1F15D98100A8AB88 /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
 		786069601F15D98100A8AB88 /* DHGuidePageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGuidePageHUD.h; sourceTree = "<group>"; };
@@ -1527,6 +1530,7 @@
 		189CA3231DDADBF6004D07EA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				785FF2391F7B91D5002A42E9 /* ZBLocalized */,
 				7800971C1EC9C3A9008F9F99 /* launch_image_zuzu.png */,
 				786069661F15DB9B00A8AB88 /* zuzu0.5 output */,
 				7800963A1EC9C1E3008F9F99 /* supporting images */,
@@ -2707,6 +2711,15 @@
 				783089491F1D0C6F00C31BFE /* CommentHeaderView.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		785FF2391F7B91D5002A42E9 /* ZBLocalized */ = {
+			isa = PBXGroup;
+			children = (
+				785FF23A1F7B91D5002A42E9 /* ZBLocalized.h */,
+				785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */,
+			);
+			path = ZBLocalized;
 			sourceTree = "<group>";
 		};
 		7860695D1F15D98100A8AB88 /* DHGuidePageHUD */ = {
@@ -3896,6 +3909,7 @@
 				7824E3161EF0D96700F85BFB /* CreateEventViewController.m in Sources */,
 				18E8D37F1DE9EB4100ED4EE1 /* GFTopicVoiceView.m in Sources */,
 				1829A6A41DE82DCF0086AD86 /* GFRefreshFooter.m in Sources */,
+				785FF23C1F7B91D5002A42E9 /* ZBLocalized.m in Sources */,
 				788CC3431F19EC3900DC4116 /* JSQMediaItem.m in Sources */,
 				7829FF911ED576D700C934C2 /* RestaurantMenuViewController.m in Sources */,
 				18388AD41DFAAB27004E1DF9 /* GFSubTagItem.m in Sources */,

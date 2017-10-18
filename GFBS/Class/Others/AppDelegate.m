@@ -12,6 +12,7 @@
 #import "GFAdViewController.h"
 #import "LoginViewController.h"
 #import "DHGuidePageHUD.h"
+#import "ZBLocalized.h"
 @import Firebase;
 #import <Fabric/Fabric.h>
 #import "Crashlytics/Crashlytics.h"
@@ -42,7 +43,7 @@
     NSNumber *socialLevel = [userDefault objectForKey:@"KEY_USER_SOCIAL_LEVEL"];
     NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
     NSString *profilePicUrl = [userDefault objectForKey:@"KEY_USER_PROFILE_PICURL"];
-    NSString *lang = [userDefault objectForKey:@"KEY_USER_PROFILE_LANG"];
+    NSString *userlang = [userDefault objectForKey:@"KEY_USER_PROFILE_LANG"];
     
     if (userToken != nil) {
         
@@ -55,9 +56,19 @@
         user.socialLevel = socialLevel;
         user.userOrganizingLevel = organizeLevel;
         user.userProfileImage.imageUrl = profilePicUrl;
-        user.preferredLanguage = lang;
+        user.preferredLanguage = userlang;
         
         NSLog(@"user default profile imageUrl at appDelegate %@", user.userProfileImage.imageUrl);
+        
+        //初始化语言
+        if ([userlang isEqualToString:@"en"]) {
+            [[ZBLocalized sharedInstance]setLanguage:@"en"];
+        } else if ([userlang isEqualToString:@"tw"]) {
+            [[ZBLocalized sharedInstance]setLanguage:@"zh-Hant"];
+        } else {
+            [[ZBLocalized sharedInstance]initLanguage];
+        }
+        
         
         GFTabBarController *tabVC = [[GFTabBarController alloc] init];
         self.window.rootViewController = tabVC;
@@ -113,7 +124,7 @@
     [FBSDKAppEvents activateApp];
 }
 
-
+// [START openurl]
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
@@ -130,10 +141,9 @@
                                sourceApplication:sourceApplication
                                       annotation:annotation];
 }
+// [END openurl]
 
 /************************* Google+ ************************/
-// [START openurl]
-// [END openurl]
 
 // [START signin_handler]
 - (void)signIn:(GIDSignIn *)signIn
