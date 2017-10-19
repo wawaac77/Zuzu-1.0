@@ -30,7 +30,7 @@
 {
     _item = item;
     
-    self.titleLabel.text = item.name.en;
+    self.titleLabel.text = item.name;
     self.priceLabel.text = [NSString stringWithFormat:@"HK$ %@", item.price];
     //self.imageView.image = [UIImage imageNamed:item.icon];
     //设置图片

@@ -11,6 +11,7 @@
 #import "GFEventDetailViewController.h"
 #import "GFTabBarController.h"
 #import "GFNavigationController.h"
+#import "ForgetPasswordViewController.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -86,19 +87,7 @@
 }
 
 - (void)setupLayout {
-    /*
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    [loginButton setTitle: @"Login with Facebook" forState:UIControlStateNormal];
-    
-    loginButton.titleLabel.font = [UIFont systemFontOfSize:16.0f];
-    loginButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
-    loginButton.tintColor = [UIColor whiteColor];
 
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
-     */
-    
-    
     _loginWithFacebookButton.layer.cornerRadius = 5.0f;
     _loginWithFacebookButton.layer.masksToBounds = YES;
     _loginWithFacebookButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
@@ -192,12 +181,52 @@
             [userDefaults setObject:thisUser.socialLevel forKey:@"KEY_USER_SOCIAL_LEVEL"];
             [userDefaults setObject:thisUser.userOrganizingLevel forKey:@"KEY_USER_ORGANIZE_LEVEL"];
             [userDefaults setObject:thisUser.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
+            if (thisUser.preferredLanguage == NULL) {
+                thisUser.preferredLanguage = @"en";
+            }
+            [userDefaults setObject:thisUser.preferredLanguage forKey:@"KEY_USER_LANG"];
             [userDefaults synchronize];
 
             NSLog(@"this user %@", thisUser);
             NSLog(@"this user. userName %@", thisUser.usertName);
             NSLog(@"this user. memberId %@", thisUser.userID);
 
+            //*************** user instance *********//
+            [ZZUser shareUser].userID = thisUser.userID;
+            [ZZUser shareUser].userUpdatedAt = thisUser.userUpdatedAt;
+            [ZZUser shareUser].userCreatedAt = thisUser.userCreatedAt;
+            [ZZUser shareUser].usertName = thisUser.usertName;
+            [ZZUser shareUser].userEmail = thisUser.userEmail;
+            //[ZZUser shareUser].usertPassword = thisUser.usertPassword;
+            [ZZUser shareUser].userUserName = thisUser.userUserName;
+            [ZZUser shareUser].userStatus = thisUser.userStatus;
+            [ZZUser shareUser].userToken = thisUser.userToken;
+            //[ZZUser shareUser].userFacebookID = thisUser.userFacebookID;
+            //[ZZUser shareUser].userGoogleID = thisUser.userGoogleID;
+            [ZZUser shareUser].userOrganizingExp = thisUser.userOrganizingExp;
+            [ZZUser shareUser].userOrganizingLevel = thisUser.userOrganizingLevel;
+            [ZZUser shareUser].socialExp = thisUser.socialExp;
+            [ZZUser shareUser].socialLevel = thisUser.socialLevel;
+            [ZZUser shareUser].checkinPoint = thisUser.checkinPoint;
+            [ZZUser shareUser].userInterests = [[NSMutableArray alloc] init];
+            [ZZUser shareUser].userInterests = thisUser.userInterests;
+            [ZZUser shareUser].userLastCheckIn = thisUser.userLastCheckIn;
+            [ZZUser shareUser].age = thisUser.age;
+            [ZZUser shareUser].gender = thisUser.gender;
+            [ZZUser shareUser].userIndustry = thisUser.userIndustry;
+            [ZZUser shareUser].userProfession = thisUser.userProfession;
+            [ZZUser shareUser].maxPrice = thisUser.maxPrice;
+            [ZZUser shareUser].minPrice = thisUser.minPrice;
+            [ZZUser shareUser].preferredLanguage = thisUser.preferredLanguage;
+            [ZZUser shareUser].numOfFollower = thisUser.numOfFollower;
+            [ZZUser shareUser].showOnLockScreen = thisUser.showOnLockScreen;
+            [ZZUser shareUser].sounds = thisUser.sounds;
+            [ZZUser shareUser].emailNotification = thisUser.emailNotification;
+            [ZZUser shareUser].allowNotification = thisUser.allowNotification;
+            [ZZUser shareUser].canSeeMyProfile = thisUser.canSeeMyProfile;
+            [ZZUser shareUser].canMessageMe = thisUser.canMessageMe;
+            [ZZUser shareUser].canMyFriendSeeMyEmail = thisUser.canMyFriendSeeMyEmail;
+            [ZZUser shareUser].notificationNum = thisUser.notificationNum;
             
             UIWindow *window = [UIApplication sharedApplication].keyWindow;
             window.rootViewController = [[GFTabBarController alloc]init];
@@ -246,56 +275,19 @@
 
 - (IBAction)forgetPasswordClicked:(id)sender {
     
-    NSLog(@"forget password > button clicked");
-    
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    NSString *email = _emailTextField.text;
-    NSDictionary *emailDic = @ {@"email" : email};
-    NSDictionary *inData = @{
-                             @"action" : @"forgetPassword",
-                             @"data" : emailDic};
-    NSDictionary *parameters = @{@"data" : inData};
-    
-    NSLog(@"upcoming events parameters %@", parameters);
-    
-    
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        NSNumber *responseStatus = [[NSNumber alloc] init];
-        responseStatus = responseObject[@"status"];
-       
-        NSLog(@"responseStatus %@", responseStatus);
-        if ([responseStatus isEqualToNumber:@1]) {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"You could check your email and set new password now ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alertView show];
-            
-        } else {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"The account does not exist." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-            [alertView show];
-
-        }
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network, please try later"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    }];
-    
+    ForgetPasswordViewController *forgetVC = [[ForgetPasswordViewController alloc] init];
+    forgetVC.view.frame = [UIScreen mainScreen].bounds;
+    [self presentViewController:forgetVC animated:YES completion:nil];
 
 }
+
 - (IBAction)loginUsingFirebaseClicked:(id)sender {
     
 }
 
+
 //************************login with Facebook *******************************//
+/*
 - (void)loginFBButtonClicked {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login
@@ -320,9 +312,11 @@
              
              //NSLog(@"facebookId %@", result.);
              */
+/*
          }
      }];
 }
+*/
 
 #pragma mark - 监听键盘的弹出和隐藏
 /*
@@ -377,5 +371,94 @@
     [self.emailTextField becomeFirstResponder];
 }
  */
+
+#pragma mark - Facebook
+//************************login with Facebook *******************************//
+- (void)loginFBButtonClicked {
+    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+    [login
+     logInWithReadPermissions: @[@"public_profile", @"email", @"user_friends"]
+     fromViewController:self
+     handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+         if (error) {
+             NSLog(@"Process error");
+         } else if (result.isCancelled) {
+             NSLog(@"Cancelled");
+         } else {
+             NSLog(@"Logged in");
+             NSLog(@"facebookToken %@", result.token);
+             if ([FBSDKAccessToken currentAccessToken])
+             {
+                 
+                 [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me?fields=id,name,age_range,birthday,devices,email,gender,last_name,family,friends,location,picture" parameters:nil]
+                  startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                      if (!error) {
+                          
+                          NSString * accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+                          NSLog(@"fetched user:%@ ,%@", result,accessToken);
+                          
+                          //fbResultData =[[NSMutableDictionary alloc]init];
+                          
+                          if ([result objectForKey:@"email"]) {
+                              [ZZUser shareUser].facebookEmail = [result objectForKey:@"email"];
+                          }
+                          if ([result objectForKey:@"gender"]) {
+                              [ZZUser shareUser].gender = [result objectForKey:@"gender"];
+                          }
+                          if ([result objectForKey:@"name"]) {
+                              
+                          }
+                          if ([result objectForKey:@"last_name"]) {
+                          }
+                          if ([result objectForKey:@"id"]) {
+                              
+                              [ZZUser shareUser].userFacebookID = [result objectForKey:@"id"];
+                              NSLog(@"[ZZUser shareUser].userFacebookID %@", [ZZUser shareUser].userFacebookID);
+                              [[NSUserDefaults standardUserDefaults] setObject:[result objectForKey:@"id"] forKey:@"facebookUserID"];
+                              [[NSUserDefaults standardUserDefaults] synchronize];
+                              
+                          }
+                          
+                          FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc]
+                                                        initWithGraphPath:[NSString stringWithFormat:@"me/picture?type=large&redirect=false"]
+                                                        parameters:nil
+                                                        HTTPMethod:@"GET"];
+                          [request startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection,
+                                                                id result,
+                                                                NSError *error) {
+                              if (!error){
+                                  
+                                  /*
+                                   if ([[result objectForKey:@"data"] objectForKey:@"url"]) {
+                                   [fbResultData setObject:[[result objectForKey:@"data"] objectForKey:@"url"] forKey:@"picture"];
+                                   }
+                                   
+                                   //You get all detail here in fbResultData
+                                   NSLog(@"Final data of FB login********%@",fbResultData);
+                                   [_userDefaults setObject:[NSString stringWithFormat:@"%@ %@",[fbResultData objectForKey:@"name"],[fbResultData objectForKey:@"last_name"]] forKey:@"facebookLogin"];
+                                   [_userDefaults synchronize];
+                                   [self showAlertForLoggedIn:[NSString stringWithFormat:@"%@ %@",[fbResultData objectForKey:@"name"],[fbResultData objectForKey:@"last_name"]]];
+                                   
+                                   */
+                              } }];
+                      }
+                      else {
+                          NSLog(@"result: %@",[error description]);
+                          //                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:[error description] delegate:nil cancelButtonTitle:NSLocalizedString(@"DISMISS", nil) otherButtonTitle:nil];
+                          // [alert showInView:self.view.window];
+                          //[self showAlertForLoggedIn:[error description]];
+                      }
+                  }];
+             }
+             else{
+                 [[FBSDKLoginManager new] logOut];
+                 //                     [_customFaceBookButton setImage:[UIImage imageNamed:@"fb_connected"] forState:UIControlStateNormal];
+             }
+         }
+     }];
+    
+    
+}
+//************************* End of Facebook signin part **************************//
 
 @end

@@ -44,15 +44,15 @@
 -(void)setRestaurant:(EventRestaurant *)restaurant
 {
     self.thisRestaurant = restaurant;
-    NSLog(@"restaurant.id %@, %@", restaurant.restaurantId,restaurant.restaurantName.en);
+    NSLog(@"restaurant.id %@, %@", restaurant.restaurantId,restaurant.restaurantName);
     self.restaurantImageView.clipsToBounds = YES;
     [self.restaurantImageView sd_setImageWithURL:[NSURL URLWithString:restaurant.restaurantIcon.imageUrl] placeholderImage:nil];
-    _bigTitleLabel.text = restaurant.restaurantName.en;
+    _bigTitleLabel.text = restaurant.restaurantName;
     
-    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName.en, [restaurant.restaurantDistance floatValue] * 1000];
+    _locationLabel.text = [NSString stringWithFormat:@"%@ - %.1fkm",restaurant.restaurantDistrict.informationName, [restaurant.restaurantDistance floatValue] * 1000];
     NSString *cuisines = @"";
     for (int i = 0; i < restaurant.restaurantCuisines.count; i++) {
-        cuisines = [cuisines stringByAppendingString:restaurant.restaurantCuisines[i].informationName.en];
+        cuisines = [cuisines stringByAppendingString:restaurant.restaurantCuisines[i].informationName];
     }
     _priceLabel.text = [NSString stringWithFormat:@"$%@-%@ per person | %@", restaurant.restaurantMinPrice, restaurant.restaurantMaxPrice, cuisines];
     

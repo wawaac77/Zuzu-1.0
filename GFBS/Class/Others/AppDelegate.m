@@ -17,9 +17,15 @@
 #import <Fabric/Fabric.h>
 #import "Crashlytics/Crashlytics.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <AFNetworking.h>
+#import <MJExtension.h>
+#import <SVProgressHUD.h>
 
 
 @interface AppDelegate ()
+
+/*请求管理者*/
+@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
@@ -29,6 +35,17 @@
 
 + (AppDelegate *) APP {
     return  (AppDelegate*) [[UIApplication sharedApplication] delegate];
+}
+
+#pragma mark - 懒加载
+-(GFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [GFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return _manager;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -44,6 +61,8 @@
     NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
     NSString *profilePicUrl = [userDefault objectForKey:@"KEY_USER_PROFILE_PICURL"];
     NSString *userlang = [userDefault objectForKey:@"KEY_USER_PROFILE_LANG"];
+    NSString *googleUserID = [userDefault objectForKey:@"googlePlusUserID"];
+    NSString *facebookUserID = [userDefault objectForKey:@"facebookUserID"];
     
     if (userToken != nil) {
         
@@ -59,6 +78,13 @@
         user.preferredLanguage = userlang;
         
         NSLog(@"user default profile imageUrl at appDelegate %@", user.userProfileImage.imageUrl);
+        
+        //user instance
+        [ZZUser shareUser].userToken = userToken;
+        [ZZUser shareUser].userUserName = username;
+        [ZZUser shareUser].preferredLanguage = userlang;
+        [ZZUser shareUser].userGoogleID = googleUserID;
+        [ZZUser shareUser].userFacebookID = facebookUserID;
         
         //初始化语言
         if ([userlang isEqualToString:@"en"]) {
@@ -185,6 +211,111 @@ didDisconnectWithUser:(GIDGoogleUser *)user
 }
 // [END disconnect_handler]
 
+- (void)googleLogin {
+    
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    
+    NSDictionary *inSubData = @ {@"googleId" : [ZZUser shareUser].userGoogleID};
+    NSDictionary *inData = @{
+                             @"action" : @"googleLogin",
+                             @"data" : inSubData};
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    NSLog(@"upcoming events parameters %@", parameters);
+    
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        
+        ZZUser *thisUser = [[ZZUser alloc] init];
+        thisUser = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
+        
+        if (thisUser == nil) {
+            
+            [SVProgressHUD showWithStatus:@"Incorrect Email or password ><"];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        } else {
+            
+            [AppDelegate APP].user = [[ZZUser alloc] init];
+            [AppDelegate APP].user = thisUser;
+            
+            NSLog(@"user token = %@", thisUser.userToken);
+            
+            
+            //*************** defualt user set even app is turned off *********//
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:thisUser.userUserName forKey:@"KEY_USER_NAME"];
+            [userDefaults setObject:thisUser.userToken forKey:@"KEY_USER_TOKEN"];
+            
+            thisUser.preferredLanguage = @"en"; //should add this parameter in google login API
+            [userDefaults setObject:thisUser.preferredLanguage forKey:@"KEY_USER_LANG"];
+            [userDefaults synchronize];
+            
+            NSLog(@"this user %@", thisUser);
+            NSLog(@"this user. userName %@", thisUser.usertName);
+            NSLog(@"this user. memberId %@", thisUser.userID);
+            NSLog(@"this user. preferredLanguage %@", thisUser.preferredLanguage);
+            
+            //*************** user instance *********//
+            [ZZUser shareUser].userID = thisUser.userID;
+            [ZZUser shareUser].userUpdatedAt = thisUser.userUpdatedAt;
+            [ZZUser shareUser].userCreatedAt = thisUser.userCreatedAt;
+            [ZZUser shareUser].usertName = thisUser.usertName;
+            [ZZUser shareUser].userEmail = thisUser.userEmail;
+            //[ZZUser shareUser].usertPassword = thisUser.usertPassword;
+            [ZZUser shareUser].userUserName = thisUser.userUserName;
+            [ZZUser shareUser].userStatus = thisUser.userStatus;
+            [ZZUser shareUser].userToken = thisUser.userToken;
+            //[ZZUser shareUser].userFacebookID = thisUser.userFacebookID;
+            //[ZZUser shareUser].userGoogleID = thisUser.userGoogleID;
+            [ZZUser shareUser].userOrganizingExp = thisUser.userOrganizingExp;
+            [ZZUser shareUser].userOrganizingLevel = thisUser.userOrganizingLevel;
+            [ZZUser shareUser].socialExp = thisUser.socialExp;
+            [ZZUser shareUser].socialLevel = thisUser.socialLevel;
+            [ZZUser shareUser].checkinPoint = thisUser.checkinPoint;
+            [ZZUser shareUser].userInterests = [[NSMutableArray alloc] init];
+            [ZZUser shareUser].userInterests = thisUser.userInterests;
+            [ZZUser shareUser].userLastCheckIn = thisUser.userLastCheckIn;
+            [ZZUser shareUser].age = thisUser.age;
+            [ZZUser shareUser].gender = thisUser.gender;
+            [ZZUser shareUser].userIndustry = thisUser.userIndustry;
+            [ZZUser shareUser].userProfession = thisUser.userProfession;
+            [ZZUser shareUser].maxPrice = thisUser.maxPrice;
+            [ZZUser shareUser].minPrice = thisUser.minPrice;
+            [ZZUser shareUser].preferredLanguage = thisUser.preferredLanguage;
+            [ZZUser shareUser].numOfFollower = thisUser.numOfFollower;
+            [ZZUser shareUser].showOnLockScreen = thisUser.showOnLockScreen;
+            [ZZUser shareUser].sounds = thisUser.sounds;
+            [ZZUser shareUser].emailNotification = thisUser.emailNotification;
+            [ZZUser shareUser].allowNotification = thisUser.allowNotification;
+            [ZZUser shareUser].canSeeMyProfile = thisUser.canSeeMyProfile;
+            [ZZUser shareUser].canMessageMe = thisUser.canMessageMe;
+            [ZZUser shareUser].canMyFriendSeeMyEmail = thisUser.canMyFriendSeeMyEmail;
+            [ZZUser shareUser].notificationNum = thisUser.notificationNum;
+            
+            UIWindow *window = [UIApplication sharedApplication].keyWindow;
+            window.rootViewController = [[GFTabBarController alloc]init];
+            [window makeKeyWindow];
+            
+        }
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later"];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

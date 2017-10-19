@@ -112,8 +112,11 @@ static NSString *const friendRequestID = @"friendRequest";
     
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
-    
-    NSDictionary *inData = @{@"action" : @"getNotificationList", @"token" : userToken};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSDictionary *inData = @{@"action" : @"getNotificationList", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {

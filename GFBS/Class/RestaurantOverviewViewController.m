@@ -104,7 +104,7 @@ static NSString *const highLabelID = @"highLabelID";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.iconImageName = _iconImageArray[indexPath.row];
-            cell.info = thisRestaurant.restaurantAddress.en;
+            cell.info = thisRestaurant.restaurantAddress;
             //cell.height = cellHeight1;
             //cellHeight1 = [UILabel getHeightByWidth:GFScreenWidth - 45 - 10 title:thisRestaurant.restaurantAddress.en font:[UIFont systemFontOfSize:14]];
         }
@@ -133,9 +133,9 @@ static NSString *const highLabelID = @"highLabelID";
             for (int i = 0; i < thisRestaurant.restaurantCuisines.count; i++) {
                 NSLog(@"restaurant cuisine %zd", i);
                 ZZTypicalInformationModel *cuisineModel = thisRestaurant.restaurantCuisines[i];
-                NSLog(@"thisRestaurant.restaurantCuisines[i].informationName.en %@", cuisineModel.informationName.en);
+                NSLog(@"thisRestaurant.restaurantCuisines[i].informationName.en %@", cuisineModel.informationName);
                 
-                cuisines = [cuisines stringByAppendingString:thisRestaurant.restaurantCuisines[i].informationName.en];
+                cuisines = [cuisines stringByAppendingString:thisRestaurant.restaurantCuisines[i].informationName];
                 if (i != thisRestaurant.restaurantCuisines.count - 1) {
                 cuisines = [cuisines stringByAppendingString:@", "];
                 }

@@ -141,7 +141,11 @@ static NSString *const ID = @"ID";
     
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
-    NSDictionary *inData = @{@"action" : @"getFriendList", @"token" : userToken};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSDictionary *inData = @{@"action" : @"getFriendList", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
     

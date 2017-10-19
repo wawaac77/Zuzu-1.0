@@ -25,8 +25,8 @@
     NSLog(@"self.item in detail %@", self.item.name);
     
     [self.badgeImageView sd_setImageWithURL:[NSURL URLWithString:self.item.icon.imageUrl] placeholderImage:nil];
-    _nameLabel.text = self.item.name.en;
-    _descriptionTextView.text = self.item.badgeDescription.en;
+    _nameLabel.text = self.item.name;
+    _descriptionTextView.text = self.item.badgeDescription;
     _priceLabel.titleLabel.text = [NSString stringWithFormat:@"HK$ %@", self.item.price];
 }
 

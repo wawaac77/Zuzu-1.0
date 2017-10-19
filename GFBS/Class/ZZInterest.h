@@ -17,6 +17,6 @@
 @property (nonatomic, copy) NSString *interestUpdatedAt;
 @property (nonatomic, copy) NSString *interestCreatedBy;
 @property (nonatomic, copy) NSString *interestCreatedAt;
-@property (nonatomic, strong) TwEn *interestName;
+@property (nonatomic, strong) NSString *interestName;
 
 @end

@@ -124,13 +124,13 @@
     self.bigTitleLabel.text = thisEvent.listEventName;
     self.bigTitleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     ZZInterest *interest = [thisEvent.listEventInterests objectAtIndex:0];
-    self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", interest.interestName.en, thisEvent.listEventJoinedCount,thisEvent.listEventQuota ];
+    self.smallTitleLabel.text = [NSString stringWithFormat:@"%@ | %@/%@", interest.interestName, thisEvent.listEventJoinedCount,thisEvent.listEventQuota ];
     self.smallTitleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     
     
     self.timeLabel.text = thisEvent.listEventStartDate;
     
-    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantName.en;
+    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantName;
     [_placeLabel setFont:[UIFont boldSystemFontOfSize:15]];
     [_placeLabel setTextColor:[UIColor darkGrayColor]];
     

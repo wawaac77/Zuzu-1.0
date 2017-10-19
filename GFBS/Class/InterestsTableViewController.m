@@ -104,12 +104,12 @@ static NSString*const ID = @"ID";
         [cell.textLabel setHighlightedTextColor: [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
         
     }
-    cell.textLabel.text = _interestsArray[indexPath.row].informationName.en;
+    cell.textLabel.text = _interestsArray[indexPath.row].informationName;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _eventDetail.interests = _interestsArray[indexPath.row].informationName.en;
+    _eventDetail.interests = _interestsArray[indexPath.row].informationName;
 }
 
 - (void)setUpNavBar {

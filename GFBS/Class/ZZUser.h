@@ -34,10 +34,10 @@
 @property (nonatomic, copy) NSString *userForgetPasswordKey;
 @property (nonatomic, copy) NSString *userGoogleID;
 
-@property (nonatomic, assign) NSNumber *userOrganizingLevel;
-@property (nonatomic, assign) NSNumber *userOrganizingExp;
-@property (nonatomic, assign) NSNumber *socialLevel;
-@property (nonatomic, assign) NSNumber *socialExp;
+@property (nonatomic, copy) NSNumber *userOrganizingLevel;
+@property (nonatomic, copy) NSNumber *userOrganizingExp;
+@property (nonatomic, copy) NSNumber *socialLevel;
+@property (nonatomic, copy) NSNumber *socialExp;
 @property (nonatomic, assign) NSNumber *checkinPoint;
 
 @property (nonatomic, strong) NSMutableArray<ZZTypicalInformationModel *> *userInterests;
@@ -46,12 +46,16 @@
 
 @property (nonatomic, assign) NSNumber *age;
 @property (nonatomic, copy) NSString *gender;
+
 @property (nonatomic, copy) NSString *phone;
 @property (nonatomic, strong) ZZTypicalInformationModel *userIndustry;
 @property (nonatomic, strong) ZZTypicalInformationModel *userProfession;
 
 @property (nonatomic, assign) NSNumber *maxPrice;
 @property (nonatomic, assign) NSNumber *minPrice;
+
+@property (nonatomic, copy) NSString *preferredLanguage;
+@property (nonatomic, strong) NSNumber *numOfFollower;
 
 @property (nonatomic, assign) NSNumber *showOnLockScreen;
 @property (nonatomic, assign) NSNumber *sounds;
@@ -62,10 +66,27 @@
 @property (nonatomic, assign) NSNumber *canMessageMe;
 @property (nonatomic, assign) NSNumber *canMyFriendSeeMyEmail;
 
-@property (nonatomic, copy) NSString *preferredLanguage;
+
 @property (nonatomic, copy) UIImage *userProfileImage_UIImage;
+@property (nonatomic, strong) NSNumber *notificationNum;
 
 + (NSURLSessionDataTask *)login:(NSDictionary *)paramDic
                         Success:(void (^)(NSDictionary *result))success
                         Failure:(void (^)(NSError *error))failue;
+
+//******************* others ****************************//
+@property (nonatomic, copy) NSString *facebookEmail;
+@property (nonatomic, copy) NSString *googleEmail;
+@property (nonatomic, copy) NSURL *googleProfileImageUrl;
+
+//******************* 单例 ****************************//
+/**
+ 获取单例
+ 
+ @return 对象
+ */
++ (instancetype)shareUser;
+
+
 @end
+

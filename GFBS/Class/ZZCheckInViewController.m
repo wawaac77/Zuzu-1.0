@@ -193,9 +193,16 @@
         @"page" : @"",
         @"geoPoint" : geoPoint
     };
+    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
     NSDictionary *inData = @{
                              @"action" : @"searchRestaurant",
-                             @"data" : keyFactors
+                             @"data" : keyFactors,
+                             @"lang" : userLang,
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
@@ -214,7 +221,7 @@
         self.locationArray = [[NSMutableArray alloc] init];
         self.restaurantIconArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < _restaurants.count; i++) {
-            [_locationArray addObject:_restaurants[i].restaurantName.en];
+            [_locationArray addObject:_restaurants[i].restaurantName];
             [_restaurantIconArray addObject:_restaurants[i].restaurantIcon.imageUrl];
         }
         NSLog(@"_locationArray %@", _locationArray);

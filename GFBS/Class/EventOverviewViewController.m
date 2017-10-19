@@ -68,9 +68,15 @@
     NSString *eventID = thisEventID;
     NSLog(@"overview thisEventID %@", eventID);
     NSDictionary *forEventID = @ {@"eventId" : eventID};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"getEventDetail",
-                             @"data" : forEventID};
+                             @"data" : forEventID,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求
@@ -108,19 +114,19 @@
     _numberOfPeopleLable.text = [NSString stringWithFormat:@"%@/%@  People", _thisEvent.listEventJoinedCount,_thisEvent.listEventQuota];
     _startTimeLabel.text = _thisEvent.listEventStartDate;
     _endTimeLabel.text = [NSString stringWithFormat:@"Ends %@", _thisEvent.listEventEndDate];
-    _placeTypeLabel.text = _thisEvent.listEventRestaurant.restaurantName.en;
-    _locationTextView.text = _thisEvent.listEventRestaurant.restaurantAddress.en;
+    _placeTypeLabel.text = _thisEvent.listEventRestaurant.restaurantName;
+    _locationTextView.text = _thisEvent.listEventRestaurant.restaurantAddress;
     
-    _dishStyleLabel.text = _thisEvent.eventCuisine.informationName.en;
+    _dishStyleLabel.text = _thisEvent.eventCuisine.informationName;
     NSString *features = [[NSString alloc] init];
     for (int i = 0; i < _thisEvent.listEventInterests.count; i++) {
         ZZInterest *thisInterest = [_thisEvent.listEventInterests objectAtIndex:i];
         
         if (i == _thisEvent.listEventInterests.count - 1) {
-            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@", thisInterest.interestName.en]];
+            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@", thisInterest.interestName]];
 
         } else {
-            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@, ", thisInterest.interestName.en]];
+            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@, ", thisInterest.interestName]];
         }
     }
     _featureLabel.text = features;

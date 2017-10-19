@@ -184,7 +184,7 @@ static NSString*const sliderID = @"sliderID";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 4) {
                 cell.textLabel.text = @"Cuisine";
-                cell.detailTextLabel.text = _eventDetail.cuisine.informationName.en;
+                cell.detailTextLabel.text = _eventDetail.cuisine.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 6) {
                 cell.textLabel.text = @"Number of Guests";
@@ -215,16 +215,16 @@ static NSString*const sliderID = @"sliderID";
                 cell.tintColor = DEFAULT_COLOR_GOLD;
             } else if (indexPath.row == 2) {
                 cell.textLabel.text = @"District";
-                cell.detailTextLabel.text = _eventDetail.district.informationName.en;
+                cell.detailTextLabel.text = _eventDetail.district.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 3) {
                 cell.textLabel.text = @"Landmark";
-                cell.detailTextLabel.text = _eventDetail.landmark.informationName.en;
+                cell.detailTextLabel.text = _eventDetail.landmark.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 4) {
                 //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
                 cell.textLabel.text = @"Cuisine";
-                cell.detailTextLabel.text = _eventDetail.cuisine.informationName.en;
+                cell.detailTextLabel.text = _eventDetail.cuisine.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
              return cell;

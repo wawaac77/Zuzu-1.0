@@ -124,8 +124,8 @@
     
     _topUserLabel.text = _myProfile.userUserName;
     _topScoreLabel.text = [NSString stringWithFormat:@"%@", _myProfile.checkinPoint];
-    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName.en;
-    NSLog(@"listEventRestaurant.restaurantName  %@",_myProfile.userLastCheckIn.listEventRestaurant.restaurantName.en );
+    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName;
+    NSLog(@"listEventRestaurant.restaurantName  %@",_myProfile.userLastCheckIn.listEventRestaurant.restaurantName );
 }
 
 - (void)loadNeweData {
@@ -137,8 +137,14 @@
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSLog(@"first userToken %@", userToken);
+    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
     NSDictionary *inData = [[NSDictionary alloc] init];
-    inData = @{@"action" : @"getMyProfile", @"token" : userToken};
+    inData = @{@"action" : @"getMyProfile", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求

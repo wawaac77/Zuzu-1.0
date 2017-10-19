@@ -15,6 +15,8 @@ pod 'HCSStarRatingView', '~> 1.5'
 pod "SDCycleScrollView"
 pod "LTNavigationBar"
 pod 'LLImagePickerView'
+pod 'RSKImageCropper'
+
 pod "DACircularProgress"
 pod 'APKit', '~> 0.3.1'
 pod "pop"

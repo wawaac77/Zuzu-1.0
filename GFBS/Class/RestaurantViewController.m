@@ -93,9 +93,15 @@ static NSString *const restaurantID = @"restaurant";
         @"page" : @"",
         @"geoPoint" : geoPoint
     };
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"searchRestaurant",
-                             @"data" : keyFactors};
+                             @"data" : keyFactors,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"search Restaurant %@", parameters);

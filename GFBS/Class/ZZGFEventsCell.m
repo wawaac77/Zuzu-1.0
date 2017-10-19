@@ -124,9 +124,9 @@
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
     self.profileImageView.clipsToBounds = YES;
     
-    self.bigTitleLabel.text = thisEvent.listEventRestaurant.restaurantName.en;
+    self.bigTitleLabel.text = thisEvent.listEventRestaurant.restaurantName;
     
-    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantDistrict.informationName.en;
+    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantDistrict.informationName;
     
     self.smallTitleLabel.text = thisEvent.listPublishUser.userUserName;
     

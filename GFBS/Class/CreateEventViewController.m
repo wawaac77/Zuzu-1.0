@@ -449,8 +449,8 @@
         self.interestsArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         //self.interests = [[NSMutableArray alloc] init];
         for (int i = 0; i < _interestsArray.count; i++) {
-            [self.interests addObject:_interestsArray[i].informationName.en];
-            NSLog(@"_interestsArray[i].informationName.en %@", _interestsArray[i].informationName.en);
+            [self.interests addObject:_interestsArray[i].informationName];
+            NSLog(@"_interestsArray[i].informationName %@", _interestsArray[i].informationName);
         }
         
         

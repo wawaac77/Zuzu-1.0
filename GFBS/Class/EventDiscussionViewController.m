@@ -68,7 +68,11 @@ static NSString *const commentID = @"commnet";
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSDictionary *checkinId = @{@"event" : _eventID};
-    NSDictionary *inData = @{@"action" : @"getEventDiscussion" , @"token" : userToken, @"data" : checkinId};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSDictionary *inData = @{@"action" : @"getEventDiscussion" , @"token" : userToken, @"data" : checkinId, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     __weak typeof(self) weakSelf = self;
     

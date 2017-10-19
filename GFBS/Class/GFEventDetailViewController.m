@@ -132,9 +132,16 @@
     NSLog(@"eventHere.eventID %@", eventID);
     
     NSDictionary *forEventID = @ {@"eventId" : eventID};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
     NSDictionary *inData = @{
                              @"action" : @"getEventDetail",
-                             @"data" : forEventID};
+                             @"data" : forEventID,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求

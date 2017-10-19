@@ -171,10 +171,15 @@ static CGFloat  const margin = 0;
     
     //2.凭借请求参数
     NSString *userToken = [AppDelegate APP].user.userToken;
-    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"getBadgeList",
-                             @"token" : userToken};
+                             @"token" : userToken,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求

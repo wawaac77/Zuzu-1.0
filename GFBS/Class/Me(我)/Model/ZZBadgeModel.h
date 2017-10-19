@@ -16,8 +16,8 @@
 @property (strong , nonatomic)NSString *_id;
 @property (strong , nonatomic)GFImage *icon;
 
-@property (strong , nonatomic)TwEn *name;
-@property (strong , nonatomic)TwEn *badgeDescription;
+@property (strong , nonatomic)NSString *name;
+@property (strong , nonatomic)NSString *badgeDescription;
 
 @property (strong, nonatomic)NSNumber *price;
 

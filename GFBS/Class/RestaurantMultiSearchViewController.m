@@ -253,7 +253,7 @@
 }
 
 - (void)passValueCuisine:(SearchEventDetail *)theValue {
-    self.cuisineLabel.text = [NSString stringWithFormat:@"%@", theValue.cuisine.informationName.en];
+    self.cuisineLabel.text = [NSString stringWithFormat:@"%@", theValue.cuisine.informationName];
 }
 
 -(void)buttonClicked {

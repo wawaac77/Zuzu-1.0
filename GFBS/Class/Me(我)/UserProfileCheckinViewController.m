@@ -61,7 +61,7 @@
 }
 
 - (void)setUpAfterLoadNewData {
-    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName.en;
+    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName;
     
     [self setUpTopLabelBar];
     [self setUpChildVC];
@@ -97,8 +97,8 @@
     
     _topUserLabel.text = _myProfile.userUserName;
     _topScoreLabel.text = [NSString stringWithFormat:@"%@", _myProfile.checkinPoint];;
-    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName.en;
-    NSLog(@"listEventRestaurant.restaurantName  %@",_myProfile.userLastCheckIn.listEventRestaurant.restaurantName.en );
+    _topLocationLabel.text = _myProfile.userLastCheckIn.listEventRestaurant.restaurantName;
+    NSLog(@"listEventRestaurant.restaurantName  %@",_myProfile.userLastCheckIn.listEventRestaurant.restaurantName );
 }
 
 - (void)setUpTopLabelBar {
@@ -174,9 +174,12 @@
     //2.凭借请求参数
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
-    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inSubData = @{@"memberId" : _myProfile.userID};
-    NSDictionary *inData = @{@"action" : @"getProfile", @"token" : userToken, @"data":inSubData};
+    NSDictionary *inData = @{@"action" : @"getProfile", @"token" : userToken, @"data":inSubData, @"lang" : userLang};
     
     NSDictionary *parameters = @{@"data" : inData};
     

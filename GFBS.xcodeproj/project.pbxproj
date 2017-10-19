@@ -325,6 +325,20 @@
 		784D3F741ECC85CD0058C63F /* GFNearbyEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */; };
 		784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7E1F1F032A00014395 /* Fabric.framework */; };
 		784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7F1F1F032A00014395 /* Crashlytics.framework */; };
+		785100741F98F1F4001B8389 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851006D1F98F1F3001B8389 /* ImagePickerViewController.m */; };
+		785100751F98F1F4001B8389 /* TZTestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851006E1F98F1F3001B8389 /* TZTestCell.m */; };
+		785100761F98F1F4001B8389 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100721F98F1F4001B8389 /* LxGridViewFlowLayout.m */; };
+		785100771F98F1F4001B8389 /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785100731F98F1F4001B8389 /* ImagePickerViewController.xib */; };
+		785100811F98F215001B8389 /* PickSingleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100781F98F211001B8389 /* PickSingleImageViewController.m */; };
+		785100821F98F215001B8389 /* CuisineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851007A1F98F212001B8389 /* CuisineTableViewController.m */; };
+		785100831F98F215001B8389 /* SubFillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851007B1F98F212001B8389 /* SubFillTableViewController.m */; };
+		785100841F98F215001B8389 /* PickSingleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */; };
+		785100851F98F215001B8389 /* SubFillTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007E1F98F213001B8389 /* SubFillTableViewController.xib */; };
+		785100861F98F215001B8389 /* CuisineTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007F1F98F214001B8389 /* CuisineTableViewController.xib */; };
+		7851008D1F98F4C9001B8389 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100871F98F4C8001B8389 /* ForgetPasswordViewController.m */; };
+		7851008E1F98F4C9001B8389 /* ResetPWSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100891F98F4C8001B8389 /* ResetPWSuccessViewController.m */; };
+		7851008F1F98F4C9001B8389 /* ResetPWSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851008B1F98F4C9001B8389 /* ResetPWSuccessViewController.xib */; };
+		785100901F98F4C9001B8389 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851008C1F98F4C9001B8389 /* ForgetPasswordViewController.xib */; };
 		785FF23C1F7B91D5002A42E9 /* ZBLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */; };
 		786069631F15D98100A8AB88 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860695F1F15D98100A8AB88 /* DHGifImageOperation.m */; };
 		786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069611F15D98100A8AB88 /* DHGuidePageHUD.m */; };
@@ -998,6 +1012,28 @@
 		784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFNearbyEventsViewController.xib; sourceTree = "<group>"; };
 		784FBB7E1F1F032A00014395 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		784FBB7F1F1F032A00014395 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		7851006D1F98F1F3001B8389 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
+		7851006E1F98F1F3001B8389 /* TZTestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZTestCell.m; sourceTree = "<group>"; };
+		7851006F1F98F1F3001B8389 /* ImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerViewController.h; sourceTree = "<group>"; };
+		785100701F98F1F3001B8389 /* TZTestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZTestCell.h; sourceTree = "<group>"; };
+		785100711F98F1F3001B8389 /* LxGridViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridViewFlowLayout.h; sourceTree = "<group>"; };
+		785100721F98F1F4001B8389 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
+		785100731F98F1F4001B8389 /* ImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerViewController.xib; sourceTree = "<group>"; };
+		785100781F98F211001B8389 /* PickSingleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickSingleImageViewController.m; sourceTree = "<group>"; };
+		785100791F98F211001B8389 /* CuisineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisineTableViewController.h; sourceTree = "<group>"; };
+		7851007A1F98F212001B8389 /* CuisineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisineTableViewController.m; sourceTree = "<group>"; };
+		7851007B1F98F212001B8389 /* SubFillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubFillTableViewController.m; sourceTree = "<group>"; };
+		7851007C1F98F213001B8389 /* PickSingleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickSingleImageViewController.h; sourceTree = "<group>"; };
+		7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickSingleImageViewController.xib; sourceTree = "<group>"; };
+		7851007E1F98F213001B8389 /* SubFillTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubFillTableViewController.xib; sourceTree = "<group>"; };
+		7851007F1F98F214001B8389 /* CuisineTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CuisineTableViewController.xib; sourceTree = "<group>"; };
+		785100801F98F214001B8389 /* SubFillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubFillTableViewController.h; sourceTree = "<group>"; };
+		785100871F98F4C8001B8389 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		785100881F98F4C8001B8389 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		785100891F98F4C8001B8389 /* ResetPWSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPWSuccessViewController.m; sourceTree = "<group>"; };
+		7851008A1F98F4C9001B8389 /* ResetPWSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPWSuccessViewController.h; sourceTree = "<group>"; };
+		7851008B1F98F4C9001B8389 /* ResetPWSuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPWSuccessViewController.xib; sourceTree = "<group>"; };
+		7851008C1F98F4C9001B8389 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
 		785FF23A1F7B91D5002A42E9 /* ZBLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBLocalized.h; sourceTree = "<group>"; };
 		785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBLocalized.m; sourceTree = "<group>"; };
 		7860695E1F15D98100A8AB88 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
@@ -1450,6 +1486,7 @@
 		185420821DF064F1004F6378 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7851006C1F98F1D3001B8389 /* imagePicker */,
 				185420831DF064F1004F6378 /* GFSettingViewController.h */,
 				185420841DF064F1004F6378 /* GFSettingViewController.m */,
 				185420851DF064F1004F6378 /* GFSettingViewController.storyboard */,
@@ -1461,6 +1498,15 @@
 				7864EB5F1F28C5B500AA572E /* ZZMessageAdminViewController.h */,
 				7864EB601F28C5B500AA572E /* ZZMessageAdminViewController.m */,
 				7864EB611F28C5B500AA572E /* ZZMessageAdminViewController.xib */,
+				785100791F98F211001B8389 /* CuisineTableViewController.h */,
+				7851007A1F98F212001B8389 /* CuisineTableViewController.m */,
+				7851007F1F98F214001B8389 /* CuisineTableViewController.xib */,
+				7851007C1F98F213001B8389 /* PickSingleImageViewController.h */,
+				785100781F98F211001B8389 /* PickSingleImageViewController.m */,
+				7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */,
+				785100801F98F214001B8389 /* SubFillTableViewController.h */,
+				7851007B1F98F212001B8389 /* SubFillTableViewController.m */,
+				7851007E1F98F213001B8389 /* SubFillTableViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2507,6 +2553,12 @@
 		7829FFAC1ED8134000C934C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				785100881F98F4C8001B8389 /* ForgetPasswordViewController.h */,
+				785100871F98F4C8001B8389 /* ForgetPasswordViewController.m */,
+				7851008C1F98F4C9001B8389 /* ForgetPasswordViewController.xib */,
+				7851008A1F98F4C9001B8389 /* ResetPWSuccessViewController.h */,
+				785100891F98F4C8001B8389 /* ResetPWSuccessViewController.m */,
+				7851008B1F98F4C9001B8389 /* ResetPWSuccessViewController.xib */,
 				7829FF9C1ED8040100C934C2 /* LoginViewController.h */,
 				7829FF9D1ED8040100C934C2 /* LoginViewController.m */,
 				7829FF9E1ED8040100C934C2 /* LoginViewController.xib */,
@@ -2711,6 +2763,20 @@
 				783089491F1D0C6F00C31BFE /* CommentHeaderView.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		7851006C1F98F1D3001B8389 /* imagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7851006F1F98F1F3001B8389 /* ImagePickerViewController.h */,
+				7851006D1F98F1F3001B8389 /* ImagePickerViewController.m */,
+				785100731F98F1F4001B8389 /* ImagePickerViewController.xib */,
+				785100711F98F1F3001B8389 /* LxGridViewFlowLayout.h */,
+				785100721F98F1F4001B8389 /* LxGridViewFlowLayout.m */,
+				785100701F98F1F3001B8389 /* TZTestCell.h */,
+				7851006E1F98F1F3001B8389 /* TZTestCell.m */,
+			);
+			path = imagePicker;
 			sourceTree = "<group>";
 		};
 		785FF2391F7B91D5002A42E9 /* ZBLocalized */ = {
@@ -3551,6 +3617,7 @@
 				781E56561F31B7ED006854BA /* ic_home_on.png in Resources */,
 				781210341F3C33EB00C08BD6 /* InterestsTableViewController.xib in Resources */,
 				780096C91EC9C1F5008F9F99 /* ic_fa-ellipsis-h.png in Resources */,
+				785100861F98F215001B8389 /* CuisineTableViewController.xib in Resources */,
 				7829FFA01ED8040100C934C2 /* LoginViewController.xib in Resources */,
 				7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */,
 				1841A77A1DE1752E00FB54CC /* GFSquareCell.xib in Resources */,
@@ -3567,6 +3634,7 @@
 				7812103E1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib in Resources */,
 				7829FF7B1ED55C9B00C934C2 /* pexels-photo-38106.png in Resources */,
 				780096CF1EC9C1F5008F9F99 /* ic_fa-star-o.png in Resources */,
+				785100851F98F215001B8389 /* SubFillTableViewController.xib in Resources */,
 				781E565C1F31B7ED006854BA /* ic_social_on.png in Resources */,
 				7829FF771ED55C9B00C934C2 /* pexels-photo-260922.png in Resources */,
 				780097031EC9C1F5008F9F99 /* ic_settings.png in Resources */,
@@ -3576,6 +3644,7 @@
 				780096F51EC9C1F5008F9F99 /* ic_camera_pop_up.png in Resources */,
 				788CC3591F19EC3900DC4116 /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				788CC2921F18801600DC4116 /* ZZChatViewController.xib in Resources */,
+				785100841F98F215001B8389 /* PickSingleImageViewController.xib in Resources */,
 				786069CE1F15DB9B00A8AB88 /* zuzu-my-freinds.png in Resources */,
 				783089651F1E220000C31BFE /* ZZFriendCell.xib in Resources */,
 				189CA3301DDADBF6004D07EA /* Assets.xcassets in Resources */,
@@ -3584,6 +3653,7 @@
 				7800970A1EC9C1F5008F9F99 /* coming soon.png in Resources */,
 				7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */,
 				780097011EC9C1F5008F9F99 /* ic_phone_call.png in Resources */,
+				785100771F98F1F4001B8389 /* ImagePickerViewController.xib in Resources */,
 				7824E3341EF13BF700F85BFB /* profile-bg-green_02.jpg in Resources */,
 				780096B61EC9C1F5008F9F99 /* event-banner-1080-06.jpg in Resources */,
 				786B381D1F2DDC780098A12F /* UserProfileCheckinViewController.xib in Resources */,
@@ -3628,6 +3698,7 @@
 				7824E32D1EF13BF700F85BFB /* profile-bg-blue_01.jpg in Resources */,
 				786069B01F15DB9B00A8AB88 /* ic_heart-o.png in Resources */,
 				7829FF7A1ED55C9B00C934C2 /* pexels-photo-313700.png in Resources */,
+				7851008F1F98F4C9001B8389 /* ResetPWSuccessViewController.xib in Resources */,
 				1829A6AF1DE8550D0086AD86 /* GFTopicCell.xib in Resources */,
 				788CC32E1F19EC3900DC4116 /* JSQMessagesAssets.bundle in Resources */,
 				78F49F811EE6F5A900674130 /* MyEventCell.xib in Resources */,
@@ -3712,6 +3783,7 @@
 				780097361ECAD4FD008F9F99 /* zuzu-login-750x1334-plain.png in Resources */,
 				780096CC1EC9C1F5008F9F99 /* ic_fa-mail-reply.png in Resources */,
 				78FFE5A41ECD88F100F909A2 /* GFEventDetailViewController.xib in Resources */,
+				785100901F98F4C9001B8389 /* ForgetPasswordViewController.xib in Resources */,
 				780096EA1EC9C1F5008F9F99 /* logo-163x187-login.png in Resources */,
 				780096EB1EC9C1F5008F9F99 /* logo-292x341-homescreen.png in Resources */,
 				780096F71EC9C1F5008F9F99 /* ic_clock.png in Resources */,
@@ -3819,6 +3891,7 @@
 				18388AD81DFAAF21004E1DF9 /* GFRecommendViewController.m in Sources */,
 				78F49F721EE6F37B00674130 /* EventListTableViewController.m in Sources */,
 				7830896A1F1E371F00C31BFE /* UIView+Position.m in Sources */,
+				785100831F98F215001B8389 /* SubFillTableViewController.m in Sources */,
 				18B61AF51E0D4A7100CAC3FF /* GFTagButton.m in Sources */,
 				789CFF651F0B86A600EBA772 /* NotificationCell.m in Sources */,
 				788CC34E1F19EC3900DC4116 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
@@ -3896,6 +3969,7 @@
 				788CC34B1F19EC3900DC4116 /* JSQMessagesCollectionViewCell.m in Sources */,
 				18B61AF21E0CF48F00CAC3FF /* GFAddTagsViewController.m in Sources */,
 				781E56651F31BCA2006854BA /* MyZuzuViewController.m in Sources */,
+				7851008E1F98F4C9001B8389 /* ResetPWSuccessViewController.m in Sources */,
 				18C826351DE736B3007341E3 /* GFPictureViewController.m in Sources */,
 				1829A6A11DE818F70086AD86 /* GFRefreshHeader.m in Sources */,
 				781E56821F3347D8006854BA /* EventSearchResultTableViewController.m in Sources */,
@@ -3905,6 +3979,7 @@
 				783089351F1C913200C31BFE /* ZZContentModel.m in Sources */,
 				7883331C1F17781100967337 /* ZZCheckInViewController.m in Sources */,
 				781E563F1F31B117006854BA /* GFEventsCell.m in Sources */,
+				785100751F98F1F4001B8389 /* TZTestCell.m in Sources */,
 				788CC33F1F19EC3900DC4116 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,
 				7824E3161EF0D96700F85BFB /* CreateEventViewController.m in Sources */,
 				18E8D37F1DE9EB4100ED4EE1 /* GFTopicVoiceView.m in Sources */,
@@ -3962,9 +4037,12 @@
 				783089641F1E220000C31BFE /* ZZFriendCell.m in Sources */,
 				185420881DF064F1004F6378 /* GFSettingViewController.m in Sources */,
 				788CC3371F19EC3900DC4116 /* JSQMessagesBubbleImageFactory.m in Sources */,
+				785100811F98F215001B8389 /* PickSingleImageViewController.m in Sources */,
 				788CC34A1F19EC3900DC4116 /* JSQMessagesCollectionView.m in Sources */,
+				785100761F98F1F4001B8389 /* LxGridViewFlowLayout.m in Sources */,
 				18BE02B21DDB4C3900D27893 /* GFMeViewController.m in Sources */,
 				789CFF9F1F13C06500EBA772 /* LeaderboardViewController.m in Sources */,
+				785100821F98F215001B8389 /* CuisineTableViewController.m in Sources */,
 				783089601F1E1E7100C31BFE /* ZZFriendModel.m in Sources */,
 				789CFF971F12399100EBA772 /* ZZImageCollectionCell.m in Sources */,
 				788CC34C1F19EC3900DC4116 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
@@ -3980,6 +4058,7 @@
 				7824E35E1EF23D1600F85BFB /* MapNearbyEventsViewController.m in Sources */,
 				788CC3511F19EC3900DC4116 /* JSQMessagesInputToolbar.m in Sources */,
 				18C826381DE736C1007341E3 /* GFWordViewController.m in Sources */,
+				7851008D1F98F4C9001B8389 /* ForgetPasswordViewController.m in Sources */,
 				7817DF7E1F179EFF00B4B02A /* DropDownListView.m in Sources */,
 				786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */,
 				788CC3311F19EC3900DC4116 /* UIColor+JSQMessages.m in Sources */,
@@ -3991,6 +4070,7 @@
 				788CC3531F19EC3900DC4116 /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */,
 				789CFFA71F13C30300EBA772 /* LeaderboardHostTableViewController.m in Sources */,
+				785100741F98F1F4001B8389 /* ImagePickerViewController.m in Sources */,
 				7812102F1F3B33A600C08BD6 /* RestaurantTableViewController.m in Sources */,
 				788CC3561F19EC3900DC4116 /* JSQMessagesToolbarContentView.m in Sources */,
 				784D3F691ECC79EE0058C63F /* ZZGFEventsCell.m in Sources */,

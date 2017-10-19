@@ -23,8 +23,11 @@
 @property (nonatomic, strong) NSArray<NSNumber *> *phone;
 @property (nonatomic, strong) MyEventImageModel *restaurantBanner;
 @property (nonatomic, strong) MyEventImageModel *restaurantIcon;
-@property (nonatomic, strong) TwEn *restaurantAddress;
-@property (nonatomic, strong) TwEn *restaurantName;
+//@property (nonatomic, strong) TwEn *restaurantAddress;
+//@property (nonatomic, strong) TwEn *restaurantName;
+
+@property (nonatomic, strong) NSString *restaurantAddress;
+@property (nonatomic, strong) NSString *restaurantName;
 @property (nonatomic, copy) NSString *operationHour;
 @property (nonatomic, copy) NSString *features;
 

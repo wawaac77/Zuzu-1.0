@@ -75,8 +75,12 @@ static NSString *const ID = @"ID";
     //2.凭借请求参数
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = [[NSDictionary alloc] init];
-    inData = @{@"action" : @"getLeaderboardAttendees", @"token" : userToken};
+    inData = @{@"action" : @"getLeaderboardAttendees", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求

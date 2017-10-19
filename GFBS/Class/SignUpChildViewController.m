@@ -94,19 +94,6 @@
 
 - (void)setupLayout {
     
-    /*
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    [loginButton setTitle:@"Sign up with Facebook" forState:UIControlStateNormal];
-    loginButton.frame = CGRectMake(35, 60, GFScreenWidth - 70, 40);
-    loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    loginButton.titleLabel.text = @"Sign up with Facebook";
-    loginButton.layer.cornerRadius = 5.0f;
-    loginButton.clipsToBounds = YES;
-    [self.view addSubview:loginButton];
-    
-    loginButton.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-     */
-    
     _signupWithFacebookButton.layer.cornerRadius = 5.0f;
     _signupWithFacebookButton.clipsToBounds = YES;
     _signupWithFacebookButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
@@ -210,11 +197,7 @@
                 [AppDelegate APP].user = thisUser;
                 
             }
-            
-            
-            
         }
-        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", [error localizedDescription]);
@@ -229,7 +212,7 @@
         
         
         //********** regist Firebase ***********************//
-        
+        /*
         [[FIRAuth auth]createUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
            
             if (error) {
@@ -249,9 +232,8 @@
                 
             }
         }];
-    
     }
-    
+    */
 }
 
 #pragma mark - 监听键盘的弹出和隐藏
@@ -458,7 +440,9 @@
         });
         
     }];
+}
     
+
 }
 
 @end

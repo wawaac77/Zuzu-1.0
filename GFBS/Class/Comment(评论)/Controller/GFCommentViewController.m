@@ -174,7 +174,11 @@ static NSString *const headID = @"head";
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSDictionary *checkinId = @{@"checkinId" : _topic.listEventID};
-    NSDictionary *inData = @{@"action" : @"getCheckinCommentList" , @"token" : userToken, @"data" : checkinId};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSDictionary *inData = @{@"action" : @"getCheckinCommentList" , @"token" : userToken, @"data" : checkinId, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     __weak typeof(self) weakSelf = self;
     

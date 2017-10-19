@@ -38,7 +38,7 @@
     self.bigTitleLabel.text = thisEvent.listEventName;
     self.timeLabel.text = thisEvent.listEventStartDate;
     self.attendeeNumLabel.text = [NSString stringWithFormat:@"%@%@%@", thisEvent.listEventJoinedCount, @"/", thisEvent.listEventQuota];
-    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantName.en;
+    self.placeLabel.text = thisEvent.listEventRestaurant.restaurantName;
     [self.expLabel setTextColor:[UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
     if (thisEvent.listEventExp == NULL) {
         self.expLabel.text = [NSString stringWithFormat:@"+0 XP"];

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleSignIn/GoogleSignIn.h>
+#import "CuisineTableViewController.h"
+#import "SubFillTableViewController.h"
+#import "PickSingleImageViewController.h"
 
-@interface GFSettingViewController : UITableViewController
+@interface GFSettingViewController : UITableViewController <FillinChildViewControllerDelegate, CuisineChildViewControllerDelegate, PickSingleImageDelegate, GIDSignInUIDelegate>
 
 @end
+

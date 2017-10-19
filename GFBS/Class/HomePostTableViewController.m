@@ -220,18 +220,23 @@ static NSString *const ID = @"ID";
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSLog(@"user token %@", userToken);
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
     NSDictionary *inData = [[NSDictionary alloc] init];
     if (self.type == 0) {
-        inData = @{@"action" : @"getAllCheckinList", @"token" : userToken};
+        inData = @{@"action" : @"getAllCheckinList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 1) {
-        inData = @{@"action" : @"getFriendCheckinList", @"token" : userToken};
+        inData = @{@"action" : @"getFriendCheckinList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 2) {
-        inData = @{@"action" : @"getMyCheckinList", @"token" : userToken};
+        inData = @{@"action" : @"getMyCheckinList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 4) {
         NSDictionary *inSubData = @{@"restaurantId" : self.restaurantID};
-        inData = @{@"action" : @"getRestaurantCheckinList", @"token" : userToken, @"data":inSubData};
+        inData = @{@"action" : @"getRestaurantCheckinList", @"token" : userToken, @"data":inSubData, @"lang" : userLang};
     } else if (self.type == 5) {
-        inData = @{@"action" : @"getAllCheckinList", @"token" : userToken};
+        inData = @{@"action" : @"getAllCheckinList", @"token" : userToken, @"lang" : userLang};
     }
     /*
     else if ([receivingType isEqualToString:@"User checkin"]) {

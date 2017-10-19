@@ -76,9 +76,15 @@ static NSString *const listEventID = @"event";
     //2.凭借请求参数
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"getNearbyEventList",
-                             @"data" : geoPointDic};
+                             @"data" : geoPointDic,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"Nearby events parameters %@", parameters);

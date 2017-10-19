@@ -79,7 +79,7 @@ static NSString *const restaurantID = @"restaurantID";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents ALicelllllllll");
+    
     //取消请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
@@ -98,9 +98,15 @@ static NSString *const restaurantID = @"restaurantID";
         @"page" : @"",
         @"geoPoint" : geoPoint
     };
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"searchRestaurant",
-                             @"data" : keyFactors};
+                             @"data" : keyFactors,
+                             @"lang" : userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"search Restaurant %@", parameters);

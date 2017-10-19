@@ -156,15 +156,19 @@ static NSString *const eventID = @"myEvent";
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSLog(@"user token %@", userToken);
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = [[NSDictionary alloc] init];
     if (self.type == 0) {
-        inData = @{@"action" : @"getAttendingEventList", @"token" : userToken};
+        inData = @{@"action" : @"getAttendingEventList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 1) {
-        inData = @{@"action" : @"getHostingEventList", @"token" : userToken};
+        inData = @{@"action" : @"getHostingEventList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 2) {
-        inData = @{@"action" : @"getDraftEventList", @"token" : userToken};
+        inData = @{@"action" : @"getDraftEventList", @"token" : userToken, @"lang" : userLang};
     } else if (self.type == 1) {
-        inData = @{@"action" : @"getHistoryEventList", @"token" : userToken};
+        inData = @{@"action" : @"getHistoryEventList", @"token" : userToken, @"lang" : userLang};
     }
     
     //NSDictionary *inData = @{@"action" : @"getAttendingEventList", @"token" : userToken};

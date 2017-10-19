@@ -179,9 +179,17 @@ static NSString *const eventID = @"event";
     
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
+    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
     NSDictionary *inData = @{
                              @"action" : @"getUpcomingEventList",
-                             @"data" : geoPointDic};
+                             @"data" : geoPointDic,
+                             @"lang" :userLang,
+                             };
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"upcoming events parameters %@", parameters);

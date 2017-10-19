@@ -126,7 +126,7 @@
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    self.navigationItem.title = thisRestaurant.restaurantName.en;
+    self.navigationItem.title = thisRestaurant.restaurantName;
     
 }
 
@@ -491,10 +491,14 @@
     NSDictionary *inSubData = @{@"restaurantId" : restaurantID};
     NSLog(@"userToken in restaurantDetailVC %@", userToken);
     NSLog(@"restaurant id %@", restaurantID);
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     NSDictionary *inData = @{
                              @"action" : @"getRestaurantDetail",
                              @"token" : userToken,
-                             @"lang" : @"en",
+                             @"lang" : userLang,
                              @"data" : inSubData
                              };
     NSDictionary *parameters = @{@"data" : inData};

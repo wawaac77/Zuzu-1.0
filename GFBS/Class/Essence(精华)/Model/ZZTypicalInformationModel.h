@@ -19,6 +19,6 @@
 //@property (nonatomic, copy) NSString *informationCreatedBy;
 //@property (nonatomic, copy) NSString *informationCreatedAt;
 //@property (nonatomic, assign) NSNumber *informationV;
-@property (nonatomic, strong) TwEn *informationName;
+@property (nonatomic, strong) NSString *informationName;
 
 @end
