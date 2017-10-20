@@ -30,6 +30,9 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
+#define  Str(str)   str?str:@" "
+#define  Num(num)   num?num:@0
+
 @interface GFSettingViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *reuseIDArray;
@@ -565,7 +568,7 @@
     NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
     
     if ([language isEqualToString:@"en"]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil  message:ZBLocalized(@"Are you sure to log out?", nil)  delegate:self cancelButtonTitle: ZBLocalized(@"Cancel", nil) otherButtonTitles:ZBLocalized(@"Yes", nil), nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil  message:ZBLocalized(@"Are you sure?", nil)  delegate:self cancelButtonTitle: ZBLocalized(@"Cancel", nil) otherButtonTitles:ZBLocalized(@"Yes", nil), nil];
         alertView.tag = 2;
         [alertView show];
         
@@ -775,25 +778,25 @@
     NSString *userToken = [AppDelegate APP].user.userToken;
  
     NSDictionary *inSubData2 = @{
-                                @"username" : [ZZUser shareUser].userUserName,
-                                //@"googleId" : [ZZUser shareUser].userGoogleID,
-                                //@"facebookId" : [ZZUser shareUser].userFacebookID,
-
-                                @"age" : [ZZUser shareUser].age,
-                                @"gender" :[ZZUser shareUser].gender,
-                                @"phone" : [ZZUser shareUser].phone,
-                                @"industry" : [ZZUser shareUser].userIndustry.informationID,
-                                @"profession" : [ZZUser shareUser].userProfession.informationID,
-                                @"interests" : interestIDArray,
-                                
-                                @"allowNotification" : [ZZUser shareUser].allowNotification,
-                                @"emailNotification" : [ZZUser shareUser].emailNotification,
-                                @"showOnLockScreen" : [ZZUser shareUser].allowNotification,
-                                @"sounds" : [ZZUser shareUser].sounds,
-                                
-                                @"canSeeMyProfile" : [ZZUser shareUser].canSeeMyProfile,
-                                @"canMessageMe" : [ZZUser shareUser].canMessageMe,
-                                @"canMyFriendSeeMyEmail" : [ZZUser shareUser].canMyFriendSeeMyEmail
+                                 @"username" : Str([ZZUser shareUser].userUserName),
+                                 //@"googleId" : Str([ZZUser shareUser].userGoogleID),
+                                 //@"facebookId" : [ZZUser shareUser].userFacebookID,
+                                 
+                                 @"age" : Num([ZZUser shareUser].age),
+                                 @"gender" :Str([ZZUser shareUser].gender),
+                                 @"phone" : Str([ZZUser shareUser].phone),
+                                 @"industry" : Str([ZZUser shareUser].userIndustry.informationID),
+                                 @"profession" : Str([ZZUser shareUser].userProfession.informationID),
+                                 @"interests" : interestIDArray,
+                                 
+                                 @"allowNotification" : Num([ZZUser shareUser].allowNotification),
+                                 @"emailNotification" : Num([ZZUser shareUser].emailNotification),
+                                 @"showOnLockScreen" : Num([ZZUser shareUser].allowNotification),
+                                 @"sounds" : Num([ZZUser shareUser].sounds),
+                                 
+                                 @"canSeeMyProfile" : Num([ZZUser shareUser].canSeeMyProfile),
+                                 @"canMessageMe" : Num([ZZUser shareUser].canMessageMe),
+                                 @"canMyFriendSeeMyEmail" : Num([ZZUser shareUser].canMyFriendSeeMyEmail),
                                 };
     
     NSLog(@"[ZZUser shareUser].canSeeMyProfile %@", [ZZUser shareUser].canSeeMyProfile);
