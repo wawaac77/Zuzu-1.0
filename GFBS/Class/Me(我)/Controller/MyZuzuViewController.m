@@ -412,6 +412,10 @@ static CGFloat  const margin = 0;
     [self.navigationController pushViewController:leaderboardVC animated:YES];
 }
 - (IBAction)changeProfilePicClicked:(id)sender {
+    
+    PickSingleImageViewController *pickVC = [[PickSingleImageViewController alloc] init];
+    [self.navigationController pushViewController:pickVC animated:YES];
+    /*
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
@@ -419,8 +423,11 @@ static CGFloat  const margin = 0;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:picker animated:YES completion:NULL];
+     */
+    
 }
 
+/*
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
@@ -517,6 +524,7 @@ static CGFloat  const margin = 0;
         
     }];
 }
+*/
 
 
 @end
