@@ -438,7 +438,12 @@
     //NSString *userToken = [AppDelegate APP].user.userToken;
     
     //----------------get interests array-----------------//
-    NSDictionary *inData2 = @{@"action" : @"getInterestList"};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
+    NSDictionary *inData2 = @{@"action" : @"getInterestList", @"lang" : userLang};
     
     NSDictionary *parameters2 = @{@"data" : inData2};
     

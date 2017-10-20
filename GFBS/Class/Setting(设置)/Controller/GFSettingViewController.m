@@ -25,7 +25,7 @@
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <SDImageCache.h>
-#import <UIImageView+WebCache.h>
+#import <UIImageView+WebCache.h>    
 #import <SVProgressHUD.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
@@ -77,7 +77,7 @@
     //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissPickerView)];
     
     //[self.view addGestureRecognizer:tap];
-    
+
     
 }
 
@@ -87,14 +87,14 @@
     
     [_reuseIDArray insertObject:@"account" atIndex:0];
     [_reuseIDArray insertObject:@"basic" atIndex:1];
-    
+
     for (int i = 2; i < 5; i++) {
         [_reuseIDArray insertObject:@"accessory" atIndex:i];
         NSLog(@"i = %zd", i);
     }
     
     [_reuseIDArray insertObject:@"indicator" atIndex:5];
-    
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -152,11 +152,11 @@
                 break;
         }
     }
-    
+
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {
-            
+
             cell.textLabel.text = [AppDelegate APP].user.userUserName;
             cell.detailTextLabel.text = [ZZUser shareUser].userEmail;
             cell.imageView.image = [UIImage imageNamed:@"Ic_fa-star"];
@@ -201,7 +201,7 @@
             NSLog(@"[ZZUser shareUser].userFacebookID in setting %@", [ZZUser shareUser].userFacebookID);
             
             if ([ZZUser shareUser].userFacebookID == NULL) {
-                
+            
                 //accessoryLabel.text = ZBLocalized(@"Not connected", nil);
                 
             } else {
@@ -262,7 +262,7 @@
             twButton.backgroundColor = [UIColor grayColor];
             twButton.layer.cornerRadius = 5.0f;
             twButton.layer.masksToBounds = YES;
-            
+
             [cell.contentView addSubview:enButton];
             [cell.contentView addSubview:twButton];
         }
@@ -273,7 +273,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = ZBLocalized(@"Age", nil);
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[ZZUser shareUser].age] ;
-            
+        
         } else if (indexPath.row == 1) {
             cell.textLabel.text = ZBLocalized(@"Gender", nil);
             cell.detailTextLabel.text = [ZZUser shareUser].gender;
@@ -298,7 +298,7 @@
             }
             NSLog(@"myInterests %@", myInterests);
             cell.detailTextLabel.text = myInterests;
-        }
+        } 
     }
     
     else if (indexPath.section == 2) {
@@ -312,7 +312,8 @@
             }
             cell.accessoryView.frame = CGRectMake(0, 0, 24, 24);
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = ZBLocalized(@"Anyone can message me.", nil);
+            //cell.textLabel.text = ZBLocalized(@"Anyone can message me.", nil);
+            cell.textLabel.text = @"Anyone can message me.";
             if ([[ZZUser shareUser].canMessageMe isEqualToNumber:[NSNumber numberWithBool:@1]]) {
                 cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check"]];
             } else {
@@ -320,7 +321,8 @@
             }
             cell.accessoryView.frame = CGRectMake(0, 0, 24, 24);
         } else {
-            cell.textLabel.text = ZBLocalized(@"Let my friends see my email address.", nil);
+            //cell.textLabel.text = ZBLocalized(@"Let my friends see my email address.", nil);
+            cell.textLabel.text = @"Let my friends see my email address.";
             if ([[ZZUser shareUser].canMyFriendSeeMyEmail isEqualToValue:@1]) {
                 cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check"]];
             } else {
@@ -333,7 +335,8 @@
     else if (indexPath.section == 3) {
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
-            cell.textLabel.text = ZBLocalized( @"Allow Notification", nil);
+            //cell.textLabel.text = ZBLocalized( @"Allow Notification", nil);
+            cell.textLabel.text = @"Allow Notification";
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             self.allowNotificationSwitch = switchView;
             cell.accessoryView = switchView;
@@ -349,13 +352,14 @@
             
             switchView.tag = 0;
             [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-            
+        
         }
     }
     
     else if (indexPath.section == 4) {
         if (indexPath.row == 0) {
-            cell.textLabel.text = ZBLocalized( @"Email Notification", nil);
+            //cell.textLabel.text = ZBLocalized( @"Email Notification", nil);
+            cell.textLabel.text = @"Email Notification";
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             
@@ -379,7 +383,8 @@
             [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
             //[switchView release];
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = ZBLocalized(@"Sounds", nil);
+            //cell.textLabel.text = ZBLocalized(@"Sounds", nil);
+            cell.textLabel.text = @"Sounds";
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             
@@ -390,7 +395,7 @@
                 switchView.enabled = NO;
                 NSLog(@"switchView enable = NO  for sound");
             }
-            
+
             if ([[ZZUser shareUser].sounds isEqualToNumber:[NSNumber numberWithBool:@1]]) {
                 [switchView setOn:YES animated:NO];
                 NSLog(@"switch set to ON");
@@ -402,7 +407,8 @@
             [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
             
         } else if (indexPath.row == 2) {
-            cell.textLabel.text = ZBLocalized(@"Show on Lock Screen", nil);
+            //cell.textLabel.text = ZBLocalized(@"Show on Lock Screen", nil);
+            cell.textLabel.text = @"Show on Lock Screen";
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             NSLog(@"show on lock screen switch %@", [ZZUser shareUser].showOnLockScreen );            if ([[ZZUser shareUser].allowNotification isEqualToNumber:[NSNumber numberWithBool:@1]]) {
@@ -412,7 +418,7 @@
                 switchView.enabled = NO;
                 NSLog(@"switchView enable = NO  for sound");
             }
-            
+
             if ([[ZZUser shareUser].showOnLockScreen isEqualToNumber:[NSNumber numberWithBool:@1]]) {
                 [switchView setOn:YES animated:NO];
             } else {
@@ -422,20 +428,23 @@
             [switchView addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
         }
     }
-    
+
     else if (indexPath.section == 5) {
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
-            cell.textLabel.text = ZBLocalized( @"About Zuzu", nil);
+            //cell.textLabel.text = ZBLocalized( @"About Zuzu", nil);
+            cell.textLabel.text = @"About Zuzu";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = ZBLocalized(@"Message Admin", nil) ;
+            //cell.textLabel.text = ZBLocalized(@"Message Admin", nil) ;
+            cell.textLabel.text = @"Message Admin";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
-            cell.textLabel.text = ZBLocalized(@"Version 1.0", nil) ;
+            //cell.textLabel.text = ZBLocalized(@"Version 1.0", nil) ;
+            cell.textLabel.text = @"Version 1.0";
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        
+
     }
     return cell;
 }
@@ -467,7 +476,7 @@
     if (switchControl.tag == 0) {
         [ZZUser shareUser].allowNotification = [NSNumber numberWithBool:switchResult];
         if ([switchControl.on ? @"ON" : @"OFF"  isEqual: @"OFF"]) {
-            
+           
             [ZZUser shareUser].allowNotification = @false;
             [ZZUser shareUser].emailNotification = @false;
             [ZZUser shareUser].sounds = @false;
@@ -502,37 +511,37 @@
 }
 
 /*
- - (void)changeLanguage:(id)sender {
- /*
- NSLog(@"Change language button clicked");
- NSString *lan = [InternationalControl userLanguage];
- [InternationalControl setUserlanguage:@"zh-Hant"];
- */
+- (void)changeLanguage:(id)sender {
+    /*
+    NSLog(@"Change language button clicked");
+    NSString *lan = [InternationalControl userLanguage];
+    [InternationalControl setUserlanguage:@"zh-Hant"];
+     */
+    
+    /*
+    if([lan isEqualToString:@"en"]){//判断当前的语言，进行改变
+        
+        
+        
+    }else{
+        
+        [InternationalControl setUserlanguage:@"en"];
+    }
+     */
+    
+    //改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"changeLanguage" object:nil];
+/*
+    NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
+    NSLog(@"切换后的语言:%@",language);
+}
+*/
 
 /*
- if([lan isEqualToString:@"en"]){//判断当前的语言，进行改变
- 
- 
- 
- }else{
- 
- [InternationalControl setUserlanguage:@"en"];
- }
- */
-
-//改变完成之后发送通知，告诉其他页面修改完成，提示刷新界面
-//[[NSNotificationCenter defaultCenter] postNotificationName:@"changeLanguage" object:nil];
-/*
- NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
- NSLog(@"切换后的语言:%@",language);
- }
- */
-
-/*
- -(void)changeLanguageInVC{
- NSLog(@"reload VC");
- [self viewDidLoad];
- }
+-(void)changeLanguageInVC{
+    NSLog(@"reload VC");
+    [self viewDidLoad];
+}
  */
 
 - (void)enButtonClicked {
@@ -552,7 +561,7 @@
 
 - (void)twButtonClicked {
     NSLog(@"Chinese button clicked");
-    
+   
     NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
     
     if ([language isEqualToString:@"en"]) {
@@ -563,10 +572,10 @@
     } else {
         
     }
-    
+
     //NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
     NSLog(@"切换后的语言:%@",language);
-    
+
 }
 
 - (void)initRootVC{
@@ -592,13 +601,13 @@
         
         [appDel.window makeKeyAndVisible];
         [appDel.window setRootViewController:loginVC];
-        
-        // change to English
+       
+    // change to English
     } else if (alertView.tag == 1 && buttonIndex == 1) {
         [[ZBLocalized sharedInstance]setLanguage:@"en"];
         [self initRootVC];
         
-        //change to Chinese
+    //change to Chinese
     } else if (alertView.tag == 2 && buttonIndex == 1) {
         [[ZBLocalized sharedInstance]setLanguage:@"zh-Hant"];
         [self initRootVC];
@@ -621,7 +630,7 @@
             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil  message:ZBLocalized(@"Are you sure to log out?", nil)  delegate:self cancelButtonTitle: ZBLocalized(@"Cancel", nil) otherButtonTitles:ZBLocalized(@"Yes", nil), nil];
             alertView.tag = 0;
             [alertView show];
-            
+
         }
         else if (indexPath.row == 1) {
             [self loginFBButtonClicked];
@@ -637,16 +646,16 @@
                 [self googlePlusLogoutButtonClick];
             }
         }
-        
+
     }
     else if (indexPath.section == 1) {
         if (indexPath.row == 0) {
             
             /*
-             CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
-             cuisineVC.tableType = @"Age";
-             cuisineVC.delegate = self;
-             [self.navigationController pushViewController:cuisineVC animated:YES];
+            CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
+            cuisineVC.tableType = @"Age";
+            cuisineVC.delegate = self;
+            [self.navigationController pushViewController:cuisineVC animated:YES];
              */
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:ZBLocalized(@"Please input your age", nil)  delegate:self cancelButtonTitle:ZBLocalized(@"Cancel", nil)  otherButtonTitles: ZBLocalized(@"Done", nil) , nil];
             alertView.tag = 3;
@@ -654,7 +663,7 @@
             [alertView show];
             
         }
-        
+
         else if (indexPath.row == 1) {
             
             CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
@@ -665,10 +674,10 @@
         
         else if (indexPath.row == 2) {
             /*
-             SubFillTableViewController *cuisineVC = [[SubFillTableViewController alloc] init];
-             cuisineVC.tableType = @"Phone";
-             cuisineVC.delegate = self;
-             [self.navigationController pushViewController:cuisineVC animated:YES];
+            SubFillTableViewController *cuisineVC = [[SubFillTableViewController alloc] init];
+            cuisineVC.tableType = @"Phone";
+            cuisineVC.delegate = self;
+            [self.navigationController pushViewController:cuisineVC animated:YES];
              */
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:ZBLocalized(@"Please input your phone number", nil)  delegate:self cancelButtonTitle:ZBLocalized(@"Cancel", nil)  otherButtonTitles: ZBLocalized(@"Done", nil) , nil];
@@ -683,7 +692,7 @@
             cuisineVC.tableType = @"Industry";
             cuisineVC.delegate = self;
             [self.navigationController pushViewController:cuisineVC animated:YES];
-            
+
             
         }
         else if (indexPath.row == 4) {
@@ -737,10 +746,10 @@
                 [ZZUser shareUser].canMyFriendSeeMyEmail = @true;
             }
             cell.accessoryView.frame = CGRectMake(0, 0, 24, 24);
-            
+
         }
     }
-    
+
     else if (indexPath.section == 5) {
         if (indexPath.row == 0) {
             AboutZZViewController *aboutZZVC = [[AboutZZViewController alloc] init];
@@ -764,35 +773,35 @@
     //2.凭借请求参数
     
     NSString *userToken = [AppDelegate APP].user.userToken;
-    
+ 
     NSDictionary *inSubData2 = @{
-                                 @"username" : [ZZUser shareUser].userUserName,
-                                 //@"googleId" : [ZZUser shareUser].userGoogleID,
-                                 //@"facebookId" : [ZZUser shareUser].userFacebookID,
-                                 
-                                 @"age" : [ZZUser shareUser].age,
-                                 @"gender" :[ZZUser shareUser].gender,
-                                 @"phone" : [ZZUser shareUser].phone,
-                                 @"industry" : [ZZUser shareUser].userIndustry.informationID,
-                                 @"profession" : [ZZUser shareUser].userProfession.informationID,
-                                 @"interests" : interestIDArray,
-                                 
-                                 @"allowNotification" : [ZZUser shareUser].allowNotification,
-                                 @"emailNotification" : [ZZUser shareUser].emailNotification,
-                                 @"showOnLockScreen" : [ZZUser shareUser].allowNotification,
-                                 @"sounds" : [ZZUser shareUser].sounds,
-                                 
-                                 @"canSeeMyProfile" : [ZZUser shareUser].canSeeMyProfile,
-                                 @"canMessageMe" : [ZZUser shareUser].canMessageMe,
-                                 @"canMyFriendSeeMyEmail" : [ZZUser shareUser].canMyFriendSeeMyEmail
-                                 };
+                                @"username" : [ZZUser shareUser].userUserName,
+                                //@"googleId" : [ZZUser shareUser].userGoogleID,
+                                //@"facebookId" : [ZZUser shareUser].userFacebookID,
+
+                                @"age" : [ZZUser shareUser].age,
+                                @"gender" :[ZZUser shareUser].gender,
+                                @"phone" : [ZZUser shareUser].phone,
+                                @"industry" : [ZZUser shareUser].userIndustry.informationID,
+                                @"profession" : [ZZUser shareUser].userProfession.informationID,
+                                @"interests" : interestIDArray,
+                                
+                                @"allowNotification" : [ZZUser shareUser].allowNotification,
+                                @"emailNotification" : [ZZUser shareUser].emailNotification,
+                                @"showOnLockScreen" : [ZZUser shareUser].allowNotification,
+                                @"sounds" : [ZZUser shareUser].sounds,
+                                
+                                @"canSeeMyProfile" : [ZZUser shareUser].canSeeMyProfile,
+                                @"canMessageMe" : [ZZUser shareUser].canMessageMe,
+                                @"canMyFriendSeeMyEmail" : [ZZUser shareUser].canMyFriendSeeMyEmail
+                                };
     
     NSLog(@"[ZZUser shareUser].canSeeMyProfile %@", [ZZUser shareUser].canSeeMyProfile);
     NSLog(@"[ZZUser shareUser].canMessageMe %@", [ZZUser shareUser].canMessageMe);
     NSLog(@"[ZZUser shareUser].canFriendSeeMyEmail %@", [ZZUser shareUser].canMyFriendSeeMyEmail);
     
     NSDictionary *inData2 = @{@"action" : @"updateProfile", @"token" : userToken, @"data" : inSubData2,
-                              };
+                            };
     NSDictionary *parameters2 = @{@"data" : inData2};
     
     [_manager POST:GetURL parameters:parameters2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
@@ -813,29 +822,29 @@
 }
 
 /*
- - (void)viewWillDisappear:(BOOL)animated {
- NSLog(@"updated profile");
- [self updateProfile];
- }
- */
+- (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"updated profile");
+    [self updateProfile];
+}
+*/
 
 /*
- - (void)changeLanguage {
- NSLog(@"changeLanguage");
- 
- //[[InternationalControl sharedInstance]
- //[self viewDidLoad];
- [self.tableView reloadData];
- }
+- (void)changeLanguage {
+    NSLog(@"changeLanguage");
+    
+    //[[InternationalControl sharedInstance]
+    //[self viewDidLoad];
+    [self.tableView reloadData];
+}
  */
 
 //************************* pass value delegate ****************************//
 - (void)passValueCuisine:(ZZUser *)theValue {
     
     /*
-     if (theValue.userIndustry != NULL) {
-     [ZZUser shareUser].userIndustry = theValue.userIndustry;
-     }
+    if (theValue.userIndustry != NULL) {
+        [ZZUser shareUser].userIndustry = theValue.userIndustry;
+    }
      */
     
     [self.tableView reloadData];
@@ -951,29 +960,29 @@
 
 - (void)loginWithGoogleClicked {
     [[GIDSignIn sharedInstance] signIn];
-    [self.tableView reloadData];
+     [self.tableView reloadData];
     //self.googlePlusLogoutButtonInstance.enabled=YES;
     
 }
 
 
-- (void)googlePlusLogoutButtonClick {
-    
-    [[GIDSignIn sharedInstance] signOut];
-    //[[GPPSignIn sharedInstance] signOut];
-    [[GIDSignIn sharedInstance] disconnect];
-    
-    NSLog(@"google plus sign out");
-    
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"googlePlusLogin"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"googlePlusUserID"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [ZZUser shareUser].userGoogleID = NULL;
-    
-    [self.tableView reloadData];
-    
-}
+ - (void)googlePlusLogoutButtonClick {
+ 
+     [[GIDSignIn sharedInstance] signOut];
+     //[[GPPSignIn sharedInstance] signOut];
+     [[GIDSignIn sharedInstance] disconnect];
+     
+     NSLog(@"google plus sign out");
+     
+     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"googlePlusLogin"];
+     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"googlePlusUserID"];
+     [[NSUserDefaults standardUserDefaults] synchronize];
+     
+     [ZZUser shareUser].userGoogleID = NULL;
+     
+     [self.tableView reloadData];
+     
+ }
 
 
 
@@ -1039,8 +1048,8 @@ dismissViewController:(UIViewController *)viewController {
 
 - (void)changeProfileImage {
     /*
-     ImagePickerViewController *imagePickerVC = [[ImagePickerViewController alloc] init];
-     [self.navigationController pushViewController:imagePickerVC animated:YES];
+    ImagePickerViewController *imagePickerVC = [[ImagePickerViewController alloc] init];
+    [self.navigationController pushViewController:imagePickerVC animated:YES];
      */
     
     PickSingleImageViewController *pickVC = [[PickSingleImageViewController alloc] init];
@@ -1050,17 +1059,16 @@ dismissViewController:(UIViewController *)viewController {
 
 
 /*
- -(void)viewWillAppear:(BOOL)animated{
- NSLog(@"indexPathForSlectedRow in viewWillAppear %@", [self.tableView indexPathForSelectedRow]);
- NSLog(@"indexPathForSlectedRow in viewWillAppear.row %ld", [self.tableView indexPathForSelectedRow].row);
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"indexPathForSlectedRow in viewWillAppear %@", [self.tableView indexPathForSelectedRow]);
+    NSLog(@"indexPathForSlectedRow in viewWillAppear.row %ld", [self.tableView indexPathForSelectedRow].row);
+    
+    if ([self.tableView indexPathForSelectedRow].section == 0 && [self.tableView indexPathForSelectedRow].row == 0) {
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow],nil] withRowAnimation:UITableViewRowAnimationNone];
+
+    }
  
- if ([self.tableView indexPathForSelectedRow].section == 0 && [self.tableView indexPathForSelectedRow].row == 0) {
- [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow],nil] withRowAnimation:UITableViewRowAnimationNone];
- 
- }
- 
- }
- */
+}
+*/
 
 @end
-

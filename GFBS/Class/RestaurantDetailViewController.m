@@ -488,13 +488,13 @@
     NSString *restaurantID = thisRestaurant.restaurantId;
     
     NSString *userToken = [AppDelegate APP].user.userToken;
-    NSDictionary *inSubData = @{@"restaurantId" : restaurantID};
-    NSLog(@"userToken in restaurantDetailVC %@", userToken);
-    NSLog(@"restaurant id %@", restaurantID);
+    
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
         userLang = @"tw";
     }
+    
+    NSDictionary *inSubData = @{@"restaurantId" : restaurantID};
     NSDictionary *inData = @{
                              @"action" : @"getRestaurantDetail",
                              @"token" : userToken,
@@ -507,7 +507,7 @@
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         
         EventRestaurant *response = responseObject[@"data"];
-        if (response == nil) {
+        if (response == nil || response == NULL) {
             return;
         }
         NSLog(@"response in restaurant %@", response);
@@ -538,7 +538,12 @@
     
     NSDictionary *inSubData = @{@"restaurant" : thisRestaurant.restaurantId};
     
-    NSDictionary *inData = @{@"action" : @"getRestaurantReview", @"token" : userToken, @"data":inSubData};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
+    NSDictionary *inData = @{@"action" : @"getRestaurantReview", @"token" : userToken, @"data":inSubData, @"lang" : userLang};
     
     NSDictionary *parameters = @{@"data" : inData};
     
@@ -553,7 +558,6 @@
         self.contents = [ZZContentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         //reviewVC.contents = self.contents;
         NSLog(@"selfContentsinRestaurantDetail %@", self.contents);
-        //[self saveUIImages];
         NSLog(@"************ success loading reviews *********");
         [self setUpAfterLoadData];
         

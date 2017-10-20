@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZZUser.h"
-#import <GoogleSignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, GIDSignInDelegate>
 

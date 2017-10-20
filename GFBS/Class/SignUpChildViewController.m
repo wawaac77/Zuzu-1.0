@@ -15,7 +15,7 @@
 #import <UIImageView+WebCache.h>
 #import <SDImageCache.h>
 #import <FirebaseAuth/FirebaseAuth.h>
-#import <GoogleSignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
@@ -78,7 +78,7 @@
      name:@"ToggleAuthUINotification"
      object:nil];
     
-    [self toggleAuthUI];
+    //[self toggleAuthUI];
 
 }
 
@@ -232,8 +232,9 @@
                 
             }
         }];
+         */
     }
-    */
+    
 }
 
 #pragma mark - 监听键盘的弹出和隐藏
@@ -440,9 +441,6 @@
         });
         
     }];
-}
-    
-
 }
 
 @end

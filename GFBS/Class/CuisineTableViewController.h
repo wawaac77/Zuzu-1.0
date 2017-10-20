@@ -8,18 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchEventDetail.h"
+#import "ZZUser.h"
 
 @protocol CuisineChildViewControllerDelegate;
-
-@interface CuisineTableViewController : UITableViewController
-@property (weak)id <CuisineChildViewControllerDelegate> delegate;
-
-@property (strong, nonatomic) NSString *tableType;
-
-@end
-
 @protocol CuisineChildViewControllerDelegate <NSObject >
 
 - (void) passValueCuisine:(SearchEventDetail *) theValue;
 
 @end
+
+
+@interface CuisineTableViewController : UITableViewController
+@property (weak)id <CuisineChildViewControllerDelegate> delegate;
+
+@property (strong, nonatomic) NSString *tableType;
+@property(nonatomic ,strong) ZZUser *thisUser;
+
+@end
+
+

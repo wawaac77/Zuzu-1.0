@@ -1,8 +1,5 @@
-wsource 'https://github.com/CocoaPods/Specs.git'
-
-
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "8.0"
-# use_frameworks!
 
 pod "AFNetworking"
 pod "SDWebImage"
@@ -18,9 +15,9 @@ pod 'LLImagePickerView'
 pod 'RSKImageCropper'
 
 pod "DACircularProgress"
-pod 'APKit', '~> 0.3.1'
+
 pod "pop"
-pod 'Google/SignIn'
+pod 'GoogleSignIn'
 pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'

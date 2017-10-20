@@ -42,8 +42,6 @@
 		1841A77F1DE17BE400FB54CC /* GFWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1841A77D1DE17BE400FB54CC /* GFWebViewController.xib */; };
 		184D49351DED5DBE00C7B03F /* GFCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D49341DED5DBE00C7B03F /* GFCommentViewController.m */; };
 		184D49371DED5DC400C7B03F /* GFCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184D49361DED5DC400C7B03F /* GFCommentViewController.xib */; };
-		185420881DF064F1004F6378 /* GFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185420841DF064F1004F6378 /* GFSettingViewController.m */; };
-		185420891DF064F1004F6378 /* GFSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 185420851DF064F1004F6378 /* GFSettingViewController.storyboard */; };
 		189980491DDBEDA4009071F4 /* UIBarButtonItem+GFItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 189980481DDBEDA4009071F4 /* UIBarButtonItem+GFItem.m */; };
 		1899804C1DDBF33D009071F4 /* UIView+GFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899804B1DDBF33D009071F4 /* UIView+GFFrame.m */; };
 		189980501DDBF6B4009071F4 /* GFAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1899804E1DDBF6B4009071F4 /* GFAdViewController.m */; };
@@ -330,15 +328,16 @@
 		785100761F98F1F4001B8389 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100721F98F1F4001B8389 /* LxGridViewFlowLayout.m */; };
 		785100771F98F1F4001B8389 /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785100731F98F1F4001B8389 /* ImagePickerViewController.xib */; };
 		785100811F98F215001B8389 /* PickSingleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100781F98F211001B8389 /* PickSingleImageViewController.m */; };
-		785100821F98F215001B8389 /* CuisineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851007A1F98F212001B8389 /* CuisineTableViewController.m */; };
 		785100831F98F215001B8389 /* SubFillTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851007B1F98F212001B8389 /* SubFillTableViewController.m */; };
 		785100841F98F215001B8389 /* PickSingleImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */; };
 		785100851F98F215001B8389 /* SubFillTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007E1F98F213001B8389 /* SubFillTableViewController.xib */; };
-		785100861F98F215001B8389 /* CuisineTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851007F1F98F214001B8389 /* CuisineTableViewController.xib */; };
 		7851008D1F98F4C9001B8389 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100871F98F4C8001B8389 /* ForgetPasswordViewController.m */; };
 		7851008E1F98F4C9001B8389 /* ResetPWSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100891F98F4C8001B8389 /* ResetPWSuccessViewController.m */; };
 		7851008F1F98F4C9001B8389 /* ResetPWSuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851008B1F98F4C9001B8389 /* ResetPWSuccessViewController.xib */; };
 		785100901F98F4C9001B8389 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7851008C1F98F4C9001B8389 /* ForgetPasswordViewController.xib */; };
+		785100961F99CFE0001B8389 /* GFSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785100931F99CFDF001B8389 /* GFSettingViewController.storyboard */; };
+		785100971F99CFE0001B8389 /* GFSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 785100941F99CFDF001B8389 /* GFSettingViewController.m */; };
+		7851009C1F99D164001B8389 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7851009E1F99D164001B8389 /* Localizable.strings */; };
 		785FF23C1F7B91D5002A42E9 /* ZBLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */; };
 		786069631F15D98100A8AB88 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7860695F1F15D98100A8AB88 /* DHGifImageOperation.m */; };
 		786069641F15D98100A8AB88 /* DHGuidePageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069611F15D98100A8AB88 /* DHGuidePageHUD.m */; };
@@ -634,9 +633,6 @@
 		184D49331DED5DBE00C7B03F /* GFCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCommentViewController.h; sourceTree = "<group>"; };
 		184D49341DED5DBE00C7B03F /* GFCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFCommentViewController.m; sourceTree = "<group>"; };
 		184D49361DED5DC400C7B03F /* GFCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFCommentViewController.xib; sourceTree = "<group>"; };
-		185420831DF064F1004F6378 /* GFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFSettingViewController.h; sourceTree = "<group>"; };
-		185420841DF064F1004F6378 /* GFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFSettingViewController.m; sourceTree = "<group>"; };
-		185420851DF064F1004F6378 /* GFSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GFSettingViewController.storyboard; sourceTree = "<group>"; };
 		189980471DDBEDA4009071F4 /* UIBarButtonItem+GFItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+GFItem.h"; sourceTree = "<group>"; };
 		189980481DDBEDA4009071F4 /* UIBarButtonItem+GFItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+GFItem.m"; sourceTree = "<group>"; };
 		1899804A1DDBF33D009071F4 /* UIView+GFFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GFFrame.h"; sourceTree = "<group>"; };
@@ -1020,13 +1016,10 @@
 		785100721F98F1F4001B8389 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
 		785100731F98F1F4001B8389 /* ImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagePickerViewController.xib; sourceTree = "<group>"; };
 		785100781F98F211001B8389 /* PickSingleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickSingleImageViewController.m; sourceTree = "<group>"; };
-		785100791F98F211001B8389 /* CuisineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CuisineTableViewController.h; sourceTree = "<group>"; };
-		7851007A1F98F212001B8389 /* CuisineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CuisineTableViewController.m; sourceTree = "<group>"; };
 		7851007B1F98F212001B8389 /* SubFillTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubFillTableViewController.m; sourceTree = "<group>"; };
 		7851007C1F98F213001B8389 /* PickSingleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickSingleImageViewController.h; sourceTree = "<group>"; };
 		7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickSingleImageViewController.xib; sourceTree = "<group>"; };
 		7851007E1F98F213001B8389 /* SubFillTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubFillTableViewController.xib; sourceTree = "<group>"; };
-		7851007F1F98F214001B8389 /* CuisineTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CuisineTableViewController.xib; sourceTree = "<group>"; };
 		785100801F98F214001B8389 /* SubFillTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubFillTableViewController.h; sourceTree = "<group>"; };
 		785100871F98F4C8001B8389 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
 		785100881F98F4C8001B8389 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
@@ -1034,6 +1027,14 @@
 		7851008A1F98F4C9001B8389 /* ResetPWSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPWSuccessViewController.h; sourceTree = "<group>"; };
 		7851008B1F98F4C9001B8389 /* ResetPWSuccessViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPWSuccessViewController.xib; sourceTree = "<group>"; };
 		7851008C1F98F4C9001B8389 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		785100911F99050F001B8389 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		785100921F990517001B8389 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		785100931F99CFDF001B8389 /* GFSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GFSettingViewController.storyboard; sourceTree = "<group>"; };
+		785100941F99CFDF001B8389 /* GFSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFSettingViewController.m; sourceTree = "<group>"; };
+		785100951F99CFE0001B8389 /* GFSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFSettingViewController.h; sourceTree = "<group>"; };
+		7851009D1F99D164001B8389 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7851009F1F99D168001B8389 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		785100A01F99DA6D001B8389 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		785FF23A1F7B91D5002A42E9 /* ZBLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBLocalized.h; sourceTree = "<group>"; };
 		785FF23B1F7B91D5002A42E9 /* ZBLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBLocalized.m; sourceTree = "<group>"; };
 		7860695E1F15D98100A8AB88 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
@@ -1486,10 +1487,10 @@
 		185420821DF064F1004F6378 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				785100951F99CFE0001B8389 /* GFSettingViewController.h */,
+				785100941F99CFDF001B8389 /* GFSettingViewController.m */,
+				785100931F99CFDF001B8389 /* GFSettingViewController.storyboard */,
 				7851006C1F98F1D3001B8389 /* imagePicker */,
-				185420831DF064F1004F6378 /* GFSettingViewController.h */,
-				185420841DF064F1004F6378 /* GFSettingViewController.m */,
-				185420851DF064F1004F6378 /* GFSettingViewController.storyboard */,
 				789CFF5D1F0B868200EBA772 /* NotificationViewController.h */,
 				789CFF5E1F0B868200EBA772 /* NotificationViewController.m */,
 				7813FEC61F28C14B0065D527 /* AboutZZViewController.h */,
@@ -1498,9 +1499,6 @@
 				7864EB5F1F28C5B500AA572E /* ZZMessageAdminViewController.h */,
 				7864EB601F28C5B500AA572E /* ZZMessageAdminViewController.m */,
 				7864EB611F28C5B500AA572E /* ZZMessageAdminViewController.xib */,
-				785100791F98F211001B8389 /* CuisineTableViewController.h */,
-				7851007A1F98F212001B8389 /* CuisineTableViewController.m */,
-				7851007F1F98F214001B8389 /* CuisineTableViewController.xib */,
 				7851007C1F98F213001B8389 /* PickSingleImageViewController.h */,
 				785100781F98F211001B8389 /* PickSingleImageViewController.m */,
 				7851007D1F98F213001B8389 /* PickSingleImageViewController.xib */,
@@ -1587,6 +1585,7 @@
 				189CA3341DDADBF6004D07EA /* Info.plist */,
 				788CC35B1F1A169C00DC4116 /* GoogleService-Info.plist */,
 				189CA3241DDADBF6004D07EA /* main.m */,
+				7851009E1F99D164001B8389 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3469,6 +3468,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 189CA3171DDADBF6004D07EA;
 			productRefGroup = 189CA3211DDADBF6004D07EA /* Products */;
@@ -3539,6 +3539,7 @@
 				780097001EC9C1F5008F9F99 /* ic_location.png in Resources */,
 				781E567B1F334106006854BA /* ic_heart-white.png in Resources */,
 				789CFF981F12399100EBA772 /* ZZImageCollectionCell.xib in Resources */,
+				785100961F99CFE0001B8389 /* GFSettingViewController.storyboard in Resources */,
 				7813FE991F25F3E90065D527 /* ic_add-friend-black.png in Resources */,
 				780096B41EC9C1F5008F9F99 /* event-banner-1036x328-04.jpg in Resources */,
 				789E0D671F17DCAE00CCAAE4 /* ZZInboxCell.xib in Resources */,
@@ -3617,7 +3618,6 @@
 				781E56561F31B7ED006854BA /* ic_home_on.png in Resources */,
 				781210341F3C33EB00C08BD6 /* InterestsTableViewController.xib in Resources */,
 				780096C91EC9C1F5008F9F99 /* ic_fa-ellipsis-h.png in Resources */,
-				785100861F98F215001B8389 /* CuisineTableViewController.xib in Resources */,
 				7829FFA01ED8040100C934C2 /* LoginViewController.xib in Resources */,
 				7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */,
 				1841A77A1DE1752E00FB54CC /* GFSquareCell.xib in Resources */,
@@ -3688,7 +3688,6 @@
 				780096FD1EC9C1F5008F9F99 /* ic_fa-heart-o.png in Resources */,
 				786069B51F15DB9B00A8AB88 /* ic_home-o.png in Resources */,
 				780096C81EC9C1F5008F9F99 /* ic_fa-dollar.png in Resources */,
-				185420891DF064F1004F6378 /* GFSettingViewController.storyboard in Resources */,
 				781E56401F31B117006854BA /* GFEventsCell.xib in Resources */,
 				780096D01EC9C1F5008F9F99 /* Ic_fa-star.png in Resources */,
 				781E56661F31BCA2006854BA /* MyZuzuViewController.xib in Resources */,
@@ -3783,6 +3782,7 @@
 				780097361ECAD4FD008F9F99 /* zuzu-login-750x1334-plain.png in Resources */,
 				780096CC1EC9C1F5008F9F99 /* ic_fa-mail-reply.png in Resources */,
 				78FFE5A41ECD88F100F909A2 /* GFEventDetailViewController.xib in Resources */,
+				7851009C1F99D164001B8389 /* Localizable.strings in Resources */,
 				785100901F98F4C9001B8389 /* ForgetPasswordViewController.xib in Resources */,
 				780096EA1EC9C1F5008F9F99 /* logo-163x187-login.png in Resources */,
 				780096EB1EC9C1F5008F9F99 /* logo-292x341-homescreen.png in Resources */,
@@ -3924,6 +3924,7 @@
 				788CC3491F19EC3900DC4116 /* JSQMessagesCellTextView.m in Sources */,
 				7813FEC91F28C14B0065D527 /* AboutZZViewController.m in Sources */,
 				18B3D6BF1DEC517F00474981 /* GFSeeBigImageViewController.m in Sources */,
+				785100971F99CFE0001B8389 /* GFSettingViewController.m in Sources */,
 				7812102C1F3AD3D600C08BD6 /* ZZBadgeModel.m in Sources */,
 				18C8262F1DE7369C007341E3 /* ZZHostingViewController.m in Sources */,
 				181EF7481E0B661200C91928 /* GFPlaceholderTextView.m in Sources */,
@@ -4035,14 +4036,12 @@
 				182391461DEEC70500B88AE0 /* GFCommentHeaderFooterView.m in Sources */,
 				783089451F1CD66200C31BFE /* ZZComment.m in Sources */,
 				783089641F1E220000C31BFE /* ZZFriendCell.m in Sources */,
-				185420881DF064F1004F6378 /* GFSettingViewController.m in Sources */,
 				788CC3371F19EC3900DC4116 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				785100811F98F215001B8389 /* PickSingleImageViewController.m in Sources */,
 				788CC34A1F19EC3900DC4116 /* JSQMessagesCollectionView.m in Sources */,
 				785100761F98F1F4001B8389 /* LxGridViewFlowLayout.m in Sources */,
 				18BE02B21DDB4C3900D27893 /* GFMeViewController.m in Sources */,
 				789CFF9F1F13C06500EBA772 /* LeaderboardViewController.m in Sources */,
-				785100821F98F215001B8389 /* CuisineTableViewController.m in Sources */,
 				783089601F1E1E7100C31BFE /* ZZFriendModel.m in Sources */,
 				789CFF971F12399100EBA772 /* ZZImageCollectionCell.m in Sources */,
 				788CC34C1F19EC3900DC4116 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
@@ -4141,8 +4140,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				189CA3321DDADBF6004D07EA /* Base */,
+				785100911F99050F001B8389 /* zh-Hant */,
+				785100921F990517001B8389 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7851009E1F99D164001B8389 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7851009D1F99D164001B8389 /* zh-Hant */,
+				7851009F1F99D168001B8389 /* zh-Hans */,
+				785100A01F99DA6D001B8389 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -4152,6 +4163,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -4193,6 +4205,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -4200,6 +4213,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -4233,8 +4247,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -4252,6 +4268,8 @@
 					"values>",
 					/Users/alicejin/Desktop/zuzu_one,
 					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;
@@ -4283,6 +4301,8 @@
 					"values>",
 					/Users/alicejin/Desktop/zuzu_one,
 					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/GFBS/Class/Essence(精华)/JMessageDemo/JMessageDemo",
 				);
 				GCC_PREFIX_HEADER = GFBS/Class/Others/GFBS.pch;
 				INFOPLIST_FILE = GFBS/Info.plist;

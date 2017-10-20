@@ -1,0 +1,95 @@
+/* 
+  Localizable.strings
+  GFBS
+
+  Created by Alice Jin on 20/10/2017.
+  Copyright © 2017 apple. All rights reserved.
+*/
+"All" = "全部";
+"Following" = "關注";
+"Me" = "我";
+"Leaderboard" = "排行榜";
+"My Zuzu" = "我的Zuzu";
+"check-in" = "個簽到";
+"Check-in" = "簽到";
+"Points" = "分";
+"like" = "贊";
+"likes" = "贊";
+"Home" = "主頁";
+"Inbox" = "簡訊";
+"Invite Friends" = "邀請朋友";
+"My Friends" = "我的朋友";
+"Cancel" = "取消";
+"Yes" = "確定";
+"Delete" = "刪除";
+"What is in your mind" = "你在想什麼";
+"Overview" = "概覽";
+"Review" = "評價";
+"Photo" = "相片";
+"Menu" = "菜單";
+"Events" = "活動";
+"Other Information" = "其他資訊";
+
+"Comments" = "評論";
+"Send" = "發送";
+
+"Add Friends" = "添加好友";
+"Enter keyword" = "輸入關鍵詞";
+
+"Pull to refresh" = "下拉更新";
+
+//*********** Check-in **************//
+"Please select your check-in location" = "請選擇您的簽到地點";
+"What's in your mind" = "你在想什麼";
+"Check in" = "簽到";
+
+//*********** My Zuzu **************//
+"Find friends on Facebook" = "尋找在Facebook上的朋友";
+"Connect with Google+" = "與Google+連接";
+"SMS Your Friends" = "傳簡訊給你的朋友";
+"Share URL" = "分享鏈接";
+
+//*********** setting **************//
+"Settings" = "設置";
+"Your Account" = "你的賬戶";
+"Personal Information" = "個人信息";
+"Visibility" = "可見度";
+"System" = "系統";
+
+"Hi, mate" = "哈嘍";
+"Are you sure to log out?" = "你確定要退出嗎？";
+"Log Out >" = "退出 >";
+"Switch to English version?" = "轉為英文版？";
+"Switch to Chinese version?" = "轉為中文版？";
+"It is already Chinese version now" = "已經是中文版";
+"It is already English version now" = "已經是英文版";
+"Are you sure?" = "你確定嗎？";
+
+"Language" = "語言";
+"Age" = "年齡";
+"Gender" = "性別";
+"Phone" = "電話";
+"Industry" = "行業";
+"Profession" = "職業";
+"Interests" = "興趣";
+"Anyone can view my profile." = "任何人可以查看我的檔案";
+"Anyone can message me." = "任何人可以向我發送信息";
+"Let my friends see my email address." = "讓我的朋友看見我的郵件地址";
+"Allow Notification" = "允許通知";
+"Email Notification" = "電郵通知";
+"Sounds" = "聲音";
+"Show on Lock Screen" = "於鎖定畫面中顯示";
+
+"System" = "系統";
+"About Zuzu" = "關於Zuzu";
+"Message Admin" = "信息管理";
+"Version 1.0" = "版本1.0";
+
+"Busy network, please try later~" = "網絡繁忙，請稍後再試";
+"Your following is successful!" = "關注成功！";
+"Profile image uploaded!" = "頭像上傳成功！";
+
+//*********** Calendar **************//
+"hours ago" = "小時前";
+"minutes ago" = "分鐘前";
+"Just now" = "剛剛";

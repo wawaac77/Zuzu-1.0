@@ -60,7 +60,7 @@
     NSNumber *socialLevel = [userDefault objectForKey:@"KEY_USER_SOCIAL_LEVEL"];
     NSNumber *organizeLevel = [userDefault objectForKey:@"KEY_USER_ORGANIZE_LEVEL"];
     NSString *profilePicUrl = [userDefault objectForKey:@"KEY_USER_PROFILE_PICURL"];
-    NSString *userlang = [userDefault objectForKey:@"KEY_USER_PROFILE_LANG"];
+    NSString *userlang = [userDefault objectForKey:@"KEY_USER_LANG"];
     NSString *googleUserID = [userDefault objectForKey:@"googlePlusUserID"];
     NSString *facebookUserID = [userDefault objectForKey:@"facebookUserID"];
     

@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "526379000.236172"
+            timestampString = "530177447.368848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
@@ -608,7 +608,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "526379000.236172"
+            timestampString = "530177447.369343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "377"
@@ -704,7 +704,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526376222.974603"
+            timestampString = "530177447.369658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -752,7 +752,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526376222.974603"
+            timestampString = "530177447.369747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -768,7 +768,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/LoginChildViewController.m"
-            timestampString = "526376222.974603"
+            timestampString = "530177447.369831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -1056,7 +1056,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/LeaderboardAttendeesTableViewController.m"
-            timestampString = "530116904.253616"
+            timestampString = "530177447.370362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -1072,7 +1072,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/LeaderboardAttendeesTableViewController.m"
-            timestampString = "530116904.253716"
+            timestampString = "530177447.370878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -1088,7 +1088,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/LeaderboardAttendeesTableViewController.m"
-            timestampString = "530116904.25381"
+            timestampString = "530177447.371223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
@@ -1216,7 +1216,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/LeaderboardAttendeesTableViewController.m"
-            timestampString = "530116904.254622"
+            timestampString = "530177447.371955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -1248,7 +1248,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "526379000.236172"
+            timestampString = "530177447.372356"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -1264,13 +1264,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GFBS/Class/Me(&#x6211;)/Controller/MyZuzuViewController.m"
-            timestampString = "526379000.236172"
+            timestampString = "530177447.372428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "-setUpExp"
-            landmarkType = "7">
+            landmarkName = "MyZuzuViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1937,6 +1937,22 @@
                   offsetFromSymbolStart = "19">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GFBS/Class/Setting(&#x8bbe;&#x7f6e;)/Controller/GFSettingViewController.m"
+            timestampString = "530177447.373613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "630"
+            endingLineNumber = "630"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

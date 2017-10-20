@@ -20,5 +20,6 @@
 //@property (nonatomic, copy) NSString *informationCreatedAt;
 //@property (nonatomic, assign) NSNumber *informationV;
 @property (nonatomic, strong) NSString *informationName;
+@property (nonatomic, strong) NSNumber *selected;
 
 @end

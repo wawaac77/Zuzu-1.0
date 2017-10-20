@@ -177,7 +177,7 @@ static CGFloat  const margin = 0;
     layout.minimumLineSpacing = margin;
     layout.minimumInteritemSpacing = margin;
     
-    UICollectionView *functionsCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, self.functionsView.gf_width, itemHW * 2) collectionViewLayout:layout];
+    UICollectionView *functionsCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, GFScreenWidth, itemHW * 2) collectionViewLayout:layout];
     self.functionsCollectionView = functionsCollectionView;
     self.functionsCollectionView.backgroundColor = [UIColor whiteColor];
 
