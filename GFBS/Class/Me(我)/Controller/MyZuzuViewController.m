@@ -15,6 +15,7 @@
 #import "BadgesCollectionViewController.h"
 #import "NotificationViewController.h"
 #import "LeaderboardViewController.h"
+#import "PickSingleImageViewController.h"
 
 //#import "EventListTableViewController.h"
 #import "ZZAttendingViewController.h"
@@ -99,7 +100,7 @@ static CGFloat  const margin = 0;
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) setUpExp {
+-(void)setUpExp {
     
     self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.profileImageView.clipsToBounds = YES;
@@ -108,10 +109,14 @@ static CGFloat  const margin = 0;
     NSLog(@"[AppDelegate APP].user.userProfileImage.imageUrl %@", [AppDelegate APP].user.userProfileImage.imageUrl);
     //NSURL *URL = [NSURL URLWithString:[AppDelegate APP].user.userProfileImage.imageUrl];
     
-    NSString *urlString = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_PROFILE_PICURL"];
-    NSURL *url = [[NSURL alloc] initWithString:urlString];
-    [self.profileImageView setImageWithURL:url placeholderImage: nil];
     
+    UIImage *placeholder = [[UIImage imageNamed:@"defaultUserIcon"]gf_circleImage];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:[ZZUser shareUser].userProfileImage.imageUrl] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (!image) return ;
+        //self.iconImageView.image = [image gf_circleImage];
+    }];
+    
+
     
     NSNumber *social = [AppDelegate APP].user.socialLevel;
     NSLog(@"[AppDelegate APP].user.socialExp %@", [AppDelegate APP].user.socialLevel);
@@ -412,6 +417,10 @@ static CGFloat  const margin = 0;
     [self.navigationController pushViewController:leaderboardVC animated:YES];
 }
 - (IBAction)changeProfilePicClicked:(id)sender {
+    
+    PickSingleImageViewController *pickVC = [[PickSingleImageViewController alloc] init];
+    [self.navigationController pushViewController:pickVC animated:YES];
+    /*
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
@@ -419,104 +428,7 @@ static CGFloat  const margin = 0;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:picker animated:YES completion:NULL];
+     */
 }
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.profileImageView.image = chosenImage;
-    self.pickedImage = chosenImage;
-    NSLog(@"chosenImage %@", chosenImage);
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    [self uploadProfilePic];
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-}
-
-- (NSString *)contentTypeForImageData:(NSData *)data {
-    uint8_t c;
-    [data getBytes:&c length:1];
-    
-    switch (c) {
-        case 0xFF:
-            return @"image/jpeg";
-        case 0x89:
-            return @"image/png";
-        case 0x47:
-            return @"image/gif";
-        case 0x49:
-            break;
-        case 0x42:
-            return @"image/bmp";
-        case 0x4D:
-            return @"image/tiff";
-    }
-    return nil;
-}
-
-
-- (void)uploadProfilePic {
-    
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    NSString *userToken = [[NSString alloc] init];
-    userToken = [AppDelegate APP].user.userToken;
-    NSLog(@"userToken in checkinVC %@", userToken);
-    
-    NSString *imageBase64 = [UIImagePNGRepresentation(_pickedImage)
-                             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSData *imageData = UIImagePNGRepresentation(_pickedImage);
-    NSString *imageType = [self contentTypeForImageData:imageData];
-    NSString *imageInfo = [NSString stringWithFormat:@"data:%@;base64,%@",imageType, imageBase64];
-    
-    NSDictionary *inSubData = @{@"profilePic": imageInfo};
-    
-    NSDictionary *inData = @{@"action" : @"uploadProfilePic",
-                             @"token" : userToken,
-                             @"data" : inSubData};
-    
-    NSDictionary *parameters = @{@"data" : inData};
-    
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        //self.profileImageView.image = nil;
-        
-        [AppDelegate APP].user.userProfileImage_UIImage = _pickedImage;
-        
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"Profile image uploaded!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alertView show];
-        
-        ZZUser *sucessBack = [[ZZUser alloc] init];
-        sucessBack = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
-        [AppDelegate APP].user.userProfileImage.imageUrl = sucessBack.userProfileImage.imageUrl;
-        NSLog(@"[appDelegate]sucessBack.userProfileImage.imageUrl %@", sucessBack.userProfileImage.imageUrl);
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:sucessBack.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
-        [userDefaults synchronize];
-
-        
-        //[self textView];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
-    }];
-}
-
 
 @end
