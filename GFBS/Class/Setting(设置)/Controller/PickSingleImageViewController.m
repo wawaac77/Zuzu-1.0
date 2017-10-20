@@ -22,8 +22,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *chooseButton;
-//@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (strong, nonatomic) UIImage *pickedImage;
 
@@ -59,15 +58,13 @@
     [self.view addSubview:_chooseButton];
     
     imageViewWidth = 200;
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake((GFScreenWidth - imageViewWidth)/2, 80, imageViewWidth, imageViewWidth)];
     NSString *imageURL = [ZZUser shareUser].userProfileImage.imageUrl;
     [_imageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:nil];
     //_imageView.frame = CGRectMake((GFScreenWidth - imageViewWidth)/2, 80, imageViewWidth, imageViewWidth);
-    _imageView.layer.cornerRadius = imageViewWidth / 2;
+    _imageView.layer.cornerRadius = _imageView.gf_width / 2;
     _imageView.clipsToBounds = YES;
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    [self.view addSubview:_imageView];
 }
 
 - (void)didReceiveMemoryWarning {

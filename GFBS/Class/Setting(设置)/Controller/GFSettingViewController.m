@@ -30,9 +30,6 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
-#define  Str(str)   str?str:@" "
-#define  Num(num)   num?num:@0
-
 @interface GFSettingViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *reuseIDArray;
@@ -164,18 +161,12 @@
             cell.detailTextLabel.text = [ZZUser shareUser].userEmail;
             cell.imageView.image = [UIImage imageNamed:@"Ic_fa-star"];
             
-            //NSString *imageURL = [ZZUser shareUser].userProfileImage.imageUrl;
+            NSString *imageURL = [ZZUser shareUser].userProfileImage.imageUrl;
             UIImageView *myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 34, 34)];
             myImageView.layer.cornerRadius = myImageView.gf_width / 2;
             myImageView.clipsToBounds = YES;
             myImageView.contentMode = UIViewContentModeScaleAspectFill;
-            
-            UIImage *placeholder = [[UIImage imageNamed:@"defaultUserIcon"]gf_circleImage];
-            [myImageView sd_setImageWithURL:[NSURL URLWithString:[ZZUser shareUser].userProfileImage.imageUrl] placeholderImage:placeholder completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                if (!image) return ;
-                //myImageView.image = [image gf_circleImage];
-            }];
-           
+            [myImageView sd_setImageWithURL:[NSURL URLWithString:imageURL] placeholderImage:nil];
             [cell.contentView addSubview:myImageView];
             
             //change profile image button
@@ -574,7 +565,7 @@
     NSString *language=[[ZBLocalized sharedInstance]currentLanguage];
     
     if ([language isEqualToString:@"en"]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil  message:ZBLocalized(@"Are you sure?", nil)  delegate:self cancelButtonTitle: ZBLocalized(@"Cancel", nil) otherButtonTitles:ZBLocalized(@"Yes", nil), nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil  message:ZBLocalized(@"Are you sure to log out?", nil)  delegate:self cancelButtonTitle: ZBLocalized(@"Cancel", nil) otherButtonTitles:ZBLocalized(@"Yes", nil), nil];
         alertView.tag = 2;
         [alertView show];
         
@@ -784,25 +775,25 @@
     NSString *userToken = [AppDelegate APP].user.userToken;
  
     NSDictionary *inSubData2 = @{
-                                @"username" : Str([ZZUser shareUser].userUserName),
-                                //@"googleId" : Str([ZZUser shareUser].userGoogleID),
+                                @"username" : [ZZUser shareUser].userUserName,
+                                //@"googleId" : [ZZUser shareUser].userGoogleID,
                                 //@"facebookId" : [ZZUser shareUser].userFacebookID,
 
-                                @"age" : Num([ZZUser shareUser].age),
-                                @"gender" :Str([ZZUser shareUser].gender),
-                                @"phone" : Str([ZZUser shareUser].phone),
-                                @"industry" : Str([ZZUser shareUser].userIndustry.informationID),
-                                @"profession" : Str([ZZUser shareUser].userProfession.informationID),
+                                @"age" : [ZZUser shareUser].age,
+                                @"gender" :[ZZUser shareUser].gender,
+                                @"phone" : [ZZUser shareUser].phone,
+                                @"industry" : [ZZUser shareUser].userIndustry.informationID,
+                                @"profession" : [ZZUser shareUser].userProfession.informationID,
                                 @"interests" : interestIDArray,
                                 
-                                @"allowNotification" : Num([ZZUser shareUser].allowNotification),
-                                @"emailNotification" : Num([ZZUser shareUser].emailNotification),
-                                @"showOnLockScreen" : Num([ZZUser shareUser].allowNotification),
-                                @"sounds" : Num([ZZUser shareUser].sounds),
+                                @"allowNotification" : [ZZUser shareUser].allowNotification,
+                                @"emailNotification" : [ZZUser shareUser].emailNotification,
+                                @"showOnLockScreen" : [ZZUser shareUser].allowNotification,
+                                @"sounds" : [ZZUser shareUser].sounds,
                                 
-                                @"canSeeMyProfile" : Num([ZZUser shareUser].canSeeMyProfile),
-                                @"canMessageMe" : Num([ZZUser shareUser].canMessageMe),
-                                @"canMyFriendSeeMyEmail" : Num([ZZUser shareUser].canMyFriendSeeMyEmail),
+                                @"canSeeMyProfile" : [ZZUser shareUser].canSeeMyProfile,
+                                @"canMessageMe" : [ZZUser shareUser].canMessageMe,
+                                @"canMyFriendSeeMyEmail" : [ZZUser shareUser].canMyFriendSeeMyEmail
                                 };
     
     NSLog(@"[ZZUser shareUser].canSeeMyProfile %@", [ZZUser shareUser].canSeeMyProfile);

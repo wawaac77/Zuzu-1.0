@@ -19,7 +19,7 @@
 
 
 @interface CuisineTableViewController : UITableViewController
-@property (weak, nonatomic)id <CuisineChildViewControllerDelegate> delegate;
+@property (weak)id <CuisineChildViewControllerDelegate> delegate;
 
 @property (strong, nonatomic) NSString *tableType;
 @property(nonatomic ,strong) ZZUser *thisUser;
