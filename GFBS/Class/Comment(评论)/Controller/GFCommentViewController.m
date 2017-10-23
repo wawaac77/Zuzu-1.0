@@ -17,6 +17,7 @@
 #import "ZZContentModel.h"
 //#import "GFComment.h"
 #import "ZZComment.h"
+#import "ZBLocalized.h"
 
 #import "GFRefreshHeader.h"
 #import "GFRefreshFooter.h"
@@ -280,7 +281,7 @@ static NSString *const headID = @"head";
 
 -(void)setUpBase
 {
-    self.navigationItem.title = @"Comments";
+    self.navigationItem.title = ZBLocalized(@"Comments", nil);
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(KeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
@@ -342,7 +343,7 @@ static NSString *const headID = @"head";
     ///}else{
     //headView.textLabel.text = @"Comments";
     //}
-    headView.textLabel.text = @"Comments";
+    headView.textLabel.text = ZBLocalized(@"Comments", nil);
     return headView;
 }
 

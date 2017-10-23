@@ -8,6 +8,7 @@
 
 #import "ResetPWSuccessViewController.h"
 #import "LoginViewController.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -66,11 +67,11 @@
         
         NSLog(@"responseStatus %@", responseStatus);
         if ([responseStatus isEqualToNumber:@1]) {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"You could check your email and set new password now ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message: ZBLocalized(@"You could check your email and set new password now ^^", nil)  delegate:self cancelButtonTitle:ZBLocalized(@"Ok", nil)  otherButtonTitles:nil, nil];
             [alertView show];
             
         } else {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"The account does not exist." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:ZBLocalized(@"Sorry", nil)  message:ZBLocalized(@"The account does not exist." , nil) delegate:self cancelButtonTitle:ZBLocalized(@"Cancel", nil)  otherButtonTitles:nil, nil];
             [alertView show];
             
         }

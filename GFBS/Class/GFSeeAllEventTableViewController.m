@@ -10,6 +10,7 @@
 #import "GFEventsCell.h"
 #import "EventInList.h"
 #import "GFEventDetailViewController.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -64,7 +65,7 @@ static NSString *const eventID = @"event";
 - (void)setUpNavBar {
     
     [self preferredStatusBarStyle];
-    self.navigationItem.title = @"Upcoming Events";
+    self.navigationItem.title = ZBLocalized(@"Upcoming Events", nil);
     //[self.navigationController setNavigationBarHidden:NO animated:NO];
   
 }

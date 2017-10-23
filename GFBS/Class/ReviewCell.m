@@ -34,7 +34,7 @@
 
 - (void)setThisComment:(ZZContentModel *)thisComment {
     NSLog(@"inReviewCell %@", self.thisComment);
-    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(40, 5, 100, 15)];
+    HCSStarRatingView *starRatingView = [[HCSStarRatingView alloc] initWithFrame:CGRectMake(45, 5, 100, 15)];
     starRatingView.maximumValue = 5;
     starRatingView.minimumValue = 0;
     starRatingView.value = [thisComment.rating floatValue];

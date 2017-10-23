@@ -16,14 +16,19 @@
 "like" = "贊";
 "likes" = "贊";
 "Home" = "主頁";
+"Social Calendar" = "社交日曆";
+"Restaurants" = "餐廳";
 "Inbox" = "簡訊";
 "Invite Friends" = "邀請朋友";
 "My Friends" = "我的朋友";
+"My Reviews" = "我的評論";
+"Favourite Restaurants" = "最愛餐廳";
 "Cancel" = "取消";
 "Yes" = "確定";
 "Delete" = "刪除";
 "What is in your mind" = "你在想什麼";
 "Overview" = "概覽";
+"Discussion" = "討論";
 "Review" = "評價";
 "Photo" = "相片";
 "Menu" = "菜單";
@@ -32,11 +37,23 @@
 
 "Comments" = "評論";
 "Send" = "發送";
+"Anonymous user" = "匿名用戶";
 
 "Add Friends" = "添加好友";
 "Enter keyword" = "輸入關鍵詞";
 
 "Pull to refresh" = "下拉更新";
+
+"Attending" = "參加";
+"Hosting" = "組織";
+"Draft" = "草稿";
+"History" = "歷史";
+"Join More Events" = "參加更多活動";
+"Nearby Events" = "附近活動";
+"Upcoming Events" = "活動預告";
+"Host" = "主辦者";
+"Attendee" = "參與者";
+
 
 //*********** Check-in **************//
 "Please select your check-in location" = "請選擇您的簽到地點";
@@ -48,6 +65,11 @@
 "Connect with Google+" = "與Google+連接";
 "SMS Your Friends" = "傳簡訊給你的朋友";
 "Share URL" = "分享鏈接";
+"Social Experience" = "社交經驗";
+"Organizing Experience" = "組織經驗";
+"My Badges" = "我的勛章";
+"Badges Collection" = "勛章集合";
+"Buy" = "購買";
 
 //*********** setting **************//
 "Settings" = "設置";
@@ -55,6 +77,8 @@
 "Personal Information" = "個人信息";
 "Visibility" = "可見度";
 "System" = "系統";
+"Login with Facebook" = "通過Facebook登入";
+"Login with Goolge" = "通過Google登入";
 
 "Hi, mate" = "哈嘍";
 "Are you sure to log out?" = "你確定要退出嗎？";
@@ -72,6 +96,12 @@
 "Industry" = "行業";
 "Profession" = "職業";
 "Interests" = "興趣";
+"Cuisine" = "菜式";
+"Number of Guests" = "客人數量";
+"District" = "街區";
+"Landmark" = "地標";
+"Search" = "搜索";
+
 "Anyone can view my profile." = "任何人可以查看我的檔案";
 "Anyone can message me." = "任何人可以向我發送信息";
 "Let my friends see my email address." = "讓我的朋友看見我的郵件地址";
@@ -89,7 +119,53 @@
 "Your following is successful!" = "關注成功！";
 "Profile image uploaded!" = "頭像上傳成功！";
 
+"Distance" = "距離";
+"Change Country" = "更改地區";
+
+
 //*********** Calendar **************//
 "hours ago" = "小時前";
 "minutes ago" = "分鐘前";
 "Just now" = "剛剛";
+
+//*********** Homepage **************//
+"See All >" = "查看全部 >";
+"Event name, interest, restaurant" = "活動名稱，興趣，餐廳";
+
+//*********** Login **************//
+"Sorry" = "不好意思";
+"The account does not exist." = "賬號不存在";
+"You could check your email and set new password now ^^" = "您可以查看郵件并設置密碼啦";
+"SIGN UP" = "註冊";
+"LOGIN" = "登入";
+"Information is missing, please fill in all the blanks ^^" = "信息不完整，請填寫所有空白處 ^^";
+"The email is registered, please login or active the account ^^" = "郵箱已經註冊，請登錄并激活賬號";
+"Congretulations!" = "恭喜！";
+"You have already had an account, please login ^^" = "你已經擁有一個賬號了，請登入 ^^";
+
+//*********** Event & search & filter **************//
+"Event Description" = "活動描述";
+"Budget" = "預算";
+"(HK$ per person)" = "(HK$ 每人)";
+"Select restaurant" = "選擇餐廳";
+"Search Restaurant" = "搜索餐廳";
+"Recent Searches" = "最近搜索";
+"Search Events" = "搜索活動";
+
+"Price Range" = "價格範圍";
+"Advanced Search" = "高級搜索";
+
+"- or search by -" = "- 或者搜索 -";
+
+"My Events" = "我的活動";
+"New Events" = "最新活動";
+"Events" = "活動";
+"Location" = "地點";
+"Hong Kong" = "香港";
+"Singapore" = "新加坡";
+
+//*********** Commen **************//
+"Save" = "保存";
+"Starts at" = "開始于";
+"Ends at" = "結束于";
+

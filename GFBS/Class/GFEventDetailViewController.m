@@ -11,6 +11,7 @@
 #import "EventDiscussionViewController.h"
 #import "EventPhotoViewController.h"
 #import "GFTitleButton.h"
+#import "ZBLocalized.h"
 
 #import "UIBarButtonItem+Badge.h"
 #import <AFNetworking.h>
@@ -225,7 +226,7 @@
     NSLog(@"self.view.gf_width is %f", self.view.gf_width);
     [self.view addSubview:titleView];
     
-    NSArray *titleContens = @[@"Overview",@"Discussion",@"Photo"];
+    NSArray *titleContens = @[ZBLocalized(@"Overview", nil), ZBLocalized(@"Discussion", nil), ZBLocalized(@"Photo", nil)];
     NSInteger count = titleContens.count;
     NSLog(@"titlecontents count is %ld", (long)count);
     

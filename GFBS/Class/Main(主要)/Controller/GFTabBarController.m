@@ -8,6 +8,7 @@
 
 #import "GFTabBarController.h"
 #import "GFNavigationController.h"
+#import "ZBLocalized.h"
 
 //#import "GFMeViewController.h"
 //#import "ZZHomeViewController.h"
@@ -74,25 +75,25 @@
 {
     
     GFNavigationController *nav = self.childViewControllers[0];
-    nav.tabBarItem.title = @"Home";
+    nav.tabBarItem.title = ZBLocalized(@"Home", nil);
     nav.tabBarItem.image = [UIImage imageNamed:@"ic_home"];
     nav.tabBarItem.selectedImage = [UIImage imageNamed:@"ic_home-on"];
     
     
     GFNavigationController *nav1 = self.childViewControllers[1];
-    nav1.tabBarItem.title = @"Social Calendar";
+    nav1.tabBarItem.title = ZBLocalized(@"Social Calendar", nil) ;
     nav1.tabBarItem.image = [UIImage imageNamed:@"ic_social"];
     nav1.tabBarItem.selectedImage = [UIImage imageNamed:@"ic_social_on"];
     
     
     GFNavigationController *nav2 = self.childViewControllers[2];
-    nav2.tabBarItem.title = @"Restaurants";
+    nav2.tabBarItem.title = ZBLocalized(@"Restaurants", nil) ;
     nav2.tabBarItem.image = [UIImage imageNamed:@"ic_restaurant"];
     nav2.tabBarItem.selectedImage = [UIImage imageNamed:@"ic_restaurant-o"];
     
     
     GFNavigationController *nav3 = self.childViewControllers[3];
-    nav3.tabBarItem.title = @"My Zuzu";
+    nav3.tabBarItem.title = ZBLocalized(@"My Zuzu", nil);
     nav3.tabBarItem.image = [UIImage imageNamed:@"ic_my_zuzu"];
     nav3.tabBarItem.selectedImage = [UIImage imageNamed:@"ic_my_zuzu_on"];
     

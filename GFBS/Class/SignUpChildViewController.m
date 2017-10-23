@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "SignUpChildViewController.h"
 #import "GFTabBarController.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -149,7 +150,7 @@
     
     if (email.length == 0|| username.length == 0 || name.length == 0 || password.length == 0) {
         
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"Information is missing, please fill in all the blanks ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:ZBLocalized(@"Sorry", nil)  message:ZBLocalized(@"Information is missing, please fill in all the blanks ^^", nil)  delegate:self cancelButtonTitle:ZBLocalized(@"Ok", nil)  otherButtonTitles:nil, nil];
         [alertView show];
         
     }
@@ -181,16 +182,16 @@
         NSLog(@"this user. userName %@", thisUser.usertName);
         
         if (thisUser == nil) {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Hi" message:@"The email is registered, please login or active the account ^^" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:ZBLocalized(@"Hi", nil)  message:ZBLocalized( @"The email is registered, please login or active the account ^^", nil) delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
             [alertView show];
             
         } else {
             if ([thisUser.userStatus isEqualToString:@"inactive"]) {
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Congretulations!" message:@"You have registered a Zuzu account, please go to the email and activate it ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle: ZBLocalized(@"Congretulations!", nil)  message:@"You have registered a Zuzu account, please go to the email and activate it ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                 [alertView show];
             /**the following else part will never be implemented for this api**/
             } else {
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Hi!" message:@"You have already had an account, please login ^^" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:ZBLocalized(@"Hi!", nil)  message:ZBLocalized(@"You have already had an account, please login ^^", nil)  delegate:self cancelButtonTitle:ZBLocalized( @"Ok", nil) otherButtonTitles:nil, nil];
                 [alertView show];
 
                 [AppDelegate APP].user = [[ZZUser alloc] init];

@@ -12,6 +12,7 @@
 
 #import "GFSquareItem.h"
 #import "GFSquareCell.h"
+#import "ZBLocalized.h"
 
 #import <SVProgressHUD.h>
 #import <MJExtension.h>
@@ -187,7 +188,7 @@ static CGFloat  const margin = 1;
 #pragma mark - Setup UICollectionView Data
 -(void)setUpCollectionItemsData {
     NSArray *buttonIcons = [NSArray arrayWithObjects:@"my-event", @"f-restaurant-icon", @"my-review", @"invite-friends", @"my-friends", nil];
-    NSArray *buttonTitles = [NSArray arrayWithObjects:@"My Events", @"Favourite Restaurants", @"My Reviews", @"Invite Friends", @"My Friends", nil];
+    NSArray *buttonTitles = [NSArray arrayWithObjects:ZBLocalized(@"My Events", nil), ZBLocalized(@"Favourite Restaurants", nil), ZBLocalized(@"My Reviews", nil), ZBLocalized(@"Invite Friends", nil), ZBLocalized(@"My Friends", nil), nil];
     
     self.buttonItems = [[NSMutableArray<GFSquareItem *> alloc]init];
     
@@ -249,7 +250,7 @@ static CGFloat  const margin = 1;
     self.navigationItem.rightBarButtonItems = @[item1,item2];
     
     //Title
-    self.navigationItem.title = @"My Zuzu";
+    self.navigationItem.title = ZBLocalized(@"My Zuzu", nil);
 }
 
 

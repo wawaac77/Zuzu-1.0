@@ -10,6 +10,7 @@
 #import "ZZFriendsTableViewController.h"
 #import "ZZFriendModel.h"
 #import "ZZFriendCell.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -64,7 +65,7 @@ static NSString *const ID = @"ID";
     
     [self preferredStatusBarStyle];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    self.navigationItem.title = @"My Friends";
+    self.navigationItem.title = ZBLocalized(@"My Friends", nil) ;
     
     UIBarButtonItem *addButton = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_settings"] WithHighlighted:[UIImage imageNamed:@"ic_settings"] Target:self action:@selector(settingClicked)];
 

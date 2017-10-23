@@ -10,6 +10,7 @@
 #import "GFWebViewController.h"
 #import "BadgesDetailViewController.h"
 #import "AppDelegate.h"
+#import "ZBLocalized.h"
 
 //#import "GFSquareItem.h"
 #import "ZZBadgeModel.h"
@@ -136,7 +137,7 @@ static CGFloat  const margin = 0;
     //[self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"Badges Collection";
+    self.navigationItem.title = ZBLocalized(@"Badges Collection", nil);
     
 }
 

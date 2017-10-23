@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LeaderboardViewController.h"
+#import "ZBLocalized.h"
 #import "LeaderboardAttendeesTableViewController.h"
 #import "LeaderboardHostTableViewController.h"
 #import "GFTitleButton.h"
@@ -43,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.frame = [UIScreen mainScreen].bounds;
-    self.navigationItem.title = @"Leaderboard";
+    self.navigationItem.title =  ZBLocalized(@"Leaderboard", nil) ;
     //[self loadNeweData];
     [self setUpChildViewControllers];
     [self setUpDisplayView];
@@ -94,7 +95,7 @@
     //NSLog(@"self.view.gf_width is %f", self.view.gf_width);
     [self.view addSubview:titleView];
     
-    NSArray *titleContens = @[@"Attendees",@"Host"];
+    NSArray *titleContens = @[ZBLocalized(@"Attendees", nil),ZBLocalized(@"Host", nil)];
     NSInteger count = titleContens.count;
     //NSLog(@"titlecontents count is %ld", (long)count);
     

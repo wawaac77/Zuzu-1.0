@@ -12,6 +12,7 @@
 #import <SDImageCache.h>
 #import <SVProgressHUD.h>
 #import "PassValueDelegate.h"
+#import "ZBLocalized.h"
 
 //@class FilterTableViewController;
 
@@ -45,7 +46,7 @@ static NSString*const ID = @"ID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Location";
+    self.navigationItem.title =  ZBLocalized(@"Location", nil);
     eventDetail = [[SearchEventDetail alloc] init];
     [self setUpNavBar];
     [self setUpArray];
@@ -62,7 +63,7 @@ static NSString*const ID = @"ID";
 }
 
 - (void)setUpArray {
-    NSMutableArray *cities = [[NSMutableArray alloc] initWithObjects:@"Hong Kong", @"Singapore", nil];
+    NSMutableArray *cities = [[NSMutableArray alloc] initWithObjects:ZBLocalized(@"Hong Kong", nil), ZBLocalized(@"Singapore", nil), nil];
     self.cities = cities;
     NSMutableArray *markArray = [[NSMutableArray alloc] init];
     self.markArray = markArray;
@@ -104,7 +105,7 @@ static NSString*const ID = @"ID";
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"sliderID"];
             UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 100, 30)];
-            leftLabel.text = @"Distance";
+            leftLabel.text =ZBLocalized(@"Distance", nil);
             leftLabel.font = [UIFont systemFontOfSize:16];
             [cell.contentView addSubview:leftLabel];
             
@@ -132,7 +133,7 @@ static NSString*const ID = @"ID";
         }
         
         if (indexPath.row == 1) {
-            cell.textLabel.text = @"Change Country";
+            cell.textLabel.text = ZBLocalized(@"Change Country", nil);
             //cell.accessoryType = NO;
         } else {
             for (int i = 2; i < _cities.count + 2; i++) {

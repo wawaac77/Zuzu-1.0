@@ -109,13 +109,13 @@ static NSString*const ID = @"ID";
     
     NSDictionary *inData = [[NSDictionary alloc] init];
     if ([self.tableType isEqualToString: @"Cuisine"]) {
-        inData = @{@"action" : @"getCuisineList"};
+        inData = @{@"action" : @"getCuisineList",  @"lang" : userLang};
     }
     else if ([self.tableType isEqualToString: @"District"]) {
-        inData = @{@"action" : @"getDistrictList"};
+        inData = @{@"action" : @"getDistrictList",  @"lang" : userLang};
     }
     else if ([self.tableType isEqualToString: @"Landmark"]) {
-        inData = @{@"action" : @"getLandmarkList"};
+        inData = @{@"action" : @"getLandmarkList",  @"lang" : userLang};
     }
     else if ([self.tableType isEqualToString: @"Industry"]) {
         inData = @{@"action" : @"getIndustryList", @"lang" : userLang};

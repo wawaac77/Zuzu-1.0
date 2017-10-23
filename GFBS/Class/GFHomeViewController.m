@@ -16,6 +16,7 @@
 #import "CreateEventViewController.h"
 #import "FilterTableViewController.h"
 #import "SearchPageViewController.h"
+#import "ZBLocalized.h"
 
 @interface GFHomeViewController () <UIScrollViewDelegate, UISearchBarDelegate>
 
@@ -57,6 +58,10 @@
     
     //添加默认自控制器View
     //[self addChildViewController];
+}
+
+- (void)viewWillAppear:(BOOL)animated  {
+     //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
 }
 
 /**
@@ -141,7 +146,7 @@
     */
     //Add subview:nearbyTitleLabel
     UILabel *nearbyTitle = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 150, 25)];
-    nearbyTitle.text = @"Nearby Events";
+    nearbyTitle.text = ZBLocalized(@"Nearby Events", nil);
     [nearbyTitle setFont:[UIFont boldSystemFontOfSize:16]];
     [nearbyTitleView addSubview:nearbyTitle];
     
@@ -153,10 +158,10 @@
     
     //Add subview:seeAllButton
     UIButton *seeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [seeAllButton setTitle:@"See All >" forState:UIControlStateNormal];
+    [seeAllButton setTitle:ZBLocalized(@"See All >", nil)  forState:UIControlStateNormal];
     [seeAllButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [seeAllButton addTarget:self action:@selector(seeAllNearbyClicked) forControlEvents:UIControlEventTouchUpInside];
-    seeAllButton.frame = CGRectMake(self.view.gf_width - 80, 0, 70, 35);
+    seeAllButton.frame = CGRectMake(self.view.gf_width - 100, 0, 90, 35);
     NSLog(@"self.view.gf_width is %f", self.view.gf_width);
     seeAllButton.titleLabel.font = [UIFont systemFontOfSize:15];
     
@@ -181,7 +186,7 @@
     
     //Add subview:titleLabel
     UILabel *nearbyTitle = [[UILabel alloc] initWithFrame:CGRectMake(50, 5, 150, 25)];
-    nearbyTitle.text = @"Upcoming Events";
+    nearbyTitle.text = ZBLocalized(@"Upcoming Events", nil) ;
     [nearbyTitle setFont:[UIFont boldSystemFontOfSize:16]];
     [upcomingTitleView addSubview:nearbyTitle];
     
@@ -193,10 +198,10 @@
     
     //Add subview:seeAllButton
     UIButton *seeAllButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [seeAllButton setTitle:@"See All >" forState:UIControlStateNormal];
+    [seeAllButton setTitle:ZBLocalized(@"See All >", nil)  forState:UIControlStateNormal];
     [seeAllButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [seeAllButton addTarget:self action:@selector(seeAllUpcomingClicked) forControlEvents:UIControlEventTouchUpInside];
-    seeAllButton.frame = CGRectMake(self.view.gf_width - 80, 0, 70, 35);
+    seeAllButton.frame = CGRectMake(self.view.gf_width - 100, 0, 90, 35);
     NSLog(@"self.view.gf_width is %f", self.view.gf_width);
 
     seeAllButton.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -251,7 +256,7 @@
     //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
     //searchBar1.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
-    searchBar.placeholder = @"Event name, interest, restaurant";
+    searchBar.placeholder = ZBLocalized(@"Event name, interest, restaurant", nil) ;
     self.navigationItem.titleView = searchBar;
   
     //[self.navigationController.navigationBar addSubview:searchBar1];
@@ -270,12 +275,12 @@
 
     self.navigationItem.rightBarButtonItem = rightItem;
     
+    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
     //TitieView
     //self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
     //self.navigationItem.title = @"Search Bar should be here!";
 }
 
-//- (void)addSearchBarObject:(<#object-type#> *)object
 
 - (void)logo {
     NSLog(@"Logo button clicked");
@@ -302,7 +307,6 @@
     [searchBar resignFirstResponder];
     SearchPageViewController *searchVC = [[SearchPageViewController alloc] init];
     [self.navigationController pushViewController:searchVC animated:YES];
-    NSLog(@"yes");
     return YES;
 }
 

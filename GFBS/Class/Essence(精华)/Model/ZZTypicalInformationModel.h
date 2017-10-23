@@ -22,4 +22,7 @@
 @property (nonatomic, strong) NSString *informationName;
 @property (nonatomic, strong) NSNumber *selected;
 
+//for recent search
+@property (nonatomic, strong) NSString *keyword;
+
 @end

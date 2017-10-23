@@ -10,6 +10,7 @@
 
 #import "RestaurantCell.h"
 #import "EventRestaurant.h"
+#import "ZBLocalized.h"
 
 #import "RestaurantDetailViewController.h"
 #import "GFSettingViewController.h"
@@ -151,7 +152,7 @@ static NSString *const restaurantID = @"restaurantID";
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"Restaurants";
+    self.navigationItem.title = ZBLocalized(@"Restaurants", nil);
     
 }
 

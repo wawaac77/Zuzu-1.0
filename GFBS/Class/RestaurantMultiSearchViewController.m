@@ -11,6 +11,7 @@
 #import "CuisineTableViewController.h"
 #import "RestaurantTableViewController.h"
 #import "EventRestaurant.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -77,7 +78,7 @@
         UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.gf_width, 30)];
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, GFScreenWidth - 20, 20)];
         headerLabel.textColor = [UIColor darkGrayColor];
-        headerLabel.text = @"- or search by -";
+        headerLabel.text = ZBLocalized(@"- or search by -", nil);
         headerLabel.textAlignment = NSTextAlignmentCenter;
         headerLabel.font = [UIFont systemFontOfSize:14];
         [footerView addSubview:headerLabel];
@@ -148,7 +149,7 @@
                 UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
                 title1.font = [UIFont systemFontOfSize:15];
                 title1.textColor = [UIColor grayColor];
-                title1.text = @"Distance";
+                title1.text = ZBLocalized(@"Distance", nil);
                 [cell.contentView addSubview:title1];
                 
                 UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 35, 120, 25)];
@@ -181,7 +182,7 @@
                 UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
                 title1.font = [UIFont systemFontOfSize:15];
                 title1.textColor = [UIColor grayColor];
-                title1.text = @"Price";
+                title1.text = ZBLocalized(@"Price", nil);
                 [cell.contentView addSubview:title1];
                 
                 UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 35, 120, 25)];
@@ -215,7 +216,7 @@
                 [textField setFont:[UIFont systemFontOfSize:15]];
                 textField.textColor = [UIColor grayColor];
                 self.cuisineLabel = textField;
-                textField.text = @"Cuisine";
+                textField.text = ZBLocalized(@"Cuisine", nil);
                 
                 //textField.delegate = self;
                 //textField.tag = indexPath.row;

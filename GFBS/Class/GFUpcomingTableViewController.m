@@ -15,6 +15,7 @@
 //#import "GFTopic.h"
 #import "GFEventDetailViewController.h"
 #import "UIBarButtonItem+Badge.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -101,7 +102,7 @@ static NSString *const eventID = @"event";
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"Upcoming Events";
+    self.navigationItem.title = ZBLocalized(@"Upcoming Events", nil);
     
 }
 

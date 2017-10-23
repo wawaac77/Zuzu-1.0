@@ -10,6 +10,12 @@
 #import "FilterTableViewController.h"
 #import "EventSearchResultTableViewController.h"
 #import "RestaurantViewController.h"
+#import "ZBLocalized.h"
+#import "ZZTypicalInformationModel.h"
+
+#import <SVProgressHUD.h>
+#import <MJExtension.h>
+#import <AFNetworking.h>
 
 @interface SearchPageViewController () <UISearchBarDelegate>{
     BOOL selected[2];
@@ -18,21 +24,38 @@
 @property (strong ,nonatomic) UISearchBar *searchBar;
 @property (strong ,nonatomic) UISearchBar *searchBar1;
 @property (strong ,nonatomic) UIView *header;
-@property (strong ,nonatomic) NSMutableArray <NSString *> *recentSearches;
+@property (strong ,nonatomic) NSMutableArray <ZZTypicalInformationModel *> *recentSearches;
+
+/*请求管理者*/
+@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
 @implementation SearchPageViewController
 
+#pragma mark - 懒加载
+-(GFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [GFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    return _manager;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.recentSearches = [[NSMutableArray alloc] init];
     [self setUpNavBar];
     [self setUpTable];
-    [self setUpFooter];
+    [self loadNewData];
+    //[self setUpFooter];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     //[self.navigationController.navigationBar setFrame:CGRectMake(0, 0, GFScreenWidth, 90)];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -54,10 +77,10 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButtonClicked)];
     
    //**** table header
-    self.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 40)];
+    self.header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, 55)];
     _header.backgroundColor = [UIColor blackColor];
     
-    self.searchBar1 = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 25)];
+    self.searchBar1 = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 44)];
     [_searchBar1 setImage:[UIImage imageNamed:@"ic_fa-map-marker"] forSearchBarIcon:nil state:UIControlStateNormal];
     _searchBar1.placeholder = @"Location, Landmark, Street";
     self.searchBar1.barTintColor = [UIColor blackColor];
@@ -66,13 +89,17 @@
     [_header addSubview:_searchBar1];
     
     self.tableView.tableHeaderView = _header;
+    
+    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    //[self.searchBar1.heightAnchor constraintEqualToConstant:44].active = YES;
 }
 
 - (void)setUpFooter {
-    self.recentSearches = [[NSMutableArray alloc] initWithObjects:@"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", @"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", nil];
+    //self.recentSearches = [[NSMutableArray alloc] initWithObjects:@"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", @"Causway Bay", @"Japanese Cuisine", @"hihi", @"happy hour", @"hahah", nil];
+   
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GFScreenWidth, GFScreenHeight - GFNavMaxY - GFTabBarH - 88 - 50)];
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 200, 44)];
-    title.text = @"Recent Searches";
+    title.text = ZBLocalized(@"Recent Searches", nil);
     title.font = [UIFont boldSystemFontOfSize:16];
     [footer addSubview:title];
     CGFloat label_x = 10.0f;
@@ -80,11 +107,16 @@
     CGFloat label_height = 30.0f;
     CGFloat margin = 10.0f;
     for (int i = 0; i < _recentSearches.count; i ++) {
+        if ([_recentSearches[i].keyword isEqualToString:@""]) {
+            continue;
+        }
+        
         UILabel *itemLabel = [[UILabel alloc] init];
+        itemLabel.text = _recentSearches[i].keyword;
+        
         itemLabel.numberOfLines = 1;
         itemLabel.font = [UIFont systemFontOfSize:16];
         itemLabel.textColor = [UIColor darkGrayColor];
-        itemLabel.text = _recentSearches[i];
         itemLabel.textAlignment = NSTextAlignmentCenter;
         itemLabel.layer.borderWidth = 1.0f;
         itemLabel.layer.borderColor = [UIColor grayColor].CGColor;
@@ -135,9 +167,9 @@
         [cell.contentView addSubview:separator];
     }
     if (indexPath.row == 0) {
-        cell.textLabel.text = @"Search Events";
+        cell.textLabel.text = ZBLocalized(@"Search Events", nil);
     } else {
-        cell.textLabel.text = @"Search Restaurants";
+        cell.textLabel.text = ZBLocalized(@"Search Restaurants", nil);
     }
     
     if (selected[indexPath.row]) {
@@ -190,48 +222,45 @@
     
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - 加载新数据
+-(void)loadNewData
+{
+    //取消请求
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSString *userToken = [AppDelegate APP].user.userToken;
+    
+    NSDictionary *inData = @{
+                             @"action" : @"getRecentSearch",
+                             @"token" : userToken,
+                             @"lang" :userLang,
+                             };
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+        
+        self.recentSearches = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        [self setUpFooter];
+        
+        //[self.tableView reloadData];
+        
+        [self.tableView.mj_header endRefreshing];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [self.tableView.mj_header endRefreshing];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    }];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

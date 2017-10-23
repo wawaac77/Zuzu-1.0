@@ -15,11 +15,13 @@
 #import "BadgesCollectionViewController.h"
 #import "NotificationViewController.h"
 #import "LeaderboardViewController.h"
+#import "ZBLocalized.h"
 
 //#import "EventListTableViewController.h"
 #import "ZZAttendingViewController.h"
 #import "RestaurantViewController.h" //should be favourite restaurant
 #import "ZZBadgeModel.h"
+#import "NotificationItem.h"
 
 #import "GFSquareItem.h"
 #import "GFSquareCell.h"
@@ -51,13 +53,18 @@ static CGFloat  const margin = 0;
 @property (weak, nonatomic) IBOutlet UILabel *organizeExpLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *socialImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *organizeImageView;
+@property (weak, nonatomic) IBOutlet UILabel *socialLabel;
+@property (weak, nonatomic) IBOutlet UILabel *organizingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *myBadgesLabel;
 
 @property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 /*所有button内容*/
 @property (strong , nonatomic)NSMutableArray<GFSquareItem *> *buttonItems;
 @property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *badgesArray;
+@property (strong , nonatomic)NSMutableArray<NotificationItem *> *myNotifications;
 @property (weak, nonatomic) UIImage *pickedImage;
+@property (strong, nonatomic) UIBarButtonItem *notificationBtn;
 
 /**
  collectionView
@@ -95,11 +102,16 @@ static CGFloat  const margin = 0;
     [self setUpFunctionsCollectionView];
     
     self.badgesArray = [[NSMutableArray alloc] init];
+    self.myNotifications = [[NSMutableArray alloc] init];
     [self loadBadgesData];
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void) setUpExp {
+    
+    self.socialLabel.text = ZBLocalized(@"Social Experience", nil);
+    self.organizingLabel.text = ZBLocalized(@"Organizing Experience", nil);
+    self.myBadgesLabel.text = ZBLocalized(@"My Badges", nil);
     
     self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.profileImageView.clipsToBounds = YES;
@@ -197,7 +209,8 @@ static CGFloat  const margin = 0;
 #pragma mark - Setup UICollectionView Data
 -(void)setUpCollectionItemsData {
     NSArray *buttonIcons = [NSArray arrayWithObjects:@"my-event", @"f-restaurant-icon", @"my-review", @"invite-friends", @"my-friends",@"", nil];
-    NSArray *buttonTitles = [NSArray arrayWithObjects:@"My Events", @"Favourite Restaurants", @"My Reviews", @"Invite Friends", @"My Friends",@"", nil];
+    
+    NSArray *buttonTitles = [NSArray arrayWithObjects:ZBLocalized(@"My Events", nil), ZBLocalized(@"Favourite Restaurants", nil), ZBLocalized(@"My Reviews", nil), ZBLocalized(@"Invite Friends", nil), ZBLocalized(@"My Friends", nil),@"", nil];
     //NSMutableArray<GFSquareItem *> *buttonItems =[[NSMutableArray<GFSquareItem *> alloc]init];
     //self.buttonItems = buttonItems;
     self.buttonItems = [[NSMutableArray<GFSquareItem *> alloc]init];
@@ -235,14 +248,16 @@ static CGFloat  const margin = 0;
     UIBarButtonItem *settingBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_settings"] WithHighlighted:[UIImage imageNamed:@"ic_settings"] Target:self action:@selector(settingClicked)];
     UIBarButtonItem *fixedButton  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemFixedSpace target: nil action: nil];
     fixedButton.width = 20;
-    UIBarButtonItem *notificationBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-bell-o"] WithHighlighted:[UIImage imageNamed:@"ic_fa-bell-o"] Target:self action:@selector(notificationClicked)];
-    notificationBtn.badgeValue = @"2"; // I need the number of not checked through API
+    
+    self.notificationBtn = [[UIBarButtonItem alloc] init];
+    self.notificationBtn = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-bell-o"] WithHighlighted:[UIImage imageNamed:@"ic_fa-bell-o"] Target:self action:@selector(notificationClicked)];
+    _notificationBtn.badgeValue = @"2"; // I need the number of not checked through API
     //notificationBtn.badgePadding = 0;
     //notificationBtn.badgeMinSize = 0; //I changed their default value in category
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, _notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"My Zuzu";
+    self.navigationItem.title = ZBLocalized(@"My Zuzu", nil);
     
 }
 
@@ -251,11 +266,11 @@ static CGFloat  const margin = 0;
 {
     GFSquareItem *item = _buttonItems[indexPath.item];
     
-    if ([item.name isEqualToString: @"My Events"]) {
+    if ([item.name isEqualToString: ZBLocalized(@"My Events", nil)]) {
         ZZAttendingViewController *eventVC = [[ZZAttendingViewController alloc] init];
         eventVC.view.frame = [UIScreen mainScreen].bounds;
         [self.navigationController pushViewController:eventVC animated:YES];
-    } else if ([item.name isEqualToString: @"Favourite Restaurants"]) {
+    } else if ([item.name isEqualToString: ZBLocalized(@"Favourite Restaurants", nil)]) {
         RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] init];
         [self.navigationController pushViewController:restaurantVC animated:YES];
     }
@@ -281,8 +296,11 @@ static CGFloat  const margin = 0;
     //2.凭借请求参数
     
     NSString *userToken = [AppDelegate APP].user.userToken;
-    
-    NSDictionary *inData = @{@"action" : @"getBadgeList", @"token" : userToken};
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    NSDictionary *inData = @{@"action" : @"getBadgeList", @"token" : userToken, @"lang" : userLang};
         
     NSDictionary *parameters = @{@"data" : inData};
 
@@ -302,6 +320,7 @@ static CGFloat  const margin = 0;
         NSLog(@"self.badgesArray.count %zd", self.badgesArray.count);
         
         [self setUpBadgesView];
+        [self getNotificationList];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -316,6 +335,46 @@ static CGFloat  const margin = 0;
         
     }];
 }
+
+- (void)getNotificationList {
+    
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    
+    //2.凭借请求参数
+    
+    NSString *userToken = [AppDelegate APP].user.userToken;
+    
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
+    
+    NSDictionary *inData = @{@"action" : @"getNotificationList", @"token" : userToken, @"lang" : userLang};
+    
+    NSDictionary *parameters = @{@"data" : inData};
+    
+    NSLog(@"publish content parameters %@", parameters);
+    
+    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    
+        self.myNotifications = [NotificationItem mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.notificationBtn.badge = [NSString stringWithFormat:@"%lu", _myNotifications.count];
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@", [error localizedDescription]);
+        
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [SVProgressHUD dismiss];
+            
+        });
+        
+    }];
+}
+
 
 -(void)setUpBadgesView {
     int i = 0;
@@ -415,116 +474,7 @@ static CGFloat  const margin = 0;
     
     PickSingleImageViewController *pickVC = [[PickSingleImageViewController alloc] init];
     [self.navigationController pushViewController:pickVC animated:YES];
-    /*
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-     */
     
 }
-
-/*
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.profileImageView.image = chosenImage;
-    self.pickedImage = chosenImage;
-    NSLog(@"chosenImage %@", chosenImage);
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    [self uploadProfilePic];
-    
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-}
-
-- (NSString *)encodeToBase64String:(UIImage *)image {
-    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-}
-
-- (NSString *)contentTypeForImageData:(NSData *)data {
-    uint8_t c;
-    [data getBytes:&c length:1];
-    
-    switch (c) {
-        case 0xFF:
-            return @"image/jpeg";
-        case 0x89:
-            return @"image/png";
-        case 0x47:
-            return @"image/gif";
-        case 0x49:
-            break;
-        case 0x42:
-            return @"image/bmp";
-        case 0x4D:
-            return @"image/tiff";
-    }
-    return nil;
-}
-
-
-- (void)uploadProfilePic {
-    
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    NSString *userToken = [[NSString alloc] init];
-    userToken = [AppDelegate APP].user.userToken;
-    NSLog(@"userToken in checkinVC %@", userToken);
-    
-    NSString *imageBase64 = [UIImagePNGRepresentation(_pickedImage)
-                             base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSData *imageData = UIImagePNGRepresentation(_pickedImage);
-    NSString *imageType = [self contentTypeForImageData:imageData];
-    NSString *imageInfo = [NSString stringWithFormat:@"data:%@;base64,%@",imageType, imageBase64];
-    
-    NSDictionary *inSubData = @{@"profilePic": imageInfo};
-    
-    NSDictionary *inData = @{@"action" : @"uploadProfilePic",
-                             @"token" : userToken,
-                             @"data" : inSubData};
-    
-    NSDictionary *parameters = @{@"data" : inData};
-    
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        //self.profileImageView.image = nil;
-        
-        [AppDelegate APP].user.userProfileImage_UIImage = _pickedImage;
-        
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"Profile image uploaded!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alertView show];
-        
-        ZZUser *sucessBack = [[ZZUser alloc] init];
-        sucessBack = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
-        [AppDelegate APP].user.userProfileImage.imageUrl = sucessBack.userProfileImage.imageUrl;
-        NSLog(@"[appDelegate]sucessBack.userProfileImage.imageUrl %@", sucessBack.userProfileImage.imageUrl);
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:sucessBack.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
-        [userDefaults synchronize];
-
-        
-        //[self textView];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
-    }];
-}
-*/
-
 
 @end

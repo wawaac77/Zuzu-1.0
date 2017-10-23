@@ -15,6 +15,7 @@
 
 #import "MyEvent.h"
 #import "MyEventCell.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -310,7 +311,7 @@ static NSString *const eventID = @"myEvent";
     } else if (self.type == MyEventTypeHistory) {
         
     } else {
-        [joinButton setTitle:@"Join More Events" forState:UIControlStateNormal];
+        [joinButton setTitle: ZBLocalized(@"Join More Events", nil)  forState:UIControlStateNormal];
         [joinButton addTarget:self action:@selector(joinButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:joinButton];
     }

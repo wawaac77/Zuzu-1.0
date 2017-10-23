@@ -8,6 +8,7 @@
 
 #import "BadgesDetailViewController.h"
 #import <UIImageView+WebCache.h>
+#import "ZBLocalized.h"
 
 @interface BadgesDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *badgeImageView;
@@ -28,6 +29,7 @@
     _nameLabel.text = self.item.name;
     _descriptionTextView.text = self.item.badgeDescription;
     _priceLabel.titleLabel.text = [NSString stringWithFormat:@"HK$ %@", self.item.price];
+    [_buyButton setTitle: ZBLocalized(@"Buy", nil) forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

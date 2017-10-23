@@ -10,12 +10,15 @@
 #import "GFEventDetailViewController.h"
 #import "EventInList.h"
 #import "EventListCell.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 
+#define Str(str) str?str:@""
+#define Num(num) num?num:@0
 
 static NSString *const listEventID = @"event";
 
@@ -41,7 +44,7 @@ static NSString *const listEventID = @"event";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Events";
+    self.navigationItem.title = ZBLocalized(@"Events", nil);
     [self setupRefresh];
     [self setUpTable];
     
@@ -75,19 +78,23 @@ static NSString *const listEventID = @"event";
     
     //2.凭借请求参数
     NSArray *geoPoint = @[@114, @22];
-    NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
+    NSString *userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
         userLang = @"tw";
     }
+    
+    NSDictionary *inSubData = @{@"geoPoint" : geoPoint,
+                                @"keyword" : Str(self.keywords),
+                                };
+    
     NSDictionary *inData = @{
-                             @"action" : @"getNearbyEventList",
-                             @"data" : geoPointDic,
+                             @"action" : @"searchEvent",
+                             @"token" : userToken,
+                             @"data" : inSubData,
                              @"lang" : userLang,
                              };
     NSDictionary *parameters = @{@"data" : inData};
-    
-    NSLog(@"Nearby events parameters %@", parameters);
     
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {

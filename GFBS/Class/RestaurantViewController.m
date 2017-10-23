@@ -6,8 +6,8 @@
 //  Copyright © 2017 apple. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "RestaurantViewController.h"
-
 #import "RestaurantCell.h"
 #import "EventRestaurant.h"
 
@@ -20,6 +20,9 @@
 #import <SVProgressHUD.h>
 #import <UIImageView+WebCache.h>
 #import <SDImageCache.h>
+
+#define Str(str) str?str:@""
+#define Num(num) num?num:@0
 
 static NSString *const restaurantID = @"restaurant";
 
@@ -81,16 +84,17 @@ static NSString *const restaurantID = @"restaurant";
     //2.凭借请求参数
     
     NSArray *geoPoint = @[@114, @22];
+    NSString *userToken = [AppDelegate APP].user.userToken;
     NSDictionary *keyFactors = @
     {
-        @"keyword" : @"",
-        @"address" : @"",
-        @"maxPrice" : @"",
-        @"minPrice" : @"",
-        @"landmark" : @"",
-        @"district" : @"",
-        @"cuisine" : @"",
-        @"page" : @"",
+        @"keyword" : Str(self.keywords),
+        //@"address" : @"",
+        //@"maxPrice" : @"",
+        //@"minPrice" : @"",
+        //@"landmark" : @"",
+        //@"district" : @"",
+        //@"cuisine" : @"",
+        //@"page" : @"",
         @"geoPoint" : geoPoint
     };
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
@@ -99,6 +103,7 @@ static NSString *const restaurantID = @"restaurant";
     }
     NSDictionary *inData = @{
                              @"action" : @"searchRestaurant",
+                             @"token" : userToken,
                              @"data" : keyFactors,
                              @"lang" : userLang,
                              };
@@ -133,75 +138,6 @@ static NSString *const restaurantID = @"restaurant";
     
 }
 
-
-/*
-#pragma mark - 加载更多数据
--(void)loadMoreData
-{
-    NSLog(@"loadMoreData工作了le");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-
-    NSArray *geoPoint = @[@114, @22];
-    NSDictionary *keyFactors = @
-    {
-        @"keyword" : @"",
-        @"address" : @"",
-        @"maxPrice" : @"",
-        @"minPrice" : @"",
-        @"landmark" : @"",
-        @"district" : @"",
-        @"cuisine" : @"",
-        @"page" : @"",
-        @"geoPoint" : geoPoint
-    };
-    NSDictionary *inData = @{
-                             @"action" : @"searchRestaurant",
-                             @"data" : keyFactors};
-    NSDictionary *parameters = @{@"data" : inData};
-    
-    //发送请求
-    [_manager GET:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
-        
-        //存储这一页的maxtime
-        //self.maxtime = responseObject[@"info"][@"maxtime"];
-        
-        //[responseObject writeToFile:@"/Users/apple/Desktop/ceshi.plist" atomically:YES];
-        
-        //字典转模型
-        NSLog(@"Request is successful成功了");
-        NSMutableArray<EventRestaurant *> *moreRestaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //*** check if here add new restaurants rather than same restaurants **/
-/*
-        [self.restaurants addObjectsFromArray:moreRestaurants];
-        
-        [self.tableView reloadData];
-        
-        //[self.tableView.mj_footer endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Request 失败");
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
-    }];
-    
-}
-*/
-
-
-/*
-
--(void)setUpNote
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonRepeatClick) name:GFTabBarButtonDidRepeatShowClickNotificationCenter object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonRepeatClick) name:GFTitleButtonDidRepeatShowClickNotificationCenter object:nil];
-}
 
 /**
  *  监听标题按钮的重复点击
@@ -251,7 +187,7 @@ static NSString *const restaurantID = @"restaurant";
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"Restaurants";
+    self.navigationItem.title =  @"Restaurants";
  
 }
 

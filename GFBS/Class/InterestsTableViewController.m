@@ -9,6 +9,7 @@
 #import "InterestsTableViewController.h"
 #import "SearchEventDetail.h"
 #import "ZZTypicalInformationModel.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -43,7 +44,7 @@ static NSString*const ID = @"ID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Interests";
+    self.navigationItem.title = ZBLocalized(@"Interests", nil);
     self.eventDetail = [[SearchEventDetail alloc] init];
     [self setUpNavBar];
     [self setUpArray];
@@ -60,8 +61,12 @@ static NSString*const ID = @"ID";
 
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
 
+    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
+    if ([userLang isEqualToString:@"zh-Hant"]) {
+        userLang = @"tw";
+    }
     //2.凭借请求参数
-    NSDictionary *inData = @{@"action" : @"getInterestList"};
+    NSDictionary *inData = @{@"action" : @"getInterestList", @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
   
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {

@@ -11,6 +11,7 @@
 #import "ZZAddFriendsCell.h"
 #import "ZZFriendModel.h"
 #import "ZZUser.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -59,7 +60,7 @@ static NSString *const ID = @"ID";
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    self.navigationItem.title = @"Add Friends";
+    self.navigationItem.title = ZBLocalized(@"Add Friends", nil);
     
 }
 

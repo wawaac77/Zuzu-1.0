@@ -9,6 +9,7 @@
 #import "GFCommentCell.h"
 #import "GFUser.h"
 #import "ZZComment.h"
+#import "ZBLocalized.h"
 //#import "GFComment.h"
 #import <UIImageView+WebCache.h>
 
@@ -39,7 +40,7 @@
     
     self.nameLabel.text = comment.listPublishUser.userUserName;
     if (self.nameLabel.text.length == 0) {
-        self.nameLabel.text = @"Secret user";
+        self.nameLabel.text = ZBLocalized(@"Anonymous user", nil);
     }
     
     self.text_label.text = comment.listContent;

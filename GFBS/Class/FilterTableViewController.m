@@ -11,6 +11,7 @@
 #import "InterestsTableViewController.h"
 #import "CuisineTableViewController.h"
 #import "NumOfGuestsTableViewController.h"
+#import "ZBLocalized.h"
 
 //#import "GFSeeAllEventTableViewController.h"
 #import "EventSearchResultTableViewController.h"
@@ -53,7 +54,7 @@ static NSString*const sliderID = @"sliderID";
     [super viewDidLoad];
     [self setUpParameters];
     self.eventDetail = [[SearchEventDetail alloc] init];
-    self.navigationItem.title = @"Advanced Search";
+    self.navigationItem.title = ZBLocalized( @"Advanced Search", nil);
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID];
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:sliderID];
     [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
@@ -133,7 +134,7 @@ static NSString*const sliderID = @"sliderID";
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
             UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 100, 30)];
-            leftLabel.text = @"Price Range";
+            leftLabel.text = ZBLocalized(@"Price Range", nil) ;
             leftLabel.font = [UIFont systemFontOfSize:16];
             [cell.contentView addSubview:leftLabel];
             
@@ -164,30 +165,30 @@ static NSString*const sliderID = @"sliderID";
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
             }
             if (indexPath.row == 0) {
-                cell.textLabel.text = @"Search Events";
+                cell.textLabel.text = ZBLocalized( @"Search Events", nil);
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
                 cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
                 cell.tintColor = DEFAULT_COLOR_GOLD;
             } else if (indexPath.row == 1) {
-                cell.textLabel.text = @"Search Restaurant";
+                cell.textLabel.text = ZBLocalized(@"Search Restaurant", nil);
                 cell.accessoryType = NO;
                 cell.textLabel.textColor = [UIColor darkGrayColor];
                 cell.textLabel.font = [UIFont systemFontOfSize:17];
             } else if (indexPath.row == 2) {
-                cell.textLabel.text = @"Location";
+                cell.textLabel.text = ZBLocalized(@"Location", nil);
                 cell.detailTextLabel.text = _eventDetail.location;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 3) {
-                cell.textLabel.text = @"Interests";
+                cell.textLabel.text = ZBLocalized(@"Interests", nil) ;
                 cell.detailTextLabel.text = _eventDetail.interests;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 4) {
-                cell.textLabel.text = @"Cuisine";
+                cell.textLabel.text = ZBLocalized(@"Cuisine", nil) ;
                 cell.detailTextLabel.text = _eventDetail.cuisine.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 6) {
-                cell.textLabel.text = @"Number of Guests";
+                cell.textLabel.text = ZBLocalized(@"Number of Guests", nil);
                 cell.detailTextLabel.text = _eventDetail.guestNumber;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
@@ -202,28 +203,28 @@ static NSString*const sliderID = @"sliderID";
             }
             
             if (indexPath.row == 0) {
-                cell.textLabel.text = @"Search Events";
+                cell.textLabel.text = ZBLocalized(@"Search Events", nil);
                 cell.accessoryType = NO;
                 cell.textLabel.textColor = [UIColor darkGrayColor];
                 cell.textLabel.font = [UIFont systemFontOfSize:17];
                 
             } else if (indexPath.row == 1) {
-                cell.textLabel.text = @"Search Restaurant";
+                cell.textLabel.text = ZBLocalized(@"Search Restaurant", nil);
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 cell.textLabel.textColor = DEFAULT_COLOR_GOLD;
                 cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
                 cell.tintColor = DEFAULT_COLOR_GOLD;
             } else if (indexPath.row == 2) {
-                cell.textLabel.text = @"District";
+                cell.textLabel.text = ZBLocalized(@"District", nil);
                 cell.detailTextLabel.text = _eventDetail.district.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 3) {
-                cell.textLabel.text = @"Landmark";
+                cell.textLabel.text = ZBLocalized(@"Landmark", nil);
                 cell.detailTextLabel.text = _eventDetail.landmark.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             } else if (indexPath.row == 4) {
                 //UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-                cell.textLabel.text = @"Cuisine";
+                cell.textLabel.text = ZBLocalized(@"Cuisine", nil) ;
                 cell.detailTextLabel.text = _eventDetail.cuisine.informationName;
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
@@ -259,29 +260,29 @@ static NSString*const sliderID = @"sliderID";
         
     } else {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        if ([cell.textLabel.text isEqualToString:@"Location"]) {
+        if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Location", nil)]) {
             LocationTableViewController *locationVC = [[LocationTableViewController alloc] init];
             locationVC.delegate = self;
             [self.navigationController pushViewController:locationVC animated:YES];
-        } else if ([cell.textLabel.text isEqualToString:@"Interests"]) {
+        } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Interests", nil)]) {
             InterestsTableViewController *interestsVC = [[InterestsTableViewController alloc] init];
             interestsVC.delegate = self;
             [self.navigationController pushViewController:interestsVC animated:YES];
-        } else if ([cell.textLabel.text isEqualToString:@"Cuisine"]) {
+        } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Cuisine", nil)]) {
             CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
             cuisineVC.tableType = @"Cuisine";
             cuisineVC.delegate = self;
             [self.navigationController pushViewController:cuisineVC animated:YES];
-        } else if ([cell.textLabel.text isEqualToString:@"Number of Guests"]) {
+        } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Number of Guests", nil)]) {
             NumOfGuestsTableViewController *numOfGuestsVC = [[NumOfGuestsTableViewController alloc] init];
             numOfGuestsVC.delegate = self;
             [self.navigationController pushViewController:numOfGuestsVC animated:YES];
-        } else if ([cell.textLabel.text isEqualToString:@"District"]) {
+        } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"District", nil)]) {
             CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
             cuisineVC.tableType = @"District";
             cuisineVC.delegate = self;
             [self.navigationController pushViewController:cuisineVC animated:YES];
-        } else if ([cell.textLabel.text isEqualToString:@"Landmark"]) {
+        } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Landmark", nil)]) {
             CuisineTableViewController *cuisineVC = [[CuisineTableViewController alloc] init];
             cuisineVC.tableType = @"Landmark";
             cuisineVC.delegate = self;

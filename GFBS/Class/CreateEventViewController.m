@@ -15,6 +15,7 @@
 
 #import "EventInList.h"
 #import "ZZBannerModel.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -233,7 +234,7 @@
                 
             } else if (indexPath.row == 1) {
                 UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 300, 30)];
-                descriptionLabel.text = @"Event Description";
+                descriptionLabel.text = ZBLocalized(@"Event Description", nil);
                 descriptionLabel.font = [UIFont systemFontOfSize:15];
                 descriptionLabel.textColor = [UIColor grayColor];
                 [cell.contentView addSubview:descriptionLabel];
@@ -246,13 +247,13 @@
                 UILabel *title1 = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 80, 25)];
                 title1.font = [UIFont systemFontOfSize:15];
                 title1.textColor = [UIColor grayColor];
-                title1.text = @"Budget";
+                title1.text = ZBLocalized(@"Budget", nil) ;
                 [cell.contentView addSubview:title1];
                 
                 UILabel *title2 = [[UILabel alloc] initWithFrame:CGRectMake(15, 35, 120, 25)];
                 title2.font = [UIFont systemFontOfSize:14];
                 title2.textColor = [UIColor grayColor];
-                title2.text = @"(HK$ per person)";
+                title2.text = ZBLocalized(@"(HK$ per person)", nil);
                 [cell.contentView addSubview:title2];
                 
                 //************** add slider
@@ -275,7 +276,7 @@
             }
             
             else if (indexPath.row == 3) {
-                cell.textLabel.text = @"Select restaurant";
+                cell.textLabel.text = ZBLocalized(@"Select restaurant", nil);
                 cell.textLabel.font = [UIFont systemFontOfSize:15];
                 cell.textLabel.textColor = [UIColor grayColor];
                 [cell setTintColor:[UIColor grayColor]];
@@ -312,7 +313,7 @@
      */
     if ((indexPath.section == 1) && (indexPath.row == 3)) {
         RestaurantMultiSearchViewController *restaurantSearchVC = [[RestaurantMultiSearchViewController alloc] init];
-        restaurantSearchVC.title = @"Search Restaurant";
+        restaurantSearchVC.title = ZBLocalized(@"Search Restaurant", nil) ;
         [self.navigationController pushViewController:restaurantSearchVC animated:YES];
         
     }
@@ -336,7 +337,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonClicked)];
     
     //Title
-    self.navigationItem.title = @"New Event";
+    self.navigationItem.title = ZBLocalized(@"New Event", nil) ;
     
 }
 
@@ -414,11 +415,13 @@
     
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MMM/YYYY HH:mm"];
+    NSString *startStr = ZBLocalized(@"Starts at", nil);
+    NSString *endStr = ZBLocalized(@"Ends at", nil);
     
     if (textField.tag == 3) {
-        textField.text=[NSString stringWithFormat:@"Starts at %@",[formatter stringFromDate:_datePicker.date]];
+        textField.text=[NSString stringWithFormat:@"%@ %@",startStr, [formatter stringFromDate:_datePicker.date]];
     } else if (textField.tag == 4) {
-        textField.text=[NSString stringWithFormat:@"Ends at %@",[formatter stringFromDate:_datePicker.date]];
+        textField.text=[NSString stringWithFormat:@"%@ %@",endStr, [formatter stringFromDate:_datePicker.date]];
     }
     
     [textField resignFirstResponder];

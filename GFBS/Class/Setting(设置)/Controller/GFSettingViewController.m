@@ -185,7 +185,7 @@
             
         } else if (indexPath.row == 1) {
             
-            cell.textLabel.text = @"Login with Facebook";
+            cell.textLabel.text = ZBLocalized(@"Login with Facebook", nil);
             cell.imageView.image = [UIImage imageNamed:@"Ic_fa-star"];
             
             UIImageView *myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 34, 34)];
@@ -216,7 +216,7 @@
         
         else if (indexPath.row == 2) {
             
-            cell.textLabel.text = @"Login with Goolge";
+            cell.textLabel.text = ZBLocalized(@"Login with Goolge", nil);
             cell.imageView.image = [UIImage imageNamed:@"Ic_fa-star"];
             
             UIImageView *myImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 8, 34, 34)];
@@ -316,7 +316,7 @@
             cell.accessoryView.frame = CGRectMake(0, 0, 24, 24);
         } else if (indexPath.row == 1) {
             //cell.textLabel.text = ZBLocalized(@"Anyone can message me.", nil);
-            cell.textLabel.text = @"Anyone can message me.";
+            cell.textLabel.text = ZBLocalized(@"Anyone can message me.", nil) ;
             if ([[ZZUser shareUser].canMessageMe isEqualToNumber:[NSNumber numberWithBool:@1]]) {
                 cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check"]];
             } else {
@@ -325,7 +325,7 @@
             cell.accessoryView.frame = CGRectMake(0, 0, 24, 24);
         } else {
             //cell.textLabel.text = ZBLocalized(@"Let my friends see my email address.", nil);
-            cell.textLabel.text = @"Let my friends see my email address.";
+            cell.textLabel.text = ZBLocalized(@"Let my friends see my email address.", nil) ;
             if ([[ZZUser shareUser].canMyFriendSeeMyEmail isEqualToValue:@1]) {
                 cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check"]];
             } else {
@@ -339,7 +339,7 @@
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
             //cell.textLabel.text = ZBLocalized( @"Allow Notification", nil);
-            cell.textLabel.text = @"Allow Notification";
+            cell.textLabel.text = ZBLocalized(@"Allow Notification", nil) ;
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             self.allowNotificationSwitch = switchView;
             cell.accessoryView = switchView;
@@ -362,7 +362,7 @@
     else if (indexPath.section == 4) {
         if (indexPath.row == 0) {
             //cell.textLabel.text = ZBLocalized( @"Email Notification", nil);
-            cell.textLabel.text = @"Email Notification";
+            cell.textLabel.text = ZBLocalized(@"Email Notification", nil) ;
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             
@@ -387,7 +387,7 @@
             //[switchView release];
         } else if (indexPath.row == 1) {
             //cell.textLabel.text = ZBLocalized(@"Sounds", nil);
-            cell.textLabel.text = @"Sounds";
+            cell.textLabel.text = ZBLocalized(@"Sounds", nil);
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             
@@ -411,7 +411,7 @@
             
         } else if (indexPath.row == 2) {
             //cell.textLabel.text = ZBLocalized(@"Show on Lock Screen", nil);
-            cell.textLabel.text = @"Show on Lock Screen";
+            cell.textLabel.text = ZBLocalized(@"Show on Lock Screen", nil);
             UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
             cell.accessoryView = switchView;
             NSLog(@"show on lock screen switch %@", [ZZUser shareUser].showOnLockScreen );            if ([[ZZUser shareUser].allowNotification isEqualToNumber:[NSNumber numberWithBool:@1]]) {
@@ -436,15 +436,15 @@
         //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (indexPath.row == 0) {
             //cell.textLabel.text = ZBLocalized( @"About Zuzu", nil);
-            cell.textLabel.text = @"About Zuzu";
+            cell.textLabel.text = ZBLocalized(@"About Zuzu", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else if (indexPath.row == 1) {
             //cell.textLabel.text = ZBLocalized(@"Message Admin", nil) ;
-            cell.textLabel.text = @"Message Admin";
+            cell.textLabel.text = ZBLocalized(@"Message Admin", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
             //cell.textLabel.text = ZBLocalized(@"Version 1.0", nil) ;
-            cell.textLabel.text = @"Version 1.0";
+            cell.textLabel.text = ZBLocalized(@"Version 1.0", nil);
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
 

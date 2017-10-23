@@ -8,6 +8,7 @@
 
 #import "NumOfGuestsTableViewController.h"
 #import "SearchEventDetail.h"
+#import "ZBLocalized.h"
 
 #define DEFAULT_COLOR_GOLD [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1];
 static NSString*const ID = @"ID";
@@ -23,7 +24,7 @@ static NSString*const ID = @"ID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"Number of Guests";
+    self.navigationItem.title = ZBLocalized(@"Number of Guests", nil);
     self.eventDetail = [[SearchEventDetail alloc] init];
     [self setUpNavBar];
     [self setUpArray];

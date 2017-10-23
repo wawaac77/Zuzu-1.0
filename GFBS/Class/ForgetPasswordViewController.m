@@ -8,6 +8,7 @@
 
 #import "ForgetPasswordViewController.h"
 #import "ResetPWSuccessViewController.h"
+#import "ZBLocalized.h"
 
 #import <AFNetworking.h>
 #import <MJExtension.h>
@@ -100,7 +101,7 @@
             
         } else {
             NSLog(@"Sorry The account does not exist.");
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Sorry" message:@"The account does not exist." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:ZBLocalized(@"Sorry", nil)  message: ZBLocalized(@"The account does not exist.", nil)  delegate:self cancelButtonTitle:ZBLocalized(@"Cancel", nil)  otherButtonTitles:nil, nil];
             [alertView show];
             
         }

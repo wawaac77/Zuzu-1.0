@@ -19,6 +19,7 @@
 
 #import "GFTitleButton.h"
 #import "UIBarButtonItem+Badge.h"
+#import "ZBLocalized.h"
 
 @interface GFEssenceViewController ()<UIScrollViewDelegate>
 
@@ -119,7 +120,7 @@
     titleView.frame = CGRectMake(0, 0 , self.view.gf_width, 35);
     [self.view addSubview:titleView];
     
-    NSArray *titleContens = @[@"Attending",@"Hosting",@"Draft",@"History"];
+    NSArray *titleContens = @[ZBLocalized(@"Attending", nil) ,ZBLocalized(@"Hosting", nil) , ZBLocalized(@"Draft", nil), ZBLocalized(@"History", nil)];
     NSInteger count = titleContens.count;
     
     CGFloat titleButtonW = titleView.gf_width / count;
@@ -240,7 +241,7 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects: settingBtn, fixedButton, notificationBtn, nil]];
     
     //Title
-    self.navigationItem.title = @"My Events";
+    self.navigationItem.title = ZBLocalized(@"My Events", nil);
 }
 
 

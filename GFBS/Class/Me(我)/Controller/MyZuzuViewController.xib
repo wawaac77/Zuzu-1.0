@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,11 +18,14 @@
                 <outlet property="changeProfilePicButton" destination="GNI-gc-CUA" id="76d-88-fgq"/>
                 <outlet property="functionsView" destination="y15-Dg-Sst" id="Dky-Vl-aye"/>
                 <outlet property="leaderboardButton" destination="nlb-9w-YWl" id="kiY-j3-4QV"/>
+                <outlet property="myBadgesLabel" destination="A0J-oB-565" id="oVK-vm-1s0"/>
                 <outlet property="organizeExpLabel" destination="T4T-l9-xbs" id="fOH-S9-ARe"/>
                 <outlet property="organizeImageView" destination="IoQ-d8-Txa" id="H8a-15-09p"/>
+                <outlet property="organizingLabel" destination="xic-hp-FiV" id="LTD-Fa-usw"/>
                 <outlet property="profileImageView" destination="guQ-Ix-nmc" id="ynw-qT-nve"/>
                 <outlet property="socialExpLabel" destination="edm-C5-f9a" id="Upv-1V-S6i"/>
                 <outlet property="socialImageView" destination="Hbg-aQ-byO" id="7U7-jx-4T4"/>
+                <outlet property="socialLabel" destination="wN4-mV-a60" id="3A2-kr-mdr"/>
                 <outlet property="userNameLabel" destination="ySm-Ss-yOa" id="aJc-UO-WyZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

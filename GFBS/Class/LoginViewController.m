@@ -13,6 +13,7 @@
 #import "SignUpChildViewController.h"
 #import "LoginButton.h"
 #import "GFTabBarController.h"
+#import "ZBLocalized.h"
 
 @interface LoginViewController () <UIScrollViewDelegate>
 
@@ -137,7 +138,7 @@
     //[self.view insertSubview:titleView atIndex:2];
     
     //NSArray *titleContens = @[@"LOGIN",@"SIGN UP"];
-    NSArray *titleContens = @[@"SIGN UP",@"LOGIN"];
+    NSArray *titleContens = @[ZBLocalized(@"SIGN UP", nil),ZBLocalized(@"LOGIN", nil)];
     NSInteger count = titleContens.count;
     
     CGFloat titleButtonW = (titleView.gf_width - 70) / count;
