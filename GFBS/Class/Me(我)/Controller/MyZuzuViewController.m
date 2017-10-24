@@ -96,7 +96,7 @@ static CGFloat  const margin = 0;
     NSString *userURL = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_PROFILE_PICURL"];
     //NSString *userName = [AppDelegate APP].user.userUserName;
     self.userNameLabel.text = userUserName;
-    [self setUpNavBar];
+    
     [self setUpExp];
     [self setUpCollectionItemsData];
     [self setUpFunctionsCollectionView];
@@ -105,6 +105,10 @@ static CGFloat  const margin = 0;
     self.myNotifications = [[NSMutableArray alloc] init];
     [self loadBadgesData];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setUpNavBar];
 }
 
 -(void) setUpExp {

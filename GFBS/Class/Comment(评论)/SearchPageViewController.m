@@ -69,7 +69,7 @@
     self.searchBar.delegate = self;
     [_searchBar setImage:[UIImage imageNamed:@"ic_fa-search"] forSearchBarIcon:UISearchBarStyleDefault state:UIControlStateNormal];
 
-    searchBar.placeholder = @"Event name, interest, restaurant";
+    searchBar.placeholder = ZBLocalized(@"Event name, interest, restaurant", nil) ;
     self.navigationItem.titleView = searchBar;
     
     
@@ -82,7 +82,7 @@
     
     self.searchBar1 = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 44)];
     [_searchBar1 setImage:[UIImage imageNamed:@"ic_fa-map-marker"] forSearchBarIcon:nil state:UIControlStateNormal];
-    _searchBar1.placeholder = @"Location, Landmark, Street";
+    _searchBar1.placeholder = ZBLocalized(@"Location, Landmark, Street", nil) ;
     self.searchBar1.barTintColor = [UIColor blackColor];
     self.searchBar1.delegate = self;
     
@@ -90,8 +90,8 @@
     
     self.tableView.tableHeaderView = _header;
     
-    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
-    //[self.searchBar1.heightAnchor constraintEqualToConstant:44].active = YES;
+    [self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    [self.searchBar1.heightAnchor constraintEqualToConstant:44].active = YES;
 }
 
 - (void)setUpFooter {

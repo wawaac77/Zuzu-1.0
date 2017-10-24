@@ -61,7 +61,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated  {
-     //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    
+    //[self setUpNavBar];
 }
 
 /**
@@ -249,16 +250,13 @@
 {
     //add search bar
     
-    UISearchBar *searchBar = [[UISearchBar alloc] init];
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 44)];
     self.searchBar = searchBar;
-    [self searchBarShouldBeginEditing:searchBar];
-    //searchBar.tintColor = [UIColor darkGrayColor];
-    //searchBar.frame = CGRectMake(5, 0, GFScreenWidth - 50, 20);
-    //searchBar1.backgroundColor = [UIColor whiteColor];
     self.searchBar.delegate = self;
     searchBar.placeholder = ZBLocalized(@"Event name, interest, restaurant", nil) ;
     self.navigationItem.titleView = searchBar;
-  
+ 
+    [self searchBarShouldBeginEditing:searchBar];
     //[self.navigationController.navigationBar addSubview:searchBar1];
 
     UIButton *searchBarButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, GFScreenWidth - 50, 30)];
@@ -275,10 +273,9 @@
 
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
-    //TitieView
-    //self.navigationItem.titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MainTitle"]];
-    //self.navigationItem.title = @"Search Bar should be here!";
+    [self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    [self.searchBar.widthAnchor constraintEqualToConstant:GFScreenWidth - 250].active = YES;
+    
 }
 
 
