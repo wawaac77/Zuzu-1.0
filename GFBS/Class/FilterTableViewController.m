@@ -265,7 +265,8 @@ static NSString*const sliderID = @"sliderID";
             locationVC.delegate = self;
             [self.navigationController pushViewController:locationVC animated:YES];
         } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Interests", nil)]) {
-            InterestsTableViewController *interestsVC = [[InterestsTableViewController alloc] init];
+            CuisineTableViewController *interestsVC = [[CuisineTableViewController alloc] init];
+            interestsVC.tableType = @"Interests";
             interestsVC.delegate = self;
             [self.navigationController pushViewController:interestsVC animated:YES];
         } else if ([cell.textLabel.text isEqualToString:ZBLocalized(@"Cuisine", nil)]) {

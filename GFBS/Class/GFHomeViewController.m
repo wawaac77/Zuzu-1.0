@@ -49,8 +49,6 @@
     [self setUpScrollView];
     [self setUpChildViewControllers];
     
-    
-    
     [self setUpNearbyTitleView];
     [self setUpUpcomingTitleView];
     
@@ -61,9 +59,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated  {
-    
     //[self setUpNavBar];
 }
+
 
 /**
  添加scrollView
@@ -248,26 +246,28 @@
 #pragma mark - 设置导航条
 -(void)setUpNavBar
 {
+    //左边
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
+    
+    //右边
+    UIBarButtonItem *rightItem =  [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButton)];
     //add search bar
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(45, 5, GFScreenWidth - 80, 44)];
     self.searchBar = searchBar;
+    [self.searchBar sizeToFit];
     self.searchBar.delegate = self;
     searchBar.placeholder = ZBLocalized(@"Event name, interest, restaurant", nil) ;
     self.navigationItem.titleView = searchBar;
  
-    [self searchBarShouldBeginEditing:searchBar];
+    //[self searchBarShouldBeginEditing:searchBar];
     //[self.navigationController.navigationBar addSubview:searchBar1];
 
     UIButton *searchBarButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, GFScreenWidth - 50, 30)];
     [searchBarButton addTarget:self action:@selector(searchBarClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:searchBarButton];
     
-    //左边
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_logo"] WithHighlighted:[UIImage imageNamed:@"ic_logo"] Target:self action:@selector(logo)];
     
-    //右边
-    UIBarButtonItem *rightItem =  [UIBarButtonItem ItemWithImage:[UIImage imageNamed:@"ic_fa-filter"] WithHighlighted:[UIImage imageNamed:@"ic_fa-filter"] Target:self action:@selector(filterButton)];
     
 
 

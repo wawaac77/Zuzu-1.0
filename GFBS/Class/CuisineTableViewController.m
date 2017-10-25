@@ -213,7 +213,7 @@ static NSString*const ID = @"ID";
     cell.textLabel.text = _cuisineArray[indexPath.row].informationName;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
-    if ([_cuisineArray[indexPath.row].selected isEqual:@1]) {
+    if ([_cuisineArray[indexPath.row].selected isEqualToNumber:@1]) {
         imageView.image = [UIImage imageNamed:@"ic_fa-check"];
         cell.textLabel.textColor = ZZGoldColor;
     } else {
@@ -226,20 +226,21 @@ static NSString*const ID = @"ID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.tableType isEqualToString: @"Cuisine"]) {
-        _eventDetail.cuisine = _cuisineArray[indexPath.row];
-    }
-    else if ([self.tableType isEqualToString: @"District"]) {
-        _eventDetail.district = _cuisineArray[indexPath.row];
+    /*
+    //if ([self.tableType isEqualToString: @"Cuisine"]) {
+    //    _eventDetail.cuisine = _cuisineArray[indexPath.row];
+    //}
+    //if ([self.tableType isEqualToString: @"District"]) {
+    //    _eventDetail.district = _cuisineArray[indexPath.row];
     }
     else if ([self.tableType isEqualToString: @"Landmark"]) {
         _eventDetail.landmark = _cuisineArray[indexPath.row];
     }
+     */
     
-    
-    else if ([self.tableType isEqualToString:@"Interests"]) { //multiphe selection
-        if ([_cuisineArray[indexPath.row].selected isEqual:@1]) {
-            _cuisineArray[indexPath.row].selected = 0;
+    if ([self.tableType isEqualToString:@"Interests"] || [self.tableType isEqualToString:@"District"] || [self.tableType isEqualToString:@"Landmark"] || [self.tableType isEqualToString:@"Cuisine"]) { //multiphe selection
+        if ([_cuisineArray[indexPath.row].selected isEqualToNumber:@1]) {
+            _cuisineArray[indexPath.row].selected = @0;
         } else {
             _cuisineArray[indexPath.row].selected = @1;
         }

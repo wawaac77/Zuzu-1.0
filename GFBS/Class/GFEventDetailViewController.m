@@ -10,6 +10,8 @@
 #import "EventOverviewViewController.h"
 #import "EventDiscussionViewController.h"
 #import "EventPhotoViewController.h"
+#import "NotificationViewController.h"
+#import "GFSettingViewController.h"
 #import "GFTitleButton.h"
 #import "ZBLocalized.h"
 
@@ -350,11 +352,15 @@
 
 -(void)settingClicked
 {
-    NSLog(@"setting clicked");
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:NSStringFromClass([GFSettingViewController class]) bundle:nil];
+    GFSettingViewController *settingVc = [storyBoard instantiateInitialViewController];
+    [self.navigationController pushViewController:settingVc animated:YES];
 }
 
 -(void)notificationClicked
 {
+    NotificationViewController *notificationVC = [[NotificationViewController alloc] init];
+    [self.navigationController pushViewController:notificationVC animated:YES];
     NSLog(@"notification clicked");
 }
 

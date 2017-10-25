@@ -16,6 +16,7 @@ static NSString*const ID = @"ID";
 @interface NumOfGuestsTableViewController ()
 
 @property(nonatomic ,strong) NSMutableArray<NSString *> *numOfGuestsArray;
+@property(nonatomic ,strong) NSMutableArray<NSNumber *> *selected;
 @property(nonatomic ,strong) SearchEventDetail *eventDetail;
 
 @end
@@ -26,6 +27,7 @@ static NSString*const ID = @"ID";
     [super viewDidLoad];
     self.navigationItem.title = ZBLocalized(@"Number of Guests", nil);
     self.eventDetail = [[SearchEventDetail alloc] init];
+    self.selected = [[NSMutableArray alloc] initWithObjects:@0, @0, @0, @0, nil];
     [self setUpNavBar];
     [self setUpArray];
     [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
@@ -62,11 +64,29 @@ static NSString*const ID = @"ID";
         [cell.textLabel setHighlightedTextColor: [UIColor colorWithRed:207.0/255.0 green:167.0/255.0 blue:78.0/255.0 alpha:1]];
     }
     cell.textLabel.text = _numOfGuestsArray[indexPath.row];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    if ([self.selected[indexPath.row] isEqualToNumber:@1]) {
+        imageView.image = [UIImage imageNamed:@"ic_fa-check"];
+        cell.textLabel.textColor = ZZGoldColor;
+    } else {
+        cell.textLabel.textColor = [UIColor blackColor];
+    }
+    
+    cell.accessoryView = imageView;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _eventDetail.guestNumber = _numOfGuestsArray[indexPath.row];
+    
+    if ([_selected[indexPath.row] isEqualToNumber:@1]) {
+        _selected[indexPath.row] = @0;
+    } else {
+        _selected[indexPath.row] = @1;
+    }
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)setUpNavBar {

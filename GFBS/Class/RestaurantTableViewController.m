@@ -13,6 +13,7 @@
 #import "ZBLocalized.h"
 
 #import "RestaurantDetailViewController.h"
+#import "NotificationViewController.h"
 #import "GFSettingViewController.h"
 #import "UIBarButtonItem+Badge.h"
 
@@ -166,7 +167,8 @@ static NSString *const restaurantID = @"restaurantID";
 }
 
 - (void)notificationClicked {
-    NSLog(@"Notification clicked");
+    NotificationViewController *notificationVC = [[NotificationViewController alloc] init];
+    [self.navigationController pushViewController:notificationVC animated:YES];
 }
 
 #pragma mark - tableView
