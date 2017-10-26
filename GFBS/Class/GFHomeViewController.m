@@ -60,6 +60,7 @@
 
 - (void)viewWillAppear:(BOOL)animated  {
     //[self setUpNavBar];
+    [self.searchBar sizeToFit];
 }
 
 
@@ -266,15 +267,11 @@
     UIButton *searchBarButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 10, GFScreenWidth - 50, 30)];
     [searchBarButton addTarget:self action:@selector(searchBarClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController.navigationBar addSubview:searchBarButton];
-    
-    
-    
-
 
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    [self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
-    [self.searchBar.widthAnchor constraintEqualToConstant:GFScreenWidth - 250].active = YES;
+    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    //[self.searchBar.widthAnchor constraintEqualToConstant:GFScreenWidth - 250].active = YES;
     
 }
 

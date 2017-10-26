@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,28 +22,31 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="neV-Vy-loV">
                         <rect key="frame" x="16" y="12" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="Tl8-TY-TeG"/>
-                            <constraint firstAttribute="height" constant="20" id="fsg-Bt-1LU"/>
+                            <constraint firstAttribute="width" constant="20" id="Qzz-JS-lMR"/>
+                            <constraint firstAttribute="height" constant="20" id="a80-ap-MQq"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelLabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnh-4l-j2m">
-                        <rect key="frame" x="48" y="0.0" width="319" height="44"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnh-4l-j2m">
+                        <rect key="frame" x="48" y="2" width="319" height="40"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="neV-Vy-loV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="QVW-Y6-kCK"/>
-                    <constraint firstItem="neV-Vy-loV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="xY1-lw-8ai"/>
+                    <constraint firstAttribute="bottom" secondItem="nnh-4l-j2m" secondAttribute="bottom" constant="1.5" id="2oS-pL-Kr7"/>
+                    <constraint firstItem="nnh-4l-j2m" firstAttribute="leading" secondItem="neV-Vy-loV" secondAttribute="trailing" constant="12" id="CFy-am-K6V"/>
+                    <constraint firstItem="neV-Vy-loV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="Wh2-LH-409"/>
+                    <constraint firstAttribute="trailing" secondItem="nnh-4l-j2m" secondAttribute="trailing" constant="8" id="dDP-Xy-Fdl"/>
+                    <constraint firstItem="nnh-4l-j2m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="m50-9S-JMj"/>
+                    <constraint firstItem="neV-Vy-loV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="r2a-al-4KO"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="iconImageView" destination="neV-Vy-loV" id="fDB-27-xgM"/>
                 <outlet property="infoLabel" destination="nnh-4l-j2m" id="Axf-ZG-OTD"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="70"/>
+            <point key="canvasLocation" x="-97" y="23"/>
         </tableViewCell>
     </objects>
 </document>

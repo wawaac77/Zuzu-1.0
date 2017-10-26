@@ -90,8 +90,8 @@
     
     self.tableView.tableHeaderView = _header;
     
-    [self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
-    [self.searchBar1.heightAnchor constraintEqualToConstant:44].active = YES;
+    //[self.searchBar.heightAnchor constraintEqualToConstant:44].active = YES;
+    //[self.searchBar1.heightAnchor constraintEqualToConstant:44].active = YES;
 }
 
 - (void)setUpFooter {

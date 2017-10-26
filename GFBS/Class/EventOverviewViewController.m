@@ -2,147 +2,38 @@
 //  EventOverviewViewController.m
 //  GFBS
 //
-//  Created by Alice Jin on 22/5/2017.
+//  Created by Alice Jin on 26/10/2017.
 //  Copyright © 2017 apple. All rights reserved.
 //
 
 #import "EventOverviewViewController.h"
-#import "EventInList.h"
+#import "OverviewCell.h"
 
+#import "UILabel+LabelHeightAndWidth.h"
+#import "ZBLocalized.h"
 #import <AFNetworking.h>
 #import <MJExtension.h>
 #import <SVProgressHUD.h>
-#import <UIImageView+WebCache.h>
-#import <SDImageCache.h>
+
+static NSString *const ID = @"ID";
+static NSString *const basicID = @"basicID";
+static NSString *const highLabelID = @"highLabelID";
 
 @interface EventOverviewViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numberOfPeopleLable;
-@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *placeTypeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *locationTextView;
-@property (weak, nonatomic) IBOutlet UILabel *dishStyleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *featureLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
-@property (weak, nonatomic) IBOutlet UITextView *eventDescriptionLabel;
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
-@property (strong, nonatomic) EventInList *thisEvent;
+@property (strong, nonatomic) NSArray <NSString *> *iconImageArray;
 
 @end
 
 @implementation EventOverviewViewController
 
-@synthesize thisEventID;
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    return _manager;
-}
+@synthesize thisEvent;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.frame = [UIScreen mainScreen].bounds;
-    // Do any additional setup after loading the view from its nib.
-    [self setUpScrollView];
-    [self loadNeweData];
-    //[self setUpContent];
-}
-
-
-- (void)loadNeweData {
     
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    NSString *eventID = thisEventID;
-    NSLog(@"overview thisEventID %@", eventID);
-    NSDictionary *forEventID = @ {@"eventId" : eventID};
-    NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
-    if ([userLang isEqualToString:@"zh-Hant"]) {
-        userLang = @"tw";
-    }
-    NSDictionary *inData = @{
-                             @"action" : @"getEventDetail",
-                             @"data" : forEventID,
-                             @"lang" : userLang,
-                             };
-    NSDictionary *parameters = @{@"data" : inData};
-    
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        
-        //EventInList *thisEvent = [[EventInList alloc] init];
-        //self.thisEvent =thisEvent;
-        //thisEvent = [EventInList mj_objectWithKeyValues:responseObject[@"data"]];
-        EventInList *event = responseObject[@"data"];
-        //NSLog(@"event in overview %@", event.listEventDescription);
-        self.thisEvent = [EventInList mj_objectWithKeyValues:event];
-        
-        NSLog(@"overview thisEvent %@", self.thisEvent);
-        [self setUpContent];
-        
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
-    }];
-}
-
-
-
-- (void)setUpContent {
-    //[[UIScrollView appearance] setTintColor:[UIColor grayColor]];
-    //EventInList *thisEvent = thisEventInformation;
-    NSLog(@"overview thisEvent in setupContent %@", _thisEvent);
-    _nameLabel.text = _thisEvent.eventHost.userUserName;
-    _numberOfPeopleLable.text = [NSString stringWithFormat:@"%@/%@  People", _thisEvent.listEventJoinedCount,_thisEvent.listEventQuota];
-    _startTimeLabel.text = _thisEvent.listEventStartDate;
-    _endTimeLabel.text = [NSString stringWithFormat:@"Ends %@", _thisEvent.listEventEndDate];
-    _placeTypeLabel.text = _thisEvent.listEventRestaurant.restaurantName;
-    _locationTextView.text = _thisEvent.listEventRestaurant.restaurantAddress;
-    
-    _dishStyleLabel.text = _thisEvent.eventCuisine.informationName;
-    NSString *features = [[NSString alloc] init];
-    for (int i = 0; i < _thisEvent.listEventInterests.count; i++) {
-        ZZInterest *thisInterest = [_thisEvent.listEventInterests objectAtIndex:i];
-        
-        if (i == _thisEvent.listEventInterests.count - 1) {
-            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@", thisInterest.interestName]];
-
-        } else {
-            features = [features stringByAppendingString:[NSString stringWithFormat:@"%@, ", thisInterest.interestName]];
-        }
-    }
-    _featureLabel.text = features;
-    _priceLabel.text = [NSString stringWithFormat:@"HK$%@ per person", _thisEvent.listEventBudget];
-    _eventDescriptionLabel.text = _thisEvent.listEventDescription;
-    
-}
-
-- (void)setUpScrollView {
-    //UIScrollView *scrollView = [[UIScrollView alloc] init];
-    //self.scrollView = scrollView;
-    //[self.view addSubview:scrollView];
-    _scrollView.scrollEnabled = YES;
-    _scrollView.contentSize = CGSizeMake(self.view.gf_width, 1000);
-    NSLog(@"self.view.gf_width is %f", self.view.gf_width);
-    NSLog(@"self.view.gf_height is %f", self.view.gf_height);
+    _iconImageArray = [[NSArray alloc] initWithObjects:@"ic_fa-star_gold", @"ic_fa-users-on", @"ic_clock", @"ic_location", @"ic_tag", @"ic_fa-coffee", @"ic_fa_dollar_on", nil];
+    [self setUpTable];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,14 +41,89 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setUpTable {
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OverviewCell class]) bundle:nil] forCellReuseIdentifier:ID];
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+    if (section == 0) {
+        return 4;
+    } else if (section == 1) {
+        return 3;
+    } else if (section == 2) {
+        return 1;
+    }
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    OverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID forIndexPath:indexPath];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.iconImageName = _iconImageArray[indexPath.row];
+            cell.info = thisEvent.eventHost.userUserName;
+        }
+        
+        else if (indexPath.row == 1) {
+            cell.iconImageName = _iconImageArray[indexPath.row];
+            NSString *peopleStr = ZBLocalized(@"People", nil);
+            cell.info = [NSString stringWithFormat:@"%@/%@ %@", thisEvent.listEventJoinedCount ,thisEvent.listEventQuota, peopleStr];
+        }
+        
+        else if (indexPath.row == 2) {
+            cell.iconImageName = _iconImageArray [indexPath.row];
+            cell.info = [NSString stringWithFormat:@"%@, Ends %@", thisEvent.listEventStartDate, thisEvent.listEventEndDate];
+        }
+        
+        else if (indexPath.row == 3) {
+            cell.iconImageName = _iconImageArray [indexPath.row];
+            NSString *restaurantBarStr = ZBLocalized(@"Restaurant & Bar", nil);
+            cell.info = [NSString stringWithFormat:@"%@ %@",restaurantBarStr, thisEvent.listEventRestaurant.restaurantAddress];
+        }
+    }
+    
+    else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.iconImageName = _iconImageArray[indexPath.row + 4];
+            cell.info = thisEvent.eventCuisine.informationName;
+        }
+        
+        else if (indexPath.row == 1) {
+            cell.iconImageName = _iconImageArray[indexPath.row + 4];
+            cell.info = thisEvent.listEventRestaurant.features;
+        }
+        else if (indexPath.row == 1) {
+            cell.iconImageName = _iconImageArray[indexPath.row + 4];
+            cell.info = thisEvent.listEventRestaurant.features;
+        }
+        else if (indexPath.row == 2) {
+            cell.iconImageName = _iconImageArray[indexPath.row + 4];
+            NSString *perPersonStr = ZBLocalized(@"per person", nil);
+            cell.info = [NSString stringWithFormat:@"HK%@ %@", thisEvent.listEventBudget, perPersonStr];
+        }
+    }
+    
+    else if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            cell.iconImageName = @"";
+            cell.info = thisEvent.listEventDescription;
+        }
+    }
+    return cell;
+}
 
 @end

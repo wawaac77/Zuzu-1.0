@@ -40,7 +40,7 @@ static NSString *const eventID = @"event";
 @end
 
 @implementation GFUpcomingTableViewController
-
+/*
 #pragma mark - 懒加载
 -(GFHTTPSessionManager *)manager
 {
@@ -51,6 +51,8 @@ static NSString *const eventID = @"event";
     
     return _manager;
 }
+ */
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,12 +71,10 @@ static NSString *const eventID = @"event";
 }
 
 -(void)willMoveToParentViewController:(UIViewController *)parent {
-    NSLog(@"UpcomingEventsVC moving to or from parent view controller");
     self.view.backgroundColor = [UIColor lightGrayColor];
 }
 
 -(void)didMoveToParentViewController:(UIViewController *)parent {
-    NSLog(@"UpcomgingEventsVC did move to or from parent view controller");
     self.view.frame = CGRectMake(0, 200, self.view.gf_width, self.view.gf_height - GFTabBarH);
     //self.view.frame = CGRectMake(0, 235, 300, 200);
 
@@ -169,15 +169,6 @@ static NSString *const eventID = @"event";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-  
-    //NSDictionary *action = @{@"action" : @"getEventBannerList"};
-    //NSDictionary *parameters = @{@"data" : action};
-    
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
     
@@ -195,7 +186,18 @@ static NSString *const eventID = @"event";
     
     NSLog(@"upcoming events parameters %@", parameters);
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.upcomingEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
 
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         NSLog(@"responseObject is %@", responseObject);
@@ -220,24 +222,33 @@ static NSString *const eventID = @"event";
             [SVProgressHUD dismiss];
         });
     }];
+    */
     
 }
 
 #pragma mark - 加载更多数据
 -(void)loadMoreData
 {
-    NSLog(@"loadMoreData工作了le");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    //2.凭借请求参数
-    
-    NSArray *geoPoint = @[@114, @22];
+NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
     NSDictionary *inData = @{
                              @"action" : @"getUpcomingEventList",
                              @"data" : geoPointDic};
     NSDictionary *parameters = @{@"data" : inData};
+    
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        NSMutableArray<EventInList *> *moreEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        [self.upcomingEvents addObjectsFromArray:moreEvents];
+        [self.tableView reloadData];
+        //[_ibMenu reloadData];
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
 
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
@@ -266,7 +277,7 @@ static NSString *const eventID = @"event";
         });
         
     }];
-    
+    */
 }
 
 

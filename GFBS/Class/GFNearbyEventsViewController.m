@@ -36,17 +36,6 @@
 
 @implementation GFNearbyEventsViewController
 
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -93,25 +82,6 @@
 }
 
 - (MinScrollMenuItem *)scrollMenu:(MinScrollMenu *)menu itemAtIndex:(NSInteger)index {
-    /*
-    if (index %2 == 0) {
-        MinScrollMenuItem *item = [menu dequeueItemWithIdentifer:@"textItem"];
-        if (item == nil) {
-            item = [[MinScrollMenuItem alloc] initWithType:TextType reuseIdentifier:@"textItem"];
-            item.textLabel.textAlignment = NSTextAlignmentCenter;
-            //item.textLabel.text = @"this is an event";
-            item.backgroundColor = [UIColor cyanColor];
-            //item.textLabel.layer.borderWidth = 1;
-            //item.textLabel.layer.borderColor = [UIColor blackColor].CGColor;
-        }
-        item.textLabel.text = [NSString stringWithFormat:@"%ld", index];
-        
-        return item;
-     
-    } else {
-     */
-    
-    NSLog(@"index%ld", index);
     
     MinScrollMenuItem *item = [menu dequeueItemWithIdentifer:@"imageItem"];
     
@@ -122,15 +92,10 @@
         //[item.imageView sd_setImageWithURL:[NSURL URLWithString:self.nearbyEvents[index].listEventBanner.eventBanner.imageUrl] placeholderImage:nil];
     }
     
-    NSURL *URL = [NSURL URLWithString:self.nearbyEvents[index].listEventBanner.eventBanner.imageUrl];
-    NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
-    UIImage *image = [[UIImage alloc]initWithData:data];
-    self.nearbyEvents[index].listEventBanner.eventBanner.image_UIImage = image;
+    [item.imageView sd_setImageWithURL:[NSURL URLWithString:self.nearbyEvents[index].listEventBanner.eventBanner.imageUrl] placeholderImage:nil];
     
-    item.imageView.image = image;
     item.imageView.clipsToBounds = YES;
     item.textLabel.text = self.nearbyEvents[index].listEventName;
-    NSLog(@"self.nearbyEvents[index].listEventName %@", self.nearbyEvents[index].listEventName);
     item.timeLabel.text = [NSString stringWithFormat:@"  %@", self.nearbyEvents[index].listEventStartDate];
     item.timeLabel.layer.cornerRadius = 5.0f;
     
@@ -165,15 +130,6 @@
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    
-    //NSDictionary *action = @{@"action" : @"getEventBannerList"};
-    //NSDictionary *parameters = @{@"data" : action};
-    
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
     
@@ -188,42 +144,20 @@
                              @"lang" : userLang,
                              };
     NSDictionary *parameters = @{@"data" : inData};
-    
-    NSLog(@"upcoming events parameters %@", parameters);
-    
-    
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        NSLog(@"responseObject is %@", responseObject);
-        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
-        
-        NSArray *eventsArray = responseObject[@"data"];
-        
+   
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        NSArray *eventsArray = data[@"data"];
+        NSLog(@"eventsArray %@", eventsArray);
         
         self.nearbyEvents = [EventInList mj_objectArrayWithKeyValuesArray:eventsArray];
         [self setUpTable];
         //[_ibMenu reloadData];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+        [SVProgressHUD dismiss];
     }];
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

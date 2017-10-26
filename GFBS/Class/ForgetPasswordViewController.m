@@ -79,23 +79,17 @@
     NSDictionary *parameters = @{@"data" : inData};
     
     NSLog(@"upcoming events parameters %@", parameters);
-
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        NSNumber *responseStatus = [[NSNumber alloc] init];
-        responseStatus = responseObject[@"status"];
-        
-        
-        NSLog(@"responseStatus %@", responseStatus);
-        
-        
-        if ([responseStatus isEqualToNumber:@1]) {
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        NSNumber *responseStatus = [[NSNumber alloc] init];
+        responseStatus = data[@"status"];
+ 
+        if ([responseStatus isEqualToNumber:@1]) {
+            
             NSLog(@"start push resetPW success vc");
             ResetPWSuccessViewController *resetVC = [[ResetPWSuccessViewController alloc] init];
             resetVC.view.frame = [UIScreen mainScreen].bounds;
             resetVC.email = email;
-            
             
             [self presentViewController:resetVC animated:YES completion:nil];
             
@@ -105,19 +99,10 @@
             [alertView show];
             
         }
-        
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network, please try later"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
     }];
-    
-    NSLog(@"api connect finished");
     
 }
 - (IBAction)cancelButtonClicked:(id)sender {

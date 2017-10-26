@@ -76,7 +76,7 @@
 {
     if (self.childViewControllers.count > 0) {//非根控制器
         //影藏BottomBar
-        //viewController.hidesBottomBarWhenPushed = YES;
+        viewController.hidesBottomBarWhenPushed = YES;
         
         //返回按钮自定义
         //viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImage:[UIImage imageNamed:@"navigationButtonReturn"] WithHighlightedImage:[UIImage imageNamed:@"navigationButtonReturnClick"] Target:self action:@selector(backViewController) title:@"Back"];

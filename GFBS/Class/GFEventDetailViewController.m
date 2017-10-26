@@ -39,9 +39,6 @@
 /*标题栏*/
 @property (weak ,nonatomic) UIView *titleView;
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
 //upper view
 @property (weak, nonatomic) IBOutlet UILabel *bigTitleView;
 @property (weak, nonatomic) IBOutlet UILabel *smallTitleView;
@@ -59,16 +56,6 @@
 
 //@synthesize eventDetail;
 //@synthesize eventHere;
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    return _manager;
-}
 
 
 - (void)viewDidLoad {
@@ -126,14 +113,8 @@
 
 - (void)loadNeweData {
     
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    //NSLog(@"self.eventHere.listEventID", self.eventHere.listEventID);
     NSString *eventID = self.eventHere.listEventID;
-    NSLog(@"eventHere.eventID %@", eventID);
-    
+
     NSDictionary *forEventID = @ {@"eventId" : eventID};
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
@@ -147,20 +128,16 @@
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
         
-        EventInList *event = responseObject[@"data"];
+        EventInList *event = data[@"data"];
         self.eventHere = [EventInList mj_objectWithKeyValues:event];
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
+        [SVProgressHUD dismiss];
     }];
+    
 }
 
 
@@ -169,7 +146,7 @@
     //Overview
     EventOverviewViewController *overviewVC = [[EventOverviewViewController alloc] init];
     //overviewVC.view.backgroundColor = [UIColor redColor];
-    overviewVC.thisEventID = _eventHere.listEventID;
+    overviewVC.thisEvent = _eventHere;
     [self addChildViewController:overviewVC];
     
     //Discussion
@@ -206,7 +183,7 @@
     self.scrollView = scrollView;
     
     scrollView.delegate = self;
-    scrollView.frame = CGRectMake(0, 235, self.view.gf_width, GFScreenHeight - 235 - GFTabBarH - GFNavMaxY);
+    scrollView.frame = CGRectMake(0, 235, self.view.gf_width, GFScreenHeight - 235 - GFNavMaxY);
     NSLog(@"self.view.gf_width in first claim scrollView is %f", self.view.gf_width);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;

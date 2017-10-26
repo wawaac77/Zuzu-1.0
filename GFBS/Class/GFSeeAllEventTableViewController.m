@@ -24,23 +24,9 @@ static NSString *const eventID = @"event";
 /*所有帖子数据*/
 @property (strong , nonatomic)NSMutableArray<EventInList *> *upcomingEvents;
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
 @end
 
 @implementation GFSeeAllEventTableViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +71,6 @@ static NSString *const eventID = @"event";
 {
     //self.tableView.contentInset = UIEdgeInsetsMake(33, 0, GFTabBarH, 0);
     //[self.tableView setFrame:self.view.bounds];
-    NSLog(@"table width %f",self.view.gf_width);
     //self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -115,11 +100,9 @@ static NSString *const eventID = @"event";
 {
     GFEventsCell *cell = [tableView dequeueReusableCellWithIdentifier:eventID forIndexPath:indexPath];
     
-    NSLog(@"indexPath.row%ld", indexPath.row);
     EventInList *thisEvent = self.upcomingEvents[indexPath.row];
-    NSLog(@"this event.listEventID%@", thisEvent.listEventID);
     cell.event = thisEvent; //topic 数据类型完全与event的数据类型一样，这样才能直接赋值
-    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     return cell;
     
     
@@ -131,8 +114,6 @@ static NSString *const eventID = @"event";
     eventDetailVC.eventHere = _upcomingEvents[indexPath.row];
     eventDetailVC.view.frame = CGRectMake(0, 200, self.view.gf_width, self.view.gf_height - 200);
     
-    NSLog(@" _upcomingEvents[indexPath.row] %@", _upcomingEvents[indexPath.row]);
-    //eventDetailVC.eventHere = self.topics[indexPath.row];
     [self.navigationController pushViewController:eventDetailVC animated:YES];
 }
 
@@ -149,14 +130,6 @@ static NSString *const eventID = @"event";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    
-    //NSDictionary *action = @{@"action" : @"getEventBannerList"};
-    //NSDictionary *parameters = @{@"data" : action};
     
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
@@ -173,30 +146,18 @@ static NSString *const eventID = @"event";
     
     NSLog(@"upcoming events parameters %@", parameters);
     
-    
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
         
-        NSLog(@"responseObject is %@", responseObject);
-        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
-        
-        NSArray *eventsArray = responseObject[@"data"];
-        
-        
+        NSArray *eventsArray = data[@"data"];
         self.upcomingEvents = [EventInList mj_objectArrayWithKeyValuesArray:eventsArray];
-        
-        //NSLog(@"upcomingevents %@", self.upcomingEvents);
+
         [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [self.tableView.mj_header endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+        [SVProgressHUD dismiss];
     }];
     
 }
@@ -204,12 +165,6 @@ static NSString *const eventID = @"event";
 #pragma mark - 加载更多数据
 -(void)loadMoreData
 {
-    NSLog(@"loadMoreData工作了le");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
     NSDictionary *inData = @{
@@ -217,17 +172,9 @@ static NSString *const eventID = @"event";
                              @"data" : geoPointDic};
     NSDictionary *parameters = @{@"data" : inData};
     
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
         
-        //存储这一页的maxtime
-        //self.maxtime = responseObject[@"info"][@"maxtime"];
-        
-        //[responseObject writeToFile:@"/Users/apple/Desktop/ceshi.plist" atomically:YES];
-        
-        //字典转模型
-        NSLog(@"Request is successful成功了");
-        NSMutableArray<EventInList *> *moreEvents = [EventInList mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSMutableArray<EventInList *> *moreEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
         
         [self.upcomingEvents addObjectsFromArray:moreEvents];
         
@@ -235,14 +182,10 @@ static NSString *const eventID = @"event";
         
         [self.tableView.mj_footer endRefreshing];
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Request 失败");
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
         
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
     }];
     
 }
