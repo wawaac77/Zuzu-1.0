@@ -108,8 +108,23 @@ static NSString *const listEventID = @"event";
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
-    NSLog(@"Nearby events parameters %@", parameters);
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        NSArray *eventsArray = data[@"data"];
+        
+        self.nearbyEvents = [EventInList mj_objectArrayWithKeyValuesArray:eventsArray];
+     
+        [tableView reloadData];
+        
+        [tableView.mj_header endRefreshing];
+        [self initGUI];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
     
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -139,6 +154,7 @@ static NSString *const listEventID = @"event";
             [SVProgressHUD dismiss];
         });
     }];
+    */
     
 }
 

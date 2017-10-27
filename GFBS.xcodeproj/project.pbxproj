@@ -298,8 +298,6 @@
 		7829FFB71EE16AE000C934C2 /* MinScrollMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FFB41EE16AE000C934C2 /* MinScrollMenu.m */; };
 		7829FFB81EE16AE000C934C2 /* MinScrollMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FFB61EE16AE000C934C2 /* MinScrollMenuItem.m */; };
 		7829FFBB1EE50DEB00C934C2 /* GFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FFBA1EE50DEB00C934C2 /* GFImage.m */; };
-		783089311F1C85A700C31BFE /* HomePostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7830892F1F1C85A700C31BFE /* HomePostTableViewController.m */; };
-		783089321F1C85A700C31BFE /* HomePostTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783089301F1C85A700C31BFE /* HomePostTableViewController.xib */; };
 		783089351F1C913200C31BFE /* ZZContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 783089341F1C913200C31BFE /* ZZContentModel.m */; };
 		783089451F1CD66200C31BFE /* ZZComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 783089441F1CD66200C31BFE /* ZZComment.m */; };
 		783089481F1D039800C31BFE /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 783089471F1D039800C31BFE /* CommentHeaderView.m */; };
@@ -311,7 +309,6 @@
 		783089651F1E220000C31BFE /* ZZFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783089631F1E220000C31BFE /* ZZFriendCell.xib */; };
 		7830896A1F1E371F00C31BFE /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = 783089671F1E371E00C31BFE /* UIView+Position.m */; };
 		7830896B1F1E371F00C31BFE /* ZGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 783089691F1E371F00C31BFE /* ZGAlertView.m */; };
-		783F822D1F1713B800491529 /* LeaderboardHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 783F822C1F1713B800491529 /* LeaderboardHomeTableViewController.m */; };
 		783F82311F17149100491529 /* ZZLeaderboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 783F822F1F17149100491529 /* ZZLeaderboardCell.m */; };
 		783F82321F17149100491529 /* ZZLeaderboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F82301F17149100491529 /* ZZLeaderboardCell.xib */; };
 		783F82341F176E7300491529 /* profile_image_animals.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 783F82331F176E7300491529 /* profile_image_animals.jpeg */; };
@@ -400,11 +397,6 @@
 		786069DB1F15FA2A00A8AB88 /* guide-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 786069DA1F15FA2A00A8AB88 /* guide-1.jpg */; };
 		786069DD1F15FA3200A8AB88 /* guide-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 786069DC1F15FA3200A8AB88 /* guide-2.jpg */; };
 		786069DF1F15FA3900A8AB88 /* guide-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 786069DE1F15FA3900A8AB88 /* guide-3.jpg */; };
-		786069E31F1609C500A8AB88 /* ZZHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069E11F1609C500A8AB88 /* ZZHomeViewController.m */; };
-		786069E41F1609C500A8AB88 /* ZZHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786069E21F1609C500A8AB88 /* ZZHomeViewController.xib */; };
-		786069E81F160A6200A8AB88 /* AllHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069E71F160A6200A8AB88 /* AllHomeTableViewController.m */; };
-		786069EB1F160A7400A8AB88 /* FriendsHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069EA1F160A7400A8AB88 /* FriendsHomeTableViewController.m */; };
-		786069EE1F160A8900A8AB88 /* MeHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786069ED1F160A8900A8AB88 /* MeHomeTableViewController.m */; };
 		7862274F1EF91AF8006F731F /* zuzu-login-1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 7862274E1EF91AF8006F731F /* zuzu-login-1242x2208.png */; };
 		786227521EFBB3DB006F731F /* KCAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 786227511EFBB3DB006F731F /* KCAnnotation.m */; };
 		7864EB621F28C5B500AA572E /* ZZMessageAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7864EB601F28C5B500AA572E /* ZZMessageAdminViewController.m */; };
@@ -414,12 +406,8 @@
 		7864EB6B1F28F3DB00AA572E /* ZZFriendRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7864EB6A1F28F3DB00AA572E /* ZZFriendRequestModel.m */; };
 		7864EB6F1F2B424400AA572E /* OverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7864EB6D1F2B424400AA572E /* OverviewCell.m */; };
 		7864EB701F2B424400AA572E /* OverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7864EB6E1F2B424400AA572E /* OverviewCell.xib */; };
-		786B38171F2DC9AE0098A12F /* RestaurantCheckinTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B38161F2DC9AE0098A12F /* RestaurantCheckinTableViewController.m */; };
-		786B381C1F2DDC780098A12F /* UserProfileCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B381A1F2DDC780098A12F /* UserProfileCheckinViewController.m */; };
-		786B381D1F2DDC780098A12F /* UserProfileCheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786B381B1F2DDC780098A12F /* UserProfileCheckinViewController.xib */; };
 		786B38211F2ECFEB0098A12F /* RestaurantCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */; };
 		786B38221F2ECFEB0098A12F /* RestaurantCheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */; };
-		786B38251F2F13AF0098A12F /* UserCheckinListChildTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B38241F2F13AF0098A12F /* UserCheckinListChildTableViewController.m */; };
 		786B38271F317C520098A12F /* square-facebook-69x69.png in Resources */ = {isa = PBXBuildFile; fileRef = 786B38261F317C520098A12F /* square-facebook-69x69.png */; };
 		788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */; };
 		788246D51ED2E7BA0058B226 /* EventPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */; };
@@ -967,9 +955,6 @@
 		7829FFB61EE16AE000C934C2 /* MinScrollMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinScrollMenuItem.m; sourceTree = "<group>"; };
 		7829FFB91EE50DEB00C934C2 /* GFImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFImage.h; sourceTree = "<group>"; };
 		7829FFBA1EE50DEB00C934C2 /* GFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFImage.m; sourceTree = "<group>"; };
-		7830892E1F1C85A700C31BFE /* HomePostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePostTableViewController.h; sourceTree = "<group>"; };
-		7830892F1F1C85A700C31BFE /* HomePostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePostTableViewController.m; sourceTree = "<group>"; };
-		783089301F1C85A700C31BFE /* HomePostTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePostTableViewController.xib; sourceTree = "<group>"; };
 		783089331F1C913200C31BFE /* ZZContentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZContentModel.h; sourceTree = "<group>"; };
 		783089341F1C913200C31BFE /* ZZContentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZContentModel.m; sourceTree = "<group>"; };
 		783089431F1CD66200C31BFE /* ZZComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZComment.h; sourceTree = "<group>"; };
@@ -989,8 +974,6 @@
 		783089671F1E371E00C31BFE /* UIView+Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Position.m"; sourceTree = "<group>"; };
 		783089681F1E371F00C31BFE /* ZGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGAlertView.h; sourceTree = "<group>"; };
 		783089691F1E371F00C31BFE /* ZGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGAlertView.m; sourceTree = "<group>"; };
-		783F822B1F1713B800491529 /* LeaderboardHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardHomeTableViewController.h; sourceTree = "<group>"; };
-		783F822C1F1713B800491529 /* LeaderboardHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardHomeTableViewController.m; sourceTree = "<group>"; };
 		783F822E1F17149100491529 /* ZZLeaderboardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZLeaderboardCell.h; path = ../ZZLeaderboardCell.h; sourceTree = "<group>"; };
 		783F822F1F17149100491529 /* ZZLeaderboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZLeaderboardCell.m; path = ../ZZLeaderboardCell.m; sourceTree = "<group>"; };
 		783F82301F17149100491529 /* ZZLeaderboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZZLeaderboardCell.xib; path = ../ZZLeaderboardCell.xib; sourceTree = "<group>"; };
@@ -1098,15 +1081,6 @@
 		786069DA1F15FA2A00A8AB88 /* guide-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "guide-1.jpg"; sourceTree = "<group>"; };
 		786069DC1F15FA3200A8AB88 /* guide-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "guide-2.jpg"; sourceTree = "<group>"; };
 		786069DE1F15FA3900A8AB88 /* guide-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "guide-3.jpg"; sourceTree = "<group>"; };
-		786069E01F1609C500A8AB88 /* ZZHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZHomeViewController.h; sourceTree = "<group>"; };
-		786069E11F1609C500A8AB88 /* ZZHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZHomeViewController.m; sourceTree = "<group>"; };
-		786069E21F1609C500A8AB88 /* ZZHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZHomeViewController.xib; sourceTree = "<group>"; };
-		786069E61F160A6200A8AB88 /* AllHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllHomeTableViewController.h; sourceTree = "<group>"; };
-		786069E71F160A6200A8AB88 /* AllHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllHomeTableViewController.m; sourceTree = "<group>"; };
-		786069E91F160A7400A8AB88 /* FriendsHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsHomeTableViewController.h; sourceTree = "<group>"; };
-		786069EA1F160A7400A8AB88 /* FriendsHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsHomeTableViewController.m; sourceTree = "<group>"; };
-		786069EC1F160A8900A8AB88 /* MeHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeHomeTableViewController.h; sourceTree = "<group>"; };
-		786069ED1F160A8900A8AB88 /* MeHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeHomeTableViewController.m; sourceTree = "<group>"; };
 		7862274E1EF91AF8006F731F /* zuzu-login-1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zuzu-login-1242x2208.png"; sourceTree = "<group>"; };
 		786227501EFBB3DB006F731F /* KCAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCAnnotation.h; sourceTree = "<group>"; };
 		786227511EFBB3DB006F731F /* KCAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KCAnnotation.m; sourceTree = "<group>"; };
@@ -1121,16 +1095,9 @@
 		7864EB6C1F2B424400AA572E /* OverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewCell.h; sourceTree = "<group>"; };
 		7864EB6D1F2B424400AA572E /* OverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewCell.m; sourceTree = "<group>"; };
 		7864EB6E1F2B424400AA572E /* OverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewCell.xib; sourceTree = "<group>"; };
-		786B38151F2DC9AE0098A12F /* RestaurantCheckinTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCheckinTableViewController.h; sourceTree = "<group>"; };
-		786B38161F2DC9AE0098A12F /* RestaurantCheckinTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCheckinTableViewController.m; sourceTree = "<group>"; };
-		786B38191F2DDC780098A12F /* UserProfileCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileCheckinViewController.h; sourceTree = "<group>"; };
-		786B381A1F2DDC780098A12F /* UserProfileCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileCheckinViewController.m; sourceTree = "<group>"; };
-		786B381B1F2DDC780098A12F /* UserProfileCheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileCheckinViewController.xib; sourceTree = "<group>"; };
 		786B381E1F2ECFEB0098A12F /* RestaurantCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCheckinViewController.h; sourceTree = "<group>"; };
 		786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCheckinViewController.m; sourceTree = "<group>"; };
 		786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCheckinViewController.xib; sourceTree = "<group>"; };
-		786B38231F2F13AF0098A12F /* UserCheckinListChildTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCheckinListChildTableViewController.h; sourceTree = "<group>"; };
-		786B38241F2F13AF0098A12F /* UserCheckinListChildTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCheckinListChildTableViewController.m; sourceTree = "<group>"; };
 		786B38261F317C520098A12F /* square-facebook-69x69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square-facebook-69x69.png"; sourceTree = "<group>"; };
 		788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPhotoViewController.h; sourceTree = "<group>"; };
 		788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPhotoViewController.m; sourceTree = "<group>"; };
@@ -1623,7 +1590,6 @@
 				789E0D5C1F17DC0A00CCAAE4 /* Inbox */,
 				18BE02711DDB497900D27893 /* Social Calendar (TabBar) */,
 				78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */,
-				786B38181F2DDC310098A12F /* User Profile */,
 				18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */,
 				78D85BD41F42A93D007E8112 /* Badges */,
 				185420811DF064F1004F6378 /* Setting & Notification */,
@@ -2217,20 +2183,6 @@
 			name = DropDownListView;
 			sourceTree = "<group>";
 		};
-		781E56391F31AD4D006854BA /* 0.5 */ = {
-			isa = PBXGroup;
-			children = (
-				786069E01F1609C500A8AB88 /* ZZHomeViewController.h */,
-				786069E11F1609C500A8AB88 /* ZZHomeViewController.m */,
-				786069E21F1609C500A8AB88 /* ZZHomeViewController.xib */,
-				7830892E1F1C85A700C31BFE /* HomePostTableViewController.h */,
-				7830892F1F1C85A700C31BFE /* HomePostTableViewController.m */,
-				783089301F1C85A700C31BFE /* HomePostTableViewController.xib */,
-				786069E51F160A0100A8AB88 /* HomeChildVCs */,
-			);
-			name = 0.5;
-			sourceTree = "<group>";
-		};
 		781E563A1F31AE41006854BA /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2517,8 +2469,6 @@
 				7829FF931ED576F800C934C2 /* RestaurantEventViewController.h */,
 				7829FF941ED576F800C934C2 /* RestaurantEventViewController.m */,
 				7829FF951ED576F800C934C2 /* RestaurantEventViewController.xib */,
-				786B38151F2DC9AE0098A12F /* RestaurantCheckinTableViewController.h */,
-				786B38161F2DC9AE0098A12F /* RestaurantCheckinTableViewController.m */,
 				7829FF891ED576C100C934C2 /* RestaurantPhotoViewController.h */,
 			);
 			name = RestaurantDetailChildVCs;
@@ -2665,30 +2615,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		783F822A1F1619C500491529 /* Previous */ = {
-			isa = PBXGroup;
-			children = (
-				784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */,
-				784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */,
-				784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */,
-				784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */,
-				784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */,
-				78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */,
-				78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */,
-				78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */,
-				781E566B1F31CD8C006854BA /* GFSeeAllEventTableViewController.h */,
-				781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */,
-				78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */,
-				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
-				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
-				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
-				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
-				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
-				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,
-			);
-			name = Previous;
-			sourceTree = "<group>";
-		};
 		784D3F5C1ECC64D50058C63F /* childVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2735,8 +2661,23 @@
 		784D3F641ECC797E0058C63F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				781E56391F31AD4D006854BA /* 0.5 */,
-				783F822A1F1619C500491529 /* Previous */,
+				784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */,
+				784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */,
+				78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */,
+				78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */,
+				78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */,
+				781E566B1F31CD8C006854BA /* GFSeeAllEventTableViewController.h */,
+				781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */,
+				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
+				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
+				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,
+				784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */,
+				784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */,
+				784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */,
+				78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */,
+				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
+				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
+				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2890,34 +2831,6 @@
 				786069DE1F15FA3900A8AB88 /* guide-3.jpg */,
 			);
 			path = jpg;
-			sourceTree = "<group>";
-		};
-		786069E51F160A0100A8AB88 /* HomeChildVCs */ = {
-			isa = PBXGroup;
-			children = (
-				786069E61F160A6200A8AB88 /* AllHomeTableViewController.h */,
-				786069E71F160A6200A8AB88 /* AllHomeTableViewController.m */,
-				786069E91F160A7400A8AB88 /* FriendsHomeTableViewController.h */,
-				786069EA1F160A7400A8AB88 /* FriendsHomeTableViewController.m */,
-				786069EC1F160A8900A8AB88 /* MeHomeTableViewController.h */,
-				786069ED1F160A8900A8AB88 /* MeHomeTableViewController.m */,
-				783F822B1F1713B800491529 /* LeaderboardHomeTableViewController.h */,
-				783F822C1F1713B800491529 /* LeaderboardHomeTableViewController.m */,
-			);
-			name = HomeChildVCs;
-			sourceTree = "<group>";
-		};
-		786B38181F2DDC310098A12F /* User Profile */ = {
-			isa = PBXGroup;
-			children = (
-				786B38191F2DDC780098A12F /* UserProfileCheckinViewController.h */,
-				786B381A1F2DDC780098A12F /* UserProfileCheckinViewController.m */,
-				786B381B1F2DDC780098A12F /* UserProfileCheckinViewController.xib */,
-				786B38231F2F13AF0098A12F /* UserCheckinListChildTableViewController.h */,
-				786B38241F2F13AF0098A12F /* UserCheckinListChildTableViewController.m */,
-			);
-			name = "User Profile";
-			path = "Me(我)";
 			sourceTree = "<group>";
 		};
 		788246C61ED2E7660058B226 /* EventDetailChildVCs */ = {
@@ -3575,7 +3488,6 @@
 				7800970C1EC9C1F5008F9F99 /* ic_leaderboard.png in Resources */,
 				7830894A1F1D0C6F00C31BFE /* CommentHeaderView.xib in Resources */,
 				7864EB631F28C5B500AA572E /* ZZMessageAdminViewController.xib in Resources */,
-				786069E41F1609C500A8AB88 /* ZZHomeViewController.xib in Resources */,
 				786069C31F15DB9B00A8AB88 /* ic_clock.png in Resources */,
 				781E565E1F31B7ED006854BA /* Thumbs.db in Resources */,
 				78FFE5BB1ECDB16400F909A2 /* RestaurantCell.xib in Resources */,
@@ -3652,7 +3564,6 @@
 				785100771F98F1F4001B8389 /* ImagePickerViewController.xib in Resources */,
 				7824E3341EF13BF700F85BFB /* profile-bg-green_02.jpg in Resources */,
 				780096B61EC9C1F5008F9F99 /* event-banner-1080-06.jpg in Resources */,
-				786B381D1F2DDC780098A12F /* UserProfileCheckinViewController.xib in Resources */,
 				786069A21F15DB9B00A8AB88 /* arrow-back.png in Resources */,
 				789CFF4A1F02115800EBA772 /* SliderCell.xib in Resources */,
 				18B3D6C11DEC518700474981 /* GFSeeBigImageViewController.xib in Resources */,
@@ -3711,7 +3622,6 @@
 				786069B31F15DB9B00A8AB88 /* ic_home-my-zuzu-o.png in Resources */,
 				786069C01F15DB9B00A8AB88 /* ic_ fa-navicon.png in Resources */,
 				780096B71EC9C1F5008F9F99 /* music-vector.jpg in Resources */,
-				783089321F1C85A700C31BFE /* HomePostTableViewController.xib in Resources */,
 				786069BB1F15DB9B00A8AB88 /* ic_search-name.png in Resources */,
 				780097021EC9C1F5008F9F99 /* ic_price.png in Resources */,
 				786069AA1F15DB9B00A8AB88 /* ic_coins.png in Resources */,
@@ -3893,16 +3803,12 @@
 				788CC34E1F19EC3900DC4116 /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				18BE02AC1DDB4C1E00D27893 /* GFFriendTrendViewController.m in Sources */,
 				783F82311F17149100491529 /* ZZLeaderboardCell.m in Sources */,
-				783F822D1F1713B800491529 /* LeaderboardHomeTableViewController.m in Sources */,
 				788333231F178F3000967337 /* DPSharePopView.m in Sources */,
 				18BE02A21DDB4A8900D27893 /* GFTabBarController.m in Sources */,
 				788CC33D1F19EC3900DC4116 /* JSQMessagesBubblesSizeCalculator.m in Sources */,
 				189CA3251DDADBF6004D07EA /* main.m in Sources */,
-				786069E31F1609C500A8AB88 /* ZZHomeViewController.m in Sources */,
-				786069EB1F160A7400A8AB88 /* FriendsHomeTableViewController.m in Sources */,
 				180292421DE990C700743619 /* NSCalendar+GFExtension.m in Sources */,
 				789E0D661F17DCAE00CCAAE4 /* ZZInboxCell.m in Sources */,
-				786B381C1F2DDC780098A12F /* UserProfileCheckinViewController.m in Sources */,
 				7830896B1F1E371F00C31BFE /* ZGAlertView.m in Sources */,
 				784D3F611ECC675D0058C63F /* GFHomeViewController.m in Sources */,
 				7864EB6B1F28F3DB00AA572E /* ZZFriendRequestModel.m in Sources */,
@@ -3913,7 +3819,6 @@
 				789CFF7B1F0CA69A00EBA772 /* TwEn.m in Sources */,
 				7829FFB71EE16AE000C934C2 /* MinScrollMenu.m in Sources */,
 				788CC2951F18B6C300DC4116 /* ZZMessageModel.m in Sources */,
-				786B38171F2DC9AE0098A12F /* RestaurantCheckinTableViewController.m in Sources */,
 				78FFE59E1ECD49A300F909A2 /* GFUpcomingTableViewController.m in Sources */,
 				7897E1081EF7766A0046D647 /* EventInList.m in Sources */,
 				788CC3481F19EC3900DC4116 /* JSQVideoMediaItem.m in Sources */,
@@ -3933,7 +3838,6 @@
 				78FE02241EE7DB5700ABD5B9 /* MyEventImageModel.m in Sources */,
 				789CFF4F1F02149900EBA772 /* LocationTableViewController.m in Sources */,
 				18BE02A61DDB4C0400D27893 /* GFEssenceViewController.m in Sources */,
-				786069E81F160A6200A8AB88 /* AllHomeTableViewController.m in Sources */,
 				789CFF831F0CF70700EBA772 /* ZZUser.m in Sources */,
 				789CFF551F026C6700EBA772 /* SearchEventDetail.m in Sources */,
 				7864EB671F28ED6600AA572E /* NotificationButtonsCell.m in Sources */,
@@ -3950,7 +3854,6 @@
 				183E9CEB1E8E585000B13C75 /* GFConst.m in Sources */,
 				789CFF491F02115800EBA772 /* SliderCell.m in Sources */,
 				18B7C7371DE081BA004BD781 /* GFMemberField.m in Sources */,
-				786B38251F2F13AF0098A12F /* UserCheckinListChildTableViewController.m in Sources */,
 				1841A7791DE1752E00FB54CC /* GFSquareCell.m in Sources */,
 				7829FFA51ED807D900C934C2 /* LoginChildViewController.m in Sources */,
 				788CC33B1F19EC3900DC4116 /* JSQMessagesVideoThumbnailFactory.m in Sources */,
@@ -4012,10 +3915,8 @@
 				788CC32F1F19EC3900DC4116 /* NSBundle+JSQMessages.m in Sources */,
 				789E0D621F17DC7E00CCAAE4 /* ZZInboxTableViewController.m in Sources */,
 				7807917E1F1F542C00D24CB6 /* AddLLImagePickerVC.m in Sources */,
-				783089311F1C85A700C31BFE /* HomePostTableViewController.m in Sources */,
 				7829FF961ED576F800C934C2 /* RestaurantEventViewController.m in Sources */,
 				7812103D1F3C341600C08BD6 /* NumOfGuestsTableViewController.m in Sources */,
-				786069EE1F160A8900A8AB88 /* MeHomeTableViewController.m in Sources */,
 				78FFE5A31ECD88F100F909A2 /* GFEventDetailViewController.m in Sources */,
 				788CC35A1F19EC3900DC4116 /* JSQMessagesTypingView.m in Sources */,
 				789CFF8D1F0E65DA00EBA772 /* ZZTypicalInformationModel.m in Sources */,

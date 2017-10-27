@@ -20,23 +20,11 @@ static NSString *const commentID = @"commnet";
 
 @interface EventDiscussionViewController ()
 
-/*请求管理者*/
-@property (weak ,nonatomic) GFHTTPSessionManager *manager;
-
 @property (nonatomic, strong) NSMutableArray<ZZContentModel *> *comments;
 
 @end
 
 @implementation EventDiscussionViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-    }
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,10 +49,6 @@ static NSString *const commentID = @"commnet";
 #pragma mark - 加载网络数据
 -(void)loadNewComment
 {
-    // 取消所有请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    // 参数
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSDictionary *checkinId = @{@"event" : _eventID};
@@ -76,6 +60,23 @@ static NSString *const commentID = @"commnet";
     NSDictionary *parameters = @{@"data" : inData};
     __weak typeof(self) weakSelf = self;
     
+    
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+      
+        self.comments = [ZZContentModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+      
+        [self.tableView reloadData];
+        
+        // 让[刷新控件]结束刷新
+        [weakSelf.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [weakSelf.tableView.mj_header endRefreshing];
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     // 发送请求
     [self.manager POST:GetURL parameters:parameters progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         // 没有任何评论数据
@@ -103,12 +104,13 @@ static NSString *const commentID = @"commnet";
          weakSelf.tableView.mj_footer.hidden = YES;
          }
          */
+    /*
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         // 让[刷新控件]结束刷新
         [weakSelf.tableView.mj_header endRefreshing];
         
     }];
-    
+    */
 }
 
 -(void)setUpTableView

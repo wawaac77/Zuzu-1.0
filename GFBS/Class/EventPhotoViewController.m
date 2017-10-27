@@ -26,9 +26,6 @@ static CGFloat  const margin = 1;
 
 @interface EventPhotoViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
 /*所有collectionView 的cell的内容*/
 @property (strong, nonatomic) NSArray <MyEventImageModel *> *imagesArray ;
 
@@ -38,16 +35,6 @@ static CGFloat  const margin = 1;
 
 @implementation EventPhotoViewController
 //@synthesize thisEventID;
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,10 +53,6 @@ static CGFloat  const margin = 1;
 
 - (void)loadNeweData {
     
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     NSString *eventID = self.thisEventID;
     NSLog(@"photo thisEventID %@", eventID);
     NSDictionary *forEventID = @ {@"eventId" : eventID};
@@ -84,8 +67,19 @@ static CGFloat  const margin = 1;
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        ZZEventImages *images = data[@"data"];
+        ZZEventImages *array = [ZZEventImages mj_objectWithKeyValues:images];
+        self.imagesArray = array.eventImages;
+        
+        [self setUpCollectionView];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
     
-    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         
@@ -107,6 +101,7 @@ static CGFloat  const margin = 1;
         });
         
     }];
+     */
 }
 
 #pragma mark - collectionView
