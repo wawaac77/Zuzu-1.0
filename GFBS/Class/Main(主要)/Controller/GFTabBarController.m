@@ -12,8 +12,8 @@
 
 //#import "GFMeViewController.h"
 //#import "ZZHomeViewController.h"
+#import "ZZHomeTableViewController.h"
 #import "GFHomeViewController.h"
-#import "ZZCheckInViewController.h"
 #import "ZZInboxTableViewController.h"
 #import "MyZuzuViewController.h"
 #import "GFEssenceViewController.h"
@@ -103,7 +103,7 @@
 -(void)setUpAllChildView
 {
     /** Home */
-    GFHomeViewController *homepage = [[GFHomeViewController alloc] init];
+    ZZHomeTableViewController *homepage = [[ZZHomeTableViewController alloc] init];
     homepage.view.frame = [UIScreen mainScreen].bounds;
     GFNavigationController *nav = [[GFNavigationController alloc]initWithRootViewController:homepage];
     [self addChildViewController:nav];

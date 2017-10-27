@@ -26,22 +26,10 @@
 
 @property (strong, nonatomic) UIImage *pickedImage;
 
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
 @implementation PickSingleImageViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,12 +93,7 @@
 }
 
 - (void)okButtonClicked {
-    NSLog(@"Upload button clicked");
-    
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSLog(@"userToken in checkinVC %@", userToken);
@@ -129,9 +112,7 @@
     
     NSDictionary *parameters = @{@"data" : inData};
     
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        //self.profileImageView.image = nil;
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
         
         [AppDelegate APP].user.userProfileImage_UIImage = _pickedImage;
         
@@ -139,24 +120,18 @@
         [alertView show];
         
         ZZUser *sucessBack = [[ZZUser alloc] init];
-        sucessBack = [ZZUser mj_objectWithKeyValues:responseObject[@"data"]];
+        sucessBack = [ZZUser mj_objectWithKeyValues:data[@"data"]];
         [ZZUser shareUser].userProfileImage.imageUrl = sucessBack.userProfileImage.imageUrl;
         NSLog(@"[appDelegate]sucessBack.userProfileImage.imageUrl %@", sucessBack.userProfileImage.imageUrl);
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:sucessBack.userProfileImage.imageUrl forKey:@"KEY_USER_PROFILE_PICURL"];
         [userDefaults synchronize];
         
-        
-        //[self textView];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
+        [SVProgressHUD dismiss];
     }];
+    
 }
 
 

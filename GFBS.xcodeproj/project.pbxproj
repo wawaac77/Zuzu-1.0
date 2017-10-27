@@ -209,6 +209,7 @@
 		7813FEC91F28C14B0065D527 /* AboutZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7813FEC71F28C14B0065D527 /* AboutZZViewController.m */; };
 		7813FECA1F28C14B0065D527 /* AboutZZViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7813FEC81F28C14B0065D527 /* AboutZZViewController.xib */; };
 		7817DF7E1F179EFF00B4B02A /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7817DF7D1F179EFF00B4B02A /* DropDownListView.m */; };
+		781D01FD1FA3189D0021CEAF /* ZZHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */; };
 		781E563F1F31B117006854BA /* GFEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E563D1F31B117006854BA /* GFEventsCell.m */; };
 		781E56401F31B117006854BA /* GFEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E563E1F31B117006854BA /* GFEventsCell.xib */; };
 		781E56531F31B7ED006854BA /* ic_create_event_plus_o.png in Resources */ = {isa = PBXBuildFile; fileRef = 781E56431F31B7ED006854BA /* ic_create_event_plus_o.png */; };
@@ -411,8 +412,6 @@
 		786B38271F317C520098A12F /* square-facebook-69x69.png in Resources */ = {isa = PBXBuildFile; fileRef = 786B38261F317C520098A12F /* square-facebook-69x69.png */; };
 		788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */; };
 		788246D51ED2E7BA0058B226 /* EventPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */; };
-		7883331C1F17781100967337 /* ZZCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7883331A1F17781100967337 /* ZZCheckInViewController.m */; };
-		7883331D1F17781100967337 /* ZZCheckInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7883331B1F17781100967337 /* ZZCheckInViewController.xib */; };
 		788333231F178F3000967337 /* DPSharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333201F178F3000967337 /* DPSharePopView.m */; };
 		788333241F178F3000967337 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333221F178F3000967337 /* TriangleView.m */; };
 		788CC2911F18801600DC4116 /* ZZChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788CC28F1F18801600DC4116 /* ZZChatViewController.m */; };
@@ -842,6 +841,8 @@
 		7817DF7B1F179EFF00B4B02A /* DropDownChooseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownChooseProtocol.h; sourceTree = "<group>"; };
 		7817DF7C1F179EFF00B4B02A /* DropDownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListView.h; sourceTree = "<group>"; };
 		7817DF7D1F179EFF00B4B02A /* DropDownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownListView.m; sourceTree = "<group>"; };
+		781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHomeTableViewController.h; sourceTree = "<group>"; };
+		781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHomeTableViewController.m; sourceTree = "<group>"; };
 		781E563C1F31B117006854BA /* GFEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFEventsCell.h; sourceTree = "<group>"; };
 		781E563D1F31B117006854BA /* GFEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFEventsCell.m; sourceTree = "<group>"; };
 		781E563E1F31B117006854BA /* GFEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFEventsCell.xib; sourceTree = "<group>"; };
@@ -1102,9 +1103,6 @@
 		788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPhotoViewController.h; sourceTree = "<group>"; };
 		788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPhotoViewController.m; sourceTree = "<group>"; };
 		788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPhotoViewController.xib; sourceTree = "<group>"; };
-		788333191F17781100967337 /* ZZCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCheckInViewController.h; sourceTree = "<group>"; };
-		7883331A1F17781100967337 /* ZZCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCheckInViewController.m; sourceTree = "<group>"; };
-		7883331B1F17781100967337 /* ZZCheckInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZCheckInViewController.xib; sourceTree = "<group>"; };
 		7883331F1F178F3000967337 /* DPSharePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSharePopView.h; sourceTree = "<group>"; };
 		788333201F178F3000967337 /* DPSharePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSharePopView.m; sourceTree = "<group>"; };
 		788333211F178F3000967337 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
@@ -2678,6 +2676,8 @@
 				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
 				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
 				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
+				781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */,
+				781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2860,9 +2860,6 @@
 		788333161F1777BF00967337 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				788333191F17781100967337 /* ZZCheckInViewController.h */,
-				7883331A1F17781100967337 /* ZZCheckInViewController.m */,
-				7883331B1F17781100967337 /* ZZCheckInViewController.xib */,
 				7807917C1F1F542C00D24CB6 /* AddLLImagePickerVC.h */,
 				7807917D1F1F542C00D24CB6 /* AddLLImagePickerVC.m */,
 			);
@@ -3461,7 +3458,6 @@
 				786B38271F317C520098A12F /* square-facebook-69x69.png in Resources */,
 				780096BD1EC9C1F5008F9F99 /* ic_ fa-image.png in Resources */,
 				18388AD11DFAAB1D004E1DF9 /* GFSubTagViewCell.xib in Resources */,
-				7883331D1F17781100967337 /* ZZCheckInViewController.xib in Resources */,
 				1841A77F1DE17BE400FB54CC /* GFWebViewController.xib in Resources */,
 				788CC3351F19EC3900DC4116 /* JSQMessagesViewController.xib in Resources */,
 				7800973C1ECAD9D6008F9F99 /* zuzu_App_Icon_180x180.png in Resources */,
@@ -3864,6 +3860,7 @@
 				788CC3301F19EC3900DC4116 /* NSString+JSQMessages.m in Sources */,
 				781E566D1F31CD8C006854BA /* GFSeeAllEventTableViewController.m in Sources */,
 				789CFF6C1F0B897100EBA772 /* NotificationItem.m in Sources */,
+				781D01FD1FA3189D0021CEAF /* ZZHomeTableViewController.m in Sources */,
 				788CC3551F19EC3900DC4116 /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				1801C3C31DEB1BA90073C6CD /* GFTopicViewController.m in Sources */,
 				181EF73E1E0B5C8000C91928 /* GFPublishView.m in Sources */,
@@ -3878,7 +3875,6 @@
 				18B7C72A1DE07501004BD781 /* GFLoginRegisterView.m in Sources */,
 				783089481F1D039800C31BFE /* CommentHeaderView.m in Sources */,
 				783089351F1C913200C31BFE /* ZZContentModel.m in Sources */,
-				7883331C1F17781100967337 /* ZZCheckInViewController.m in Sources */,
 				781E563F1F31B117006854BA /* GFEventsCell.m in Sources */,
 				785100751F98F1F4001B8389 /* TZTestCell.m in Sources */,
 				788CC33F1F19EC3900DC4116 /* JSQMessagesCollectionViewFlowLayoutInvalidationContext.m in Sources */,

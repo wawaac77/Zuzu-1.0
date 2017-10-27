@@ -33,22 +33,10 @@ static CGFloat  const margin = 0;
 
 /*所有button内容*/
 @property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *buttonItems;
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
 @implementation BadgesCollectionViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -167,10 +155,6 @@ static CGFloat  const margin = 0;
 #pragma mark - 加载更多数据
 -(void)loadNewData
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     NSString *userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
@@ -183,23 +167,19 @@ static CGFloat  const margin = 0;
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, NSDictionary *responseObject) {
-        
-        //字典转模型
-        NSLog(@"Request is successful成功了");
-        NSMutableArray<ZZBadgeModel *> *buttonItems = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+
+        NSMutableArray<ZZBadgeModel *> *buttonItems = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
         self.buttonItems = buttonItems;
         [self setUpFunctionsCollectionView];
-        //[self.badgesCollectionView reloadData];
+  
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Request 失败");
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+        [SVProgressHUD dismiss];
     }];
+    
+    
 }
 
 

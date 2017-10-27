@@ -113,6 +113,22 @@ static NSString *const restaurantID = @"restaurantID";
     
     NSLog(@"search Restaurant %@", parameters);
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        NSArray *restaurantsArray = data[@"data"];
+        
+        self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:restaurantsArray];
+        
+        [self.tableView reloadData];
+        
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -137,7 +153,7 @@ static NSString *const restaurantID = @"restaurantID";
             [SVProgressHUD dismiss];
         });
     }];
-    
+    */
 }
 
 #pragma mark - NavBar

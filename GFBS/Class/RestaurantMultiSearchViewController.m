@@ -19,7 +19,6 @@
 #import <SVProgressHUD.h>
 
 @interface RestaurantMultiSearchViewController () <UITextViewDelegate>
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @property (strong, nonatomic) UITextField *keywordField;
 @property (strong, nonatomic) UILabel *budgetLabel;
@@ -32,16 +31,6 @@
 @end
 
 @implementation RestaurantMultiSearchViewController
-
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -295,24 +284,17 @@
      };
      
      NSDictionary *parameters = @{@"data" : inData};
-     
-     NSLog(@"search Restaurant %@", parameters);
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
-        
-        NSLog(@"successLoadData");
-        self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+
+        self.restaurants = [EventRestaurant mj_objectArrayWithKeyValuesArray:data[@"data"]];
         RestaurantTableViewController *restaurantVC = [[RestaurantTableViewController alloc] init];
         restaurantVC.receivedData = self.restaurants;
         [self.navigationController pushViewController:restaurantVC animated:YES];
-
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        //[self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
+        [SVProgressHUD dismiss];
     }];
 
 }

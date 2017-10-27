@@ -36,7 +36,6 @@
 @interface GFSettingViewController () <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *reuseIDArray;
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @property (strong, nonatomic) UISwitch *allowNotificationSwitch;
 
@@ -45,17 +44,6 @@
 @end
 
 @implementation GFSettingViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -766,14 +754,11 @@
 }
 
 - (void)updateProfile {
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     NSMutableArray<NSString *> *interestIDArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [ZZUser shareUser].userInterests.count; i++) {
         [interestIDArray addObject:[ZZUser shareUser].userInterests[i].informationID];
     }
-    
-    //2.凭借请求参数
     
     NSString *userToken = [AppDelegate APP].user.userToken;
  
@@ -807,21 +792,15 @@
                             };
     NSDictionary *parameters2 = @{@"data" : inData2};
     
-    [_manager POST:GetURL parameters:parameters2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters2 success:^(id data) {
         
-        NSLog(@"responseObject is %@", responseObject);
-        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network for profession, please try later~"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+       
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
     }];
     
+
 }
 
 /*

@@ -35,8 +35,6 @@ static NSString *const eventID = @"myEvent";
 /*maxtime*/
 @property (strong , nonatomic)NSString *maxtime;
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @property (strong , nonatomic)UIAlertView *alertView;
 
@@ -49,17 +47,6 @@ static NSString *const eventID = @"myEvent";
 {
     return 0;
 }
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    return _manager;
-}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -150,10 +137,7 @@ static NSString *const eventID = @"myEvent";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+  
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSLog(@"user token %@", userToken);
@@ -177,6 +161,20 @@ static NSString *const eventID = @"myEvent";
     
     NSLog(@"%@", parameters);
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+     
+        self.myEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+    
+        [self.tableView reloadData];
+        
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -198,22 +196,13 @@ static NSString *const eventID = @"myEvent";
             [SVProgressHUD dismiss];
         });
     }];
-    
+    */
 }
 
 #pragma mark - 加载更多数据
 -(void)loadMoreData
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    //2.凭借请求参数
-    /*
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    
-    parameters[@"action"] = @"getAttendingEventList";
-    parameters[@"token"] = @"857a710374676eeaa1f48c900b2715787c0edb5a49a04b5c";
-    */
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     
@@ -221,6 +210,24 @@ static NSString *const eventID = @"myEvent";
     
     NSDictionary *parameters = @{@"data" : inData};
 
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        [data writeToFile:@"/Users/apple/Desktop/ceshi.plist" atomically:YES];
+        
+        //字典转模型
+        NSMutableArray<EventInList *> *moreEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        [self.myEvents addObjectsFromArray:moreEvents];
+        
+        [self.tableView reloadData];
+        
+        [self.tableView.mj_footer endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -247,7 +254,7 @@ static NSString *const eventID = @"myEvent";
         });
         
     }];
-    
+    */
 }
 
 #pragma mark - setUpTable
@@ -366,16 +373,22 @@ static NSString *const eventID = @"myEvent";
 #pragma mark - 加载更多数据
 -(void)declineEvent: (NSString *)eventID
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+
     NSString *userToken = [AppDelegate APP].user.userToken;
     NSDictionary *inSubData = @{@"eventId" : eventID};
     NSDictionary *inData = @{@"action" : @"declineEvent", @"token" : userToken, @"data" : inSubData};
     
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
@@ -391,7 +404,7 @@ static NSString *const eventID = @"myEvent";
         });
         
     }];
-    
+    */
 }
 
 -(void)willMoveToParentViewController:(UIViewController *)parent {

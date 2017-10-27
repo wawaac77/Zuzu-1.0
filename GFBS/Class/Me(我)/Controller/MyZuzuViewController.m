@@ -57,8 +57,6 @@ static CGFloat  const margin = 0;
 @property (weak, nonatomic) IBOutlet UILabel *organizingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myBadgesLabel;
 
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
 /*所有button内容*/
 @property (strong , nonatomic)NSMutableArray<GFSquareItem *> *buttonItems;
 @property (strong , nonatomic)NSMutableArray<ZZBadgeModel *> *badgesArray;
@@ -76,17 +74,6 @@ static CGFloat  const margin = 0;
 @end
 
 @implementation MyZuzuViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -295,10 +282,6 @@ static CGFloat  const margin = 0;
 #pragma mark - BadgesView
 - (void)loadBadgesData {
 
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    
     NSString *userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
@@ -308,43 +291,21 @@ static CGFloat  const margin = 0;
         
     NSDictionary *parameters = @{@"data" : inData};
 
-    NSLog(@"publish content parameters %@", parameters);
-    
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
         
-        
-        
-        NSLog(@"responseObject is %@", responseObject);
-        
-        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
-        
-        
-        
-        self.badgesArray = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        NSLog(@"self.badgesArray.count %zd", self.badgesArray.count);
-        
+        self.badgesArray = [ZZBadgeModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+      
         [self setUpBadgesView];
         [self getNotificationList];
         
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"%@", [error localizedDescription]);
-        
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [SVProgressHUD dismiss];
-            
-        });
-        
+        [SVProgressHUD dismiss];
     }];
+    
 }
 
 - (void)getNotificationList {
-    
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     
     NSString *userToken = [AppDelegate APP].user.userToken;
     
@@ -357,26 +318,16 @@ static CGFloat  const margin = 0;
     
     NSDictionary *parameters = @{@"data" : inData};
     
-    NSLog(@"publish content parameters %@", parameters);
-    
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-    
-        self.myNotifications = [NotificationItem mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.myNotifications = [NotificationItem mj_objectArrayWithKeyValuesArray:data[@"data"]];
         self.notificationBtn.badge = [NSString stringWithFormat:@"%lu", _myNotifications.count];
         
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        NSLog(@"%@", [error localizedDescription]);
-        
+    } failed:^(NSError *error) {
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [SVProgressHUD dismiss];
-            
-        });
-        
+        [SVProgressHUD dismiss];
     }];
+
 }
 
 
