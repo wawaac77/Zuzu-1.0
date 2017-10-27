@@ -23,23 +23,10 @@ static NSString *const ID = @"ID";
 
 /*所有帖子数据*/
 @property (strong , nonatomic)NSMutableArray<ZZFriendModel *> *friendsArray;
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @end
 
 @implementation ZZFriendsTableViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -134,12 +121,6 @@ static NSString *const ID = @"ID";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
-    
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
@@ -149,7 +130,19 @@ static NSString *const ID = @"ID";
     NSDictionary *inData = @{@"action" : @"getFriendList", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.friendsArray = [ZZFriendModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
     
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         self.friendsArray = [ZZFriendModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -167,7 +160,7 @@ static NSString *const ID = @"ID";
             [SVProgressHUD dismiss];
         });
     }];
-    
+    */
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView

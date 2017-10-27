@@ -31,7 +31,6 @@
 //@property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
 
 @property (strong, nonatomic) ZZContentModel *thisEvent;
-@property (strong , nonatomic) GFHTTPSessionManager *manager;
 
 /*图片View*/
 //@property (weak ,nonatomic) GFTopicPictureView *pictureView;
@@ -74,16 +73,6 @@
     return _voiceView;
 }
 */
-
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 -(void)setEvent:(ZZContentModel *)event
 {
@@ -211,11 +200,7 @@
 }
 
 - (void)likeCheckin: (BOOL) like {
-    NSLog(@"_event %@", self.thisEvent);
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    //2.凭借请求参数
     NSNumber *likeNum = [[NSNumber alloc] initWithBool:like];
     NSLog(@"likeNum %@", likeNum);
     
@@ -233,7 +218,13 @@
     
     NSLog(@"publish content parameters %@", parameters);
     
-    
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         NSLog(@"responseObject is %@", responseObject);
         NSLog(@"responseObject - data is %@", responseObject[@"data"]);
@@ -247,7 +238,8 @@
             [SVProgressHUD dismiss];
         });
     }];
-
+*/
+    
     
 }
 

@@ -77,11 +77,7 @@ static NSString *const ID = @"ID";
 }
 
 - (void)loadNeweData {
-    
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
@@ -92,6 +88,20 @@ static NSString *const ID = @"ID";
     inData = @{@"action" : @"getLeaderboardHost", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        NSMutableArray *rankArray = data[@"data"];
+        self.rankList = [ZZLeaderboardModel mj_objectArrayWithKeyValuesArray:rankArray];
+       
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         
@@ -111,6 +121,7 @@ static NSString *const ID = @"ID";
         });
         
     }];
+     */
 }
 
 #pragma mark - Table view data source

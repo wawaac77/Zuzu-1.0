@@ -20,23 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 
 @property (strong, nonatomic) ZZUser *friend;
-@property (strong, nonatomic) GFHTTPSessionManager *manager;
 
 @end
 
 
 
 @implementation ZZAddFriendsCell
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    return _manager;
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -64,10 +53,7 @@
 }
 
 - (void)addFriendButtonClicked {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
    
@@ -83,6 +69,17 @@
     
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"ZUZU" message:@"Friend request is sent!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alertView show];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         self.imageView.image = nil;
@@ -97,6 +94,7 @@
         });
         
     }];
+     */
 }
 
 @end

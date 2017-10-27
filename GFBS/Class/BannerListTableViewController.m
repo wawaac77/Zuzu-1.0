@@ -25,16 +25,6 @@ static NSString *const ID = @"ID";
 
 @implementation BannerListTableViewController
 
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,13 +55,24 @@ static NSString *const ID = @"ID";
 #pragma mark - 加载新数据
 -(void)loadNewData
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     NSDictionary *inData = @{@"action" : @"getEventBannerList"};
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+      
+        self.bannerArray = [ZZBannerModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self.tableView reloadData];
+        
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         NSLog(@"responseObject is %@", responseObject);
@@ -92,6 +93,7 @@ static NSString *const ID = @"ID";
             [SVProgressHUD dismiss];
         });
     }];
+    */
     
 }
 

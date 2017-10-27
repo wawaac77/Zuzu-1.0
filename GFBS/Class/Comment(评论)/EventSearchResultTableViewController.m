@@ -24,23 +24,10 @@ static NSString *const listEventID = @"event";
 
 @interface EventSearchResultTableViewController ()
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
-
 @end
 
 @implementation EventSearchResultTableViewController
 
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,11 +59,7 @@ static NSString *const listEventID = @"event";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
+
     NSArray *geoPoint = @[@114, @22];
     NSString *userToken = [AppDelegate APP].user.userToken;
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
@@ -97,6 +80,19 @@ static NSString *const listEventID = @"event";
     NSDictionary *parameters = @{@"data" : inData};
     
     //发送请求
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.events = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         //字典转模型//这是给topics数组赋值的地方
@@ -116,6 +112,7 @@ static NSString *const listEventID = @"event";
             [SVProgressHUD dismiss];
         });
     }];
+     */
     
 }
 

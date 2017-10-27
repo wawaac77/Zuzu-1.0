@@ -33,17 +33,6 @@
 
 @implementation SearchPageViewController
 
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.recentSearches = [[NSMutableArray alloc] init];
@@ -225,10 +214,7 @@
 #pragma mark - 加载新数据
 -(void)loadNewData
 {
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
-    //2.凭借请求参数
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
     if ([userLang isEqualToString:@"zh-Hant"]) {
         userLang = @"tw";
@@ -242,6 +228,21 @@
                              };
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.recentSearches = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self setUpFooter];
+        
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         self.recentSearches = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -261,6 +262,7 @@
             [SVProgressHUD dismiss];
         });
     }];
+     */
 }
 
 @end

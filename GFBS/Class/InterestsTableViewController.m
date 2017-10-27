@@ -69,6 +69,18 @@ static NSString*const ID = @"ID";
     NSDictionary *inData = @{@"action" : @"getInterestList", @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
   
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.interestsArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self.tableView reloadData];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         self.interestsArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -88,6 +100,7 @@ static NSString*const ID = @"ID";
         });
         
     }];
+     */
 }
 
 #pragma mark - Table view data source

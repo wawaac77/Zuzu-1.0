@@ -83,6 +83,20 @@ static NSString *const ID = @"ID";
     inData = @{@"action" : @"getLeaderboardAttendees", @"token" : userToken, @"lang" : userLang};
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        NSMutableArray *rankArray = data[@"data"];
+        self.rankList = [ZZLeaderboardModel mj_objectArrayWithKeyValuesArray:rankArray];
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     //发送请求
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *responseObject) {
         
@@ -102,6 +116,7 @@ static NSString *const ID = @"ID";
         });
         
     }];
+     */
 }
 
 -(void)setUpTable

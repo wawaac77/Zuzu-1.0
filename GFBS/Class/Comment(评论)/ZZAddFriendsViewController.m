@@ -25,22 +25,11 @@ static NSString *const ID = @"ID";
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)searchButtonClicked:(id)sender;
 
-
-@property (weak ,nonatomic) GFHTTPSessionManager *manager;
 @property (nonatomic, strong) NSMutableArray<ZZUser *> *friendsArray;
 
 @end
 
 @implementation ZZAddFriendsViewController
-
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-    }
-    return _manager;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,10 +60,6 @@ static NSString *const ID = @"ID";
 
 - (void)loadNewData {
     
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     NSString *userToken = [[NSString alloc] init];
     userToken = [AppDelegate APP].user.userToken;
     
@@ -89,6 +74,18 @@ static NSString *const ID = @"ID";
     
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        
+        self.friendsArray = [ZZUser mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        [self.tableView reloadData];
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         NSLog(@"responseObject is %@", responseObject);
@@ -107,8 +104,10 @@ static NSString *const ID = @"ID";
             [SVProgressHUD dismiss];
         });
     }];
+     */
 
 }
+
 -(void)setUpTableView
 {
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ZZAddFriendsCell class]) bundle:nil] forCellReuseIdentifier:ID];

@@ -130,6 +130,58 @@ static NSString*const ID = @"ID";
     
     NSDictionary *parameters = @{@"data" : inData};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
+        self.cuisineArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        
+        if ([self.tableType isEqualToString: @"Industry"]) {
+            for (int i = 0; i < _cuisineArray.count; i ++) {
+                if ([_cuisineArray[i].informationName isEqualToString:[ZZUser shareUser].userIndustry.informationName]) {
+                    _cuisineArray[i].selected = @1;
+                    NSLog(@"_cuisineArray selected %@", _cuisineArray[i].informationName);
+                } else {
+                    _cuisineArray[i].selected = @0;
+                    
+                }
+            }
+            
+        }
+        
+        else if ([self.tableType isEqualToString: @"Profession"]) {
+            for (int i = 0; i < _cuisineArray.count; i ++) {
+                if ([_cuisineArray[i].informationName isEqualToString:[ZZUser shareUser].userProfession.informationName]) {
+                    _cuisineArray[i].selected = @1;
+                    NSLog(@"_cuisineArray selected %@", _cuisineArray[i].informationName);
+                } else {
+                    _cuisineArray[i].selected = @0;
+                    
+                }
+            }
+            
+        }
+        
+        else if ([self.tableType isEqualToString: @"Interests"]) {
+            for (int i = 0; i < _cuisineArray.count; i ++) {
+                for (int j = 0; j < [ZZUser shareUser].userInterests.count; j++) {
+                    if ([_cuisineArray[i].informationName isEqualToString:[ZZUser shareUser].userInterests[j].informationName]) {
+                        _cuisineArray[i].selected = @1;
+                        NSLog(@"_cuisineArray selected %@", _cuisineArray[i].informationName);
+                    } else {
+                        _cuisineArray[i].selected = @0;
+                        
+                    }
+                }
+            }
+            
+        }
+        
+        [self.tableView reloadData];
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    
+    /*
     [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         self.cuisineArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -190,6 +242,7 @@ static NSString*const ID = @"ID";
         });
         
     }];
+     */
 }
 
 #pragma mark - Table view data source

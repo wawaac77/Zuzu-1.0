@@ -372,6 +372,16 @@
     NSDictionary *inData2 = @{@"action" : @"createEvent", @"token" : userToken, @"data" : inSubData2};
     NSDictionary *parameters2 = @{@"data" : inData2};
     
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters2 success:^(id data) {
+        NSLog(@"responseObjectCreateEvent %@", data);
+        NSLog(@"responseObject - data is %@", data[@"data"]);
+        
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
+    }];
+    
+    /*
     [_manager POST:GetURL parameters:parameters2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
         
         NSLog(@"responseObjectCreateEvent %@", responseObject);
@@ -386,7 +396,7 @@
             [SVProgressHUD dismiss];
         });
     }];
-    
+    */
 }
 
 - (void)imageButtonClicked {
@@ -450,26 +460,18 @@
     
     NSDictionary *parameters2 = @{@"data" : inData2};
     
-    [_manager POST:GetURL parameters:parameters2 progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
+    [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters2 success:^(id data) {
         
-        NSLog(@"responseObject is %@", responseObject);
-        NSLog(@"responseObject - data is %@", responseObject[@"data"]);
-        self.interestsArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //self.interests = [[NSMutableArray alloc] init];
+        self.interestsArray = [ZZTypicalInformationModel mj_objectArrayWithKeyValuesArray:data[@"data"]];
+      
         for (int i = 0; i < _interestsArray.count; i++) {
             [self.interests addObject:_interestsArray[i].informationName];
             NSLog(@"_interestsArray[i].informationName %@", _interestsArray[i].informationName);
         }
         
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network for interest, please try later~"];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
+    } failed:^(NSError *error) {
+        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
+        [SVProgressHUD dismiss];
     }];
 }
 
