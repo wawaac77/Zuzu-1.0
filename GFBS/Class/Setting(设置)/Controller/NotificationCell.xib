@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="myNotification" selectionStyle="default" indentationWidth="10" reuseIdentifier="myNotification" id="KGk-i7-Jjw" customClass="NotificationCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hds-EA-D3x">
+                        <rect key="frame" x="8" y="1" width="359" height="59"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H85-42-hKO">
+                                <rect key="frame" x="0.0" y="0.0" width="5" height="59"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WA-Qy-PW8">
+                                <rect key="frame" x="18" y="10" width="333" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGv-3J-UaO">
+                                <rect key="frame" x="318.5" y="34" width="35.5" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="PAF-Nq-L6k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="59" id="8fH-rP-uy4"/>
+                            <constraint firstItem="4WA-Qy-PW8" firstAttribute="leading" secondItem="H85-42-hKO" secondAttribute="trailing" constant="13" id="92i-zz-3Cy"/>
+                            <constraint firstAttribute="bottom" secondItem="pGv-3J-UaO" secondAttribute="bottom" constant="8" id="PS9-li-oIO"/>
+                            <constraint firstItem="H85-42-hKO" firstAttribute="leading" secondItem="hds-EA-D3x" secondAttribute="leading" id="VYO-ri-5Ov"/>
+                            <constraint firstItem="H85-42-hKO" firstAttribute="top" secondItem="hds-EA-D3x" secondAttribute="top" id="XKO-Ir-M1X"/>
+                            <constraint firstAttribute="trailing" secondItem="H85-42-hKO" secondAttribute="trailing" constant="354" id="bFz-qH-G7P"/>
+                            <constraint firstItem="4WA-Qy-PW8" firstAttribute="top" secondItem="hds-EA-D3x" secondAttribute="top" constant="10" id="hNj-t7-wrS"/>
+                            <constraint firstAttribute="trailing" secondItem="pGv-3J-UaO" secondAttribute="trailing" constant="5" id="hmz-yC-Uyd"/>
+                            <constraint firstAttribute="bottom" secondItem="H85-42-hKO" secondAttribute="bottom" id="lgo-t7-PRm"/>
+                            <constraint firstAttribute="trailing" secondItem="4WA-Qy-PW8" secondAttribute="trailing" constant="8" id="mX9-e8-Ka1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="hds-EA-D3x" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="SdD-y9-Ann"/>
+                    <constraint firstItem="hds-EA-D3x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="0.5" id="WT6-bp-B4A"/>
+                    <constraint firstAttribute="trailing" secondItem="hds-EA-D3x" secondAttribute="trailing" constant="8" id="eME-4G-j4Q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="bigLabel" destination="4WA-Qy-PW8" id="01l-ZX-VuW"/>
+                <outlet property="checkedSignView" destination="H85-42-hKO" id="MNZ-tK-2CC"/>
+                <outlet property="timeLabel" destination="pGv-3J-UaO" id="2Js-q3-mzF"/>
+            </connections>
+            <point key="canvasLocation" x="-202.5" y="151"/>
+        </tableViewCell>
+    </objects>
+</document>
