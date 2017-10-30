@@ -210,6 +210,8 @@
 		7813FECA1F28C14B0065D527 /* AboutZZViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7813FEC81F28C14B0065D527 /* AboutZZViewController.xib */; };
 		7817DF7E1F179EFF00B4B02A /* DropDownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7817DF7D1F179EFF00B4B02A /* DropDownListView.m */; };
 		781D01FD1FA3189D0021CEAF /* ZZHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */; };
+		781D02011FA6C65B0021CEAF /* ZZNearbyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */; };
+		781D02021FA6C65B0021CEAF /* ZZNearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */; };
 		781E563F1F31B117006854BA /* GFEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E563D1F31B117006854BA /* GFEventsCell.m */; };
 		781E56401F31B117006854BA /* GFEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E563E1F31B117006854BA /* GFEventsCell.xib */; };
 		781E56531F31B7ED006854BA /* ic_create_event_plus_o.png in Resources */ = {isa = PBXBuildFile; fileRef = 781E56431F31B7ED006854BA /* ic_create_event_plus_o.png */; };
@@ -843,6 +845,9 @@
 		7817DF7D1F179EFF00B4B02A /* DropDownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownListView.m; sourceTree = "<group>"; };
 		781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZHomeTableViewController.h; sourceTree = "<group>"; };
 		781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZHomeTableViewController.m; sourceTree = "<group>"; };
+		781D01FE1FA6C65B0021CEAF /* ZZNearbyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZNearbyCell.h; sourceTree = "<group>"; };
+		781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZNearbyCell.m; sourceTree = "<group>"; };
+		781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZZNearbyCell.xib; sourceTree = "<group>"; };
 		781E563C1F31B117006854BA /* GFEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFEventsCell.h; sourceTree = "<group>"; };
 		781E563D1F31B117006854BA /* GFEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFEventsCell.m; sourceTree = "<group>"; };
 		781E563E1F31B117006854BA /* GFEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFEventsCell.xib; sourceTree = "<group>"; };
@@ -1237,8 +1242,8 @@
 		789CFF6B1F0B897100EBA772 /* NotificationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationItem.m; path = "GFBS/Class/Setting(设置)/Controller/NotificationItem.m"; sourceTree = SOURCE_ROOT; };
 		789CFF6D1F0C8DD600EBA772 /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
 		789CFF6E1F0C8DD600EBA772 /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
-		789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventRestaurant.h; path = "Essence(精华)/Model/EventRestaurant.h"; sourceTree = "<group>"; };
-		789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventRestaurant.m; path = "Essence(精华)/Model/EventRestaurant.m"; sourceTree = "<group>"; };
+		789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventRestaurant.h; sourceTree = "<group>"; };
+		789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventRestaurant.m; sourceTree = "<group>"; };
 		789CFF791F0CA69A00EBA772 /* TwEn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwEn.h; sourceTree = "<group>"; };
 		789CFF7A1F0CA69A00EBA772 /* TwEn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwEn.m; sourceTree = "<group>"; };
 		789CFF7C1F0CDB7F00EBA772 /* ZZInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZInterest.h; sourceTree = "<group>"; };
@@ -1587,7 +1592,7 @@
 				788333151F17779700967337 /* Check-in */,
 				789E0D5C1F17DC0A00CCAAE4 /* Inbox */,
 				18BE02711DDB497900D27893 /* Social Calendar (TabBar) */,
-				78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */,
+				781D02041FA71B770021CEAF /* Restaurants (TabBar) */,
 				18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */,
 				78D85BD41F42A93D007E8112 /* Badges */,
 				185420811DF064F1004F6378 /* Setting & Notification */,
@@ -2181,6 +2186,106 @@
 			name = DropDownListView;
 			sourceTree = "<group>";
 		};
+		781D02031FA717750021CEAF /* Previous */ = {
+			isa = PBXGroup;
+			children = (
+				784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */,
+				784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */,
+				78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */,
+				78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */,
+				78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */,
+				784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */,
+				784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */,
+				784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */,
+			);
+			name = Previous;
+			path = "Home (TabBar)/Controller/Previous";
+			sourceTree = "<group>";
+		};
+		781D02041FA71B770021CEAF /* Restaurants (TabBar) */ = {
+			isa = PBXGroup;
+			children = (
+				781D02051FA71B770021CEAF /* Controller */,
+				781D02061FA71B770021CEAF /* Model */,
+				781D02071FA71B780021CEAF /* View */,
+			);
+			path = "Restaurants (TabBar)";
+			sourceTree = "<group>";
+		};
+		781D02051FA71B770021CEAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				781D02081FA71C170021CEAF /* Previous */,
+				7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */,
+				7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */,
+				78FFE5BC1ECDBC7400F909A2 /* RestaurantDetailViewController.h */,
+				78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */,
+				78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */,
+				781D02091FA720110021CEAF /* RestaurantDetailChildVCs */,
+				78C126A21F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.h */,
+				78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */,
+				78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		781D02061FA71B770021CEAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */,
+				789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		781D02071FA71B780021CEAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78FFE5B71ECDB16400F909A2 /* RestaurantCell.h */,
+				78FFE5B81ECDB16400F909A2 /* RestaurantCell.m */,
+				78FFE5B91ECDB16400F909A2 /* RestaurantCell.xib */,
+				7864EB6C1F2B424400AA572E /* OverviewCell.h */,
+				7864EB6D1F2B424400AA572E /* OverviewCell.m */,
+				7864EB6E1F2B424400AA572E /* OverviewCell.xib */,
+				781E56751F330BD3006854BA /* ReviewCell.h */,
+				781E56761F330BD3006854BA /* ReviewCell.m */,
+				781E56771F330BD3006854BA /* ReviewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		781D02081FA71C170021CEAF /* Previous */ = {
+			isa = PBXGroup;
+			children = (
+				78FFE5B21ECDAD8300F909A2 /* RestaurantViewController.h */,
+				78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */,
+				78FFE5B41ECDAD8300F909A2 /* RestaurantViewController.xib */,
+			);
+			path = Previous;
+			sourceTree = "<group>";
+		};
+		781D02091FA720110021CEAF /* RestaurantDetailChildVCs */ = {
+			isa = PBXGroup;
+			children = (
+				7829FF7F1ED5768F00C934C2 /* RestaurantOverviewViewController.h */,
+				7829FF801ED5768F00C934C2 /* RestaurantOverviewViewController.m */,
+				7829FF811ED5768F00C934C2 /* RestaurantOverviewViewController.xib */,
+				786B381E1F2ECFEB0098A12F /* RestaurantCheckinViewController.h */,
+				786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */,
+				786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */,
+				7829FF891ED576C100C934C2 /* RestaurantPhotoViewController.h */,
+				7829FF8A1ED576C100C934C2 /* RestaurantPhotoViewController.m */,
+				7829FF8B1ED576C100C934C2 /* RestaurantPhotoViewController.xib */,
+				7829FF8E1ED576D700C934C2 /* RestaurantMenuViewController.h */,
+				7829FF8F1ED576D700C934C2 /* RestaurantMenuViewController.m */,
+				7829FF901ED576D700C934C2 /* RestaurantMenuViewController.xib */,
+				7829FF931ED576F800C934C2 /* RestaurantEventViewController.h */,
+				7829FF941ED576F800C934C2 /* RestaurantEventViewController.m */,
+				7829FF951ED576F800C934C2 /* RestaurantEventViewController.xib */,
+			);
+			path = RestaurantDetailChildVCs;
+			sourceTree = "<group>";
+		};
 		781E563A1F31AE41006854BA /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2450,28 +2555,6 @@
 			path = "LaunchImage/iloveimg-converted-to-png";
 			sourceTree = "<group>";
 		};
-		7829FF7E1ED5761400C934C2 /* RestaurantDetailChildVCs */ = {
-			isa = PBXGroup;
-			children = (
-				7829FF7F1ED5768F00C934C2 /* RestaurantOverviewViewController.h */,
-				7829FF801ED5768F00C934C2 /* RestaurantOverviewViewController.m */,
-				7829FF811ED5768F00C934C2 /* RestaurantOverviewViewController.xib */,
-				786B381E1F2ECFEB0098A12F /* RestaurantCheckinViewController.h */,
-				786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */,
-				786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */,
-				7829FF8A1ED576C100C934C2 /* RestaurantPhotoViewController.m */,
-				7829FF8B1ED576C100C934C2 /* RestaurantPhotoViewController.xib */,
-				7829FF8E1ED576D700C934C2 /* RestaurantMenuViewController.h */,
-				7829FF8F1ED576D700C934C2 /* RestaurantMenuViewController.m */,
-				7829FF901ED576D700C934C2 /* RestaurantMenuViewController.xib */,
-				7829FF931ED576F800C934C2 /* RestaurantEventViewController.h */,
-				7829FF941ED576F800C934C2 /* RestaurantEventViewController.m */,
-				7829FF951ED576F800C934C2 /* RestaurantEventViewController.xib */,
-				7829FF891ED576C100C934C2 /* RestaurantPhotoViewController.h */,
-			);
-			name = RestaurantDetailChildVCs;
-			sourceTree = "<group>";
-		};
 		7829FF9B1ED803D000C934C2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2659,25 +2742,18 @@
 		784D3F641ECC797E0058C63F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */,
-				784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */,
-				78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */,
-				78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */,
-				78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */,
+				781D02031FA717750021CEAF /* Previous */,
+				781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */,
+				781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */,
 				781E566B1F31CD8C006854BA /* GFSeeAllEventTableViewController.h */,
 				781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */,
 				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
 				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
 				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,
-				784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */,
-				784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */,
-				784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */,
 				78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */,
 				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
 				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
 				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
-				781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */,
-				781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2685,6 +2761,9 @@
 		784D3F651ECC79870058C63F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				781D01FE1FA6C65B0021CEAF /* ZZNearbyCell.h */,
+				781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */,
+				781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */,
 				781E563C1F31B117006854BA /* GFEventsCell.h */,
 				781E563D1F31B117006854BA /* GFEventsCell.m */,
 				781E563E1F31B117006854BA /* GFEventsCell.xib */,
@@ -3218,60 +3297,6 @@
 			path = ../../ZBProgressView;
 			sourceTree = "<group>";
 		};
-		78FFE5AD1ECDAD2C00F909A2 /* Restaurant (TabBar) */ = {
-			isa = PBXGroup;
-			children = (
-				78FFE5AF1ECDAD4900F909A2 /* Controller */,
-				78FFE5B01ECDAD5200F909A2 /* Model */,
-				78FFE5B11ECDAD5900F909A2 /* View */,
-			);
-			name = "Restaurant (TabBar)";
-			sourceTree = "<group>";
-		};
-		78FFE5AF1ECDAD4900F909A2 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				7812102D1F3B33A600C08BD6 /* RestaurantTableViewController.h */,
-				7812102E1F3B33A600C08BD6 /* RestaurantTableViewController.m */,
-				78FFE5B21ECDAD8300F909A2 /* RestaurantViewController.h */,
-				78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */,
-				78FFE5B41ECDAD8300F909A2 /* RestaurantViewController.xib */,
-				78FFE5BC1ECDBC7400F909A2 /* RestaurantDetailViewController.h */,
-				78FFE5BD1ECDBC7400F909A2 /* RestaurantDetailViewController.m */,
-				78FFE5BE1ECDBC7400F909A2 /* RestaurantDetailViewController.xib */,
-				7829FF7E1ED5761400C934C2 /* RestaurantDetailChildVCs */,
-				78C126A21F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.h */,
-				78C126A31F4AE27B0087CCF6 /* RestaurantMultiSearchViewController.m */,
-				78C126A71F4AE2A40087CCF6 /* RestaurantMultiSearchViewController.storyboard */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		78FFE5B01ECDAD5200F909A2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				789CFF761F0CA5FB00EBA772 /* EventRestaurant.h */,
-				789CFF771F0CA5FB00EBA772 /* EventRestaurant.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		78FFE5B11ECDAD5900F909A2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				78FFE5B71ECDB16400F909A2 /* RestaurantCell.h */,
-				78FFE5B81ECDB16400F909A2 /* RestaurantCell.m */,
-				78FFE5B91ECDB16400F909A2 /* RestaurantCell.xib */,
-				7864EB6C1F2B424400AA572E /* OverviewCell.h */,
-				7864EB6D1F2B424400AA572E /* OverviewCell.m */,
-				7864EB6E1F2B424400AA572E /* OverviewCell.xib */,
-				781E56751F330BD3006854BA /* ReviewCell.h */,
-				781E56761F330BD3006854BA /* ReviewCell.m */,
-				781E56771F330BD3006854BA /* ReviewCell.xib */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3594,6 +3619,7 @@
 				781E56401F31B117006854BA /* GFEventsCell.xib in Resources */,
 				780096D01EC9C1F5008F9F99 /* Ic_fa-star.png in Resources */,
 				781E56661F31BCA2006854BA /* MyZuzuViewController.xib in Resources */,
+				781D02021FA6C65B0021CEAF /* ZZNearbyCell.xib in Resources */,
 				780097041EC9C1F5008F9F99 /* ic_tag.png in Resources */,
 				780096CD1EC9C1F5008F9F99 /* ic_fa-map-marker.png in Resources */,
 				781E56611F31B7ED006854BA /* ic_logo.png in Resources */,
@@ -3930,6 +3956,7 @@
 				182391461DEEC70500B88AE0 /* GFCommentHeaderFooterView.m in Sources */,
 				783089451F1CD66200C31BFE /* ZZComment.m in Sources */,
 				783089641F1E220000C31BFE /* ZZFriendCell.m in Sources */,
+				781D02011FA6C65B0021CEAF /* ZZNearbyCell.m in Sources */,
 				788CC3371F19EC3900DC4116 /* JSQMessagesBubbleImageFactory.m in Sources */,
 				785100811F98F215001B8389 /* PickSingleImageViewController.m in Sources */,
 				788CC34A1F19EC3900DC4116 /* JSQMessagesCollectionView.m in Sources */,
