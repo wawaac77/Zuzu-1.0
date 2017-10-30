@@ -59,6 +59,17 @@
     
     self.view.frame = [UIScreen mainScreen].bounds;
     
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *userlang = [userDefault objectForKey:@"KEY_USER_LANG"];
+    //初始化语言
+    if ([userlang isEqualToString:@"en"]) {
+        [[ZBLocalized sharedInstance]setLanguage:@"en"];
+    } else if ([userlang isEqualToString:@"tw"]) {
+        [[ZBLocalized sharedInstance]setLanguage:@"zh-Hant"];
+    } else {
+        [[ZBLocalized sharedInstance]initLanguage];
+    }
+    
     //设置导航条
     [self setUpBackground];
     [self setUpNavBar];
