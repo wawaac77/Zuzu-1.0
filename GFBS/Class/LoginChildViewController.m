@@ -7,7 +7,7 @@
 //
 #import "AppDelegate.h"
 #import "LoginChildViewController.h"
-#import "GFHomeViewController.h"
+//#import "GFHomeViewController.h"
 #import "GFEventDetailViewController.h"
 #import "GFTabBarController.h"
 #import "GFNavigationController.h"

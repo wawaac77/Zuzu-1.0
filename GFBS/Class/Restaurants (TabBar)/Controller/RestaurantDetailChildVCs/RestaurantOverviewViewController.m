@@ -52,15 +52,13 @@ static NSString *const highLabelID = @"highLabelID";
     //self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OverviewCell class]) bundle:nil] forCellReuseIdentifier:ID];
-    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:basicID];
-    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:highLabelID];
+   
     self.tableView.tintColor = [UIColor darkGrayColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    //self.tableView.rowHeight = UITableViewAutomaticDimension;
-    //self.tableView.estimatedRowHeight = 44;
     
     [self.view addSubview:self.tableView];
 }
@@ -72,7 +70,7 @@ static NSString *const highLabelID = @"highLabelID";
  */
 
 #pragma mark - 代理方法
-
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -81,9 +79,11 @@ static NSString *const highLabelID = @"highLabelID";
         return cellHeight1 + 20;
     }
      */
-    
+
+/*
     return 50.0f;
 }
+*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;

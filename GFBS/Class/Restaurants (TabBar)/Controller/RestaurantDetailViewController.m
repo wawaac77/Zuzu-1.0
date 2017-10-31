@@ -100,6 +100,7 @@
     [self setUpTitleView];
     //添加默认自控制器View
     [self addChildViewController];
+   
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -262,7 +263,7 @@
     
     scrollView.delegate = self;
     //CGFloat scrollHeight = GFScreenHeight * 0.6;
-    scrollView.frame = CGRectMake(0, 240, GFScreenWidth, GFScreenHeight - 240 - GFNavMaxY);
+    scrollView.frame = CGRectMake(0, 240, self.view.gf_width, GFScreenHeight - 240 - GFNavMaxY);
     NSLog(@"self.view.gf_width in first claim scrollView is %f", self.view.gf_width);
     scrollView.pagingEnabled = YES;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -381,6 +382,7 @@
     
     if (childVc.view.superview) return; //判断添加就不用再添加了
     childVc.view.frame = CGRectMake(index * self.scrollView.gf_width, 0, self.scrollView.gf_width, self.scrollView.gf_height);
+    NSLog(@"childVC self.scrollView.gf_width %ld", self.scrollView.gf_width);
     NSLog(@"index is %ld", (long) index);
     [self.scrollView addSubview:childVc.view];
     

@@ -212,6 +212,9 @@
 		781D01FD1FA3189D0021CEAF /* ZZHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */; };
 		781D02011FA6C65B0021CEAF /* ZZNearbyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */; };
 		781D02021FA6C65B0021CEAF /* ZZNearbyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */; };
+		781D02221FA813FD0021CEAF /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D02201FA813FD0021CEAF /* SliderCell.m */; };
+		781D02231FA813FD0021CEAF /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781D02211FA813FD0021CEAF /* SliderCell.xib */; };
+		781D022B1FA818570021CEAF /* ZZBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 781D022A1FA818570021CEAF /* ZZBannerModel.m */; };
 		781E563F1F31B117006854BA /* GFEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E563D1F31B117006854BA /* GFEventsCell.m */; };
 		781E56401F31B117006854BA /* GFEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 781E563E1F31B117006854BA /* GFEventsCell.xib */; };
 		781E56531F31B7ED006854BA /* ic_create_event_plus_o.png in Resources */ = {isa = PBXBuildFile; fileRef = 781E56431F31B7ED006854BA /* ic_create_event_plus_o.png */; };
@@ -239,7 +242,6 @@
 		781E56821F3347D8006854BA /* EventSearchResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56811F3347D8006854BA /* EventSearchResultTableViewController.m */; };
 		781E56861F335380006854BA /* SearchPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E56851F335380006854BA /* SearchPageViewController.m */; };
 		781E568B1F3462FE006854BA /* BannerListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E568A1F3462FE006854BA /* BannerListTableViewController.m */; };
-		781E56901F3466BD006854BA /* ZZBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 781E568F1F3466BD006854BA /* ZZBannerModel.m */; };
 		7824E30E1EEFE06A00F85BFB /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30D1EEFE06A00F85BFB /* user-icon.png */; };
 		7824E3101EEFE07000F85BFB /* Ellipse-100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */; };
 		7824E3121EEFE07800F85BFB /* Ellipse-25%.png in Resources */ = {isa = PBXBuildFile; fileRef = 7824E3111EEFE07800F85BFB /* Ellipse-25%.png */; };
@@ -284,7 +286,6 @@
 		7829FF7C1ED55C9B00C934C2 /* pexels-photo-62097.png in Resources */ = {isa = PBXBuildFile; fileRef = 7829FF731ED55C9B00C934C2 /* pexels-photo-62097.png */; };
 		7829FF7D1ED55C9B00C934C2 /* pexels-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7829FF741ED55C9B00C934C2 /* pexels-photo.png */; };
 		7829FF821ED5768F00C934C2 /* RestaurantOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FF801ED5768F00C934C2 /* RestaurantOverviewViewController.m */; };
-		7829FF831ED5768F00C934C2 /* RestaurantOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7829FF811ED5768F00C934C2 /* RestaurantOverviewViewController.xib */; };
 		7829FF8C1ED576C100C934C2 /* RestaurantPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FF8A1ED576C100C934C2 /* RestaurantPhotoViewController.m */; };
 		7829FF8D1ED576C100C934C2 /* RestaurantPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7829FF8B1ED576C100C934C2 /* RestaurantPhotoViewController.xib */; };
 		7829FF911ED576D700C934C2 /* RestaurantMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7829FF8F1ED576D700C934C2 /* RestaurantMenuViewController.m */; };
@@ -315,11 +316,8 @@
 		783F82311F17149100491529 /* ZZLeaderboardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 783F822F1F17149100491529 /* ZZLeaderboardCell.m */; };
 		783F82321F17149100491529 /* ZZLeaderboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 783F82301F17149100491529 /* ZZLeaderboardCell.xib */; };
 		783F82341F176E7300491529 /* profile_image_animals.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 783F82331F176E7300491529 /* profile_image_animals.jpeg */; };
-		784D3F611ECC675D0058C63F /* GFHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */; };
 		784D3F691ECC79EE0058C63F /* ZZGFEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 784D3F671ECC79EE0058C63F /* ZZGFEventsCell.m */; };
 		784D3F6A1ECC79EE0058C63F /* ZZGFEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784D3F681ECC79EE0058C63F /* ZZGFEventsCell.xib */; };
-		784D3F731ECC85CD0058C63F /* GFNearbyEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */; };
-		784D3F741ECC85CD0058C63F /* GFNearbyEventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */; };
 		784FBB801F1F032A00014395 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7E1F1F032A00014395 /* Fabric.framework */; };
 		784FBB811F1F032A00014395 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784FBB7F1F1F032A00014395 /* Crashlytics.framework */; };
 		785100741F98F1F4001B8389 /* ImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7851006D1F98F1F3001B8389 /* ImagePickerViewController.m */; };
@@ -410,10 +408,8 @@
 		7864EB6F1F2B424400AA572E /* OverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7864EB6D1F2B424400AA572E /* OverviewCell.m */; };
 		7864EB701F2B424400AA572E /* OverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7864EB6E1F2B424400AA572E /* OverviewCell.xib */; };
 		786B38211F2ECFEB0098A12F /* RestaurantCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */; };
-		786B38221F2ECFEB0098A12F /* RestaurantCheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */; };
 		786B38271F317C520098A12F /* square-facebook-69x69.png in Resources */ = {isa = PBXBuildFile; fileRef = 786B38261F317C520098A12F /* square-facebook-69x69.png */; };
 		788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */; };
-		788246D51ED2E7BA0058B226 /* EventPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */; };
 		788333231F178F3000967337 /* DPSharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333201F178F3000967337 /* DPSharePopView.m */; };
 		788333241F178F3000967337 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333221F178F3000967337 /* TriangleView.m */; };
 		788CC2911F18801600DC4116 /* ZZChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788CC28F1F18801600DC4116 /* ZZChatViewController.m */; };
@@ -475,8 +471,6 @@
 		7897E1081EF7766A0046D647 /* EventInList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7897E1071EF7766A0046D647 /* EventInList.m */; };
 		789CFF421F00E84F00EBA772 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CFF401F00E84F00EBA772 /* FilterTableViewController.m */; };
 		789CFF451F00EC3F00EBA772 /* FilterTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789CFF441F00EC3F00EBA772 /* FilterTableViewController.storyboard */; };
-		789CFF491F02115800EBA772 /* SliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CFF471F02115800EBA772 /* SliderCell.m */; };
-		789CFF4A1F02115800EBA772 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 789CFF481F02115800EBA772 /* SliderCell.xib */; };
 		789CFF4F1F02149900EBA772 /* LocationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CFF4D1F02149900EBA772 /* LocationTableViewController.m */; };
 		789CFF521F0214B400EBA772 /* LocationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789CFF511F0214B400EBA772 /* LocationTableViewController.storyboard */; };
 		789CFF551F026C6700EBA772 /* SearchEventDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 789CFF541F026C6700EBA772 /* SearchEventDetail.m */; };
@@ -530,8 +524,6 @@
 		78FE02241EE7DB5700ABD5B9 /* MyEventImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */; };
 		78FE022C1EE930D200ABD5B9 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FE022B1EE930D200ABD5B9 /* ProgressView.m */; };
 		78FFE59A1ECD40F700F909A2 /* GFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5991ECD40F700F909A2 /* GFEvent.m */; };
-		78FFE59E1ECD49A300F909A2 /* GFUpcomingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */; };
-		78FFE59F1ECD49A300F909A2 /* GFUpcomingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */; };
 		78FFE5A31ECD88F100F909A2 /* GFEventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */; };
 		78FFE5A41ECD88F100F909A2 /* GFEventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */; };
 		78FFE5B51ECDAD8300F909A2 /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FFE5B31ECDAD8300F909A2 /* RestaurantViewController.m */; };
@@ -848,6 +840,11 @@
 		781D01FE1FA6C65B0021CEAF /* ZZNearbyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZNearbyCell.h; sourceTree = "<group>"; };
 		781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZNearbyCell.m; sourceTree = "<group>"; };
 		781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZZNearbyCell.xib; sourceTree = "<group>"; };
+		781D021F1FA813FD0021CEAF /* SliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCell.h; sourceTree = "<group>"; };
+		781D02201FA813FD0021CEAF /* SliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCell.m; sourceTree = "<group>"; };
+		781D02211FA813FD0021CEAF /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
+		781D02291FA818570021CEAF /* ZZBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBannerModel.h; sourceTree = "<group>"; };
+		781D022A1FA818570021CEAF /* ZZBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBannerModel.m; sourceTree = "<group>"; };
 		781E563C1F31B117006854BA /* GFEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFEventsCell.h; sourceTree = "<group>"; };
 		781E563D1F31B117006854BA /* GFEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFEventsCell.m; sourceTree = "<group>"; };
 		781E563E1F31B117006854BA /* GFEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFEventsCell.xib; sourceTree = "<group>"; };
@@ -883,8 +880,6 @@
 		781E56851F335380006854BA /* SearchPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPageViewController.m; sourceTree = "<group>"; };
 		781E56891F3462FE006854BA /* BannerListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerListTableViewController.h; sourceTree = "<group>"; };
 		781E568A1F3462FE006854BA /* BannerListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerListTableViewController.m; sourceTree = "<group>"; };
-		781E568E1F3466BD006854BA /* ZZBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBannerModel.h; sourceTree = "<group>"; };
-		781E568F1F3466BD006854BA /* ZZBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBannerModel.m; sourceTree = "<group>"; };
 		7824E30D1EEFE06A00F85BFB /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
 		7824E30F1EEFE07000F85BFB /* Ellipse-100%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-100%.png"; sourceTree = "<group>"; };
 		7824E3111EEFE07800F85BFB /* Ellipse-25%.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ellipse-25%.png"; sourceTree = "<group>"; };
@@ -934,7 +929,6 @@
 		7829FF741ED55C9B00C934C2 /* pexels-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pexels-photo.png"; sourceTree = "<group>"; };
 		7829FF7F1ED5768F00C934C2 /* RestaurantOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantOverviewViewController.h; sourceTree = "<group>"; };
 		7829FF801ED5768F00C934C2 /* RestaurantOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantOverviewViewController.m; sourceTree = "<group>"; };
-		7829FF811ED5768F00C934C2 /* RestaurantOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantOverviewViewController.xib; sourceTree = "<group>"; };
 		7829FF891ED576C100C934C2 /* RestaurantPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantPhotoViewController.h; sourceTree = "<group>"; };
 		7829FF8A1ED576C100C934C2 /* RestaurantPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantPhotoViewController.m; sourceTree = "<group>"; };
 		7829FF8B1ED576C100C934C2 /* RestaurantPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantPhotoViewController.xib; sourceTree = "<group>"; };
@@ -984,14 +978,9 @@
 		783F822F1F17149100491529 /* ZZLeaderboardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZLeaderboardCell.m; path = ../ZZLeaderboardCell.m; sourceTree = "<group>"; };
 		783F82301F17149100491529 /* ZZLeaderboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ZZLeaderboardCell.xib; path = ../ZZLeaderboardCell.xib; sourceTree = "<group>"; };
 		783F82331F176E7300491529 /* profile_image_animals.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile_image_animals.jpeg; sourceTree = "<group>"; };
-		784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFHomeViewController.h; sourceTree = "<group>"; };
-		784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFHomeViewController.m; sourceTree = "<group>"; };
 		784D3F661ECC79EE0058C63F /* ZZGFEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZGFEventsCell.h; sourceTree = "<group>"; };
 		784D3F671ECC79EE0058C63F /* ZZGFEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZGFEventsCell.m; sourceTree = "<group>"; };
 		784D3F681ECC79EE0058C63F /* ZZGFEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZGFEventsCell.xib; sourceTree = "<group>"; };
-		784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFNearbyEventsViewController.h; sourceTree = "<group>"; };
-		784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFNearbyEventsViewController.m; sourceTree = "<group>"; };
-		784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFNearbyEventsViewController.xib; sourceTree = "<group>"; };
 		784FBB7E1F1F032A00014395 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		784FBB7F1F1F032A00014395 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		7851006D1F98F1F3001B8389 /* ImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerViewController.m; sourceTree = "<group>"; };
@@ -1103,11 +1092,9 @@
 		7864EB6E1F2B424400AA572E /* OverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverviewCell.xib; sourceTree = "<group>"; };
 		786B381E1F2ECFEB0098A12F /* RestaurantCheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantCheckinViewController.h; sourceTree = "<group>"; };
 		786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantCheckinViewController.m; sourceTree = "<group>"; };
-		786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCheckinViewController.xib; sourceTree = "<group>"; };
 		786B38261F317C520098A12F /* square-facebook-69x69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square-facebook-69x69.png"; sourceTree = "<group>"; };
 		788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPhotoViewController.h; sourceTree = "<group>"; };
 		788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPhotoViewController.m; sourceTree = "<group>"; };
-		788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventPhotoViewController.xib; sourceTree = "<group>"; };
 		7883331F1F178F3000967337 /* DPSharePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSharePopView.h; sourceTree = "<group>"; };
 		788333201F178F3000967337 /* DPSharePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSharePopView.m; sourceTree = "<group>"; };
 		788333211F178F3000967337 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
@@ -1224,9 +1211,6 @@
 		789CFF3F1F00E84F00EBA772 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterTableViewController.h; path = ../FilterTableViewController.h; sourceTree = "<group>"; };
 		789CFF401F00E84F00EBA772 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FilterTableViewController.m; path = ../FilterTableViewController.m; sourceTree = "<group>"; };
 		789CFF441F00EC3F00EBA772 /* FilterTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FilterTableViewController.storyboard; path = ../FilterTableViewController.storyboard; sourceTree = "<group>"; };
-		789CFF461F02115800EBA772 /* SliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderCell.h; sourceTree = "<group>"; };
-		789CFF471F02115800EBA772 /* SliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderCell.m; sourceTree = "<group>"; };
-		789CFF481F02115800EBA772 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		789CFF4C1F02149900EBA772 /* LocationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationTableViewController.h; sourceTree = "<group>"; };
 		789CFF4D1F02149900EBA772 /* LocationTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTableViewController.m; sourceTree = "<group>"; };
 		789CFF511F0214B400EBA772 /* LocationTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationTableViewController.storyboard; sourceTree = "<group>"; };
@@ -1309,9 +1293,6 @@
 		78FE022B1EE930D200ABD5B9 /* ProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
 		78FFE5981ECD40F700F909A2 /* GFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFEvent.h; sourceTree = "<group>"; };
 		78FFE5991ECD40F700F909A2 /* GFEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFEvent.m; sourceTree = "<group>"; };
-		78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFUpcomingTableViewController.h; sourceTree = "<group>"; };
-		78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFUpcomingTableViewController.m; sourceTree = "<group>"; };
-		78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFUpcomingTableViewController.xib; sourceTree = "<group>"; };
 		78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFEventDetailViewController.h; sourceTree = "<group>"; };
 		78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFEventDetailViewController.m; sourceTree = "<group>"; };
 		78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GFEventDetailViewController.xib; sourceTree = "<group>"; };
@@ -1582,8 +1563,8 @@
 				18BE026D1DDB497900D27893 /* AD */,
 				18BE02791DDB497900D27893 /* Main */,
 				7829FF9B1ED803D000C934C2 /* Login */,
-				784D3F5D1ECC67040058C63F /* Home (TabBar) */,
-				781E56871F3462C1006854BA /* Create Event */,
+				781D020A1FA8127E0021CEAF /* Home (TabBar) */,
+				781D02261FA8178B0021CEAF /* Create Event */,
 				781E567C1F33479A006854BA /* Events */,
 				781E563A1F31AE41006854BA /* Filter */,
 				781E566E1F31D091006854BA /* Leaderboard */,
@@ -1591,7 +1572,7 @@
 				783089551F1E1DF100C31BFE /* Friends */,
 				788333151F17779700967337 /* Check-in */,
 				789E0D5C1F17DC0A00CCAAE4 /* Inbox */,
-				18BE02711DDB497900D27893 /* Social Calendar (TabBar) */,
+				781D022C1FA819030021CEAF /* Social Calendar (TabBar) */,
 				781D02041FA71B770021CEAF /* Restaurants (TabBar) */,
 				18BE027D1DDB497900D27893 /* My Zuzu (TabBar) */,
 				78D85BD41F42A93D007E8112 /* Badges */,
@@ -1637,70 +1618,6 @@
 		18BE02701DDB497900D27893 /* View */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		18BE02711DDB497900D27893 /* Social Calendar (TabBar) */ = {
-			isa = PBXGroup;
-			children = (
-				18BE02721DDB497900D27893 /* Controller */,
-				18BE02731DDB497900D27893 /* Model */,
-				18BE02741DDB497900D27893 /* View */,
-			);
-			name = "Social Calendar (TabBar)";
-			path = "Essence(精华)";
-			sourceTree = "<group>";
-		};
-		18BE02721DDB497900D27893 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				18BE02A41DDB4C0400D27893 /* GFEssenceViewController.h */,
-				18BE02A51DDB4C0400D27893 /* GFEssenceViewController.m */,
-				78F49F701EE6F37B00674130 /* EventListTableViewController.h */,
-				78F49F711EE6F37B00674130 /* EventListTableViewController.m */,
-				784D3F5C1ECC64D50058C63F /* childVCs */,
-				789CFF841F0E2ED200EBA772 /* Reference */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		18BE02731DDB497900D27893 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1829A69C1DE7E8390086AD86 /* GFTopic.h */,
-				1829A69D1DE7E8390086AD86 /* GFTopic.m */,
-				18E8D3681DE9D19800ED4EE1 /* GFComment.h */,
-				18E8D3691DE9D19800ED4EE1 /* GFComment.m */,
-				18E8D36A1DE9D19800ED4EE1 /* GFUser.h */,
-				18E8D36B1DE9D19800ED4EE1 /* GFUser.m */,
-				78F49F821EE6F61100674130 /* MyEvent.h */,
-				78F49F831EE6F61100674130 /* MyEvent.m */,
-				78FE02221EE7DB5700ABD5B9 /* MyEventImageModel.h */,
-				78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */,
-				789CFF791F0CA69A00EBA772 /* TwEn.h */,
-				789CFF7A1F0CA69A00EBA772 /* TwEn.m */,
-				789CFF8B1F0E65DA00EBA772 /* ZZTypicalInformationModel.h */,
-				789CFF8C1F0E65DA00EBA772 /* ZZTypicalInformationModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		18BE02741DDB497900D27893 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7824E3071EEEE18900F85BFB /* Typical */,
-				18C826271DE72630007341E3 /* GFTitleButton.h */,
-				18C826281DE72630007341E3 /* GFTitleButton.m */,
-				1829A69F1DE818F70086AD86 /* GFRefreshHeader.h */,
-				1829A6A01DE818F70086AD86 /* GFRefreshHeader.m */,
-				1829A6A21DE82DCF0086AD86 /* GFRefreshFooter.h */,
-				1829A6A31DE82DCF0086AD86 /* GFRefreshFooter.m */,
-				789530151FA1C66F00EC5F15 /* GFHTTPSessionManager.h */,
-				789530161FA1C67600EC5F15 /* GFHTTPSessionManager.m */,
-				78F49F7D1EE6F5A900674130 /* MyEventCell.h */,
-				78F49F7E1EE6F5A900674130 /* MyEventCell.m */,
-				78F49F7F1EE6F5A900674130 /* MyEventCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1752,7 +1669,6 @@
 			isa = PBXGroup;
 			children = (
 				18BE027A1DDB497900D27893 /* Controller */,
-				18BE027B1DDB497900D27893 /* Model */,
 				18BE027C1DDB497900D27893 /* View */,
 			);
 			name = Main;
@@ -1768,13 +1684,6 @@
 				18BE02A11DDB4A8900D27893 /* GFTabBarController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		18BE027B1DDB497900D27893 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		18BE027C1DDB497900D27893 /* View */ = {
@@ -2186,22 +2095,6 @@
 			name = DropDownListView;
 			sourceTree = "<group>";
 		};
-		781D02031FA717750021CEAF /* Previous */ = {
-			isa = PBXGroup;
-			children = (
-				784D3F5E1ECC675D0058C63F /* GFHomeViewController.h */,
-				784D3F5F1ECC675D0058C63F /* GFHomeViewController.m */,
-				78FFE59B1ECD49A300F909A2 /* GFUpcomingTableViewController.h */,
-				78FFE59C1ECD49A300F909A2 /* GFUpcomingTableViewController.m */,
-				78FFE59D1ECD49A300F909A2 /* GFUpcomingTableViewController.xib */,
-				784D3F701ECC85CD0058C63F /* GFNearbyEventsViewController.h */,
-				784D3F711ECC85CD0058C63F /* GFNearbyEventsViewController.m */,
-				784D3F721ECC85CD0058C63F /* GFNearbyEventsViewController.xib */,
-			);
-			name = Previous;
-			path = "Home (TabBar)/Controller/Previous";
-			sourceTree = "<group>";
-		};
 		781D02041FA71B770021CEAF /* Restaurants (TabBar) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2269,10 +2162,8 @@
 			children = (
 				7829FF7F1ED5768F00C934C2 /* RestaurantOverviewViewController.h */,
 				7829FF801ED5768F00C934C2 /* RestaurantOverviewViewController.m */,
-				7829FF811ED5768F00C934C2 /* RestaurantOverviewViewController.xib */,
 				786B381E1F2ECFEB0098A12F /* RestaurantCheckinViewController.h */,
 				786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */,
-				786B38201F2ECFEB0098A12F /* RestaurantCheckinViewController.xib */,
 				7829FF891ED576C100C934C2 /* RestaurantPhotoViewController.h */,
 				7829FF8A1ED576C100C934C2 /* RestaurantPhotoViewController.m */,
 				7829FF8B1ED576C100C934C2 /* RestaurantPhotoViewController.xib */,
@@ -2284,6 +2175,268 @@
 				7829FF951ED576F800C934C2 /* RestaurantEventViewController.xib */,
 			);
 			path = RestaurantDetailChildVCs;
+			sourceTree = "<group>";
+		};
+		781D020A1FA8127E0021CEAF /* Home (TabBar) */ = {
+			isa = PBXGroup;
+			children = (
+				781D020B1FA8127E0021CEAF /* Controller */,
+				781D02151FA8127E0021CEAF /* Model */,
+				781D02161FA8127E0021CEAF /* View */,
+			);
+			path = "Home (TabBar)";
+			sourceTree = "<group>";
+		};
+		781D020B1FA8127E0021CEAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */,
+				781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */,
+				781E566B1F31CD8C006854BA /* GFSeeAllEventTableViewController.h */,
+				781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */,
+				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
+				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
+				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,
+				78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */,
+				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
+				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
+				781D021C1FA8132F0021CEAF /* EventDetailChildVCs */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		781D02151FA8127E0021CEAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				781D02251FA8149F0021CEAF /* Previous */,
+				783089331F1C913200C31BFE /* ZZContentModel.h */,
+				783089341F1C913200C31BFE /* ZZContentModel.m */,
+				789CFF911F1232E500EBA772 /* ZZEventImages.h */,
+				789CFF921F1232E500EBA772 /* ZZEventImages.m */,
+				7829FFB91EE50DEB00C934C2 /* GFImage.h */,
+				7829FFBA1EE50DEB00C934C2 /* GFImage.m */,
+				783089431F1CD66200C31BFE /* ZZComment.h */,
+				783089441F1CD66200C31BFE /* ZZComment.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		781D02161FA8127E0021CEAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				781D01FE1FA6C65B0021CEAF /* ZZNearbyCell.h */,
+				781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */,
+				781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */,
+				781E563C1F31B117006854BA /* GFEventsCell.h */,
+				781E563D1F31B117006854BA /* GFEventsCell.m */,
+				781E563E1F31B117006854BA /* GFEventsCell.xib */,
+				784D3F661ECC79EE0058C63F /* ZZGFEventsCell.h */,
+				784D3F671ECC79EE0058C63F /* ZZGFEventsCell.m */,
+				784D3F681ECC79EE0058C63F /* ZZGFEventsCell.xib */,
+				789CFF941F12399100EBA772 /* ZZImageCollectionCell.h */,
+				789CFF951F12399100EBA772 /* ZZImageCollectionCell.m */,
+				789CFF961F12399100EBA772 /* ZZImageCollectionCell.xib */,
+				783089461F1D039800C31BFE /* CommentHeaderView.h */,
+				783089471F1D039800C31BFE /* CommentHeaderView.m */,
+				783089491F1D0C6F00C31BFE /* CommentHeaderView.xib */,
+				781D02241FA814530021CEAF /* MinScrollMenu */,
+				781D021E1FA813FD0021CEAF /* Previous */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		781D021C1FA8132F0021CEAF /* EventDetailChildVCs */ = {
+			isa = PBXGroup;
+			children = (
+				789530181FA1CF5800EC5F15 /* EventOverviewViewController.h */,
+				789530191FA1CF5800EC5F15 /* EventOverviewViewController.m */,
+				781E56721F31EC53006854BA /* EventDiscussionViewController.h */,
+				781E56731F31EC53006854BA /* EventDiscussionViewController.m */,
+				788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */,
+				788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */,
+			);
+			path = EventDetailChildVCs;
+			sourceTree = "<group>";
+		};
+		781D021E1FA813FD0021CEAF /* Previous */ = {
+			isa = PBXGroup;
+			children = (
+				781D021F1FA813FD0021CEAF /* SliderCell.h */,
+				781D02201FA813FD0021CEAF /* SliderCell.m */,
+				781D02211FA813FD0021CEAF /* SliderCell.xib */,
+			);
+			path = Previous;
+			sourceTree = "<group>";
+		};
+		781D02241FA814530021CEAF /* MinScrollMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7829FFB31EE16AE000C934C2 /* MinScrollMenu.h */,
+				7829FFB41EE16AE000C934C2 /* MinScrollMenu.m */,
+				7829FFB51EE16AE000C934C2 /* MinScrollMenuItem.h */,
+				7829FFB61EE16AE000C934C2 /* MinScrollMenuItem.m */,
+			);
+			path = MinScrollMenu;
+			sourceTree = "<group>";
+		};
+		781D02251FA8149F0021CEAF /* Previous */ = {
+			isa = PBXGroup;
+			children = (
+				78FFE5981ECD40F700F909A2 /* GFEvent.h */,
+				78FFE5991ECD40F700F909A2 /* GFEvent.m */,
+				786227501EFBB3DB006F731F /* KCAnnotation.h */,
+				786227511EFBB3DB006F731F /* KCAnnotation.m */,
+				789CFF531F026C6700EBA772 /* SearchEventDetail.h */,
+				789CFF541F026C6700EBA772 /* SearchEventDetail.m */,
+				789CFF561F03A12A00EBA772 /* PassValueDelegate.h */,
+				789CFF7C1F0CDB7F00EBA772 /* ZZInterest.h */,
+				789CFF7D1F0CDB7F00EBA772 /* ZZInterest.m */,
+			);
+			path = Previous;
+			sourceTree = "<group>";
+		};
+		781D02261FA8178B0021CEAF /* Create Event */ = {
+			isa = PBXGroup;
+			children = (
+				781D02281FA817D70021CEAF /* Controller */,
+				781D02271FA817D60021CEAF /* Model */,
+			);
+			path = "Create Event";
+			sourceTree = "<group>";
+		};
+		781D02271FA817D60021CEAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				781D02291FA818570021CEAF /* ZZBannerModel.h */,
+				781D022A1FA818570021CEAF /* ZZBannerModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		781D02281FA817D70021CEAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7824E3131EF0D96700F85BFB /* CreateEventViewController.h */,
+				7824E3141EF0D96700F85BFB /* CreateEventViewController.m */,
+				7824E31A1EF0E11900F85BFB /* CreateEventViewController.storyboard */,
+				781E56891F3462FE006854BA /* BannerListTableViewController.h */,
+				781E568A1F3462FE006854BA /* BannerListTableViewController.m */,
+				78FBECC21F381CFE003CABFF /* DateAndTimeViewController.h */,
+				78FBECC31F381CFE003CABFF /* DateAndTimeViewController.m */,
+				78FBECC41F381CFE003CABFF /* DateAndTimeViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		781D022C1FA819030021CEAF /* Social Calendar (TabBar) */ = {
+			isa = PBXGroup;
+			children = (
+				781D022D1FA819030021CEAF /* Controller */,
+				781D022E1FA819030021CEAF /* Model */,
+				781D022F1FA819030021CEAF /* View */,
+			);
+			path = "Social Calendar (TabBar)";
+			sourceTree = "<group>";
+		};
+		781D022D1FA819030021CEAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				781D02311FA819710021CEAF /* Reference */,
+				781D02301FA819310021CEAF /* ChildVCs */,
+				18BE02A41DDB4C0400D27893 /* GFEssenceViewController.h */,
+				18BE02A51DDB4C0400D27893 /* GFEssenceViewController.m */,
+				78F49F701EE6F37B00674130 /* EventListTableViewController.h */,
+				78F49F711EE6F37B00674130 /* EventListTableViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		781D022E1FA819030021CEAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1829A69C1DE7E8390086AD86 /* GFTopic.h */,
+				1829A69D1DE7E8390086AD86 /* GFTopic.m */,
+				18E8D3681DE9D19800ED4EE1 /* GFComment.h */,
+				18E8D3691DE9D19800ED4EE1 /* GFComment.m */,
+				18E8D36A1DE9D19800ED4EE1 /* GFUser.h */,
+				18E8D36B1DE9D19800ED4EE1 /* GFUser.m */,
+				78F49F821EE6F61100674130 /* MyEvent.h */,
+				78F49F831EE6F61100674130 /* MyEvent.m */,
+				78FE02221EE7DB5700ABD5B9 /* MyEventImageModel.h */,
+				78FE02231EE7DB5700ABD5B9 /* MyEventImageModel.m */,
+				789CFF791F0CA69A00EBA772 /* TwEn.h */,
+				789CFF7A1F0CA69A00EBA772 /* TwEn.m */,
+				789CFF8B1F0E65DA00EBA772 /* ZZTypicalInformationModel.h */,
+				789CFF8C1F0E65DA00EBA772 /* ZZTypicalInformationModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		781D022F1FA819030021CEAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				781D02321FA819EC0021CEAF /* Typical */,
+				18C826271DE72630007341E3 /* GFTitleButton.h */,
+				18C826281DE72630007341E3 /* GFTitleButton.m */,
+				1829A69F1DE818F70086AD86 /* GFRefreshHeader.h */,
+				1829A6A01DE818F70086AD86 /* GFRefreshHeader.m */,
+				1829A6A21DE82DCF0086AD86 /* GFRefreshFooter.h */,
+				1829A6A31DE82DCF0086AD86 /* GFRefreshFooter.m */,
+				789530151FA1C66F00EC5F15 /* GFHTTPSessionManager.h */,
+				789530161FA1C67600EC5F15 /* GFHTTPSessionManager.m */,
+				78F49F7D1EE6F5A900674130 /* MyEventCell.h */,
+				78F49F7E1EE6F5A900674130 /* MyEventCell.m */,
+				78F49F7F1EE6F5A900674130 /* MyEventCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		781D02301FA819310021CEAF /* ChildVCs */ = {
+			isa = PBXGroup;
+			children = (
+				18C8262A1DE7368D007341E3 /* ZZAttendingViewController.h */,
+				18C8262B1DE7368D007341E3 /* ZZAttendingViewController.m */,
+				18C8262D1DE7369C007341E3 /* ZZHostingViewController.h */,
+				18C8262E1DE7369C007341E3 /* ZZHostingViewController.m */,
+				18C8263C1DE737C9007341E3 /* GFVoiceViewController.h */,
+				18C8263D1DE737C9007341E3 /* GFVoiceViewController.m */,
+				18C826331DE736B3007341E3 /* GFPictureViewController.h */,
+				18C826341DE736B3007341E3 /* GFPictureViewController.m */,
+				18C826361DE736C1007341E3 /* GFWordViewController.h */,
+				18C826371DE736C1007341E3 /* GFWordViewController.m */,
+			);
+			path = ChildVCs;
+			sourceTree = "<group>";
+		};
+		781D02311FA819710021CEAF /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				1801C3C11DEB1BA90073C6CD /* GFTopicViewController.h */,
+				1801C3C21DEB1BA90073C6CD /* GFTopicViewController.m */,
+				18B3D6BD1DEC517F00474981 /* GFSeeBigImageViewController.h */,
+				18B3D6BE1DEC517F00474981 /* GFSeeBigImageViewController.m */,
+				18B3D6C01DEC518700474981 /* GFSeeBigImageViewController.xib */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
+		781D02321FA819EC0021CEAF /* Typical */ = {
+			isa = PBXGroup;
+			children = (
+				1829A6AB1DE8550D0086AD86 /* GFTopicCell.h */,
+				1829A6AC1DE8550D0086AD86 /* GFTopicCell.m */,
+				1829A6AD1DE8550D0086AD86 /* GFTopicCell.xib */,
+				18E8D36E1DE9EA4D00ED4EE1 /* GFTopicPictureView.h */,
+				18E8D36F1DE9EA4D00ED4EE1 /* GFTopicPictureView.m */,
+				18E8D3711DE9EA5700ED4EE1 /* GFTopicPictureView.xib */,
+				18E8D3731DE9EA8400ED4EE1 /* GFTopicVideoView.h */,
+				18E8D3741DE9EA8400ED4EE1 /* GFTopicVideoView.m */,
+				18E8D3761DE9EA8E00ED4EE1 /* GFTopicVideoView.xib */,
+				18E8D37D1DE9EB4100ED4EE1 /* GFTopicVoiceView.h */,
+				18E8D37E1DE9EB4100ED4EE1 /* GFTopicVoiceView.m */,
+				18E8D3801DE9EB4A00ED4EE1 /* GFTopicVoiceView.xib */,
+			);
+			path = Typical;
 			sourceTree = "<group>";
 		};
 		781E563A1F31AE41006854BA /* Filter */ = {
@@ -2440,58 +2593,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		781E56871F3462C1006854BA /* Create Event */ = {
-			isa = PBXGroup;
-			children = (
-				781E56881F3462E5006854BA /* Controller */,
-				781E568D1F3466AA006854BA /* Model */,
-			);
-			name = "Create Event";
-			sourceTree = "<group>";
-		};
-		781E56881F3462E5006854BA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				7824E3131EF0D96700F85BFB /* CreateEventViewController.h */,
-				7824E3141EF0D96700F85BFB /* CreateEventViewController.m */,
-				7824E31A1EF0E11900F85BFB /* CreateEventViewController.storyboard */,
-				781E56891F3462FE006854BA /* BannerListTableViewController.h */,
-				781E568A1F3462FE006854BA /* BannerListTableViewController.m */,
-				78FBECC21F381CFE003CABFF /* DateAndTimeViewController.h */,
-				78FBECC31F381CFE003CABFF /* DateAndTimeViewController.m */,
-				78FBECC41F381CFE003CABFF /* DateAndTimeViewController.xib */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		781E568D1F3466AA006854BA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				781E568E1F3466BD006854BA /* ZZBannerModel.h */,
-				781E568F1F3466BD006854BA /* ZZBannerModel.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		7824E3071EEEE18900F85BFB /* Typical */ = {
-			isa = PBXGroup;
-			children = (
-				1829A6AB1DE8550D0086AD86 /* GFTopicCell.h */,
-				1829A6AC1DE8550D0086AD86 /* GFTopicCell.m */,
-				1829A6AD1DE8550D0086AD86 /* GFTopicCell.xib */,
-				18E8D36E1DE9EA4D00ED4EE1 /* GFTopicPictureView.h */,
-				18E8D36F1DE9EA4D00ED4EE1 /* GFTopicPictureView.m */,
-				18E8D3711DE9EA5700ED4EE1 /* GFTopicPictureView.xib */,
-				18E8D3731DE9EA8400ED4EE1 /* GFTopicVideoView.h */,
-				18E8D3741DE9EA8400ED4EE1 /* GFTopicVideoView.m */,
-				18E8D3761DE9EA8E00ED4EE1 /* GFTopicVideoView.xib */,
-				18E8D37D1DE9EB4100ED4EE1 /* GFTopicVoiceView.h */,
-				18E8D37E1DE9EB4100ED4EE1 /* GFTopicVoiceView.m */,
-				18E8D3801DE9EB4A00ED4EE1 /* GFTopicVoiceView.xib */,
-			);
-			name = Typical;
-			sourceTree = "<group>";
-		};
 		7824E31C1EF13BF700F85BFB /* My Zuzu Background Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -2613,43 +2714,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		7829FFB21EE16AE000C934C2 /* MinScrollMenu */ = {
-			isa = PBXGroup;
-			children = (
-				7829FFB31EE16AE000C934C2 /* MinScrollMenu.h */,
-				7829FFB41EE16AE000C934C2 /* MinScrollMenu.m */,
-				7829FFB51EE16AE000C934C2 /* MinScrollMenuItem.h */,
-				7829FFB61EE16AE000C934C2 /* MinScrollMenuItem.m */,
-			);
-			path = MinScrollMenu;
-			sourceTree = "<group>";
-		};
-		783089371F1CA1D000C31BFE /* Previous */ = {
-			isa = PBXGroup;
-			children = (
-				78FFE5981ECD40F700F909A2 /* GFEvent.h */,
-				78FFE5991ECD40F700F909A2 /* GFEvent.m */,
-				786227501EFBB3DB006F731F /* KCAnnotation.h */,
-				786227511EFBB3DB006F731F /* KCAnnotation.m */,
-				789CFF531F026C6700EBA772 /* SearchEventDetail.h */,
-				789CFF541F026C6700EBA772 /* SearchEventDetail.m */,
-				789CFF561F03A12A00EBA772 /* PassValueDelegate.h */,
-				789CFF7C1F0CDB7F00EBA772 /* ZZInterest.h */,
-				789CFF7D1F0CDB7F00EBA772 /* ZZInterest.m */,
-			);
-			name = Previous;
-			sourceTree = "<group>";
-		};
-		783089381F1CA1FE00C31BFE /* Previous */ = {
-			isa = PBXGroup;
-			children = (
-				789CFF461F02115800EBA772 /* SliderCell.h */,
-				789CFF471F02115800EBA772 /* SliderCell.m */,
-				789CFF481F02115800EBA772 /* SliderCell.xib */,
-			);
-			name = Previous;
-			sourceTree = "<group>";
-		};
 		783089551F1E1DF100C31BFE /* Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -2692,92 +2756,6 @@
 				7813FE931F25F18B0065D527 /* ZZAddFriendsCell.h */,
 				7813FE941F25F18B0065D527 /* ZZAddFriendsCell.m */,
 				7813FE951F25F18B0065D527 /* ZZAddFriendsCell.xib */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		784D3F5C1ECC64D50058C63F /* childVCs */ = {
-			isa = PBXGroup;
-			children = (
-				18C8262A1DE7368D007341E3 /* ZZAttendingViewController.h */,
-				18C8262B1DE7368D007341E3 /* ZZAttendingViewController.m */,
-				18C8262D1DE7369C007341E3 /* ZZHostingViewController.h */,
-				18C8262E1DE7369C007341E3 /* ZZHostingViewController.m */,
-				18C8263C1DE737C9007341E3 /* GFVoiceViewController.h */,
-				18C8263D1DE737C9007341E3 /* GFVoiceViewController.m */,
-				18C826331DE736B3007341E3 /* GFPictureViewController.h */,
-				18C826341DE736B3007341E3 /* GFPictureViewController.m */,
-				18C826361DE736C1007341E3 /* GFWordViewController.h */,
-				18C826371DE736C1007341E3 /* GFWordViewController.m */,
-			);
-			name = childVCs;
-			sourceTree = "<group>";
-		};
-		784D3F5D1ECC67040058C63F /* Home (TabBar) */ = {
-			isa = PBXGroup;
-			children = (
-				784D3F641ECC797E0058C63F /* Controller */,
-				784D3F631ECC79690058C63F /* Model */,
-				784D3F651ECC79870058C63F /* View */,
-			);
-			name = "Home (TabBar)";
-			sourceTree = "<group>";
-		};
-		784D3F631ECC79690058C63F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				783089371F1CA1D000C31BFE /* Previous */,
-				783089331F1C913200C31BFE /* ZZContentModel.h */,
-				783089341F1C913200C31BFE /* ZZContentModel.m */,
-				789CFF911F1232E500EBA772 /* ZZEventImages.h */,
-				789CFF921F1232E500EBA772 /* ZZEventImages.m */,
-				7829FFB91EE50DEB00C934C2 /* GFImage.h */,
-				7829FFBA1EE50DEB00C934C2 /* GFImage.m */,
-				783089431F1CD66200C31BFE /* ZZComment.h */,
-				783089441F1CD66200C31BFE /* ZZComment.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		784D3F641ECC797E0058C63F /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				781D02031FA717750021CEAF /* Previous */,
-				781D01FB1FA3189D0021CEAF /* ZZHomeTableViewController.h */,
-				781D01FC1FA3189D0021CEAF /* ZZHomeTableViewController.m */,
-				781E566B1F31CD8C006854BA /* GFSeeAllEventTableViewController.h */,
-				781E566C1F31CD8C006854BA /* GFSeeAllEventTableViewController.m */,
-				7824E35B1EF23D1600F85BFB /* MapNearbyEventsViewController.h */,
-				7824E35C1EF23D1600F85BFB /* MapNearbyEventsViewController.m */,
-				7824E35D1EF23D1600F85BFB /* MapNearbyEventsViewController.xib */,
-				78FFE5A01ECD88F100F909A2 /* GFEventDetailViewController.h */,
-				78FFE5A11ECD88F100F909A2 /* GFEventDetailViewController.m */,
-				78FFE5A21ECD88F100F909A2 /* GFEventDetailViewController.xib */,
-				788246C61ED2E7660058B226 /* EventDetailChildVCs */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		784D3F651ECC79870058C63F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				781D01FE1FA6C65B0021CEAF /* ZZNearbyCell.h */,
-				781D01FF1FA6C65B0021CEAF /* ZZNearbyCell.m */,
-				781D02001FA6C65B0021CEAF /* ZZNearbyCell.xib */,
-				781E563C1F31B117006854BA /* GFEventsCell.h */,
-				781E563D1F31B117006854BA /* GFEventsCell.m */,
-				781E563E1F31B117006854BA /* GFEventsCell.xib */,
-				783089381F1CA1FE00C31BFE /* Previous */,
-				7829FFB21EE16AE000C934C2 /* MinScrollMenu */,
-				784D3F661ECC79EE0058C63F /* ZZGFEventsCell.h */,
-				784D3F671ECC79EE0058C63F /* ZZGFEventsCell.m */,
-				784D3F681ECC79EE0058C63F /* ZZGFEventsCell.xib */,
-				789CFF941F12399100EBA772 /* ZZImageCollectionCell.h */,
-				789CFF951F12399100EBA772 /* ZZImageCollectionCell.m */,
-				789CFF961F12399100EBA772 /* ZZImageCollectionCell.xib */,
-				783089461F1D039800C31BFE /* CommentHeaderView.h */,
-				783089471F1D039800C31BFE /* CommentHeaderView.m */,
-				783089491F1D0C6F00C31BFE /* CommentHeaderView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2910,20 +2888,6 @@
 				786069DE1F15FA3900A8AB88 /* guide-3.jpg */,
 			);
 			path = jpg;
-			sourceTree = "<group>";
-		};
-		788246C61ED2E7660058B226 /* EventDetailChildVCs */ = {
-			isa = PBXGroup;
-			children = (
-				789530181FA1CF5800EC5F15 /* EventOverviewViewController.h */,
-				789530191FA1CF5800EC5F15 /* EventOverviewViewController.m */,
-				781E56721F31EC53006854BA /* EventDiscussionViewController.h */,
-				781E56731F31EC53006854BA /* EventDiscussionViewController.m */,
-				788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */,
-				788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */,
-				788246D31ED2E7BA0058B226 /* EventPhotoViewController.xib */,
-			);
-			name = EventDetailChildVCs;
 			sourceTree = "<group>";
 		};
 		788333151F17779700967337 /* Check-in */ = {
@@ -3164,18 +3128,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		789CFF841F0E2ED200EBA772 /* Reference */ = {
-			isa = PBXGroup;
-			children = (
-				1801C3C11DEB1BA90073C6CD /* GFTopicViewController.h */,
-				1801C3C21DEB1BA90073C6CD /* GFTopicViewController.m */,
-				18B3D6BD1DEC517F00474981 /* GFSeeBigImageViewController.h */,
-				18B3D6BE1DEC517F00474981 /* GFSeeBigImageViewController.m */,
-				18B3D6C01DEC518700474981 /* GFSeeBigImageViewController.xib */,
-			);
-			name = Reference;
-			sourceTree = "<group>";
-		};
 		789CFFA11F13C2A100EBA772 /* LeaderboardChildVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -3372,7 +3324,7 @@
 				TargetAttributes = {
 					189CA31F1DDADBF6004D07EA = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 36DSW7DB5F;
+						DevelopmentTeam = 2FG6Y9F8J5;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -3563,6 +3515,7 @@
 				7812103E1F3C341600C08BD6 /* NumOfGuestsTableViewController.xib in Resources */,
 				7829FF7B1ED55C9B00C934C2 /* pexels-photo-38106.png in Resources */,
 				780096CF1EC9C1F5008F9F99 /* ic_fa-star-o.png in Resources */,
+				781D02231FA813FD0021CEAF /* SliderCell.xib in Resources */,
 				785100851F98F215001B8389 /* SubFillTableViewController.xib in Resources */,
 				781E565C1F31B7ED006854BA /* ic_social_on.png in Resources */,
 				7829FF771ED55C9B00C934C2 /* pexels-photo-260922.png in Resources */,
@@ -3586,10 +3539,8 @@
 				7824E3341EF13BF700F85BFB /* profile-bg-green_02.jpg in Resources */,
 				780096B61EC9C1F5008F9F99 /* event-banner-1080-06.jpg in Resources */,
 				786069A21F15DB9B00A8AB88 /* arrow-back.png in Resources */,
-				789CFF4A1F02115800EBA772 /* SliderCell.xib in Resources */,
 				18B3D6C11DEC518700474981 /* GFSeeBigImageViewController.xib in Resources */,
 				780096BE1EC9C1F5008F9F99 /* ic_ fa-image_280x33.png in Resources */,
-				788246D51ED2E7BA0058B226 /* EventPhotoViewController.xib in Resources */,
 				780096B31EC9C1F5008F9F99 /* event-banner-1036x328-02.jpg in Resources */,
 				780096FF1EC9C1F5008F9F99 /* ic_fa-users.png in Resources */,
 				7897E1051EF3E6A00046D647 /* EventListCell.xib in Resources */,
@@ -3601,8 +3552,6 @@
 				780097391ECAD956008F9F99 /* zuzu_App_Icon_167x167.png in Resources */,
 				786069C71F15DB9B00A8AB88 /* ic_phone_call.png in Resources */,
 				780096C71EC9C1F5008F9F99 /* ic_fa-credit-card.png in Resources */,
-				786B38221F2ECFEB0098A12F /* RestaurantCheckinViewController.xib in Resources */,
-				78FFE59F1ECD49A300F909A2 /* GFUpcomingTableViewController.xib in Resources */,
 				786069A51F15DB9B00A8AB88 /* homepage-profile-check-in-115x115.png in Resources */,
 				781E565A1F31B7ED006854BA /* ic_restaurant_on.png in Resources */,
 				780096E91EC9C1F5008F9F99 /* homescreen-welcome-image.png in Resources */,
@@ -3716,7 +3665,6 @@
 				780096EB1EC9C1F5008F9F99 /* logo-292x341-homescreen.png in Resources */,
 				780096F71EC9C1F5008F9F99 /* ic_clock.png in Resources */,
 				7829FF7C1ED55C9B00C934C2 /* pexels-photo-62097.png in Resources */,
-				7829FF831ED5768F00C934C2 /* RestaurantOverviewViewController.xib in Resources */,
 				780096EF1EC9C1F5008F9F99 /* ic_ fa-calendar-plus-o.png in Resources */,
 				784D3F6A1ECC79EE0058C63F /* ZZGFEventsCell.xib in Resources */,
 				7824E32E1EF13BF700F85BFB /* profile-bg-blue_02.jpg in Resources */,
@@ -3724,7 +3672,6 @@
 				780096C21EC9C1F5008F9F99 /* ic_fa-angle-right.png in Resources */,
 				780096BA1EC9C1F5008F9F99 /* ic_ fa-check-square-o.png in Resources */,
 				780096C51EC9C1F5008F9F99 /* ic_fa-check.png in Resources */,
-				784D3F741ECC85CD0058C63F /* GFNearbyEventsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3832,7 +3779,6 @@
 				180292421DE990C700743619 /* NSCalendar+GFExtension.m in Sources */,
 				789E0D661F17DCAE00CCAAE4 /* ZZInboxCell.m in Sources */,
 				7830896B1F1E371F00C31BFE /* ZGAlertView.m in Sources */,
-				784D3F611ECC675D0058C63F /* GFHomeViewController.m in Sources */,
 				7864EB6B1F28F3DB00AA572E /* ZZFriendRequestModel.m in Sources */,
 				18E8D36C1DE9D19800ED4EE1 /* GFComment.m in Sources */,
 				7829FFB11ED8139400C934C2 /* LoginButton.m in Sources */,
@@ -3841,7 +3787,6 @@
 				789CFF7B1F0CA69A00EBA772 /* TwEn.m in Sources */,
 				7829FFB71EE16AE000C934C2 /* MinScrollMenu.m in Sources */,
 				788CC2951F18B6C300DC4116 /* ZZMessageModel.m in Sources */,
-				78FFE59E1ECD49A300F909A2 /* GFUpcomingTableViewController.m in Sources */,
 				7897E1081EF7766A0046D647 /* EventInList.m in Sources */,
 				788CC3481F19EC3900DC4116 /* JSQVideoMediaItem.m in Sources */,
 				788CC3491F19EC3900DC4116 /* JSQMessagesCellTextView.m in Sources */,
@@ -3874,7 +3819,6 @@
 				189980541DDBF6D2009071F4 /* GFAdItem.m in Sources */,
 				78FFE5BA1ECDB16400F909A2 /* RestaurantCell.m in Sources */,
 				183E9CEB1E8E585000B13C75 /* GFConst.m in Sources */,
-				789CFF491F02115800EBA772 /* SliderCell.m in Sources */,
 				18B7C7371DE081BA004BD781 /* GFMemberField.m in Sources */,
 				1841A7791DE1752E00FB54CC /* GFSquareCell.m in Sources */,
 				7829FFA51ED807D900C934C2 /* LoginChildViewController.m in Sources */,
@@ -3900,6 +3844,7 @@
 				7824E3591EF2201D00F85BFB /* BadgesSquareCell.m in Sources */,
 				18B7C72A1DE07501004BD781 /* GFLoginRegisterView.m in Sources */,
 				783089481F1D039800C31BFE /* CommentHeaderView.m in Sources */,
+				781D022B1FA818570021CEAF /* ZZBannerModel.m in Sources */,
 				783089351F1C913200C31BFE /* ZZContentModel.m in Sources */,
 				781E563F1F31B117006854BA /* GFEventsCell.m in Sources */,
 				785100751F98F1F4001B8389 /* TZTestCell.m in Sources */,
@@ -3907,6 +3852,7 @@
 				7824E3161EF0D96700F85BFB /* CreateEventViewController.m in Sources */,
 				18E8D37F1DE9EB4100ED4EE1 /* GFTopicVoiceView.m in Sources */,
 				1829A6A41DE82DCF0086AD86 /* GFRefreshFooter.m in Sources */,
+				781D02221FA813FD0021CEAF /* SliderCell.m in Sources */,
 				785FF23C1F7B91D5002A42E9 /* ZBLocalized.m in Sources */,
 				788CC3431F19EC3900DC4116 /* JSQMediaItem.m in Sources */,
 				7829FF911ED576D700C934C2 /* RestaurantMenuViewController.m in Sources */,
@@ -3928,7 +3874,6 @@
 				18BE02911DDB497A00D27893 /* AppDelegate.m in Sources */,
 				18B7C72F1DE07C5A004BD781 /* GFFastLoginView.m in Sources */,
 				18388AD01DFAAB1D004E1DF9 /* GFSubTagViewCell.m in Sources */,
-				781E56901F3466BD006854BA /* ZZBannerModel.m in Sources */,
 				78F49F801EE6F5A900674130 /* MyEventCell.m in Sources */,
 				789CFF421F00E84F00EBA772 /* FilterTableViewController.m in Sources */,
 				788CC2911F18801600DC4116 /* ZZChatViewController.m in Sources */,
@@ -3997,7 +3942,6 @@
 				183E9CED1E8E585000B13C75 /* GFTopWindow.m in Sources */,
 				788CC3341F19EC3900DC4116 /* JSQMessagesViewController.m in Sources */,
 				78FE022C1EE930D200ABD5B9 /* ProgressView.m in Sources */,
-				784D3F731ECC85CD0058C63F /* GFNearbyEventsViewController.m in Sources */,
 				1899804C1DDBF33D009071F4 /* UIView+GFFrame.m in Sources */,
 				7824E33B1EF13F7600F85BFB /* BadgesCollectionViewController.m in Sources */,
 				78D85BDB1F42A9CE007E8112 /* BadgesDetailViewController.m in Sources */,
@@ -4181,7 +4125,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 36DSW7DB5F;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"<Multiple",
@@ -4214,7 +4158,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 36DSW7DB5F;
+				DEVELOPMENT_TEAM = 2FG6Y9F8J5;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"<Multiple",

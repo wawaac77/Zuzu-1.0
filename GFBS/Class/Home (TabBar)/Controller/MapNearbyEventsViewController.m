@@ -43,8 +43,6 @@ static NSString *const listEventID = @"event";
 /*maxtime*/
 @property (strong , nonatomic)NSString *maxtime;
 
-/*请求管理者*/
-@property (strong , nonatomic)GFHTTPSessionManager *manager;
 
 @property (strong , nonatomic)CLLocationManager *locationManager;
 @property (strong , nonatomic)CLGeocoder *geocoder;
@@ -66,17 +64,6 @@ static NSString *const listEventID = @"event";
     //[self setupRefresh];
 }
 
-#pragma mark - 懒加载
--(GFHTTPSessionManager *)manager
-{
-    if (!_manager) {
-        _manager = [GFHTTPSessionManager manager];
-        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    return _manager;
-}
-
 
 - (void)setupRefresh
 {
@@ -90,11 +77,6 @@ static NSString *const listEventID = @"event";
 #pragma mark - 加载新数据
 -(void)loadNewEvents
 {
-    NSLog(@"loadNewEvents工作了");
-    //取消请求
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    
-    //2.凭借请求参数
     NSArray *geoPoint = @[@114, @22];
     NSDictionary *geoPointDic = @ {@"geoPoint" : geoPoint};
     NSString *userLang = [[NSUserDefaults standardUserDefaults] objectForKey:@"KEY_USER_LANG"];
@@ -123,38 +105,6 @@ static NSString *const listEventID = @"event";
         [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
         [SVProgressHUD dismiss];
     }];
-    
-    /*
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        //字典转模型//这是给topics数组赋值的地方
-        NSLog(@"responseObject是接下来的%@", responseObject);
-        NSLog(@"responseObject - data 是接下来的%@", responseObject[@"data"]);
-        
-        
-        NSArray *eventsArray = responseObject[@"data"];
-        
-        
-        self.nearbyEvents = [EventInList mj_objectArrayWithKeyValuesArray:eventsArray];
-        NSLog(@"neaarbyEvents count in loadNewEvents%ld", _nearbyEvents.count);
-        NSLog(@"nearbyEvents %@", self.nearbyEvents);
-        [tableView reloadData];
-        
-        [tableView.mj_header endRefreshing];
-        [self initGUI];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        NSLog(@"call api failed");
-        
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [tableView.mj_header endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    }];
-    */
     
 }
 
@@ -373,10 +323,9 @@ static NSString *const listEventID = @"event";
 {
     EventListCell *cell = [tableView dequeueReusableCellWithIdentifier:listEventID forIndexPath:indexPath];
     EventInList *thisEvent = self.nearbyEvents[indexPath.row];
-    NSLog(@"thisEvent %@", thisEvent);
+    
     cell.event = thisEvent;
-    NSLog(@"-------------%ld", indexPath.row);
-    NSLog(@"neaarbyEvents count in tableview cellForRowAtIndexPath%ld", _nearbyEvents.count);
+   
     return cell;
 }
 

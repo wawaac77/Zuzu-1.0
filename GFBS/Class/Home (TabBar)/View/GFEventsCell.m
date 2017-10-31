@@ -108,18 +108,6 @@
             return ;
         }
     }];
-    
-    
-    //UIImage *image = [[UIImage alloc] init];
-    //if (_event.listEventBanner.eventBanner.image_UIImage == nil) {
-    /*
-        NSURL *URL = [NSURL URLWithString:thisEvent.listEventBanner.eventBanner.imageUrl];
-        NSData *data = [[NSData alloc]initWithContentsOfURL:URL];
-        UIImage *image = [[UIImage alloc]initWithData:data];
-        _event.listEventBanner.eventBanner.image_UIImage = image;
-     */
-    //}
-    //self.bigImageView.image = _event.listEventBanner.eventBanner.image_UIImage;
   
     self.bigTitleLabel.text = thisEvent.listEventName;
     self.bigTitleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];

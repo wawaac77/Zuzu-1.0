@@ -42,12 +42,18 @@ static NSString *const highLabelID = @"highLabelID";
 }
 
 - (void)setUpTable {
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44;
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([OverviewCell class]) bundle:nil] forCellReuseIdentifier:ID];
 }
 
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
+ */
+
 
 #pragma mark - Table view data source
 

@@ -36,10 +36,11 @@
     _timeLabel.layer.masksToBounds = YES;
     
     self.titleLabel.text = eventInfo.listEventName;
-    _titleLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5];
+    self.titleLabel.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
+    //_titleLabel.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.5];
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.layer.cornerRadius = 5.0f;
-    _titleLabel.layer.masksToBounds = YES;
+    //_titleLabel.layer.cornerRadius = 5.0f;
+    //_titleLabel.layer.masksToBounds = YES;
     
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:eventInfo.listEventBanner.eventBanner.imageUrl] placeholderImage:nil];
     
