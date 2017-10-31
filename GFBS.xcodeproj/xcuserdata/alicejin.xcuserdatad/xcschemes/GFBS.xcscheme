@@ -108,7 +108,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Debug"
-      customArchiveName = "Zuzu"
+      customArchiveName = "Zuzu1"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
