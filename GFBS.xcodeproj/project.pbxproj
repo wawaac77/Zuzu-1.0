@@ -410,6 +410,7 @@
 		786B38211F2ECFEB0098A12F /* RestaurantCheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 786B381F1F2ECFEB0098A12F /* RestaurantCheckinViewController.m */; };
 		786B38271F317C520098A12F /* square-facebook-69x69.png in Resources */ = {isa = PBXBuildFile; fileRef = 786B38261F317C520098A12F /* square-facebook-69x69.png */; };
 		788246D41ED2E7BA0058B226 /* EventPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */; };
+		7882B43E1FA970370090C2C7 /* ZZEventInSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 7882B43D1FA970370090C2C7 /* ZZEventInSection.m */; };
 		788333231F178F3000967337 /* DPSharePopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333201F178F3000967337 /* DPSharePopView.m */; };
 		788333241F178F3000967337 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 788333221F178F3000967337 /* TriangleView.m */; };
 		788CC2911F18801600DC4116 /* ZZChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 788CC28F1F18801600DC4116 /* ZZChatViewController.m */; };
@@ -1095,6 +1096,8 @@
 		786B38261F317C520098A12F /* square-facebook-69x69.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "square-facebook-69x69.png"; sourceTree = "<group>"; };
 		788246D11ED2E7BA0058B226 /* EventPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPhotoViewController.h; sourceTree = "<group>"; };
 		788246D21ED2E7BA0058B226 /* EventPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPhotoViewController.m; sourceTree = "<group>"; };
+		7882B43C1FA970370090C2C7 /* ZZEventInSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZEventInSection.h; sourceTree = "<group>"; };
+		7882B43D1FA970370090C2C7 /* ZZEventInSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZEventInSection.m; sourceTree = "<group>"; };
 		7883331F1F178F3000967337 /* DPSharePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSharePopView.h; sourceTree = "<group>"; };
 		788333201F178F3000967337 /* DPSharePopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSharePopView.m; sourceTree = "<group>"; };
 		788333211F178F3000967337 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
@@ -2368,6 +2371,8 @@
 				789CFF7A1F0CA69A00EBA772 /* TwEn.m */,
 				789CFF8B1F0E65DA00EBA772 /* ZZTypicalInformationModel.h */,
 				789CFF8C1F0E65DA00EBA772 /* ZZTypicalInformationModel.m */,
+				7882B43C1FA970370090C2C7 /* ZZEventInSection.h */,
+				7882B43D1FA970370090C2C7 /* ZZEventInSection.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3909,6 +3914,7 @@
 				18BE02B21DDB4C3900D27893 /* GFMeViewController.m in Sources */,
 				789CFF9F1F13C06500EBA772 /* LeaderboardViewController.m in Sources */,
 				783089601F1E1E7100C31BFE /* ZZFriendModel.m in Sources */,
+				7882B43E1FA970370090C2C7 /* ZZEventInSection.m in Sources */,
 				789CFF971F12399100EBA772 /* ZZImageCollectionCell.m in Sources */,
 				788CC34C1F19EC3900DC4116 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
 				789530171FA1C67700EC5F15 /* GFHTTPSessionManager.m in Sources */,

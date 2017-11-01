@@ -15,6 +15,7 @@
 #import "BadgesCollectionViewController.h"
 #import "NotificationViewController.h"
 #import "LeaderboardViewController.h"
+#import "ZZFriendsTableViewController.h"
 #import "ZBLocalized.h"
 
 //#import "EventListTableViewController.h"
@@ -31,6 +32,9 @@
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
 #import "UIBarButtonItem+Badge.h"
+#import "ZGAlertView.h"
+#import <MessageUI/MFMessageComposeViewController.h>
+#import <MessageUI/MessageUI.h>
 
 static NSString *const ID = @"ID";
 static NSInteger const cols = 3;
@@ -38,7 +42,7 @@ static CGFloat  const margin = 0;
 
 #define itemHW  (GFScreenWidth - (cols - 1) * margin ) / cols
 
-@interface MyZuzuViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate>
+@interface MyZuzuViewController () <UICollectionViewDataSource,UICollectionViewDelegate, UIImagePickerControllerDelegate, MFMessageComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *changeProfilePicButton;
 - (IBAction)changeProfilePicClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -70,6 +74,8 @@ static CGFloat  const margin = 0;
 @property (weak ,nonatomic) UICollectionView *functionsCollectionView;
 
 @property (strong, nonatomic) NSURL *url;
+
+@property (strong, nonatomic) ZGAlertView *alertView;
 
 @end
 
@@ -259,11 +265,17 @@ static CGFloat  const margin = 0;
     
     if ([item.name isEqualToString: ZBLocalized(@"My Events", nil)]) {
         ZZAttendingViewController *eventVC = [[ZZAttendingViewController alloc] init];
+        eventVC.navigationItem.title = ZBLocalized(@"My Events", nil);
         eventVC.view.frame = [UIScreen mainScreen].bounds;
         [self.navigationController pushViewController:eventVC animated:YES];
     } else if ([item.name isEqualToString: ZBLocalized(@"Favourite Restaurants", nil)]) {
         RestaurantViewController *restaurantVC = [[RestaurantViewController alloc] init];
         [self.navigationController pushViewController:restaurantVC animated:YES];
+    } else if ([item.name isEqualToString: ZBLocalized(@"My Friends", nil)]) {
+        ZZFriendsTableViewController *friendVC = [[ZZFriendsTableViewController alloc] init];
+        [self.navigationController pushViewController:friendVC animated:YES];
+    } else if ([item.name isEqualToString: ZBLocalized(@"Invite Friends", nil)]) {
+        [self showShareView];
     }
     
     //判断
@@ -411,16 +423,6 @@ static CGFloat  const margin = 0;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)leaderboardButtonClicked:(id)sender {
     LeaderboardViewController *leaderboardVC = [[LeaderboardViewController alloc] init];
     [self.navigationController pushViewController:leaderboardVC animated:YES];
@@ -429,6 +431,143 @@ static CGFloat  const margin = 0;
     
     PickSingleImageViewController *pickVC = [[PickSingleImageViewController alloc] init];
     [self.navigationController pushViewController:pickVC animated:YES];
+    
+}
+
+- (void)showShareView {
+    /*
+     NSString *shareText = @"I'm having fun on ZUZU. Come and join me!";
+     NSArray *itemsToShare = @[shareText];
+     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+     activityVC.excludedActivityTypes = @[];
+     [self presentViewController:activityVC animated:YES completion:nil];
+     */
+    
+    ZGAlertView *alertView = [[ZGAlertView alloc] initWithTitle: ZBLocalized(@"Invite Friends", nil) message:@"" cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    self.alertView = alertView;
+    
+    UIButton *facebookButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    facebookButton.backgroundColor = [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1];
+    [facebookButton setTitle:ZBLocalized(@"Find friends on Facebook", nil) forState:UIControlStateNormal];
+    [alertView addCustomButton:facebookButton toIndex:0];
+    
+    UIButton *googlePlusButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    googlePlusButton.backgroundColor = [UIColor colorWithRed:211.0/255.0 green:72.0/255.0 blue:54.0/255.0 alpha:1];
+    [googlePlusButton setTitle:ZBLocalized(@"Connect with Google+", nil) forState:UIControlStateNormal];
+    [alertView addCustomButton:googlePlusButton toIndex:1];
+    
+    UIButton *smsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    smsButton.backgroundColor = [UIColor colorWithRed:91.0/255.0 green:194.0/255.0 blue:54.0/255.0 alpha:1];
+    [smsButton setTitle:ZBLocalized(@"SMS Your Friends", nil) forState:UIControlStateNormal];
+    [smsButton addTarget:self action:@selector(showMessageView) forControlEvents:UIControlEventTouchUpInside];
+    [alertView addCustomButton:smsButton toIndex:2];
+    
+    UIButton *shareUrlButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    shareUrlButton.backgroundColor = [UIColor colorWithRed:255.0/255.0 green:204.0/255.0 blue:0 alpha:1];
+    [shareUrlButton setTitle:ZBLocalized(@"Share URL", nil) forState:UIControlStateNormal];
+    [shareUrlButton addTarget:self action:@selector(shareURLButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [alertView addCustomButton:shareUrlButton toIndex:3];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.backgroundColor = [UIColor clearColor];
+    [cancelButton setTitle:ZBLocalized(@"Cancel", nil) forState:UIControlStateNormal];
+    //[shareUrlButton addTarget:self action:@selector(shareURLButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [alertView addCustomButton:cancelButton toIndex:4];
+    
+    alertView.titleColor = [UIColor whiteColor];
+    alertView.backgroundColor = [UIColor clearColor];
+    
+    NSMutableArray *buttonArray = [[NSMutableArray alloc] initWithObjects:facebookButton, googlePlusButton, smsButton, shareUrlButton,cancelButton, nil];
+    NSArray *iconArray = [[NSArray alloc] initWithObjects:@"ic_facebook-logo",@"ic_google-plus", @"ic_sms",@"",@"",nil];
+    for (int i = 0; i < buttonArray.count; i++) {
+        UIButton *button = [buttonArray objectAtIndex:i];
+        button.layer.cornerRadius = 5.0f;
+        button.clipsToBounds = YES;
+        button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        [button addSubview:imageView];
+        imageView.frame = CGRectMake(15, 10, 44 - 20, 44 - 20);
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageNamed:[iconArray objectAtIndex:i]];
+    }
+    
+    [alertView show];
+    
+}
+
+- (void)smsButtonClicked {
+    NSLog(@"smsButtonClicked!");
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"sms://"]];//发短信
+}
+
+- (void)shareURLButtonClicked {
+    NSLog(@"shareURLButtonClicked!");
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"mailto://"]];//发email
+}
+
+- (void)dismissViews {
+    if ([self.alertView isFirstResponder]) {
+        [self.alertView resignFirstResponder];
+    }
+    
+}
+
+- (void)showMessageView
+{
+    
+    if( [MFMessageComposeViewController canSendText] ){
+        
+        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc]init]; //autorelease];
+        
+        controller.recipients = [NSArray arrayWithObject:@""];
+        controller.body = @"测试发短信";
+        controller.messageComposeDelegate = self;
+        
+        [self presentModalViewController:controller animated:YES];
+        
+        [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"测试短信"];//修改短信界面标题
+    }else{
+        
+        [self alertWithTitle:@"提示信息" msg:@"设备没有短信功能"];
+    }
+}
+
+
+
+//MFMessageComposeViewControllerDelegate
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    
+    [controller dismissModalViewControllerAnimated:NO];//关键的一句   不能为YES
+    
+    switch ( result ) {
+            
+        case MessageComposeResultCancelled:
+            
+            [self alertWithTitle:@"提示信息" msg:@"发送取消"];
+            break;
+        case MessageComposeResultFailed:// send failed
+            [self alertWithTitle:@"提示信息" msg:@"发送成功"];
+            break;
+        case MessageComposeResultSent:
+            [self alertWithTitle:@"提示信息" msg:@"发送失败"];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) alertWithTitle:(NSString *)title msg:(NSString *)msg {
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:msg
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"确定", nil];
+    
+    [alert show];
     
 }
 

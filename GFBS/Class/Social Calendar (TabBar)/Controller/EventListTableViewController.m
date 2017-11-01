@@ -15,6 +15,7 @@
 
 #import "MyEvent.h"
 #import "MyEventCell.h"
+#import "ZZEventInSection.h"
 #import "ZBLocalized.h"
 
 #import <AFNetworking.h>
@@ -32,6 +33,7 @@ static NSString *const eventID = @"myEvent";
 
 /*所有event数据*/
 @property (strong , nonatomic)NSMutableArray<EventInList *> *myEvents;
+@property (strong, nonatomic) ZZEventInSection *eventsInSections;
 /*maxtime*/
 @property (strong , nonatomic)NSString *maxtime;
 
@@ -112,15 +114,6 @@ static NSString *const eventID = @"myEvent";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MyEventCell class]) bundle:nil] forCellReuseIdentifier:eventID];
-    /*
-    if (_myEvents.count == 0) {
-        UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(10 + GFNavMaxY + 35, 10, GFScreenWidth - 20, 50)];
-        hintLabel.numberOfLines = 3;
-        hintLabel.text = @"You have not yet had a chance to organise a fun social gathering %n Take a plunge";
-        self.tableView.tableHeaderView.gf_height = 50;
-        [self.tableView.tableHeaderView addSubview:hintLabel];
-    }
-     */
     
 }
 
@@ -163,7 +156,13 @@ static NSString *const eventID = @"myEvent";
     
     [[GFHTTPSessionManager shareManager] POSTWithURLString:GetURL parameters:parameters success:^(id data) {
      
-        self.myEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        if (self.type == 2) {
+            self.eventsInSections = [ZZEventInSection mj_objectWithKeyValues:data[@"data"]];
+            
+        } else {
+            self.myEvents = [EventInList mj_objectArrayWithKeyValuesArray:data[@"data"]];
+        }
+        
     
         [self.tableView reloadData];
         
@@ -174,29 +173,6 @@ static NSString *const eventID = @"myEvent";
         [SVProgressHUD dismiss];
     }];
     
-    /*
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        //字典转模型 //没有这句话显示不出数据
-        self.myEvents = [EventInList mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        
-        NSLog(@"%@", self.myEvents);
-        
-        [self.tableView reloadData];
-        
-        [self.tableView.mj_header endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [self.tableView.mj_header endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    }];
-    */
 }
 
 #pragma mark - 加载更多数据
@@ -227,40 +203,34 @@ static NSString *const eventID = @"myEvent";
         [SVProgressHUD dismiss];
     }];
     
-    /*
-    //发送请求
-    [_manager POST:GetURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  responseObject) {
-        
-        
-        NSLog(@"responseObject in topics %@", responseObject);
-        
-        [responseObject writeToFile:@"/Users/apple/Desktop/ceshi.plist" atomically:YES];
-        
-        //字典转模型
-        NSMutableArray<EventInList *> *moreEvents = [EventInList mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.myEvents addObjectsFromArray:moreEvents];
-        
-        [self.tableView reloadData];
-        
-        [self.tableView.mj_footer endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", [error localizedDescription]);
-        
-        [SVProgressHUD showWithStatus:@"Busy network, please try later~"];
-        [self.tableView.mj_footer endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-        
-    }];
-    */
 }
 
 #pragma mark - setUpTable
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    /*
+    if (self.type == 2) {
+        return 3;
+    }
+     */
+    
+    return 1;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    /*
+    if (self.type == 2) {
+        if (section == 0) {
+            return self.eventsInSections.pendingApproval.count;
+        } else if (section == 1) {
+            return self.eventsInSections.rejectecd.count;
+        } else if (section == 2) {
+            return self.eventsInSections.incomplete.count;
+        } else {
+            return 0;
+        }
+    }
+     */
     return self.myEvents.count;
 }
 
@@ -268,15 +238,24 @@ static NSString *const eventID = @"myEvent";
 {
     
     MyEventCell *cell = (MyEventCell *)[tableView dequeueReusableCellWithIdentifier:eventID forIndexPath:indexPath];
-
-    NSLog(@"indexPath.row = %ld", indexPath.row);
-    NSLog(@"eventID %@", eventID);
         
-    EventInList *thisEvent = self.myEvents[indexPath.row];
+    EventInList *thisEvent = [[EventInList alloc] init];
+    
+    /*
+    if (self.type == 2) {
+        if (indexPath.section == 0) {
+            thisEvent = self.eventsInSections.pendingApproval[indexPath.row];
+        } else if (indexPath.section == 1) {
+            thisEvent = self.eventsInSections.rejectecd[indexPath.row];
+        } else if (indexPath.section == 2) {
+            thisEvent = self.eventsInSections.incomplete[indexPath.row];
+        }
         
-    NSLog(@"event id are %@", thisEvent.listEventID);
-    NSLog(@"event start date are %@", thisEvent.listEventStartDate);
-        
+    } else {
+     */
+        thisEvent = self.myEvents[indexPath.row];
+    //}
+    
     cell.event = thisEvent; //这个是将vc中刚刚从url拿到的信息，传给view文件夹中cell.topic数据类型，这样在cell view的地方可以给cell里面要展示的东西赋值
     
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(GFScreenWidth - 40, 8, 15, 15)];
@@ -300,6 +279,12 @@ static NSString *const eventID = @"myEvent";
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    /*
+    if (self.type == 2 && section!= 4) {
+        return NULL;
+    }
+     */
+    
     UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.gf_width, 50)];
     UIButton *joinButton = [UIButton buttonWithType:UIButtonTypeCustom];
     joinButton.frame = CGRectMake(5, 10, self.view.gf_width - 10, 35);
@@ -312,7 +297,7 @@ static NSString *const eventID = @"myEvent";
     
     
     if (self.type == MyEventTypeDraft) {
-        [joinButton setTitle:@"Organise an Event" forState:UIControlStateNormal];
+        [joinButton setTitle:ZBLocalized(@"Organise an Event", nil)  forState:UIControlStateNormal];
         [joinButton addTarget:self action:@selector(organizeClicked) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:joinButton];
     } else if (self.type == MyEventTypeHistory) {
