@@ -207,18 +207,17 @@ static NSString *const eventID = @"myEvent";
 
 #pragma mark - setUpTable
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    /*
+    
     if (self.type == 2) {
         return 3;
     }
-     */
     
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    /*
+    
     if (self.type == 2) {
         if (section == 0) {
             return self.eventsInSections.pendingApproval.count;
@@ -230,7 +229,7 @@ static NSString *const eventID = @"myEvent";
             return 0;
         }
     }
-     */
+    
     return self.myEvents.count;
 }
 
@@ -241,7 +240,6 @@ static NSString *const eventID = @"myEvent";
         
     EventInList *thisEvent = [[EventInList alloc] init];
     
-    /*
     if (self.type == 2) {
         if (indexPath.section == 0) {
             thisEvent = self.eventsInSections.pendingApproval[indexPath.row];
@@ -252,9 +250,8 @@ static NSString *const eventID = @"myEvent";
         }
         
     } else {
-     */
         thisEvent = self.myEvents[indexPath.row];
-    //}
+    }
     
     cell.event = thisEvent; //这个是将vc中刚刚从url拿到的信息，传给view文件夹中cell.topic数据类型，这样在cell view的地方可以给cell里面要展示的东西赋值
     
@@ -275,15 +272,22 @@ static NSString *const eventID = @"myEvent";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (self.type == 2) {
+        if (section == 2) {
+            return 50.0f;
+        } else {
+            return 0;
+        }
+        
+    }
     return 50.0f;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    /*
-    if (self.type == 2 && section!= 4) {
+    
+    if (self.type == 2 && section!= 2) {
         return NULL;
     }
-     */
     
     UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.gf_width, 50)];
     UIButton *joinButton = [UIButton buttonWithType:UIButtonTypeCustom];

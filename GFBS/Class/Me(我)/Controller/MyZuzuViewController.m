@@ -205,9 +205,9 @@ static CGFloat  const margin = 0;
 
 #pragma mark - Setup UICollectionView Data
 -(void)setUpCollectionItemsData {
-    NSArray *buttonIcons = [NSArray arrayWithObjects:@"my-event", @"f-restaurant-icon", @"my-review", @"invite-friends", @"my-friends",@"", nil];
+    NSArray *buttonIcons = [NSArray arrayWithObjects:@"my-event", @"f-restaurant-icon", @"my-review", @"invite-friends", @"my-friends",@"ic_inbox", nil];
     
-    NSArray *buttonTitles = [NSArray arrayWithObjects:ZBLocalized(@"My Events", nil), ZBLocalized(@"Favourite Restaurants", nil), ZBLocalized(@"My Reviews", nil), ZBLocalized(@"Invite Friends", nil), ZBLocalized(@"My Friends", nil),@"", nil];
+    NSArray *buttonTitles = [NSArray arrayWithObjects:ZBLocalized(@"My Events", nil), ZBLocalized(@"Favourite Restaurants", nil), ZBLocalized(@"My Reviews", nil), ZBLocalized(@"Invite Friends", nil), ZBLocalized(@"My Friends", nil),ZBLocalized(@"Inbox", nil), nil];
     //NSMutableArray<GFSquareItem *> *buttonItems =[[NSMutableArray<GFSquareItem *> alloc]init];
     //self.buttonItems = buttonItems;
     self.buttonItems = [[NSMutableArray<GFSquareItem *> alloc]init];
